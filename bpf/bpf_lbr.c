@@ -23,14 +23,6 @@ struct {
     __type(value, struct lbr_data);
 } lbr_map SEC(".maps");
 
-// // 用于临时存储的 PERCPU_ARRAY map，避免栈溢出
-// struct {
-//     __uint(type, BPF_MAP_TYPE_PERCPU_ARRAY);
-//     __uint(max_entries, 1);
-//     __type(key, __u32);
-//     __type(value, struct lbr_data);
-// } temp_lbr_data SEC(".maps");
-
 
 SEC("kprobe/__x64_sys_execve")
 int trace___x64_sys_execve(void *ctx)
@@ -45,15 +37,6 @@ int trace___x64_sys_execve(void *ctx)
     // 获取当前 CPU 并访问对应的 lbr_buff 元素
     cpu = bpf_get_smp_processor_id() & CPU_MASK;
     lbr = &lbr_buff[cpu];
-
-
-    // // 从 percpu array 获取临时存储空间
-    // __u32 zero = 0;
-    // struct lbr_data *data = bpf_map_lookup_elem(&temp_lbr_data, &zero);
-    // if (!data) {
-    //     bpf_printk("failed to get temp storage");
-    //     return 0;
-    // }
 
     // 使用 bpf_get_branch_snapshot 获取 LBR 数据
     __s64 ret = bpf_get_branch_snapshot(lbr->entries, sizeof(lbr->entries), 0);
