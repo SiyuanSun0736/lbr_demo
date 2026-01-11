@@ -47,9 +47,18 @@ func PrepareBPFMaps(spec *ebpf.CollectionSpec) (map[string]*ebpf.Map, error) {
 		return nil, fmt.Errorf("failed to create lbr_map: %w", err)
 	}
 
+	// Create comm_map
+	commMap, err := ebpf.NewMap(spec.Maps["comm_map"])
+	if err != nil {
+		lbrBuffMap.Close()
+		lbrMap.Close()
+		return nil, fmt.Errorf("failed to create comm_map: %w", err)
+	}
+
 	return map[string]*ebpf.Map{
 		".data.lbrs": lbrBuffMap,
 		"lbr_map":    lbrMap,
+		"comm_map":   commMap,
 	}, nil
 }
 

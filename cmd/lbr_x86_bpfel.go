@@ -67,24 +67,24 @@ type lbrSpecs struct {
 //
 // It can be passed ebpf.CollectionSpec.Assign.
 type lbrProgramSpecs struct {
-	TraceX64SysExecve *ebpf.ProgramSpec `ebpf:"trace___x64_sys_execve"`
+	CaptureLbr *ebpf.ProgramSpec `ebpf:"capture_lbr"`
 }
 
 // lbrMapSpecs contains maps before they are loaded into the kernel.
 //
 // It can be passed ebpf.CollectionSpec.Assign.
 type lbrMapSpecs struct {
-	LbrMap *ebpf.MapSpec `ebpf:"lbr_map"`
+	CommMap *ebpf.MapSpec `ebpf:"comm_map"`
+	LbrMap  *ebpf.MapSpec `ebpf:"lbr_map"`
 }
 
 // lbrVariableSpecs contains global variables before they are loaded into the kernel.
 //
 // It can be passed ebpf.CollectionSpec.Assign.
 type lbrVariableSpecs struct {
-	CPU_MASK *ebpf.VariableSpec `ebpf:"CPU_MASK"`
-	FUNC_IP  *ebpf.VariableSpec `ebpf:"FUNC_IP"`
-	PID      *ebpf.VariableSpec `ebpf:"PID"`
-	LbrBuff  *ebpf.VariableSpec `ebpf:"lbr_buff"`
+	CPU_MASK   *ebpf.VariableSpec `ebpf:"CPU_MASK"`
+	TARGET_PID *ebpf.VariableSpec `ebpf:"TARGET_PID"`
+	LbrBuff    *ebpf.VariableSpec `ebpf:"lbr_buff"`
 }
 
 // lbrObjects contains all objects after they have been loaded into the kernel.
@@ -107,11 +107,13 @@ func (o *lbrObjects) Close() error {
 //
 // It can be passed to loadLbrObjects or ebpf.CollectionSpec.LoadAndAssign.
 type lbrMaps struct {
-	LbrMap *ebpf.Map `ebpf:"lbr_map"`
+	CommMap *ebpf.Map `ebpf:"comm_map"`
+	LbrMap  *ebpf.Map `ebpf:"lbr_map"`
 }
 
 func (m *lbrMaps) Close() error {
 	return _LbrClose(
+		m.CommMap,
 		m.LbrMap,
 	)
 }
@@ -120,22 +122,21 @@ func (m *lbrMaps) Close() error {
 //
 // It can be passed to loadLbrObjects or ebpf.CollectionSpec.LoadAndAssign.
 type lbrVariables struct {
-	CPU_MASK *ebpf.Variable `ebpf:"CPU_MASK"`
-	FUNC_IP  *ebpf.Variable `ebpf:"FUNC_IP"`
-	PID      *ebpf.Variable `ebpf:"PID"`
-	LbrBuff  *ebpf.Variable `ebpf:"lbr_buff"`
+	CPU_MASK   *ebpf.Variable `ebpf:"CPU_MASK"`
+	TARGET_PID *ebpf.Variable `ebpf:"TARGET_PID"`
+	LbrBuff    *ebpf.Variable `ebpf:"lbr_buff"`
 }
 
 // lbrPrograms contains all programs after they have been loaded into the kernel.
 //
 // It can be passed to loadLbrObjects or ebpf.CollectionSpec.LoadAndAssign.
 type lbrPrograms struct {
-	TraceX64SysExecve *ebpf.Program `ebpf:"trace___x64_sys_execve"`
+	CaptureLbr *ebpf.Program `ebpf:"capture_lbr"`
 }
 
 func (p *lbrPrograms) Close() error {
 	return _LbrClose(
-		p.TraceX64SysExecve,
+		p.CaptureLbr,
 	)
 }
 

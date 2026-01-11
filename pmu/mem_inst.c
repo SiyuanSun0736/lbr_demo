@@ -10,6 +10,8 @@
 #include <signal.h>
 #include <stdint.h>
 #include <errno.h>
+#include <time.h>
+#include <sys/stat.h>
 
 static int perf_event_open(struct perf_event_attr *hw_event, pid_t pid,
                            int cpu, int group_fd, unsigned long flags) {
@@ -42,6 +44,7 @@ static int fd_mem_stores = -1;
 static int fd_all_loads = -1;
 static int fd_all_stores = -1;
 static int fd_any = -1;
+static FILE *log_file = NULL;
 
 void cleanup(int sig __attribute__((unused))) {
     if (fd_mem_loads >= 0) close(fd_mem_loads);
@@ -49,6 +52,10 @@ void cleanup(int sig __attribute__((unused))) {
     if (fd_all_loads >= 0) close(fd_all_loads);
     if (fd_all_stores >= 0) close(fd_all_stores);
     if (fd_any >= 0) close(fd_any);
+    if (log_file) {
+        fclose(log_file);
+        printf("\nLog file closed.\n");
+    }
     printf("\nCleaning up...\n");
     exit(0);
 }
@@ -66,12 +73,47 @@ int main(int argc, char **argv) {
     signal(SIGINT, cleanup);
     signal(SIGTERM, cleanup);
     
+    // Create log directory if it doesn't exist
+    mkdir("log", 0755);
+    
+    // Generate timestamped filename
+    time_t now = time(NULL);
+    struct tm *t = localtime(&now);
+    char timestamped_filename[256];
+    char link_name[] = "log/mem_inst_monitor.log";
+    snprintf(timestamped_filename, sizeof(timestamped_filename), 
+             "log/mem_inst_monitor_%04d%02d%02d_%02d%02d%02d.log",
+             t->tm_year + 1900, t->tm_mon + 1, t->tm_mday,
+             t->tm_hour, t->tm_min, t->tm_sec);
+    
+    // Open timestamped log file
+    log_file = fopen(timestamped_filename, "w");
+    if (!log_file) {
+        fprintf(stderr, "Failed to open log file: %s\n", strerror(errno));
+        return 1;
+    }
+    
+    // Write header to log file
+    fprintf(log_file, "Timestamp,mem-loads,mem-stores,all_loads,all_stores,any\n");
+    fflush(log_file);
+    
+    // Remove old symlink and create new one
+    unlink(link_name);
+    char target[256];
+    snprintf(target, sizeof(target), "mem_inst_monitor_%04d%02d%02d_%02d%02d%02d.log",
+             t->tm_year + 1900, t->tm_mon + 1, t->tm_mday,
+             t->tm_hour, t->tm_min, t->tm_sec);
+    symlink(target, link_name);
+    
     // Ensure output is not buffered
     setbuf(stdout, NULL);
     setbuf(stderr, NULL);
     
     printf("Memory Instructions Retired Monitoring\n");
     printf("Target PID: %d\n", target_pid == -1 ? getpid() : target_pid);
+    printf("Log files:\n");
+    printf("  - %s (timestamped)\n", timestamped_filename);
+    printf("  - %s (symlink to latest)\n", link_name);
     printf("Opening performance counters...\n\n");
     fflush(stdout);
     
@@ -167,19 +209,35 @@ int main(int argc, char **argv) {
         
         if (fd_mem_loads >= 0) {
             read(fd_mem_loads, &count_mem_loads, sizeof(uint64_t));
+            ioctl(fd_mem_loads, PERF_EVENT_IOC_RESET, 0);
         }
         if (fd_mem_stores >= 0) {
             read(fd_mem_stores, &count_mem_stores, sizeof(uint64_t));
+            ioctl(fd_mem_stores, PERF_EVENT_IOC_RESET, 0);
         }
         if (fd_all_loads >= 0) {
             read(fd_all_loads, &count_all_loads, sizeof(uint64_t));
+            ioctl(fd_all_loads, PERF_EVENT_IOC_RESET, 0);
         }
         if (fd_all_stores >= 0) {
             read(fd_all_stores, &count_all_stores, sizeof(uint64_t));
+            ioctl(fd_all_stores, PERF_EVENT_IOC_RESET, 0);
         }
         if (fd_any >= 0) {
             read(fd_any, &count_any, sizeof(uint64_t));
+            ioctl(fd_any, PERF_EVENT_IOC_RESET, 0);
         }
+        
+        // Get current timestamp
+        time_t now = time(NULL);
+        char timestamp[64];
+        strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S", localtime(&now));
+        
+        // Write to log file
+        fprintf(log_file, "%s,%lu,%lu,%lu,%lu,%lu\n", timestamp, 
+                count_mem_loads, count_mem_stores, count_all_loads, 
+                count_all_stores, count_any);
+        fflush(log_file);
         
         // Clear previous lines and move cursor up
         printf("\033[2K\r");  // Clear current line

@@ -10,6 +10,8 @@
 #include <signal.h>
 #include <stdint.h>
 #include <errno.h>
+#include <time.h>
+#include <sys/stat.h>
 
 static int perf_event_open(struct perf_event_attr *hw_event, pid_t pid,
                            int cpu, int group_fd, unsigned long flags) {
@@ -43,6 +45,7 @@ static int fd_llc_stores = -1;
 static int fd_llc_store_misses = -1;
 static int fd_cache_references = -1;
 static int fd_cache_misses = -1;
+static FILE *log_file = NULL;
 
 void cleanup(int sig __attribute__((unused))) {
     if (fd_llc_loads >= 0) close(fd_llc_loads);
@@ -51,6 +54,10 @@ void cleanup(int sig __attribute__((unused))) {
     if (fd_llc_store_misses >= 0) close(fd_llc_store_misses);
     if (fd_cache_references >= 0) close(fd_cache_references);
     if (fd_cache_misses >= 0) close(fd_cache_misses);
+    if (log_file) {
+        fclose(log_file);
+        printf("\nLog file closed.\n");
+    }
     printf("\nCleaning up...\n");
     exit(0);
 }
@@ -70,8 +77,43 @@ int main(int argc, char **argv) {
     signal(SIGINT, cleanup);
     signal(SIGTERM, cleanup);
     
+    // Create log directory if it doesn't exist
+    mkdir("log", 0755);
+    
+    // Generate timestamped filename
+    time_t now = time(NULL);
+    struct tm *t = localtime(&now);
+    char timestamped_filename[256];
+    char link_name[] = "log/llc_cache_monitor.log";
+    snprintf(timestamped_filename, sizeof(timestamped_filename), 
+             "log/llc_cache_monitor_%04d%02d%02d_%02d%02d%02d.log",
+             t->tm_year + 1900, t->tm_mon + 1, t->tm_mday,
+             t->tm_hour, t->tm_min, t->tm_sec);
+    
+    // Open timestamped log file
+    log_file = fopen(timestamped_filename, "w");
+    if (!log_file) {
+        fprintf(stderr, "Failed to open log file: %s\n", strerror(errno));
+        return 1;
+    }
+    
+    // Write header to log file
+    fprintf(log_file, "Timestamp,LLC-loads,LLC-load-misses,LLC-stores,LLC-store-misses,cache-references,cache-misses\n");
+    fflush(log_file);
+    
+    // Remove old symlink and create new one
+    unlink(link_name);
+    char target[256];
+    snprintf(target, sizeof(target), "llc_cache_monitor_%04d%02d%02d_%02d%02d%02d.log",
+             t->tm_year + 1900, t->tm_mon + 1, t->tm_mday,
+             t->tm_hour, t->tm_min, t->tm_sec);
+    symlink(target, link_name);
+    
     printf("LLC (Last Level Cache) Monitoring\n");
     printf("Target PID: %d\n", target_pid == -1 ? getpid() : target_pid);
+    printf("Log files:\n");
+    printf("  - %s (timestamped)\n", timestamped_filename);
+    printf("  - %s (symlink to latest)\n", link_name);
     printf("Opening performance counters...\n\n");
     
     // Try LLC-loads
@@ -167,22 +209,39 @@ int main(int argc, char **argv) {
         
         if (fd_llc_loads >= 0) {
             read(fd_llc_loads, &count_llc_loads, sizeof(uint64_t));
+            ioctl(fd_llc_loads, PERF_EVENT_IOC_RESET, 0);
         }
         if (fd_llc_load_misses >= 0) {
             read(fd_llc_load_misses, &count_llc_load_misses, sizeof(uint64_t));
+            ioctl(fd_llc_load_misses, PERF_EVENT_IOC_RESET, 0);
         }
         if (fd_llc_stores >= 0) {
             read(fd_llc_stores, &count_llc_stores, sizeof(uint64_t));
+            ioctl(fd_llc_stores, PERF_EVENT_IOC_RESET, 0);
         }
         if (fd_llc_store_misses >= 0) {
             read(fd_llc_store_misses, &count_llc_store_misses, sizeof(uint64_t));
+            ioctl(fd_llc_store_misses, PERF_EVENT_IOC_RESET, 0);
         }
         if (fd_cache_references >= 0) {
             read(fd_cache_references, &count_cache_references, sizeof(uint64_t));
+            ioctl(fd_cache_references, PERF_EVENT_IOC_RESET, 0);
         }
         if (fd_cache_misses >= 0) {
             read(fd_cache_misses, &count_cache_misses, sizeof(uint64_t));
+            ioctl(fd_cache_misses, PERF_EVENT_IOC_RESET, 0);
         }
+        
+        // Get current timestamp
+        time_t now = time(NULL);
+        char timestamp[64];
+        strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S", localtime(&now));
+        
+        // Write to log file
+        fprintf(log_file, "%s,%lu,%lu,%lu,%lu,%lu,%lu\n", timestamp, 
+                count_llc_loads, count_llc_load_misses, count_llc_stores, 
+                count_llc_store_misses, count_cache_references, count_cache_misses);
+        fflush(log_file);
         
         printf("\r");
         

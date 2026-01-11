@@ -1,0 +1,423 @@
+2026/01/11 16:35:33 Current nofile rlimit: curr=524287 max=524288
+2026/01/11 16:35:33 LBR demo is running. Press Ctrl-C to exit.
+2026/01/11 16:35:34 DEBUG: Found entry for PID/TID: 150280905722030, NrBytes: 768
+2026/01/11 16:35:34 DEBUG: Processing 32 LBR entries
+
+=== PID/TID: 150280905722030 ===
+LBR Stack:
+[#00] ring_buffer_event_data+0x2c                                                                           -> trace_event_buffer_reserve+0x90                                                                      
+[#01] trace_event_buffer_reserve+0x9a                                                                       -> trace_event_raw_event_bpf_trace_printk+0x65                                                          
+[#02] trace_event_raw_event_bpf_trace_printk+0x83                                                           -> __pi_memcpy+0x0                                                                                      
+[#03] __pi_memcpy+0x4                                                                                       -> memcpy_orig+0x0                                                                                      
+[#04] memcpy_orig+0x7                                                                                       -> memcpy_orig+0x87                                                                                     
+[#05] memcpy_orig+0xae                                                                                      -> trace_event_raw_event_bpf_trace_printk+0x88                                                          
+[#06] trace_event_raw_event_bpf_trace_printk+0x91                                                           -> trace_event_buffer_commit+0x0                                                                        
+[#07] trace_event_buffer_commit+0x54                                                                        -> trace_buffer_unlock_commit_regs+0x0                                                                  
+[#08] trace_buffer_unlock_commit_regs+0x35                                                                  -> ring_buffer_unlock_commit+0x0                                                                        
+[#09] ring_buffer_unlock_commit+0x20                                                                        -> rb_commit+0x0                                                                                        
+[#10] rb_commit+0x33                                                                                        -> rb_commit+0x5a                                                                                       
+[#11] rb_commit+0x65                                                                                        -> rb_commit+0x184                                                                                      
+[#12] rb_commit+0x187                                                                                       -> rb_commit+0xd4                                                                                       
+[#13] rb_commit+0x140                                                                                       -> rb_commit+0x35                                                                                       
+[#14] rb_commit+0x44                                                                                        -> ring_buffer_unlock_commit+0x25                                                                       
+[#15] ring_buffer_unlock_commit+0x4d                                                                        -> ring_buffer_unlock_commit+0xd6                                                                       
+[#16] ring_buffer_unlock_commit+0x100                                                                       -> trace_buffer_unlock_commit_regs+0x3a                                                                 
+[#17] trace_buffer_unlock_commit_regs+0x52                                                                  -> trace_buffer_unlock_commit_regs+0x68                                                                 
+[#18] trace_buffer_unlock_commit_regs+0x6b                                                                  -> trace_buffer_unlock_commit_regs+0x162                                                                
+[#19] trace_buffer_unlock_commit_regs+0x16a                                                                 -> trace_event_buffer_commit+0x59                                                                       
+[#20] trace_event_buffer_commit+0x6c                                                                        -> trace_event_raw_event_bpf_trace_printk+0x96                                                          
+[#21] trace_event_raw_event_bpf_trace_printk+0xaf                                                           -> bpf_trace_printk+0xd6                                                                                
+[#22] bpf_trace_printk+0xdd                                                                                 -> bpf_trace_printk+0x7f                                                                                
+[#23] bpf_trace_printk+0x82                                                                                 -> bpf_bprintf_cleanup+0x0                                                                              
+[#24] bpf_bprintf_cleanup+0x2a                                                                              -> bpf_trace_printk+0x87                                                                                
+[#25] bpf_trace_printk+0x9f                                                                                 -> _RNvNtNtCs9AFUqgiJach_16rust_binder_main13___module_init13___module_init15___RUST_BINDER_8+0x30a981a5
+[#26] _RNvNtNtCs9AFUqgiJach_16rust_binder_main13___module_init13___module_init15___RUST_BINDER_8+0x30a98204 -> intel_pmu_snapshot_branch_stack+0x0                                                                  
+[#27] intel_pmu_snapshot_branch_stack+0x2a                                                                  -> native_write_msr+0x0                                                                                 
+[#28] native_write_msr+0x13                                                                                 -> intel_pmu_snapshot_branch_stack+0x2f                                                                 
+[#29] intel_pmu_snapshot_branch_stack+0x35                                                                  -> native_read_msr+0x0                                                                                  
+[#30] native_read_msr+0x11                                                                                  -> intel_pmu_snapshot_branch_stack+0x3a                                                                 
+[#31] intel_pmu_snapshot_branch_stack+0x49                                                                  -> native_write_msr+0x0                                                                                 
+2026/01/11 16:35:34 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:34 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:34 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:34 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:34 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:34 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:34 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:34 DEBUG: Found entry for PID/TID: 150328150362297, NrBytes: 768
+2026/01/11 16:35:34 DEBUG: Processing 32 LBR entries
+
+=== PID/TID: 150328150362297 ===
+LBR Stack:
+[#00] ring_buffer_event_data+0x2c                                                                           -> trace_event_buffer_reserve+0x90                                                                      
+[#01] trace_event_buffer_reserve+0x9a                                                                       -> trace_event_raw_event_bpf_trace_printk+0x65                                                          
+[#02] trace_event_raw_event_bpf_trace_printk+0x83                                                           -> __pi_memcpy+0x0                                                                                      
+[#03] __pi_memcpy+0x4                                                                                       -> memcpy_orig+0x0                                                                                      
+[#04] memcpy_orig+0x7                                                                                       -> memcpy_orig+0x87                                                                                     
+[#05] memcpy_orig+0xae                                                                                      -> trace_event_raw_event_bpf_trace_printk+0x88                                                          
+[#06] trace_event_raw_event_bpf_trace_printk+0x91                                                           -> trace_event_buffer_commit+0x0                                                                        
+[#07] trace_event_buffer_commit+0x54                                                                        -> trace_buffer_unlock_commit_regs+0x0                                                                  
+[#08] trace_buffer_unlock_commit_regs+0x35                                                                  -> ring_buffer_unlock_commit+0x0                                                                        
+[#09] ring_buffer_unlock_commit+0x20                                                                        -> rb_commit+0x0                                                                                        
+[#10] rb_commit+0x33                                                                                        -> rb_commit+0x5a                                                                                       
+[#11] rb_commit+0x65                                                                                        -> rb_commit+0x184                                                                                      
+[#12] rb_commit+0x187                                                                                       -> rb_commit+0xd4                                                                                       
+[#13] rb_commit+0x140                                                                                       -> rb_commit+0x35                                                                                       
+[#14] rb_commit+0x44                                                                                        -> ring_buffer_unlock_commit+0x25                                                                       
+[#15] ring_buffer_unlock_commit+0x4d                                                                        -> ring_buffer_unlock_commit+0xd6                                                                       
+[#16] ring_buffer_unlock_commit+0x100                                                                       -> trace_buffer_unlock_commit_regs+0x3a                                                                 
+[#17] trace_buffer_unlock_commit_regs+0x52                                                                  -> trace_buffer_unlock_commit_regs+0x68                                                                 
+[#18] trace_buffer_unlock_commit_regs+0x6b                                                                  -> trace_buffer_unlock_commit_regs+0x162                                                                
+[#19] trace_buffer_unlock_commit_regs+0x16a                                                                 -> trace_event_buffer_commit+0x59                                                                       
+[#20] trace_event_buffer_commit+0x6c                                                                        -> trace_event_raw_event_bpf_trace_printk+0x96                                                          
+[#21] trace_event_raw_event_bpf_trace_printk+0xaf                                                           -> bpf_trace_printk+0xd6                                                                                
+[#22] bpf_trace_printk+0xdd                                                                                 -> bpf_trace_printk+0x7f                                                                                
+[#23] bpf_trace_printk+0x82                                                                                 -> bpf_bprintf_cleanup+0x0                                                                              
+[#24] bpf_bprintf_cleanup+0x2a                                                                              -> bpf_trace_printk+0x87                                                                                
+[#25] bpf_trace_printk+0x9f                                                                                 -> _RNvNtNtCs9AFUqgiJach_16rust_binder_main13___module_init13___module_init15___RUST_BINDER_8+0x30a981a5
+[#26] _RNvNtNtCs9AFUqgiJach_16rust_binder_main13___module_init13___module_init15___RUST_BINDER_8+0x30a98204 -> intel_pmu_snapshot_branch_stack+0x0                                                                  
+[#27] intel_pmu_snapshot_branch_stack+0x2a                                                                  -> native_write_msr+0x0                                                                                 
+[#28] native_write_msr+0x13                                                                                 -> intel_pmu_snapshot_branch_stack+0x2f                                                                 
+[#29] intel_pmu_snapshot_branch_stack+0x35                                                                  -> native_read_msr+0x0                                                                                  
+[#30] native_read_msr+0x11                                                                                  -> intel_pmu_snapshot_branch_stack+0x3a                                                                 
+[#31] intel_pmu_snapshot_branch_stack+0x49                                                                  -> native_write_msr+0x0                                                                                 
+2026/01/11 16:35:34 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:35 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:35 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:35 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:35 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:35 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:35 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:35 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:35 DEBUG: Found entry for PID/TID: 150332445329594, NrBytes: 768
+2026/01/11 16:35:35 DEBUG: Processing 32 LBR entries
+
+=== PID/TID: 150332445329594 ===
+LBR Stack:
+[#00] ring_buffer_event_data+0x2c                                                                           -> trace_event_buffer_reserve+0x90                                                                      
+[#01] trace_event_buffer_reserve+0x9a                                                                       -> trace_event_raw_event_bpf_trace_printk+0x65                                                          
+[#02] trace_event_raw_event_bpf_trace_printk+0x83                                                           -> __pi_memcpy+0x0                                                                                      
+[#03] __pi_memcpy+0x4                                                                                       -> memcpy_orig+0x0                                                                                      
+[#04] memcpy_orig+0x7                                                                                       -> memcpy_orig+0x87                                                                                     
+[#05] memcpy_orig+0xae                                                                                      -> trace_event_raw_event_bpf_trace_printk+0x88                                                          
+[#06] trace_event_raw_event_bpf_trace_printk+0x91                                                           -> trace_event_buffer_commit+0x0                                                                        
+[#07] trace_event_buffer_commit+0x54                                                                        -> trace_buffer_unlock_commit_regs+0x0                                                                  
+[#08] trace_buffer_unlock_commit_regs+0x35                                                                  -> ring_buffer_unlock_commit+0x0                                                                        
+[#09] ring_buffer_unlock_commit+0x20                                                                        -> rb_commit+0x0                                                                                        
+[#10] rb_commit+0x33                                                                                        -> rb_commit+0x5a                                                                                       
+[#11] rb_commit+0x65                                                                                        -> rb_commit+0x184                                                                                      
+[#12] rb_commit+0x187                                                                                       -> rb_commit+0xd4                                                                                       
+[#13] rb_commit+0x140                                                                                       -> rb_commit+0x35                                                                                       
+[#14] rb_commit+0x44                                                                                        -> ring_buffer_unlock_commit+0x25                                                                       
+[#15] ring_buffer_unlock_commit+0x4d                                                                        -> ring_buffer_unlock_commit+0xd6                                                                       
+[#16] ring_buffer_unlock_commit+0x100                                                                       -> trace_buffer_unlock_commit_regs+0x3a                                                                 
+[#17] trace_buffer_unlock_commit_regs+0x52                                                                  -> trace_buffer_unlock_commit_regs+0x68                                                                 
+[#18] trace_buffer_unlock_commit_regs+0x6b                                                                  -> trace_buffer_unlock_commit_regs+0x162                                                                
+[#19] trace_buffer_unlock_commit_regs+0x16a                                                                 -> trace_event_buffer_commit+0x59                                                                       
+[#20] trace_event_buffer_commit+0x6c                                                                        -> trace_event_raw_event_bpf_trace_printk+0x96                                                          
+[#21] trace_event_raw_event_bpf_trace_printk+0xaf                                                           -> bpf_trace_printk+0xd6                                                                                
+[#22] bpf_trace_printk+0xdd                                                                                 -> bpf_trace_printk+0x7f                                                                                
+[#23] bpf_trace_printk+0x82                                                                                 -> bpf_bprintf_cleanup+0x0                                                                              
+[#24] bpf_bprintf_cleanup+0x2a                                                                              -> bpf_trace_printk+0x87                                                                                
+[#25] bpf_trace_printk+0x9f                                                                                 -> _RNvNtNtCs9AFUqgiJach_16rust_binder_main13___module_init13___module_init15___RUST_BINDER_8+0x30a981a5
+[#26] _RNvNtNtCs9AFUqgiJach_16rust_binder_main13___module_init13___module_init15___RUST_BINDER_8+0x30a98204 -> intel_pmu_snapshot_branch_stack+0x0                                                                  
+[#27] intel_pmu_snapshot_branch_stack+0x2a                                                                  -> native_write_msr+0x0                                                                                 
+[#28] native_write_msr+0x13                                                                                 -> intel_pmu_snapshot_branch_stack+0x2f                                                                 
+[#29] intel_pmu_snapshot_branch_stack+0x35                                                                  -> native_read_msr+0x0                                                                                  
+[#30] native_read_msr+0x11                                                                                  -> intel_pmu_snapshot_branch_stack+0x3a                                                                 
+[#31] intel_pmu_snapshot_branch_stack+0x49                                                                  -> native_write_msr+0x0                                                                                 
+2026/01/11 16:35:35 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:35 DEBUG: Found entry for PID/TID: 150336740296891, NrBytes: 768
+2026/01/11 16:35:35 DEBUG: Processing 32 LBR entries
+
+=== PID/TID: 150336740296891 ===
+LBR Stack:
+[#00] ring_buffer_event_data+0x2c                                                                           -> trace_event_buffer_reserve+0x90                                                                      
+[#01] trace_event_buffer_reserve+0x9a                                                                       -> trace_event_raw_event_bpf_trace_printk+0x65                                                          
+[#02] trace_event_raw_event_bpf_trace_printk+0x83                                                           -> __pi_memcpy+0x0                                                                                      
+[#03] __pi_memcpy+0x4                                                                                       -> memcpy_orig+0x0                                                                                      
+[#04] memcpy_orig+0x7                                                                                       -> memcpy_orig+0x87                                                                                     
+[#05] memcpy_orig+0xae                                                                                      -> trace_event_raw_event_bpf_trace_printk+0x88                                                          
+[#06] trace_event_raw_event_bpf_trace_printk+0x91                                                           -> trace_event_buffer_commit+0x0                                                                        
+[#07] trace_event_buffer_commit+0x54                                                                        -> trace_buffer_unlock_commit_regs+0x0                                                                  
+[#08] trace_buffer_unlock_commit_regs+0x35                                                                  -> ring_buffer_unlock_commit+0x0                                                                        
+[#09] ring_buffer_unlock_commit+0x20                                                                        -> rb_commit+0x0                                                                                        
+[#10] rb_commit+0x33                                                                                        -> rb_commit+0x5a                                                                                       
+[#11] rb_commit+0x65                                                                                        -> rb_commit+0x184                                                                                      
+[#12] rb_commit+0x187                                                                                       -> rb_commit+0xd4                                                                                       
+[#13] rb_commit+0x140                                                                                       -> rb_commit+0x35                                                                                       
+[#14] rb_commit+0x44                                                                                        -> ring_buffer_unlock_commit+0x25                                                                       
+[#15] ring_buffer_unlock_commit+0x4d                                                                        -> ring_buffer_unlock_commit+0xd6                                                                       
+[#16] ring_buffer_unlock_commit+0x100                                                                       -> trace_buffer_unlock_commit_regs+0x3a                                                                 
+[#17] trace_buffer_unlock_commit_regs+0x52                                                                  -> trace_buffer_unlock_commit_regs+0x68                                                                 
+[#18] trace_buffer_unlock_commit_regs+0x6b                                                                  -> trace_buffer_unlock_commit_regs+0x162                                                                
+[#19] trace_buffer_unlock_commit_regs+0x16a                                                                 -> trace_event_buffer_commit+0x59                                                                       
+[#20] trace_event_buffer_commit+0x6c                                                                        -> trace_event_raw_event_bpf_trace_printk+0x96                                                          
+[#21] trace_event_raw_event_bpf_trace_printk+0xaf                                                           -> bpf_trace_printk+0xd6                                                                                
+[#22] bpf_trace_printk+0xdd                                                                                 -> bpf_trace_printk+0x7f                                                                                
+[#23] bpf_trace_printk+0x82                                                                                 -> bpf_bprintf_cleanup+0x0                                                                              
+[#24] bpf_bprintf_cleanup+0x2a                                                                              -> bpf_trace_printk+0x87                                                                                
+[#25] bpf_trace_printk+0x9f                                                                                 -> _RNvNtNtCs9AFUqgiJach_16rust_binder_main13___module_init13___module_init15___RUST_BINDER_8+0x30a981a5
+[#26] _RNvNtNtCs9AFUqgiJach_16rust_binder_main13___module_init13___module_init15___RUST_BINDER_8+0x30a98204 -> intel_pmu_snapshot_branch_stack+0x0                                                                  
+[#27] intel_pmu_snapshot_branch_stack+0x2a                                                                  -> native_write_msr+0x0                                                                                 
+[#28] native_write_msr+0x13                                                                                 -> intel_pmu_snapshot_branch_stack+0x2f                                                                 
+[#29] intel_pmu_snapshot_branch_stack+0x35                                                                  -> native_read_msr+0x0                                                                                  
+[#30] native_read_msr+0x11                                                                                  -> intel_pmu_snapshot_branch_stack+0x3a                                                                 
+[#31] intel_pmu_snapshot_branch_stack+0x49                                                                  -> native_write_msr+0x0                                                                                 
+2026/01/11 16:35:36 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:36 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:36 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:36 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:36 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:36 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:36 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:36 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:36 DEBUG: Found entry for PID/TID: 150383984937158, NrBytes: 768
+2026/01/11 16:35:36 DEBUG: Processing 32 LBR entries
+
+=== PID/TID: 150383984937158 ===
+LBR Stack:
+[#00] ring_buffer_event_data+0x2c                                                                           -> trace_event_buffer_reserve+0x90                                                                      
+[#01] trace_event_buffer_reserve+0x9a                                                                       -> trace_event_raw_event_bpf_trace_printk+0x65                                                          
+[#02] trace_event_raw_event_bpf_trace_printk+0x83                                                           -> __pi_memcpy+0x0                                                                                      
+[#03] __pi_memcpy+0x4                                                                                       -> memcpy_orig+0x0                                                                                      
+[#04] memcpy_orig+0x7                                                                                       -> memcpy_orig+0x87                                                                                     
+[#05] memcpy_orig+0xae                                                                                      -> trace_event_raw_event_bpf_trace_printk+0x88                                                          
+[#06] trace_event_raw_event_bpf_trace_printk+0x91                                                           -> trace_event_buffer_commit+0x0                                                                        
+[#07] trace_event_buffer_commit+0x54                                                                        -> trace_buffer_unlock_commit_regs+0x0                                                                  
+[#08] trace_buffer_unlock_commit_regs+0x35                                                                  -> ring_buffer_unlock_commit+0x0                                                                        
+[#09] ring_buffer_unlock_commit+0x20                                                                        -> rb_commit+0x0                                                                                        
+[#10] rb_commit+0x33                                                                                        -> rb_commit+0x5a                                                                                       
+[#11] rb_commit+0x65                                                                                        -> rb_commit+0x184                                                                                      
+[#12] rb_commit+0x187                                                                                       -> rb_commit+0xd4                                                                                       
+[#13] rb_commit+0x140                                                                                       -> rb_commit+0x35                                                                                       
+[#14] rb_commit+0x44                                                                                        -> ring_buffer_unlock_commit+0x25                                                                       
+[#15] ring_buffer_unlock_commit+0x4d                                                                        -> ring_buffer_unlock_commit+0xd6                                                                       
+[#16] ring_buffer_unlock_commit+0x100                                                                       -> trace_buffer_unlock_commit_regs+0x3a                                                                 
+[#17] trace_buffer_unlock_commit_regs+0x52                                                                  -> trace_buffer_unlock_commit_regs+0x68                                                                 
+[#18] trace_buffer_unlock_commit_regs+0x6b                                                                  -> trace_buffer_unlock_commit_regs+0x162                                                                
+[#19] trace_buffer_unlock_commit_regs+0x16a                                                                 -> trace_event_buffer_commit+0x59                                                                       
+[#20] trace_event_buffer_commit+0x6c                                                                        -> trace_event_raw_event_bpf_trace_printk+0x96                                                          
+[#21] trace_event_raw_event_bpf_trace_printk+0xaf                                                           -> bpf_trace_printk+0xd6                                                                                
+[#22] bpf_trace_printk+0xdd                                                                                 -> bpf_trace_printk+0x7f                                                                                
+[#23] bpf_trace_printk+0x82                                                                                 -> bpf_bprintf_cleanup+0x0                                                                              
+[#24] bpf_bprintf_cleanup+0x2a                                                                              -> bpf_trace_printk+0x87                                                                                
+[#25] bpf_trace_printk+0x9f                                                                                 -> _RNvNtNtCs9AFUqgiJach_16rust_binder_main13___module_init13___module_init15___RUST_BINDER_8+0x30a981a5
+[#26] _RNvNtNtCs9AFUqgiJach_16rust_binder_main13___module_init13___module_init15___RUST_BINDER_8+0x30a98204 -> intel_pmu_snapshot_branch_stack+0x0                                                                  
+[#27] intel_pmu_snapshot_branch_stack+0x2a                                                                  -> native_write_msr+0x0                                                                                 
+[#28] native_write_msr+0x13                                                                                 -> intel_pmu_snapshot_branch_stack+0x2f                                                                 
+[#29] intel_pmu_snapshot_branch_stack+0x35                                                                  -> native_read_msr+0x0                                                                                  
+[#30] native_read_msr+0x11                                                                                  -> intel_pmu_snapshot_branch_stack+0x3a                                                                 
+[#31] intel_pmu_snapshot_branch_stack+0x49                                                                  -> native_write_msr+0x0                                                                                 
+2026/01/11 16:35:36 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:37 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:37 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:37 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:37 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:37 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:37 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:37 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:37 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:37 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:37 DEBUG: Found entry for PID/TID: 150405459773643, NrBytes: 768
+2026/01/11 16:35:37 DEBUG: Processing 32 LBR entries
+
+=== PID/TID: 150405459773643 ===
+LBR Stack:
+[#00] ring_buffer_event_data+0x2c                                                                           -> trace_event_buffer_reserve+0x90                                                                      
+[#01] trace_event_buffer_reserve+0x9a                                                                       -> trace_event_raw_event_bpf_trace_printk+0x65                                                          
+[#02] trace_event_raw_event_bpf_trace_printk+0x83                                                           -> __pi_memcpy+0x0                                                                                      
+[#03] __pi_memcpy+0x4                                                                                       -> memcpy_orig+0x0                                                                                      
+[#04] memcpy_orig+0x7                                                                                       -> memcpy_orig+0x87                                                                                     
+[#05] memcpy_orig+0xae                                                                                      -> trace_event_raw_event_bpf_trace_printk+0x88                                                          
+[#06] trace_event_raw_event_bpf_trace_printk+0x91                                                           -> trace_event_buffer_commit+0x0                                                                        
+[#07] trace_event_buffer_commit+0x54                                                                        -> trace_buffer_unlock_commit_regs+0x0                                                                  
+[#08] trace_buffer_unlock_commit_regs+0x35                                                                  -> ring_buffer_unlock_commit+0x0                                                                        
+[#09] ring_buffer_unlock_commit+0x20                                                                        -> rb_commit+0x0                                                                                        
+[#10] rb_commit+0x33                                                                                        -> rb_commit+0x5a                                                                                       
+[#11] rb_commit+0x65                                                                                        -> rb_commit+0x184                                                                                      
+[#12] rb_commit+0x187                                                                                       -> rb_commit+0xd4                                                                                       
+[#13] rb_commit+0x140                                                                                       -> rb_commit+0x35                                                                                       
+[#14] rb_commit+0x44                                                                                        -> ring_buffer_unlock_commit+0x25                                                                       
+[#15] ring_buffer_unlock_commit+0x4d                                                                        -> ring_buffer_unlock_commit+0xd6                                                                       
+[#16] ring_buffer_unlock_commit+0x100                                                                       -> trace_buffer_unlock_commit_regs+0x3a                                                                 
+[#17] trace_buffer_unlock_commit_regs+0x52                                                                  -> trace_buffer_unlock_commit_regs+0x68                                                                 
+[#18] trace_buffer_unlock_commit_regs+0x6b                                                                  -> trace_buffer_unlock_commit_regs+0x162                                                                
+[#19] trace_buffer_unlock_commit_regs+0x16a                                                                 -> trace_event_buffer_commit+0x59                                                                       
+[#20] trace_event_buffer_commit+0x6c                                                                        -> trace_event_raw_event_bpf_trace_printk+0x96                                                          
+[#21] trace_event_raw_event_bpf_trace_printk+0xaf                                                           -> bpf_trace_printk+0xd6                                                                                
+[#22] bpf_trace_printk+0xdd                                                                                 -> bpf_trace_printk+0x7f                                                                                
+[#23] bpf_trace_printk+0x82                                                                                 -> bpf_bprintf_cleanup+0x0                                                                              
+[#24] bpf_bprintf_cleanup+0x2a                                                                              -> bpf_trace_printk+0x87                                                                                
+[#25] bpf_trace_printk+0x9f                                                                                 -> _RNvNtNtCs9AFUqgiJach_16rust_binder_main13___module_init13___module_init15___RUST_BINDER_8+0x30a981a5
+[#26] _RNvNtNtCs9AFUqgiJach_16rust_binder_main13___module_init13___module_init15___RUST_BINDER_8+0x30a98204 -> intel_pmu_snapshot_branch_stack+0x0                                                                  
+[#27] intel_pmu_snapshot_branch_stack+0x2a                                                                  -> native_write_msr+0x0                                                                                 
+[#28] native_write_msr+0x13                                                                                 -> intel_pmu_snapshot_branch_stack+0x2f                                                                 
+[#29] intel_pmu_snapshot_branch_stack+0x35                                                                  -> native_read_msr+0x0                                                                                  
+[#30] native_read_msr+0x11                                                                                  -> intel_pmu_snapshot_branch_stack+0x3a                                                                 
+[#31] intel_pmu_snapshot_branch_stack+0x49                                                                  -> native_write_msr+0x0                                                                                 
+2026/01/11 16:35:38 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:38 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:38 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:38 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:38 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:38 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:38 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:38 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:38 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:38 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:39 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:39 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:39 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:39 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:39 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:39 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:39 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:39 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:39 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:39 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:40 DEBUG: Found entry for PID/TID: 150448409446613, NrBytes: 768
+2026/01/11 16:35:40 DEBUG: Processing 32 LBR entries
+
+=== PID/TID: 150448409446613 ===
+LBR Stack:
+[#00] ring_buffer_event_data+0x2c                                                                           -> trace_event_buffer_reserve+0x90                                                                      
+[#01] trace_event_buffer_reserve+0x9a                                                                       -> trace_event_raw_event_bpf_trace_printk+0x65                                                          
+[#02] trace_event_raw_event_bpf_trace_printk+0x83                                                           -> __pi_memcpy+0x0                                                                                      
+[#03] __pi_memcpy+0x4                                                                                       -> memcpy_orig+0x0                                                                                      
+[#04] memcpy_orig+0x7                                                                                       -> memcpy_orig+0x87                                                                                     
+[#05] memcpy_orig+0xae                                                                                      -> trace_event_raw_event_bpf_trace_printk+0x88                                                          
+[#06] trace_event_raw_event_bpf_trace_printk+0x91                                                           -> trace_event_buffer_commit+0x0                                                                        
+[#07] trace_event_buffer_commit+0x54                                                                        -> trace_buffer_unlock_commit_regs+0x0                                                                  
+[#08] trace_buffer_unlock_commit_regs+0x35                                                                  -> ring_buffer_unlock_commit+0x0                                                                        
+[#09] ring_buffer_unlock_commit+0x20                                                                        -> rb_commit+0x0                                                                                        
+[#10] rb_commit+0x33                                                                                        -> rb_commit+0x5a                                                                                       
+[#11] rb_commit+0x65                                                                                        -> rb_commit+0x184                                                                                      
+[#12] rb_commit+0x187                                                                                       -> rb_commit+0xd4                                                                                       
+[#13] rb_commit+0x140                                                                                       -> rb_commit+0x35                                                                                       
+[#14] rb_commit+0x44                                                                                        -> ring_buffer_unlock_commit+0x25                                                                       
+[#15] ring_buffer_unlock_commit+0x4d                                                                        -> ring_buffer_unlock_commit+0xd6                                                                       
+[#16] ring_buffer_unlock_commit+0x100                                                                       -> trace_buffer_unlock_commit_regs+0x3a                                                                 
+[#17] trace_buffer_unlock_commit_regs+0x52                                                                  -> trace_buffer_unlock_commit_regs+0x68                                                                 
+[#18] trace_buffer_unlock_commit_regs+0x6b                                                                  -> trace_buffer_unlock_commit_regs+0x162                                                                
+[#19] trace_buffer_unlock_commit_regs+0x16a                                                                 -> trace_event_buffer_commit+0x59                                                                       
+[#20] trace_event_buffer_commit+0x6c                                                                        -> trace_event_raw_event_bpf_trace_printk+0x96                                                          
+[#21] trace_event_raw_event_bpf_trace_printk+0xaf                                                           -> bpf_trace_printk+0xd6                                                                                
+[#22] bpf_trace_printk+0xdd                                                                                 -> bpf_trace_printk+0x7f                                                                                
+[#23] bpf_trace_printk+0x82                                                                                 -> bpf_bprintf_cleanup+0x0                                                                              
+[#24] bpf_bprintf_cleanup+0x2a                                                                              -> bpf_trace_printk+0x87                                                                                
+[#25] bpf_trace_printk+0x9f                                                                                 -> _RNvNtNtCs9AFUqgiJach_16rust_binder_main13___module_init13___module_init15___RUST_BINDER_8+0x30a981a5
+[#26] _RNvNtNtCs9AFUqgiJach_16rust_binder_main13___module_init13___module_init15___RUST_BINDER_8+0x30a98204 -> intel_pmu_snapshot_branch_stack+0x0                                                                  
+[#27] intel_pmu_snapshot_branch_stack+0x2a                                                                  -> native_write_msr+0x0                                                                                 
+[#28] native_write_msr+0x13                                                                                 -> intel_pmu_snapshot_branch_stack+0x2f                                                                 
+[#29] intel_pmu_snapshot_branch_stack+0x35                                                                  -> native_read_msr+0x0                                                                                  
+[#30] native_read_msr+0x11                                                                                  -> intel_pmu_snapshot_branch_stack+0x3a                                                                 
+[#31] intel_pmu_snapshot_branch_stack+0x49                                                                  -> native_write_msr+0x0                                                                                 
+2026/01/11 16:35:40 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:40 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:40 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:40 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:40 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:40 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:40 DEBUG: Found entry for PID/TID: 150491359119583, NrBytes: 768
+2026/01/11 16:35:40 DEBUG: Processing 32 LBR entries
+
+=== PID/TID: 150491359119583 ===
+LBR Stack:
+[#00] ring_buffer_event_data+0x2c                                                                           -> trace_event_buffer_reserve+0x90                                                                      
+[#01] trace_event_buffer_reserve+0x9a                                                                       -> trace_event_raw_event_bpf_trace_printk+0x65                                                          
+[#02] trace_event_raw_event_bpf_trace_printk+0x83                                                           -> __pi_memcpy+0x0                                                                                      
+[#03] __pi_memcpy+0x4                                                                                       -> memcpy_orig+0x0                                                                                      
+[#04] memcpy_orig+0x7                                                                                       -> memcpy_orig+0x87                                                                                     
+[#05] memcpy_orig+0xae                                                                                      -> trace_event_raw_event_bpf_trace_printk+0x88                                                          
+[#06] trace_event_raw_event_bpf_trace_printk+0x91                                                           -> trace_event_buffer_commit+0x0                                                                        
+[#07] trace_event_buffer_commit+0x54                                                                        -> trace_buffer_unlock_commit_regs+0x0                                                                  
+[#08] trace_buffer_unlock_commit_regs+0x35                                                                  -> ring_buffer_unlock_commit+0x0                                                                        
+[#09] ring_buffer_unlock_commit+0x20                                                                        -> rb_commit+0x0                                                                                        
+[#10] rb_commit+0x33                                                                                        -> rb_commit+0x5a                                                                                       
+[#11] rb_commit+0x65                                                                                        -> rb_commit+0x184                                                                                      
+[#12] rb_commit+0x187                                                                                       -> rb_commit+0xd4                                                                                       
+[#13] rb_commit+0x140                                                                                       -> rb_commit+0x35                                                                                       
+[#14] rb_commit+0x44                                                                                        -> ring_buffer_unlock_commit+0x25                                                                       
+[#15] ring_buffer_unlock_commit+0x4d                                                                        -> ring_buffer_unlock_commit+0xd6                                                                       
+[#16] ring_buffer_unlock_commit+0x100                                                                       -> trace_buffer_unlock_commit_regs+0x3a                                                                 
+[#17] trace_buffer_unlock_commit_regs+0x52                                                                  -> trace_buffer_unlock_commit_regs+0x68                                                                 
+[#18] trace_buffer_unlock_commit_regs+0x6b                                                                  -> trace_buffer_unlock_commit_regs+0x162                                                                
+[#19] trace_buffer_unlock_commit_regs+0x16a                                                                 -> trace_event_buffer_commit+0x59                                                                       
+[#20] trace_event_buffer_commit+0x6c                                                                        -> trace_event_raw_event_bpf_trace_printk+0x96                                                          
+[#21] trace_event_raw_event_bpf_trace_printk+0xaf                                                           -> bpf_trace_printk+0xd6                                                                                
+[#22] bpf_trace_printk+0xdd                                                                                 -> bpf_trace_printk+0x7f                                                                                
+[#23] bpf_trace_printk+0x82                                                                                 -> bpf_bprintf_cleanup+0x0                                                                              
+[#24] bpf_bprintf_cleanup+0x2a                                                                              -> bpf_trace_printk+0x87                                                                                
+[#25] bpf_trace_printk+0x9f                                                                                 -> _RNvNtNtCs9AFUqgiJach_16rust_binder_main13___module_init13___module_init15___RUST_BINDER_8+0x30a981a5
+[#26] _RNvNtNtCs9AFUqgiJach_16rust_binder_main13___module_init13___module_init15___RUST_BINDER_8+0x30a98204 -> intel_pmu_snapshot_branch_stack+0x0                                                                  
+[#27] intel_pmu_snapshot_branch_stack+0x2a                                                                  -> native_write_msr+0x0                                                                                 
+[#28] native_write_msr+0x13                                                                                 -> intel_pmu_snapshot_branch_stack+0x2f                                                                 
+[#29] intel_pmu_snapshot_branch_stack+0x35                                                                  -> native_read_msr+0x0                                                                                  
+[#30] native_read_msr+0x11                                                                                  -> intel_pmu_snapshot_branch_stack+0x3a                                                                 
+[#31] intel_pmu_snapshot_branch_stack+0x49                                                                  -> native_write_msr+0x0                                                                                 
+2026/01/11 16:35:40 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:40 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:41 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:41 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:41 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:41 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:41 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:41 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:41 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:41 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:41 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:41 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:42 DEBUG: Found entry for PID/TID: 150495654086880, NrBytes: 768
+2026/01/11 16:35:42 DEBUG: Processing 32 LBR entries
+
+=== PID/TID: 150495654086880 ===
+LBR Stack:
+[#00] ring_buffer_event_data+0x2c                                                                           -> trace_event_buffer_reserve+0x90                                                                      
+[#01] trace_event_buffer_reserve+0x9a                                                                       -> trace_event_raw_event_bpf_trace_printk+0x65                                                          
+[#02] trace_event_raw_event_bpf_trace_printk+0x83                                                           -> __pi_memcpy+0x0                                                                                      
+[#03] __pi_memcpy+0x4                                                                                       -> memcpy_orig+0x0                                                                                      
+[#04] memcpy_orig+0x7                                                                                       -> memcpy_orig+0x87                                                                                     
+[#05] memcpy_orig+0xae                                                                                      -> trace_event_raw_event_bpf_trace_printk+0x88                                                          
+[#06] trace_event_raw_event_bpf_trace_printk+0x91                                                           -> trace_event_buffer_commit+0x0                                                                        
+[#07] trace_event_buffer_commit+0x54                                                                        -> trace_buffer_unlock_commit_regs+0x0                                                                  
+[#08] trace_buffer_unlock_commit_regs+0x35                                                                  -> ring_buffer_unlock_commit+0x0                                                                        
+[#09] ring_buffer_unlock_commit+0x20                                                                        -> rb_commit+0x0                                                                                        
+[#10] rb_commit+0x33                                                                                        -> rb_commit+0x5a                                                                                       
+[#11] rb_commit+0x65                                                                                        -> rb_commit+0x184                                                                                      
+[#12] rb_commit+0x187                                                                                       -> rb_commit+0xd4                                                                                       
+[#13] rb_commit+0x140                                                                                       -> rb_commit+0x35                                                                                       
+[#14] rb_commit+0x44                                                                                        -> ring_buffer_unlock_commit+0x25                                                                       
+[#15] ring_buffer_unlock_commit+0x4d                                                                        -> ring_buffer_unlock_commit+0xd6                                                                       
+[#16] ring_buffer_unlock_commit+0x100                                                                       -> trace_buffer_unlock_commit_regs+0x3a                                                                 
+[#17] trace_buffer_unlock_commit_regs+0x52                                                                  -> trace_buffer_unlock_commit_regs+0x68                                                                 
+[#18] trace_buffer_unlock_commit_regs+0x6b                                                                  -> trace_buffer_unlock_commit_regs+0x162                                                                
+[#19] trace_buffer_unlock_commit_regs+0x16a                                                                 -> trace_event_buffer_commit+0x59                                                                       
+[#20] trace_event_buffer_commit+0x6c                                                                        -> trace_event_raw_event_bpf_trace_printk+0x96                                                          
+[#21] trace_event_raw_event_bpf_trace_printk+0xaf                                                           -> bpf_trace_printk+0xd6                                                                                
+[#22] bpf_trace_printk+0xdd                                                                                 -> bpf_trace_printk+0x7f                                                                                
+[#23] bpf_trace_printk+0x82                                                                                 -> bpf_bprintf_cleanup+0x0                                                                              
+[#24] bpf_bprintf_cleanup+0x2a                                                                              -> bpf_trace_printk+0x87                                                                                
+[#25] bpf_trace_printk+0x9f                                                                                 -> _RNvNtNtCs9AFUqgiJach_16rust_binder_main13___module_init13___module_init15___RUST_BINDER_8+0x30a981a5
+[#26] _RNvNtNtCs9AFUqgiJach_16rust_binder_main13___module_init13___module_init15___RUST_BINDER_8+0x30a98204 -> intel_pmu_snapshot_branch_stack+0x0                                                                  
+[#27] intel_pmu_snapshot_branch_stack+0x2a                                                                  -> native_write_msr+0x0                                                                                 
+[#28] native_write_msr+0x13                                                                                 -> intel_pmu_snapshot_branch_stack+0x2f                                                                 
+[#29] intel_pmu_snapshot_branch_stack+0x35                                                                  -> native_read_msr+0x0                                                                                  
+[#30] native_read_msr+0x11                                                                                  -> intel_pmu_snapshot_branch_stack+0x3a                                                                 
+[#31] intel_pmu_snapshot_branch_stack+0x49                                                                  -> native_write_msr+0x0                                                                                 
+2026/01/11 16:35:42 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:42 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:42 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:42 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:42 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:42 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:42 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:42 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:42 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:43 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:43 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:43 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:43 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:43 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:43 DEBUG: No entries found in lbr_map
+2026/01/11 16:35:43 DEBUG: No entries found in lbr_map

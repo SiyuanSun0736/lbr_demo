@@ -10,6 +10,8 @@
 #include <signal.h>
 #include <stdint.h>
 #include <errno.h>
+#include <time.h>
+#include <sys/stat.h>
 
 static int perf_event_open(struct perf_event_attr *hw_event, pid_t pid,
                            int cpu, int group_fd, unsigned long flags) {
@@ -39,10 +41,15 @@ static int try_open_perf_event(struct perf_event_attr *pe, pid_t pid, const char
 
 static int fd_loads = -1;
 static int fd_load_misses = -1;
+static FILE *log_file = NULL;
 
 void cleanup(int sig __attribute__((unused))) {
     if (fd_loads >= 0) close(fd_loads);
     if (fd_load_misses >= 0) close(fd_load_misses);
+    if (log_file) {
+        fclose(log_file);
+        printf("\nLog file closed.\n");
+    }
     printf("\nCleaning up...\n");
     exit(0);
 }
@@ -60,12 +67,47 @@ int main(int argc, char **argv) {
     signal(SIGINT, cleanup);
     signal(SIGTERM, cleanup);
     
+    // Create log directory if it doesn't exist
+    mkdir("log", 0755);
+    
+    // Generate timestamped filename
+    time_t now = time(NULL);
+    struct tm *t = localtime(&now);
+    char timestamped_filename[256];
+    char link_name[] = "log/itlb_monitor.log";
+    snprintf(timestamped_filename, sizeof(timestamped_filename), 
+             "log/itlb_monitor_%04d%02d%02d_%02d%02d%02d.log",
+             t->tm_year + 1900, t->tm_mon + 1, t->tm_mday,
+             t->tm_hour, t->tm_min, t->tm_sec);
+    
+    // Open timestamped log file
+    log_file = fopen(timestamped_filename, "w");
+    if (!log_file) {
+        fprintf(stderr, "Failed to open log file: %s\n", strerror(errno));
+        return 1;
+    }
+    
+    // Write header to log file
+    fprintf(log_file, "Timestamp,iTLB-loads,iTLB-load-misses\n");
+    fflush(log_file);
+    
+    // Remove old symlink and create new one
+    unlink(link_name);
+    char target[256];
+    snprintf(target, sizeof(target), "itlb_monitor_%04d%02d%02d_%02d%02d%02d.log",
+             t->tm_year + 1900, t->tm_mon + 1, t->tm_mday,
+             t->tm_hour, t->tm_min, t->tm_sec);
+    symlink(target, link_name);
+    
     // Ensure output is not buffered
     setbuf(stdout, NULL);
     setbuf(stderr, NULL);
     
     printf("iTLB (Instruction Translation Lookaside Buffer) Monitoring\n");
     printf("Target PID: %d\n", target_pid == -1 ? getpid() : target_pid);
+    printf("Log files:\n");
+    printf("  - %s (timestamped)\n", timestamped_filename);
+    printf("  - %s (symlink to latest)\n", link_name);
     printf("Opening performance counters...\n\n");
     fflush(stdout);
     
@@ -97,6 +139,7 @@ int main(int argc, char **argv) {
         fprintf(stderr, "\nError: Could not open any performance counters.\n");
         fprintf(stderr, "Your hardware may not support iTLB events.\n");
         fprintf(stderr, "Try running 'perf list cache' to see available cache events.\n");
+        fclose(log_file);
         return 1;
     }
     
@@ -114,11 +157,23 @@ int main(int argc, char **argv) {
         
         if (fd_loads >= 0) {
             read(fd_loads, &count_loads, sizeof(uint64_t));
+            ioctl(fd_loads, PERF_EVENT_IOC_RESET, 0);
         }
         if (fd_load_misses >= 0) {
             read(fd_load_misses, &count_load_misses, sizeof(uint64_t));
+            ioctl(fd_load_misses, PERF_EVENT_IOC_RESET, 0);
         }
         
+        // Get current timestamp
+        time_t now = time(NULL);
+        char timestamp[64];
+        strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S", localtime(&now));
+        
+        // Write to log file
+        fprintf(log_file, "%s,%lu,%lu\n", timestamp, count_loads, count_load_misses);
+        fflush(log_file);
+        
+        // Display on screen
         printf("\r");
         if (fd_loads >= 0) printf("iTLB-loads: %-12lu | ", count_loads);
         else printf("iTLB-loads: N/A          | ");
