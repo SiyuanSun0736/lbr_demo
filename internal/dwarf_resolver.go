@@ -11,6 +11,20 @@ import (
 	"strings"
 )
 
+var debugMode bool
+
+// SetDebugMode 设置调试模式
+func SetDebugMode(enabled bool) {
+	debugMode = enabled
+}
+
+// debugLog 调试日志输出（仅在debug模式下）
+func debugLog(format string, v ...interface{}) {
+	if debugMode {
+		log.Printf(format, v...)
+	}
+}
+
 // MemoryMapping 内存映射信息
 type MemoryMapping struct {
 	StartAddr uint64
@@ -46,7 +60,7 @@ type ElfSymbol struct {
 
 // NewDwarfResolver 创建DWARF解析器
 func NewDwarfResolver(pid int) (*DwarfResolver, error) {
-	log.Printf("[DEBUG] NewDwarfResolver: 为PID %d 创建解析器\n", pid)
+	debugLog("[DEBUG] NewDwarfResolver: 为PID %d 创建解析器\n", pid)
 	resolver := &DwarfResolver{
 		pid: pid,
 	}
@@ -57,26 +71,28 @@ func NewDwarfResolver(pid int) (*DwarfResolver, error) {
 		return nil, fmt.Errorf("failed to read exe link: %w", err)
 	}
 	resolver.execPath = execPath
-	log.Printf("[DEBUG] NewDwarfResolver: 使用可执行文件: %s\n", execPath)
+	debugLog("[DEBUG] NewDwarfResolver: 使用可执行文件: %s\n", execPath)
 
 	// 打开ELF文件
-	log.Printf("[DEBUG] NewDwarfResolver: 打开ELF文件...\n")
+	debugLog("[DEBUG] NewDwarfResolver: 打开ELF文件...\n")
 	elfFile, err := elf.Open(execPath)
 	if err != nil {
 		return nil, fmt.Errorf("failed to open ELF file: %w", err)
 	}
 	resolver.elfFile = elfFile
-	log.Printf("[DEBUG] NewDwarfResolver: ELF文件打开成功\n")
+	debugLog("[DEBUG] NewDwarfResolver: ELF文件打开成功\n")
 
 	// 加载DWARF调试信息
-	log.Printf("[DEBUG] NewDwarfResolver: 尝试加载DWARF调试信息...\n")
+	debugLog("[DEBUG] NewDwarfResolver: 尝试加载DWARF调试信息...\n")
 	dwarfData, err := elfFile.DWARF()
 	if err != nil {
 		// 没有DWARF信息，尝试使用符号表
-		fmt.Printf("[WARNING] NewDwarfResolver: 无DWARF调试信息，仅使用符号表: %v\n", err)
+		if debugMode {
+			fmt.Printf("[WARNING] NewDwarfResolver: 无DWARF调试信息，仅使用符号表: %v\n", err)
+		}
 	} else {
 		resolver.dwarfData = dwarfData
-		log.Printf("[DEBUG] NewDwarfResolver: DWARF调试信息加载成功\n")
+		debugLog("[DEBUG] NewDwarfResolver: DWARF调试信息加载成功\n")
 	}
 
 	// 加载符号表
@@ -86,17 +102,19 @@ func NewDwarfResolver(pid int) (*DwarfResolver, error) {
 
 	// 加载进程基址
 	if err := resolver.loadBaseAddress(); err != nil {
-		fmt.Printf("[WARNING] NewDwarfResolver: 无法加载基址: %v\n", err)
+		if debugMode {
+			fmt.Printf("[WARNING] NewDwarfResolver: 无法加载基址: %v\n", err)
+		}
 		// 基址为0，假设地址已经是文件偏移
 	}
 
-	log.Printf("[DEBUG] NewDwarfResolver: 解析器创建成功\n")
+	debugLog("[DEBUG] NewDwarfResolver: 解析器创建成功\n")
 	return resolver, nil
 }
 
 // loadSymbols 加载ELF符号表
 func (r *DwarfResolver) loadSymbols() error {
-	log.Printf("[DEBUG] loadSymbols: 开始加载符号表\n")
+	debugLog("[DEBUG] loadSymbols: 开始加载符号表\n")
 	// 尝试加载动态符号
 	dynsyms, err := r.elfFile.DynamicSymbols()
 	if err == nil {
@@ -114,9 +132,9 @@ func (r *DwarfResolver) loadSymbols() error {
 				dynSymCount++
 			}
 		}
-		log.Printf("[DEBUG] loadSymbols: 加载了 %d 个动态符号\n", dynSymCount)
+		debugLog("[DEBUG] loadSymbols: 加载了 %d 个动态符号\n", dynSymCount)
 	} else {
-		log.Printf("[DEBUG] loadSymbols: 无法加载动态符号: %v\n", err)
+		debugLog("[DEBUG] loadSymbols: 无法加载动态符号: %v\n", err)
 	}
 
 	// 加载普通符号表
@@ -136,9 +154,9 @@ func (r *DwarfResolver) loadSymbols() error {
 				normalSymCount++
 			}
 		}
-		log.Printf("[DEBUG] loadSymbols: 加载了 %d 个普通符号\n", normalSymCount)
+		debugLog("[DEBUG] loadSymbols: 加载了 %d 个普通符号\n", normalSymCount)
 	} else {
-		log.Printf("[DEBUG] loadSymbols: 无法加载普通符号: %v\n", err)
+		debugLog("[DEBUG] loadSymbols: 无法加载普通符号: %v\n", err)
 	}
 
 	// 按地址排序
@@ -146,9 +164,9 @@ func (r *DwarfResolver) loadSymbols() error {
 		return r.symbols[i].Addr < r.symbols[j].Addr
 	})
 
-	log.Printf("[DEBUG] loadSymbols: 共加载 %d 个符号\n", len(r.symbols))
+	debugLog("[DEBUG] loadSymbols: 共加载 %d 个符号\n", len(r.symbols))
 	if len(r.symbols) > 0 {
-		log.Printf("[DEBUG] loadSymbols: 符号地址范围: 0x%x - 0x%x\n",
+		debugLog("[DEBUG] loadSymbols: 符号地址范围: 0x%x - 0x%x\n",
 			r.symbols[0].Addr, r.symbols[len(r.symbols)-1].Addr)
 	}
 
@@ -157,7 +175,7 @@ func (r *DwarfResolver) loadSymbols() error {
 
 // loadBaseAddress 从 /proc/pid/maps 加载所有可执行映射（包括共享库）
 func (r *DwarfResolver) loadBaseAddress() error {
-	log.Printf("[DEBUG] loadBaseAddress: 读取 /proc/%d/maps\n", r.pid)
+	debugLog("[DEBUG] loadBaseAddress: 读取 /proc/%d/maps\n", r.pid)
 
 	mapsPath := fmt.Sprintf("/proc/%d/maps", r.pid)
 	file, err := os.Open(mapsPath)
@@ -212,7 +230,7 @@ func (r *DwarfResolver) loadBaseAddress() error {
 			if endAddr > r.baseAddrEnd {
 				r.baseAddrEnd = endAddr
 			}
-			log.Printf("[DEBUG] loadBaseAddress: 主程序映射 0x%x - 0x%x (权限: %s, 偏移: 0x%x)\n", startAddr, endAddr, perms, fileOffset)
+			debugLog("[DEBUG] loadBaseAddress: 主程序映射 0x%x - 0x%x (权限: %s, 偏移: 0x%x)\n", startAddr, endAddr, perms, fileOffset)
 			continue
 		}
 
@@ -230,9 +248,9 @@ func (r *DwarfResolver) loadBaseAddress() error {
 		loadedLibs[pathname] = true
 
 		// 尝试加载共享库的符号
-		log.Printf("[DEBUG] loadBaseAddress: 发现共享库 %s @ 0x%x - 0x%x (偏移: 0x%x)\n", pathname, startAddr, endAddr, fileOffset)
+		debugLog("[DEBUG] loadBaseAddress: 发现共享库 %s @ 0x%x - 0x%x (偏移: 0x%x)\n", pathname, startAddr, endAddr, fileOffset)
 		if err := r.loadLibraryMapping(pathname, startAddr, endAddr, fileOffset); err != nil {
-			log.Printf("[DEBUG] loadBaseAddress: 加载共享库失败: %v\n", err)
+			debugLog("[DEBUG] loadBaseAddress: 加载共享库失败: %v\n", err)
 		}
 	}
 
@@ -244,7 +262,7 @@ func (r *DwarfResolver) loadBaseAddress() error {
 		return fmt.Errorf("executable mapping not found in maps")
 	}
 
-	log.Printf("[DEBUG] loadBaseAddress: 共加载 %d 个内存映射\n", len(r.mappings))
+	debugLog("[DEBUG] loadBaseAddress: 共加载 %d 个内存映射\n", len(r.mappings))
 	return nil
 }
 
@@ -311,21 +329,21 @@ func (r *DwarfResolver) loadLibraryMapping(path string, startAddr, endAddr, offs
 	mapping.Symbols = symbols
 	r.mappings = append(r.mappings, mapping)
 
-	log.Printf("[DEBUG] loadLibraryMapping: %s 加载 %d 个符号\n", path, len(symbols))
+	debugLog("[DEBUG] loadLibraryMapping: %s 加载 %d 个符号\n", path, len(symbols))
 	return nil
 }
 
 // ResolveAddress 解析地址到符号
 func (r *DwarfResolver) ResolveAddress(addr uint64) (*AddrInfo, error) {
-	log.Printf("[DEBUG] ResolveAddress: 开始解析地址 0x%x (主程序基址: 0x%x - 0x%x)\n", addr, r.baseAddr, r.baseAddrEnd)
+	debugLog("[DEBUG] ResolveAddress: 开始解析地址 0x%x (主程序基址: 0x%x - 0x%x)\n", addr, r.baseAddr, r.baseAddrEnd)
 
 	// 检查是否在主程序范围内
 	if r.baseAddr > 0 && r.baseAddrEnd > 0 && addr >= r.baseAddr && addr < r.baseAddrEnd {
 		// 主程序地址
 		fileOffset := addr - r.baseAddr + r.baseOffset
-		log.Printf("[DEBUG] ResolveAddress: 主程序地址，文件偏移 0x%x (虚拟偏移: 0x%x + 文件偏移: 0x%x)\n",
+		debugLog("[DEBUG] ResolveAddress: 主程序地址，文件偏移 0x%x (虚拟偏移: 0x%x + 文件偏移: 0x%x)\n",
 			fileOffset, addr-r.baseAddr, r.baseOffset)
-		return r.resolveInMapping(addr, fileOffset, r.elfFile, r.dwarfData, r.symbols)
+		return r.resolveInMapping(addr, fileOffset, r.elfFile, r.dwarfData, r.symbols, r.execPath)
 	}
 
 	// 检查共享库映射
@@ -333,65 +351,79 @@ func (r *DwarfResolver) ResolveAddress(addr uint64) (*AddrInfo, error) {
 		mapping := &r.mappings[i]
 		if addr >= mapping.StartAddr && addr < mapping.EndAddr {
 			fileOffset := addr - mapping.StartAddr + mapping.Offset
-			log.Printf("[DEBUG] ResolveAddress: 共享库地址 %s，文件偏移 0x%x (虚拟偏移: 0x%x + 文件偏移: 0x%x)\n",
+			debugLog("[DEBUG] ResolveAddress: 共享库地址 %s，文件偏移 0x%x (虚拟偏移: 0x%x + 文件偏移: 0x%x)\n",
 				mapping.Path, fileOffset, addr-mapping.StartAddr, mapping.Offset)
-			return r.resolveInMapping(addr, fileOffset, mapping.ElfFile, mapping.DwarfData, mapping.Symbols)
+			return r.resolveInMapping(addr, fileOffset, mapping.ElfFile, mapping.DwarfData, mapping.Symbols, mapping.Path)
 		}
 	}
 
-	log.Printf("[DEBUG] ResolveAddress: 地址 0x%x 不在任何已知映射中\n", addr)
+	debugLog("[DEBUG] ResolveAddress: 地址 0x%x 不在任何已知映射中\n", addr)
 	return nil, fmt.Errorf("address 0x%x not found in any mapping", addr)
 }
 
 // resolveInMapping 在指定的映射中解析地址
-func (r *DwarfResolver) resolveInMapping(addr, fileOffset uint64, elfFile *elf.File, dwarfData *dwarf.Data, symbols []ElfSymbol) (*AddrInfo, error) {
+func (r *DwarfResolver) resolveInMapping(addr, fileOffset uint64, elfFile *elf.File, dwarfData *dwarf.Data, symbols []ElfSymbol, libPath string) (*AddrInfo, error) {
 
 	info := &AddrInfo{
 		Addr: addr,
 	}
 
 	// 首先尝试从符号表查找
-	log.Printf("[DEBUG] resolveInMapping: 从符号表查找文件偏移 0x%x\n", fileOffset)
+	debugLog("[DEBUG] resolveInMapping: 从符号表查找文件偏移 0x%x\n", fileOffset)
 	funcName := r.findSymbolInList(fileOffset, symbols)
 	if funcName != "" {
-		log.Printf("[DEBUG] resolveInMapping: 符号表找到函数名: %s\n", funcName)
+		debugLog("[DEBUG] resolveInMapping: 符号表找到函数名: %s\n", funcName)
 		info.Function = funcName
 	} else {
-		log.Printf("[DEBUG] resolveInMapping: 符号表未找到函数名\n")
+		debugLog("[DEBUG] resolveInMapping: 符号表未找到函数名\n")
 	}
 
 	// 如果有DWARF信息，尝试获取更详细的信息
 	if dwarfData != nil {
-		log.Printf("[DEBUG] resolveInMapping: 从DWARF查找行号信息\n")
+		debugLog("[DEBUG] resolveInMapping: 从DWARF查找行号信息\n")
 		if file, line, err := r.findLineInfoInDwarf(fileOffset, dwarfData); err == nil {
-			log.Printf("[DEBUG] resolveInMapping: DWARF找到文件和行号: %s:%d\n", file, line)
+			debugLog("[DEBUG] resolveInMapping: DWARF找到文件和行号: %s:%d\n", file, line)
 			info.File = file
 			info.Line = line
 		} else {
-			log.Printf("[DEBUG] resolveInMapping: DWARF未找到行号信息: %v\n", err)
+			debugLog("[DEBUG] resolveInMapping: DWARF未找到行号信息: %v\n", err)
 		}
 
 		// 如果还没有函数名，从DWARF查找
 		if info.Function == "" {
-			log.Printf("[DEBUG] resolveInMapping: 从DWARF查找函数名\n")
+			debugLog("[DEBUG] resolveInMapping: 从DWARF查找函数名\n")
 			if fn := r.findDwarfFunctionInData(fileOffset, dwarfData); fn != "" {
-				log.Printf("[DEBUG] resolveInMapping: DWARF找到函数名: %s\n", fn)
+				debugLog("[DEBUG] resolveInMapping: DWARF找到函数名: %s\n", fn)
 				info.Function = fn
 			} else {
-				log.Printf("[DEBUG] resolveInMapping: DWARF未找到函数名\n")
+				debugLog("[DEBUG] resolveInMapping: DWARF未找到函数名\n")
 			}
 		}
 	} else {
-		log.Printf("[DEBUG] resolveInMapping: 无DWARF调试信息\n")
+		debugLog("[DEBUG] resolveInMapping: 无DWARF调试信息\n")
 	}
 
 	if info.Function == "" && info.File == "" {
-		log.Printf("[DEBUG] resolveInMapping: 解析失败，未找到符号信息\n")
+		debugLog("[DEBUG] resolveInMapping: 解析失败，未找到符号信息\n")
 		return nil, fmt.Errorf("no symbol found for address 0x%x", addr)
 	}
 
-	log.Printf("[DEBUG] resolveInMapping: 解析成功 -> 函数: %s, 文件: %s, 行号: %d\n",
-		info.Function, info.File, info.Line)
+	// 如果是外部库，提取库名称
+	if libPath != "" && libPath != r.execPath {
+		// 只保留库文件名
+		for i := len(libPath) - 1; i >= 0; i-- {
+			if libPath[i] == '/' {
+				info.Library = libPath[i+1:]
+				break
+			}
+		}
+		if info.Library == "" {
+			info.Library = libPath
+		}
+	}
+
+	debugLog("[DEBUG] resolveInMapping: 解析成功 -> 函数: %s, 文件: %s, 行号: %d, 库: %s\n",
+		info.Function, info.File, info.Line, info.Library)
 	return info, nil
 }
 
@@ -402,17 +434,17 @@ func (r *DwarfResolver) findSymbol(addr uint64) string {
 
 // findSymbolInList 从指定符号列表查找符号
 func (r *DwarfResolver) findSymbolInList(addr uint64, symbols []ElfSymbol) string {
-	log.Printf("[DEBUG] findSymbolInList: 在%d个符号中查找地址 0x%x\n", len(symbols), addr)
+	debugLog("[DEBUG] findSymbolInList: 在%d个符号中查找地址 0x%x\n", len(symbols), addr)
 
 	// 打印前几个符号用于调试
-	if len(symbols) > 0 {
+	if debugMode && len(symbols) > 0 {
 		n := 5
 		if len(symbols) < 5 {
 			n = len(symbols)
 		}
-		log.Printf("[DEBUG] findSymbolInList: 前%d个符号:\n", n)
+		debugLog("[DEBUG] findSymbolInList: 前%d个符号:\n", n)
 		for i := 0; i < n; i++ {
-			log.Printf("[DEBUG]   [%d] %s @ 0x%x (大小: %d)\n", i, symbols[i].Name, symbols[i].Addr, symbols[i].Size)
+			debugLog("[DEBUG]   [%d] %s @ 0x%x (大小: %d)\n", i, symbols[i].Name, symbols[i].Addr, symbols[i].Size)
 		}
 	}
 
@@ -423,14 +455,14 @@ func (r *DwarfResolver) findSymbolInList(addr uint64, symbols []ElfSymbol) strin
 
 	if idx > 0 {
 		sym := symbols[idx-1]
-		log.Printf("[DEBUG] findSymbolInList: 找到候选符号 %s (地址: 0x%x, 大小: %d)\n",
+		debugLog("[DEBUG] findSymbolInList: 找到候选符号 %s (地址: 0x%x, 大小: %d)\n",
 			sym.Name, sym.Addr, sym.Size)
 		// 检查地址是否在符号范围内
 		if addr >= sym.Addr && (sym.Size == 0 || addr < sym.Addr+sym.Size) {
-			log.Printf("[DEBUG] findSymbolInList: 地址匹配成功\n")
+			debugLog("[DEBUG] findSymbolInList: 地址匹配成功\n")
 			return sym.Name
 		}
-		log.Printf("[DEBUG] findSymbolInList: 地址不在符号范围内 (addr=0x%x, sym.Addr=0x%x, sym.Addr+Size=0x%x)\n",
+		debugLog("[DEBUG] findSymbolInList: 地址不在符号范围内 (addr=0x%x, sym.Addr=0x%x, sym.Addr+Size=0x%x)\n",
 			addr, sym.Addr, sym.Addr+sym.Size)
 	}
 
@@ -503,7 +535,7 @@ func (r *DwarfResolver) findLineInfoInDwarf(addr uint64, dwarfData *dwarf.Data) 
 	}
 
 	if bestMatch != nil {
-		log.Printf("[DEBUG] findLineInfo: 找到最佳匹配 (距离: %d 字节)\n", bestDistance)
+		debugLog("[DEBUG] findLineInfo: 找到最佳匹配 (距离: %d 字节)\n", bestDistance)
 		return bestMatch.File.Name, bestMatch.Line, nil
 	}
 
@@ -546,13 +578,13 @@ func (r *DwarfResolver) findDwarfFunctionInData(addr uint64, dwarfData *dwarf.Da
 			}
 
 			name, _ := entry.Val(dwarf.AttrName).(string)
-			if funcCount <= 5 {
-				log.Printf("[DEBUG] findDwarfFunction: 函数 #%d: %s [0x%x - 0x%x]\n", funcCount, name, lowPC, highPC)
+			if debugMode && funcCount <= 5 {
+				debugLog("[DEBUG] findDwarfFunction: 函数 #%d: %s [0x%x - 0x%x]\n", funcCount, name, lowPC, highPC)
 			}
 
 			if addr >= lowPC && (highPC == 0 || addr < highPC) {
 				if name != "" {
-					log.Printf("[DEBUG] findDwarfFunction: 匹配成功！地址 0x%x 在函数 %s [0x%x - 0x%x] 范围内\n",
+					debugLog("[DEBUG] findDwarfFunction: 匹配成功！地址 0x%x 在函数 %s [0x%x - 0x%x] 范围内\n",
 						addr, name, lowPC, highPC)
 					return name
 				}
@@ -560,7 +592,7 @@ func (r *DwarfResolver) findDwarfFunctionInData(addr uint64, dwarfData *dwarf.Da
 		}
 	}
 
-	log.Printf("[DEBUG] findDwarfFunction: 共检查了 %d 个函数，未找到匹配\n", funcCount)
+	debugLog("[DEBUG] findDwarfFunction: 共检查了 %d 个函数，未找到匹配\n", funcCount)
 	return ""
 }
 

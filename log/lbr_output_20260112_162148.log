@@ -1,0 +1,1069 @@
+2026/01/12 16:21:48 日志文件: log/lbr_output_20260112_162148.log
+2026/01/12 16:21:48 Current nofile rlimit: curr=524287 max=524288
+2026/01/12 16:21:48 Monitoring PID: 78921
+2026/01/12 16:21:48 LBR demo is running. Press Ctrl-C to exit.
+2026/01/12 16:21:48 Attached to 8 CPUs, checking for LBR data every second...
+2026/01/12 16:21:49 No LBR data - map中无任何条目
+2026/01/12 16:21:50 No LBR data - map中无任何条目
+2026/01/12 16:21:51 [DEBUG] NewDwarfResolver: 为PID 78921 创建解析器
+2026/01/12 16:21:51 [DEBUG] NewDwarfResolver: 使用可执行文件: /home/ssy/lbr/test/test_lbr
+2026/01/12 16:21:51 [DEBUG] NewDwarfResolver: 打开ELF文件...
+2026/01/12 16:21:51 [DEBUG] NewDwarfResolver: ELF文件打开成功
+2026/01/12 16:21:51 [DEBUG] NewDwarfResolver: 尝试加载DWARF调试信息...
+2026/01/12 16:21:51 [DEBUG] NewDwarfResolver: DWARF调试信息加载成功
+2026/01/12 16:21:51 [DEBUG] loadSymbols: 开始加载符号表
+2026/01/12 16:21:51 [DEBUG] loadSymbols: 加载了 1 个动态符号
+2026/01/12 16:21:51 [DEBUG] loadSymbols: 加载了 30 个普通符号
+2026/01/12 16:21:51 [DEBUG] loadSymbols: 共加载 31 个符号
+2026/01/12 16:21:51 [DEBUG] loadSymbols: 符号地址范围: 0x1000 - 0x4068
+2026/01/12 16:21:51 [DEBUG] loadBaseAddress: 读取 /proc/78921/maps
+2026/01/12 16:21:51 [DEBUG] loadBaseAddress: 主程序映射 0x562b7cc54000 - 0x562b7cc55000 (权限: r-xp, 偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] loadBaseAddress: 发现共享库 /usr/lib/libc.so.6 @ 0x7f0a48024000 - 0x7f0a48195000 (偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] loadLibraryMapping: /usr/lib/libc.so.6 加载 3114 个符号
+2026/01/12 16:21:51 [DEBUG] loadBaseAddress: 发现共享库 /usr/lib/ld-linux-x86-64.so.2 @ 0x7f0a483e8000 - 0x7f0a48412000 (偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] loadLibraryMapping: /usr/lib/ld-linux-x86-64.so.2 加载 32 个符号
+2026/01/12 16:21:51 [DEBUG] loadBaseAddress: 共加载 2 个内存映射
+2026/01/12 16:21:51 [DEBUG] NewDwarfResolver: 解析器创建成功
+2026/01/12 16:21:51 已启用 DWARF 符号解析 for PID 78921
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc540b0 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x10b0 (虚拟偏移: 0xb0 + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x10b0
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x10b0
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 _init (地址: 0x1000, 大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: _init
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF未找到行号信息: line info not found
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: _init, 文件: , 行号: 0, 库: 
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a48043940 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x43940 (虚拟偏移: 0x1f940 + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x43940
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x43940
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 rand (地址: 0x43940, 大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: rand
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: rand, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc54458 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x1458 (虚拟偏移: 0x458 + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x1458
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x1458
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 main (地址: 0x10c0, 大小: 1479)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: main
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF找到文件和行号: /home/ssy/lbr/test/test_lbr.c:141
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: main, 文件: /home/ssy/lbr/test/test_lbr.c, 行号: 141, 库: 
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc540b0 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x10b0 (虚拟偏移: 0xb0 + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x10b0
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x10b0
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 _init (地址: 0x1000, 大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: _init
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF未找到行号信息: line info not found
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: _init, 文件: , 行号: 0, 库: 
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc5461a (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x161a (虚拟偏移: 0x61a + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x161a
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x161a
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 main (地址: 0x10c0, 大小: 1479)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: main
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF找到文件和行号: /home/ssy/lbr/test/test_lbr.c:151
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: main, 文件: /home/ssy/lbr/test/test_lbr.c, 行号: 151, 库: 
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc54452 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x1452 (虚拟偏移: 0x452 + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x1452
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x1452
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 main (地址: 0x10c0, 大小: 1479)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: main
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF找到文件和行号: /home/ssy/lbr/test/test_lbr.c:143
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: main, 文件: /home/ssy/lbr/test/test_lbr.c, 行号: 143, 库: 
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc54606 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x1606 (虚拟偏移: 0x606 + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x1606
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x1606
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 main (地址: 0x10c0, 大小: 1479)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: main
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] findLineInfo: 找到最佳匹配 (距离: 3 字节)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF找到文件和行号: /home/ssy/lbr/test/test_lbr.c:195
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: main, 文件: /home/ssy/lbr/test/test_lbr.c, 行号: 195, 库: 
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc54611 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x1611 (虚拟偏移: 0x611 + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x1611
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x1611
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 main (地址: 0x10c0, 大小: 1479)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: main
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF找到文件和行号: /home/ssy/lbr/test/test_lbr.c:150
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: main, 文件: /home/ssy/lbr/test/test_lbr.c, 行号: 150, 库: 
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc545f8 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x15f8 (虚拟偏移: 0x5f8 + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x15f8
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x15f8
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 main (地址: 0x10c0, 大小: 1479)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: main
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] findLineInfo: 找到最佳匹配 (距离: 3 字节)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF找到文件和行号: /home/ssy/lbr/test/test_lbr.c:195
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: main, 文件: /home/ssy/lbr/test/test_lbr.c, 行号: 195, 库: 
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc54603 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x1603 (虚拟偏移: 0x603 + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x1603
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x1603
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 main (地址: 0x10c0, 大小: 1479)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: main
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF找到文件和行号: /home/ssy/lbr/test/test_lbr.c:148
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: main, 文件: /home/ssy/lbr/test/test_lbr.c, 行号: 148, 库: 
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc54482 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x1482 (虚拟偏移: 0x482 + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x1482
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x1482
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 main (地址: 0x10c0, 大小: 1479)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: main
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] findLineInfo: 找到最佳匹配 (距离: 3 字节)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF找到文件和行号: /home/ssy/lbr/test/test_lbr.c:195
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: main, 文件: /home/ssy/lbr/test/test_lbr.c, 行号: 195, 库: 
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc545f5 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x15f5 (虚拟偏移: 0x5f5 + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x15f5
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x15f5
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 main (地址: 0x10c0, 大小: 1479)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: main
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF找到文件和行号: /home/ssy/lbr/test/test_lbr.c:105
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: main, 文件: /home/ssy/lbr/test/test_lbr.c, 行号: 105, 库: 
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a4804394e (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x4394e (虚拟偏移: 0x1f94e + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x4394e
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x4394e
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 rand (地址: 0x43940, 大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: rand
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: rand, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc5445d (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x145d (虚拟偏移: 0x45d + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x145d
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x145d
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 main (地址: 0x10c0, 大小: 1479)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: main
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] findLineInfo: 找到最佳匹配 (距离: 5 字节)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF找到文件和行号: /home/ssy/lbr/test/test_lbr.c:195
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: main, 文件: /home/ssy/lbr/test/test_lbr.c, 行号: 195, 库: 
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a48043bb6 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x43bb6 (虚拟偏移: 0x1fbb6 + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x43bb6
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x43bb6
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 random (地址: 0x43b50, 大小: 180)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: random
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: random, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a4804394d (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x4394d (虚拟偏移: 0x1f94d + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x4394d
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x4394d
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 rand (地址: 0x43940, 大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: rand
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: rand, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a48043bd4 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x43bd4 (虚拟偏移: 0x1fbd4 + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x43bd4
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x43bd4
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 random (地址: 0x43b50, 大小: 180)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: random
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: random, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a48043ba6 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x43ba6 (虚拟偏移: 0x1fba6 + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x43ba6
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x43ba6
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 random (地址: 0x43b50, 大小: 180)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: random
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: random, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a48043d6c (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x43d6c (虚拟偏移: 0x1fd6c + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x43d6c
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x43d6c
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 random_r (地址: 0x43d00, 大小: 140)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: random_r
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: random_r, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a48043bd0 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x43bd0 (虚拟偏移: 0x1fbd0 + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x43bd0
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x43bd0
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 random (地址: 0x43b50, 大小: 180)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: random
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: random, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a48043d17 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x43d17 (虚拟偏移: 0x1fd17 + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x43d17
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x43d17
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 random_r (地址: 0x43d00, 大小: 140)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: random_r
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: random_r, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a48043d38 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x43d38 (虚拟偏移: 0x1fd38 + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x43d38
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x43d38
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 random_r (地址: 0x43d00, 大小: 140)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: random_r
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: random_r, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a48043bcb (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x43bcb (虚拟偏移: 0x1fbcb + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x43bcb
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x43bcb
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 random (地址: 0x43b50, 大小: 180)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: random
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: random, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a48043d00 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x43d00 (虚拟偏移: 0x1fd00 + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x43d00
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x43d00
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 random_r (地址: 0x43d00, 大小: 140)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: random_r
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: random_r, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a48043b72 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x43b72 (虚拟偏移: 0x1fb72 + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x43b72
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x43b72
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 random (地址: 0x43b50, 大小: 180)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: random
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: random, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a48043bc0 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x43bc0 (虚拟偏移: 0x1fbc0 + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x43bc0
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x43bc0
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 random (地址: 0x43b50, 大小: 180)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: random
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: random, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a48043948 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x43948 (虚拟偏移: 0x1f948 + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x43948
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x43948
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 rand (地址: 0x43940, 大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: rand
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: rand, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a48043b50 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x43b50 (虚拟偏移: 0x1fb50 + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x43b50
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x43b50
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 random (地址: 0x43b50, 大小: 180)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: random
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: random, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc540b0 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x10b0 (虚拟偏移: 0xb0 + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x10b0
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x10b0
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 _init (地址: 0x1000, 大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: _init
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF未找到行号信息: line info not found
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: _init, 文件: , 行号: 0, 库: 
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a48043940 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x43940 (虚拟偏移: 0x1f940 + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x43940
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x43940
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 rand (地址: 0x43940, 大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: rand
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: rand, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc54458 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x1458 (虚拟偏移: 0x458 + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x1458
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x1458
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 main (地址: 0x10c0, 大小: 1479)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: main
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF找到文件和行号: /home/ssy/lbr/test/test_lbr.c:141
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: main, 文件: /home/ssy/lbr/test/test_lbr.c, 行号: 141, 库: 
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc540b0 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x10b0 (虚拟偏移: 0xb0 + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x10b0
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x10b0
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 _init (地址: 0x1000, 大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: _init
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF未找到行号信息: line info not found
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: _init, 文件: , 行号: 0, 库: 
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc54628 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x1628 (虚拟偏移: 0x628 + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x1628
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x1628
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 main (地址: 0x10c0, 大小: 1479)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: main
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF找到文件和行号: /home/ssy/lbr/test/test_lbr.c:153
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: main, 文件: /home/ssy/lbr/test/test_lbr.c, 行号: 153, 库: 
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc54452 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x1452 (虚拟偏移: 0x452 + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x1452
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x1452
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 main (地址: 0x10c0, 大小: 1479)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: main
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF找到文件和行号: /home/ssy/lbr/test/test_lbr.c:143
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: main, 文件: /home/ssy/lbr/test/test_lbr.c, 行号: 143, 库: 
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc54614 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x1614 (虚拟偏移: 0x614 + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x1614
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x1614
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 main (地址: 0x10c0, 大小: 1479)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: main
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] findLineInfo: 找到最佳匹配 (距离: 3 字节)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF找到文件和行号: /home/ssy/lbr/test/test_lbr.c:195
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: main, 文件: /home/ssy/lbr/test/test_lbr.c, 行号: 195, 库: 
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc5461f (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x161f (虚拟偏移: 0x61f + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x161f
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x161f
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 main (地址: 0x10c0, 大小: 1479)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: main
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF找到文件和行号: /home/ssy/lbr/test/test_lbr.c:152
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: main, 文件: /home/ssy/lbr/test/test_lbr.c, 行号: 152, 库: 
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc54606 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x1606 (虚拟偏移: 0x606 + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x1606
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x1606
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 main (地址: 0x10c0, 大小: 1479)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: main
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] findLineInfo: 找到最佳匹配 (距离: 3 字节)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF找到文件和行号: /home/ssy/lbr/test/test_lbr.c:195
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: main, 文件: /home/ssy/lbr/test/test_lbr.c, 行号: 195, 库: 
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc54611 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x1611 (虚拟偏移: 0x611 + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x1611
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x1611
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 main (地址: 0x10c0, 大小: 1479)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: main
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF找到文件和行号: /home/ssy/lbr/test/test_lbr.c:150
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: main, 文件: /home/ssy/lbr/test/test_lbr.c, 行号: 150, 库: 
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc545f8 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x15f8 (虚拟偏移: 0x5f8 + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x15f8
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x15f8
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 main (地址: 0x10c0, 大小: 1479)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: main
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] findLineInfo: 找到最佳匹配 (距离: 3 字节)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF找到文件和行号: /home/ssy/lbr/test/test_lbr.c:195
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: main, 文件: /home/ssy/lbr/test/test_lbr.c, 行号: 195, 库: 
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc54603 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x1603 (虚拟偏移: 0x603 + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x1603
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x1603
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 main (地址: 0x10c0, 大小: 1479)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: main
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF找到文件和行号: /home/ssy/lbr/test/test_lbr.c:148
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: main, 文件: /home/ssy/lbr/test/test_lbr.c, 行号: 148, 库: 
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc54482 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x1482 (虚拟偏移: 0x482 + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x1482
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x1482
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 main (地址: 0x10c0, 大小: 1479)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: main
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] findLineInfo: 找到最佳匹配 (距离: 3 字节)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF找到文件和行号: /home/ssy/lbr/test/test_lbr.c:195
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: main, 文件: /home/ssy/lbr/test/test_lbr.c, 行号: 195, 库: 
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc545f5 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x15f5 (虚拟偏移: 0x5f5 + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x15f5
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x15f5
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 main (地址: 0x10c0, 大小: 1479)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: main
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF找到文件和行号: /home/ssy/lbr/test/test_lbr.c:105
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: main, 文件: /home/ssy/lbr/test/test_lbr.c, 行号: 105, 库: 
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a4804394e (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x4394e (虚拟偏移: 0x1f94e + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x4394e
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x4394e
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 rand (地址: 0x43940, 大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: rand
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: rand, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc5445d (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x145d (虚拟偏移: 0x45d + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x145d
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x145d
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 main (地址: 0x10c0, 大小: 1479)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: main
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] findLineInfo: 找到最佳匹配 (距离: 5 字节)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF找到文件和行号: /home/ssy/lbr/test/test_lbr.c:195
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: main, 文件: /home/ssy/lbr/test/test_lbr.c, 行号: 195, 库: 
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a48043bb6 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x43bb6 (虚拟偏移: 0x1fbb6 + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x43bb6
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x43bb6
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 random (地址: 0x43b50, 大小: 180)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: random
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: random, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a4804394d (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x4394d (虚拟偏移: 0x1f94d + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x4394d
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x4394d
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 rand (地址: 0x43940, 大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: rand
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: rand, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a48043bd4 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x43bd4 (虚拟偏移: 0x1fbd4 + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x43bd4
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x43bd4
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 random (地址: 0x43b50, 大小: 180)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: random
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: random, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a48043ba6 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x43ba6 (虚拟偏移: 0x1fba6 + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x43ba6
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x43ba6
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 random (地址: 0x43b50, 大小: 180)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: random
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: random, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a48043d6c (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x43d6c (虚拟偏移: 0x1fd6c + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x43d6c
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x43d6c
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 random_r (地址: 0x43d00, 大小: 140)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: random_r
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: random_r, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a48043bd0 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x43bd0 (虚拟偏移: 0x1fbd0 + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x43bd0
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x43bd0
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 random (地址: 0x43b50, 大小: 180)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: random
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: random, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a48043d17 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x43d17 (虚拟偏移: 0x1fd17 + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x43d17
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x43d17
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 random_r (地址: 0x43d00, 大小: 140)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: random_r
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: random_r, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a48043d38 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x43d38 (虚拟偏移: 0x1fd38 + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x43d38
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x43d38
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 random_r (地址: 0x43d00, 大小: 140)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: random_r
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: random_r, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a48043bcb (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x43bcb (虚拟偏移: 0x1fbcb + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x43bcb
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x43bcb
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 random (地址: 0x43b50, 大小: 180)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: random
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: random, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a48043d00 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x43d00 (虚拟偏移: 0x1fd00 + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x43d00
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x43d00
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 random_r (地址: 0x43d00, 大小: 140)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: random_r
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: random_r, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a48043b72 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x43b72 (虚拟偏移: 0x1fb72 + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x43b72
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x43b72
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 random (地址: 0x43b50, 大小: 180)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: random
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: random, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a48043bc0 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x43bc0 (虚拟偏移: 0x1fbc0 + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x43bc0
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x43bc0
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 random (地址: 0x43b50, 大小: 180)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: random
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: random, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a48043948 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x43948 (虚拟偏移: 0x1f948 + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x43948
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x43948
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 rand (地址: 0x43940, 大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: rand
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: rand, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a48043b50 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x43b50 (虚拟偏移: 0x1fb50 + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x43b50
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x43b50
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 random (地址: 0x43b50, 大小: 180)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: random
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: random, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc540b0 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x10b0 (虚拟偏移: 0xb0 + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x10b0
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x10b0
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 _init (地址: 0x1000, 大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: _init
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF未找到行号信息: line info not found
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: _init, 文件: , 行号: 0, 库: 
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x7f0a48043940 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 共享库地址 /usr/lib/libc.so.6，文件偏移 0x43940 (虚拟偏移: 0x1f940 + 文件偏移: 0x24000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x43940
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在3114个符号中查找地址 0x43940
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] __resp @ 0x20 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [1] errno @ 0x28 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [2] __libc_dlerror_result @ 0x40 (大小: 8)
+2026/01/12 16:21:51 [DEBUG]   [3] __h_errno @ 0x60 (大小: 4)
+2026/01/12 16:21:51 [DEBUG]   [4] __assert @ 0x254bf (大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 rand (地址: 0x43940, 大小: 15)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: rand
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 无DWARF调试信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: rand, 文件: , 行号: 0, 库: libc.so.6
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc54458 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x1458 (虚拟偏移: 0x458 + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x1458
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x1458
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 main (地址: 0x10c0, 大小: 1479)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: main
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF找到文件和行号: /home/ssy/lbr/test/test_lbr.c:141
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: main, 文件: /home/ssy/lbr/test/test_lbr.c, 行号: 141, 库: 
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc540b0 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x10b0 (虚拟偏移: 0xb0 + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x10b0
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x10b0
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 _init (地址: 0x1000, 大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: _init
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF未找到行号信息: line info not found
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: _init, 文件: , 行号: 0, 库: 
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc54636 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x1636 (虚拟偏移: 0x636 + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x1636
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x1636
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 main (地址: 0x10c0, 大小: 1479)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: main
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF找到文件和行号: /home/ssy/lbr/test/test_lbr.c:155
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: main, 文件: /home/ssy/lbr/test/test_lbr.c, 行号: 155, 库: 
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 开始解析地址 0x562b7cc54452 (主程序基址: 0x562b7cc54000 - 0x562b7cc55000)
+2026/01/12 16:21:51 [DEBUG] ResolveAddress: 主程序地址，文件偏移 0x1452 (虚拟偏移: 0x452 + 文件偏移: 0x1000)
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从符号表查找文件偏移 0x1452
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 在31个符号中查找地址 0x1452
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 前5个符号:
+2026/01/12 16:21:51 [DEBUG]   [0] _init @ 0x1000 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [1] main @ 0x10c0 (大小: 1479)
+2026/01/12 16:21:51 [DEBUG]   [2] _start @ 0x1690 (大小: 38)
+2026/01/12 16:21:51 [DEBUG]   [3] deregister_tm_clones @ 0x16c0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG]   [4] register_tm_clones @ 0x16f0 (大小: 0)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 找到候选符号 main (地址: 0x10c0, 大小: 1479)
+2026/01/12 16:21:51 [DEBUG] findSymbolInList: 地址匹配成功
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 符号表找到函数名: main
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 从DWARF查找行号信息
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: DWARF找到文件和行号: /home/ssy/lbr/test/test_lbr.c:143
+2026/01/12 16:21:51 [DEBUG] resolveInMapping: 解析成功 -> 函数: main, 文件: /home/ssy/lbr/test/test_lbr.c, 行号: 143, 库: 
+
+=== PID: 78921, TID: 78921, COMM: test_lbr, Entries: 32 ===
+LBR Stack:
+[#00] [33mmain (test_lbr.c:155)[0m -> [33mmain (test_lbr.c:143)[0m
+[#01] [33mmain (test_lbr.c:141)[0m -> [33m_init[0m                
+[#02] [33m_init[0m                 -> [33mrand (libc.so.6)[0m     
+[#03] [33mrand (libc.so.6)[0m      -> [33mrandom (libc.so.6)[0m   
+[#04] [33mrandom (libc.so.6)[0m    -> [33mrandom (libc.so.6)[0m   
+[#05] [33mrandom (libc.so.6)[0m    -> [33mrandom_r (libc.so.6)[0m 
+[#06] [33mrandom_r (libc.so.6)[0m  -> [33mrandom_r (libc.so.6)[0m 
+[#07] [33mrandom_r (libc.so.6)[0m  -> [33mrandom (libc.so.6)[0m   
+[#08] [33mrandom (libc.so.6)[0m    -> [33mrandom (libc.so.6)[0m   
+[#09] [33mrandom (libc.so.6)[0m    -> [33mrand (libc.so.6)[0m     
+[#10] [33mrand (libc.so.6)[0m      -> [33mmain (test_lbr.c:195)[0m
+[#11] [33mmain (test_lbr.c:195)[0m -> [33mmain (test_lbr.c:105)[0m
+[#12] [33mmain (test_lbr.c:195)[0m -> [33mmain (test_lbr.c:148)[0m
+[#13] [33mmain (test_lbr.c:195)[0m -> [33mmain (test_lbr.c:150)[0m
+[#14] [33mmain (test_lbr.c:195)[0m -> [33mmain (test_lbr.c:152)[0m
+[#15] [33mmain (test_lbr.c:153)[0m -> [33mmain (test_lbr.c:143)[0m
+[#16] [33mmain (test_lbr.c:141)[0m -> [33m_init[0m                
+[#17] [33m_init[0m                 -> [33mrand (libc.so.6)[0m     
+[#18] [33mrand (libc.so.6)[0m      -> [33mrandom (libc.so.6)[0m   
+[#19] [33mrandom (libc.so.6)[0m    -> [33mrandom (libc.so.6)[0m   
+[#20] [33mrandom (libc.so.6)[0m    -> [33mrandom_r (libc.so.6)[0m 
+[#21] [33mrandom_r (libc.so.6)[0m  -> [33mrandom_r (libc.so.6)[0m 
+[#22] [33mrandom_r (libc.so.6)[0m  -> [33mrandom (libc.so.6)[0m   
+[#23] [33mrandom (libc.so.6)[0m    -> [33mrandom (libc.so.6)[0m   
+[#24] [33mrandom (libc.so.6)[0m    -> [33mrand (libc.so.6)[0m     
+[#25] [33mrand (libc.so.6)[0m      -> [33mmain (test_lbr.c:195)[0m
+[#26] [33mmain (test_lbr.c:195)[0m -> [33mmain (test_lbr.c:105)[0m
+[#27] [33mmain (test_lbr.c:195)[0m -> [33mmain (test_lbr.c:148)[0m
+[#28] [33mmain (test_lbr.c:195)[0m -> [33mmain (test_lbr.c:150)[0m
+[#29] [33mmain (test_lbr.c:151)[0m -> [33mmain (test_lbr.c:143)[0m
+[#30] [33mmain (test_lbr.c:141)[0m -> [33m_init[0m                
+[#31] [33m_init[0m                 -> [33mrand (libc.so.6)[0m     
+2026/01/12 16:21:51 LBR数据统计: 总条目=1, 有效=1, 空数据=0, 全零数据=0
+2026/01/12 16:21:52 No LBR data - map中无任何条目
+2026/01/12 16:21:53 No LBR data - map中无任何条目
+2026/01/12 16:21:54 No LBR data - map中无任何条目
+2026/01/12 16:21:55 No LBR data - map中无任何条目
+2026/01/12 16:21:56 No LBR data - map中无任何条目
+2026/01/12 16:21:57 No LBR data - map中无任何条目

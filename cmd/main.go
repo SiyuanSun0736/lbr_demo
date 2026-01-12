@@ -24,12 +24,16 @@ var (
 	useDwarf       = flag.Bool("dwarf", false, "Use DWARF for user symbol resolution (requires debug symbols)")
 	resolveSymbols = flag.Bool("resolve", true, "Resolve user space addresses to symbols")
 	logDir         = flag.String("logdir", "log", "Directory to save log files")
+	debugMode      = flag.Bool("debug", false, "Enable debug logging")
 )
 
 var logFile *os.File
 
 func main() {
 	flag.Parse()
+
+	// 设置调试模式
+	lbr.SetDebugMode(*debugMode)
 
 	// 设置日志文件
 	if err := setupLogFile(); err != nil {
@@ -265,6 +269,8 @@ func processLbrData(lbrMap *ebpf.Map, commMap *ebpf.Map, syms *lbr.Symbols, targ
 			var fromFile, toFile string
 			var fromLine, toLine int
 
+			var fromLibName, toLibName string
+
 			// 如果找不到内核符号，尝试解析用户态地址
 			if fromName == "" && entry.From != 0 {
 				if dwarfResolver != nil {
@@ -272,6 +278,7 @@ func processLbrData(lbrMap *ebpf.Map, commMap *ebpf.Map, syms *lbr.Symbols, targ
 						fromName = info.Function
 						fromFile = info.File
 						fromLine = info.Line
+						fromLibName = info.Library
 						fromOffset = 0
 					}
 				} else if userResolver != nil {
@@ -294,6 +301,7 @@ func processLbrData(lbrMap *ebpf.Map, commMap *ebpf.Map, syms *lbr.Symbols, targ
 						toName = info.Function
 						toFile = info.File
 						toLine = info.Line
+						toLibName = info.Library
 						toOffset = 0
 					}
 				} else if userResolver != nil {
@@ -318,6 +326,7 @@ func processLbrData(lbrMap *ebpf.Map, commMap *ebpf.Map, syms *lbr.Symbols, targ
 					Offset:   fromOffset,
 					File:     fromFile,
 					Line:     fromLine,
+					LibName:  fromLibName,
 				},
 				To: &lbr.BranchEndpoint{
 					Addr:     entry.To,
@@ -325,6 +334,7 @@ func processLbrData(lbrMap *ebpf.Map, commMap *ebpf.Map, syms *lbr.Symbols, targ
 					Offset:   toOffset,
 					File:     toFile,
 					Line:     toLine,
+					LibName:  toLibName,
 				},
 			})
 		}

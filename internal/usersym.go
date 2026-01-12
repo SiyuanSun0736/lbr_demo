@@ -132,6 +132,7 @@ type AddrInfo struct {
 	Function string
 	File     string
 	Line     int
+	Library  string // 外部库名称
 }
 
 // String 返回格式化的字符串

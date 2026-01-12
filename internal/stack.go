@@ -13,6 +13,7 @@ type BranchEndpoint struct {
 	Offset   uint64
 	File     string
 	Line     int
+	LibName  string // 外部库名称（如果是外部库）
 }
 
 func (b *BranchEndpoint) String() string {
@@ -29,6 +30,13 @@ func (b *BranchEndpoint) String() string {
 				}
 			}
 			return fmt.Sprintf("%s (%s:%d)", b.FuncName, fileName, b.Line)
+		}
+		// 如果有库名称，显示库名
+		if b.LibName != "" {
+			if b.Offset != 0 {
+				return fmt.Sprintf("%s+%#x (%s)", b.FuncName, b.Offset, b.LibName)
+			}
+			return fmt.Sprintf("%s (%s)", b.FuncName, b.LibName)
 		}
 		if b.Offset != 0 {
 			return fmt.Sprintf("%s+%#x", b.FuncName, b.Offset)
