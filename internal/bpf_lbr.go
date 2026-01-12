@@ -79,15 +79,13 @@ func AttachPerfEvent(prog *ebpf.Program, numCPU int, targetPID int) ([]link.Link
 			Type:        unix.PERF_TYPE_HARDWARE,
 			Size:        uint32(unsafe.Sizeof(unix.PerfEventAttr{})),
 			Config:      unix.PERF_COUNT_HW_CPU_CYCLES,
-			Sample:      4000, // 采样频率：4000 Hz
-			Bits:        unix.PerfBitFreq,
+			Sample:      1000000,                       // 采样周期：每 1000000 个周期采样一次
 			Sample_type: unix.PERF_SAMPLE_BRANCH_STACK, // 启用 LBR 采样
+			Bits:        unix.PerfBitDisabled,
 		}
 
-		// 配置 LBR：捕获所有分支（用户态+内核态）
-		attr.Branch_sample_type = unix.PERF_SAMPLE_BRANCH_USER |
-			//	unix.PERF_SAMPLE_BRANCH_KERNEL |
-			unix.PERF_SAMPLE_BRANCH_ANY
+		// 配置 LBR：捕获用户态分支
+		attr.Branch_sample_type = unix.PERF_SAMPLE_BRANCH_USER | unix.PERF_SAMPLE_BRANCH_ANY
 
 		// 打开 perf event
 		pid := -1 // 监控所有进程

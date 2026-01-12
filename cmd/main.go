@@ -17,7 +17,10 @@ import (
 //go:generate go run github.com/cilium/ebpf/cmd/bpf2go -target amd64 -type lbr_data lbr ../bpf/bpf_lbr.c -- -I../bpf -mllvm -bpf-stack-size=2048
 
 var (
-	targetPID = flag.Int("pid", 0, "Target PID to monitor (0 = all processes)")
+	targetPID      = flag.Int("pid", 0, "Target PID to monitor (0 = all processes)")
+	useAddr2line   = flag.Bool("addr2line", true, "Use addr2line for user symbol resolution")
+	useDwarf       = flag.Bool("dwarf", false, "Use DWARF for user symbol resolution (requires debug symbols)")
+	resolveSymbols = flag.Bool("resolve", true, "Resolve user space addresses to symbols")
 )
 
 func main() {
@@ -110,16 +113,23 @@ func run() error {
 		case <-ctx.Done():
 			return nil
 		case <-ticker.C:
-			processLbrData(lbrs, commMap, syms)
+			processLbrData(lbrs, commMap, syms, *targetPID)
 		}
 	}
 }
 
-func processLbrData(lbrMap *ebpf.Map, commMap *ebpf.Map, syms *lbr.Symbols) {
+func processLbrData(lbrMap *ebpf.Map, commMap *ebpf.Map, syms *lbr.Symbols, targetPID int) {
 	var (
 		key  uint64
 		data lbrLbrData
 	)
+
+	// 获取当前进程的 PID，用于过滤自己
+	currentPID := uint32(os.Getpid())
+
+	// 用户态符号解析器（缓存）
+	var userResolver *lbr.UserSymbolResolver
+	var dwarfResolver *lbr.DwarfResolver
 
 	iter := lbrMap.Iterate()
 	totalEntries := 0
@@ -156,6 +166,33 @@ func processLbrData(lbrMap *ebpf.Map, commMap *ebpf.Map, syms *lbr.Symbols) {
 		pid := uint32(key >> 32)
 		tid := uint32(key & 0xFFFFFFFF)
 
+		// 跳过自己的进程，避免监测自己
+		if pid == currentPID {
+			_ = lbrMap.Delete(key)
+			continue
+		}
+
+		// 如果需要解析用户态符号，且这是目标进程，创建解析器
+		if *resolveSymbols && int(pid) == targetPID && targetPID != 0 {
+			if *useDwarf && dwarfResolver == nil {
+				if dr, err := lbr.NewDwarfResolver(int(pid)); err == nil {
+					dwarfResolver = dr
+					defer dwarfResolver.Close()
+					log.Printf("已启用 DWARF 符号解析 for PID %d", pid)
+				} else {
+					log.Printf("DWARF 解析器创建失败: %v，回退到 addr2line", err)
+				}
+			}
+			if *useAddr2line && userResolver == nil && dwarfResolver == nil {
+				if ur, err := lbr.NewUserSymbolResolver(int(pid)); err == nil {
+					userResolver = ur
+					log.Printf("已启用 addr2line 符号解析 for PID %d", pid)
+				} else {
+					log.Printf("addr2line 解析器创建失败: %v", err)
+				}
+			}
+		}
+
 		// 获取进程名称
 		var comm [16]byte
 		commName := "<unknown>"
@@ -180,14 +217,53 @@ func processLbrData(lbrMap *ebpf.Map, commMap *ebpf.Map, syms *lbr.Symbols) {
 			fromName, fromOffset, _ := syms.Find(entry.From)
 			toName, toOffset, _ := syms.Find(entry.To)
 
-			// 如果找不到内核符号，标记为用户态地址
+			var fromFile, toFile string
+			var fromLine, toLine int
+
+			// 如果找不到内核符号，尝试解析用户态地址
 			if fromName == "" && entry.From != 0 {
-				fromName = fmt.Sprintf("[user]")
-				fromOffset = entry.From
+				if dwarfResolver != nil {
+					if info, err := dwarfResolver.ResolveAddress(entry.From); err == nil {
+						fromName = info.Function
+						fromFile = info.File
+						fromLine = info.Line
+						fromOffset = 0
+					}
+				} else if userResolver != nil {
+					if fn, file, line, err := userResolver.ResolveAddress(entry.From); err == nil {
+						fromName = fn
+						fromFile = file
+						fromLine = line
+						fromOffset = 0
+					}
+				}
+				// 如果仍然没有解析到，标记为用户态地址
+				if fromName == "" {
+					fromName = fmt.Sprintf("[user]")
+					fromOffset = entry.From
+				}
 			}
 			if toName == "" && entry.To != 0 {
-				toName = fmt.Sprintf("[user]")
-				toOffset = entry.To
+				if dwarfResolver != nil {
+					if info, err := dwarfResolver.ResolveAddress(entry.To); err == nil {
+						toName = info.Function
+						toFile = info.File
+						toLine = info.Line
+						toOffset = 0
+					}
+				} else if userResolver != nil {
+					if fn, file, line, err := userResolver.ResolveAddress(entry.To); err == nil {
+						toName = fn
+						toFile = file
+						toLine = line
+						toOffset = 0
+					}
+				}
+				// 如果仍然没有解析到，标记为用户态地址
+				if toName == "" {
+					toName = fmt.Sprintf("[user]")
+					toOffset = entry.To
+				}
 			}
 
 			stack.AddEntry(lbr.BranchEntry{
@@ -195,11 +271,15 @@ func processLbrData(lbrMap *ebpf.Map, commMap *ebpf.Map, syms *lbr.Symbols) {
 					Addr:     entry.From,
 					FuncName: fromName,
 					Offset:   fromOffset,
+					File:     fromFile,
+					Line:     fromLine,
 				},
 				To: &lbr.BranchEndpoint{
 					Addr:     entry.To,
 					FuncName: toName,
 					Offset:   toOffset,
+					File:     toFile,
+					Line:     toLine,
 				},
 			})
 		}

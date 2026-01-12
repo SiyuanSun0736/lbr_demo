@@ -1,0 +1,50 @@
+2026/01/11 17:51:13 Current nofile rlimit: curr=524287 max=524288
+2026/01/11 17:51:13 Monitoring PID: 112060
+2026/01/11 17:51:14 LBR demo is running. Press Ctrl-C to exit.
+2026/01/11 17:51:14 Attached to 8 CPUs, checking for LBR data every second...
+2026/01/11 17:51:15 No LBR data - map中无任何条目
+2026/01/11 17:51:16 No LBR data - map中无任何条目
+
+=== PID: 112060, TID: 112060, COMM: test_lbr, Entries: 32 ===
+LBR Stack:
+[#00] [user]+0x7fd44945b547 -> [user]+0x7fd44945b590
+[#01] [user]+0x7fd44945b598 -> [user]+0x7fd4494643cc
+[#02] [user]+0x7fd4494643d0 -> [user]+0x7fd449464130
+[#03] [user]+0x7fd449464151 -> [user]+0x7fd449466de9
+[#04] [user]+0x7fd449466df0 -> [user]+0x7fd44945b4b0
+[#05] [user]+0x7fd44945b4c7 -> [user]+0x7fd44945b320
+[#06] [user]+0x7fd44945b34b -> [user]+0x7fd44945b3b0
+[#07] [user]+0x7fd44945b3e3 -> [user]+0x7fd44948ebb0
+[#08] [user]+0x7fd44948ebe0 -> [user]+0x7fd44948ece0
+[#09] [user]+0x7fd44948ecee -> [user]+0x7fd44948ed10
+[#10] [user]+0x7fd44948ed2c -> [user]+0x7fd44948edde
+[#11] [user]+0x7fd44948ede4 -> [user]+0x7fd44948ebf8
+[#12] [user]+0x7fd44948ec0a -> [user]+0x7fd44956cfc0
+[#13] [user]+0x7fd44956cfca -> [user]+0x7fd44956d007
+[#14] [user]+0x7fd44956d00b -> [user]+0x7fd44956d030
+[#15] [user]+0x7fd44956d033 -> [user]+0x7fd44956d062
+[#16] [user]+0x7fd44956d076 -> [user]+0x7fd44948ec10
+[#17] [user]+0x7fd44948ec28 -> [user]+0x7fd44948ec4b
+[#18] [user]+0x7fd44948ec78 -> [user]+0x7fd44948dec0
+[#19] [user]+0x7fd44948def3 -> [user]+0x7fd44948df99
+[#20] [user]+0x7fd44948dfa5 -> [user]+0x7fd44948da80
+[#21] [user]+0x7fd44948da87 -> [user]+0x7fd44948da90
+[#22] [user]+0x7fd44948da9c -> [user]+0x7fd44948c920
+[#23] [user]+0x7fd44948c93f -> [user]+0x7fd44948c9d0
+[#24] [user]+0x7fd44948c9db -> [user]+0x7fd44948c950
+[#25] [user]+0x7fd44948c973 -> [user]+0x7fd44948eb00
+[#26] [user]+0x7fd44948eb24 -> [user]+0x7fd44948eb4c
+[#27] [user]+0x7fd44948eb59 -> [user]+0x7fd44948eb30
+[#28] [user]+0x7fd44948eb30 -> [user]+0x7fd44950e4e0
+[#29] [user]+0x7fd44950e4f9 -> [user]+0x7fd4494931a0
+[#30] [user]+0x7fd4494931af -> [user]+0x7fd449493110
+[#31] [user]+0x7fd449493136 -> [user]+0x7fd449493188
+2026/01/11 17:51:17 LBR数据统计: 总条目=1, 有效=1, 空数据=0, 全零数据=0
+2026/01/11 17:51:18 No LBR data - map中无任何条目
+2026/01/11 17:51:19 No LBR data - map中无任何条目
+2026/01/11 17:51:20 No LBR data - map中无任何条目
+2026/01/11 17:51:21 No LBR data - map中无任何条目
+2026/01/11 17:51:22 No LBR data - map中无任何条目
+2026/01/11 17:51:23 No LBR data - map中无任何条目
+2026/01/11 17:51:24 No LBR data - map中无任何条目
+2026/01/11 17:51:25 No LBR data - map中无任何条目

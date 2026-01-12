@@ -11,11 +11,29 @@ type BranchEndpoint struct {
 	Addr     uint64
 	FuncName string
 	Offset   uint64
+	File     string
+	Line     int
 }
 
 func (b *BranchEndpoint) String() string {
 	if b.FuncName != "" {
-		return fmt.Sprintf("%s+%#x", b.FuncName, b.Offset)
+		if b.File != "" && b.Line != 0 {
+			// 简化文件路径显示（只显示文件名）
+			fileName := b.File
+			if idx := len(fileName) - 1; idx >= 0 {
+				for i := idx; i >= 0; i-- {
+					if fileName[i] == '/' {
+						fileName = fileName[i+1:]
+						break
+					}
+				}
+			}
+			return fmt.Sprintf("%s (%s:%d)", b.FuncName, fileName, b.Line)
+		}
+		if b.Offset != 0 {
+			return fmt.Sprintf("%s+%#x", b.FuncName, b.Offset)
+		}
+		return b.FuncName
 	}
 	return fmt.Sprintf("%#x", b.Addr)
 }
