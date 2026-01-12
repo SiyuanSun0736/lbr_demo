@@ -1,0 +1,193 @@
+2026/01/12 15:58:23 日志文件: log/lbr_output_20260112_155823.log
+2026/01/12 15:58:23 Current nofile rlimit: curr=524287 max=524288
+2026/01/12 15:58:23 Monitoring PID: 64705
+2026/01/12 15:58:23 LBR demo is running. Press Ctrl-C to exit.
+2026/01/12 15:58:23 Attached to 8 CPUs, checking for LBR data every second...
+2026/01/12 15:58:24 No LBR data - map中无任何条目
+2026/01/12 15:58:25 No LBR data - map中无任何条目
+2026/01/12 15:58:26 [DEBUG] NewDwarfResolver: 为PID 64705 创建解析器
+2026/01/12 15:58:26 [DEBUG] NewDwarfResolver: 使用可执行文件: /home/ssy/lbr/test/test_lbr
+2026/01/12 15:58:26 [DEBUG] NewDwarfResolver: 打开ELF文件...
+2026/01/12 15:58:26 [DEBUG] NewDwarfResolver: ELF文件打开成功
+2026/01/12 15:58:26 [DEBUG] NewDwarfResolver: 尝试加载DWARF调试信息...
+2026/01/12 15:58:26 [DEBUG] NewDwarfResolver: DWARF调试信息加载成功
+2026/01/12 15:58:26 [DEBUG] loadSymbols: 开始加载符号表
+2026/01/12 15:58:26 [DEBUG] loadSymbols: 加载了 1 个动态符号
+2026/01/12 15:58:26 [DEBUG] loadSymbols: 加载了 30 个普通符号
+2026/01/12 15:58:26 [DEBUG] loadSymbols: 共加载 31 个符号
+2026/01/12 15:58:26 [DEBUG] loadSymbols: 符号地址范围: 0x1000 - 0x4068
+2026/01/12 15:58:26 [DEBUG] loadBaseAddress: 读取 /proc/64705/maps
+2026/01/12 15:58:26 [DEBUG] loadBaseAddress: 主程序映射 0x556de6105000 - 0x556de6106000 (权限: r-xp)
+2026/01/12 15:58:26 [DEBUG] loadBaseAddress: 共加载 0 个内存映射
+2026/01/12 15:58:26 [DEBUG] NewDwarfResolver: 解析器创建成功
+2026/01/12 15:58:26 已启用 DWARF 符号解析 for PID 64705
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe564893136 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe564893136 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe564893188 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe564893188 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe5648931af (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe5648931af 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe564893110 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe564893110 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56490e4f9 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56490e4f9 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe5648931a0 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe5648931a0 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488eb30 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488eb30 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56490e4e0 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56490e4e0 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488eb59 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488eb59 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488eb30 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488eb30 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488eb24 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488eb24 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488eb4c (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488eb4c 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488c973 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488c973 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488eb00 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488eb00 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488c9db (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488c9db 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488c950 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488c950 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488c93f (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488c93f 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488c9d0 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488c9d0 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488da9c (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488da9c 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488c920 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488c920 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488da87 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488da87 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488da90 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488da90 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488dfbb (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488dfbb 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488da80 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488da80 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488df1f (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488df1f 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488dfb0 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488dfb0 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488fe15 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488fe15 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488dec0 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488dec0 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488fdec (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488fdec 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488fdf8 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488fdf8 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe564882e35 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe564882e35 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488fde0 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488fde0 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe564882ccf (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe564882ccf 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe564882e30 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe564882e30 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488ec3a (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488ec3a 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe564882cba (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe564882cba 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56496d076 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56496d076 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488ec10 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488ec10 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56496d033 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56496d033 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56496d062 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56496d062 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56496d00b (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56496d00b 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56496d030 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56496d030 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56496cfca (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56496cfca 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56496d007 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56496d007 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488ec0a (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488ec0a 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56496cfc0 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56496cfc0 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488ed13 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488ed13 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488ebf5 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488ebf5 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488ed20 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488ed20 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488ed10 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488ed10 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488ed20 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488ed20 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488ed10 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488ed10 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488ed20 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488ed20 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488ed10 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488ed10 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488ed20 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488ed20 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488ed10 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488ed10 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488ed20 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488ed20 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488ed10 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488ed10 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488ed20 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488ed20 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488ed10 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488ed10 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488ed20 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488ed20 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488ed10 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488ed10 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488ed20 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488ed20 不在任何已知映射中
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 开始解析地址 0x7fe56488ed10 (主程序基址: 0x556de6105000 - 0x556de6106000)
+2026/01/12 15:58:26 [DEBUG] ResolveAddress: 地址 0x7fe56488ed10 不在任何已知映射中
+
+=== PID: 64705, TID: 64705, COMM: test_lbr, Entries: 32 ===
+LBR Stack:
+[#00] [33m[user]+0x7fe56488ed20[0m -> [33m[user]+0x7fe56488ed10[0m
+[#01] [33m[user]+0x7fe56488ed20[0m -> [33m[user]+0x7fe56488ed10[0m
+[#02] [33m[user]+0x7fe56488ed20[0m -> [33m[user]+0x7fe56488ed10[0m
+[#03] [33m[user]+0x7fe56488ed20[0m -> [33m[user]+0x7fe56488ed10[0m
+[#04] [33m[user]+0x7fe56488ed20[0m -> [33m[user]+0x7fe56488ed10[0m
+[#05] [33m[user]+0x7fe56488ed20[0m -> [33m[user]+0x7fe56488ed10[0m
+[#06] [33m[user]+0x7fe56488ed20[0m -> [33m[user]+0x7fe56488ed10[0m
+[#07] [33m[user]+0x7fe56488ed20[0m -> [33m[user]+0x7fe56488ed10[0m
+[#08] [33m[user]+0x7fe56488ed13[0m -> [33m[user]+0x7fe56488ebf5[0m
+[#09] [33m[user]+0x7fe56488ec0a[0m -> [33m[user]+0x7fe56496cfc0[0m
+[#10] [33m[user]+0x7fe56496cfca[0m -> [33m[user]+0x7fe56496d007[0m
+[#11] [33m[user]+0x7fe56496d00b[0m -> [33m[user]+0x7fe56496d030[0m
+[#12] [33m[user]+0x7fe56496d033[0m -> [33m[user]+0x7fe56496d062[0m
+[#13] [33m[user]+0x7fe56496d076[0m -> [33m[user]+0x7fe56488ec10[0m
+[#14] [33m[user]+0x7fe56488ec3a[0m -> [33m[user]+0x7fe564882cba[0m
+[#15] [33m[user]+0x7fe564882ccf[0m -> [33m[user]+0x7fe564882e30[0m
+[#16] [33m[user]+0x7fe564882e35[0m -> [33m[user]+0x7fe56488fde0[0m
+[#17] [33m[user]+0x7fe56488fdec[0m -> [33m[user]+0x7fe56488fdf8[0m
+[#18] [33m[user]+0x7fe56488fe15[0m -> [33m[user]+0x7fe56488dec0[0m
+[#19] [33m[user]+0x7fe56488df1f[0m -> [33m[user]+0x7fe56488dfb0[0m
+[#20] [33m[user]+0x7fe56488dfbb[0m -> [33m[user]+0x7fe56488da80[0m
+[#21] [33m[user]+0x7fe56488da87[0m -> [33m[user]+0x7fe56488da90[0m
+[#22] [33m[user]+0x7fe56488da9c[0m -> [33m[user]+0x7fe56488c920[0m
+[#23] [33m[user]+0x7fe56488c93f[0m -> [33m[user]+0x7fe56488c9d0[0m
+[#24] [33m[user]+0x7fe56488c9db[0m -> [33m[user]+0x7fe56488c950[0m
+[#25] [33m[user]+0x7fe56488c973[0m -> [33m[user]+0x7fe56488eb00[0m
+[#26] [33m[user]+0x7fe56488eb24[0m -> [33m[user]+0x7fe56488eb4c[0m
+[#27] [33m[user]+0x7fe56488eb59[0m -> [33m[user]+0x7fe56488eb30[0m
+[#28] [33m[user]+0x7fe56488eb30[0m -> [33m[user]+0x7fe56490e4e0[0m
+[#29] [33m[user]+0x7fe56490e4f9[0m -> [33m[user]+0x7fe5648931a0[0m
+[#30] [33m[user]+0x7fe5648931af[0m -> [33m[user]+0x7fe564893110[0m
+[#31] [33m[user]+0x7fe564893136[0m -> [33m[user]+0x7fe564893188[0m
+2026/01/12 15:58:26 LBR数据统计: 总条目=1, 有效=1, 空数据=0, 全零数据=0
+2026/01/12 15:58:27 No LBR data - map中无任何条目
+2026/01/12 15:58:28 No LBR data - map中无任何条目
+2026/01/12 15:58:29 No LBR data - map中无任何条目
+2026/01/12 15:58:30 No LBR data - map中无任何条目
+2026/01/12 15:58:31 No LBR data - map中无任何条目
+2026/01/12 15:58:32 No LBR data - map中无任何条目

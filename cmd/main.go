@@ -4,9 +4,11 @@ import (
 	"context"
 	"flag"
 	"fmt"
+	"io"
 	"log"
 	"os"
 	"os/signal"
+	"path/filepath"
 	"syscall"
 	"time"
 
@@ -21,13 +23,56 @@ var (
 	useAddr2line   = flag.Bool("addr2line", true, "Use addr2line for user symbol resolution")
 	useDwarf       = flag.Bool("dwarf", false, "Use DWARF for user symbol resolution (requires debug symbols)")
 	resolveSymbols = flag.Bool("resolve", true, "Resolve user space addresses to symbols")
+	logDir         = flag.String("logdir", "log", "Directory to save log files")
 )
+
+var logFile *os.File
 
 func main() {
 	flag.Parse()
 
+	// 设置日志文件
+	if err := setupLogFile(); err != nil {
+		log.Fatal(err)
+	}
+	defer closeLogFile()
+
 	if err := run(); err != nil {
 		log.Fatal(err)
+	}
+}
+
+func setupLogFile() error {
+	// 创建 log 目录（如果不存在）
+	if err := os.MkdirAll(*logDir, 0755); err != nil {
+		return fmt.Errorf("failed to create log directory: %w", err)
+	}
+
+	// 生成日志文件名（带时间戳）
+	timestamp := time.Now().Format("20060102_150405")
+	logFileName := fmt.Sprintf("lbr_output_%s.log", timestamp)
+	logPath := filepath.Join(*logDir, logFileName)
+
+	// 打开日志文件
+	f, err := os.OpenFile(logPath, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0644)
+	if err != nil {
+		return fmt.Errorf("failed to open log file: %w", err)
+	}
+
+	logFile = f
+
+	// 设置日志输出到文件和控制台
+	multiWriter := io.MultiWriter(os.Stdout, logFile)
+	log.SetOutput(multiWriter)
+
+	log.Printf("日志文件: %s", logPath)
+
+	return nil
+}
+
+func closeLogFile() {
+	if logFile != nil {
+		logFile.Close()
 	}
 }
 
@@ -284,8 +329,19 @@ func processLbrData(lbrMap *ebpf.Map, commMap *ebpf.Map, syms *lbr.Symbols, targ
 			})
 		}
 
-		fmt.Printf("\n=== PID: %d, TID: %d, COMM: %s, Entries: %d ===\n", pid, tid, commName, numEntries)
+		// 输出到控制台和日志文件
+		output := fmt.Sprintf("\n=== PID: %d, TID: %d, COMM: %s, Entries: %d ===\n", pid, tid, commName, numEntries)
+		fmt.Print(output)
+		if logFile != nil {
+			logFile.WriteString(output)
+		}
+
+		// 输出到控制台
 		stack.Output(os.Stdout)
+		// 也输出到日志文件
+		if logFile != nil {
+			stack.Output(logFile)
+		}
 
 		// Delete processed entry
 		_ = lbrMap.Delete(key)

@@ -1,0 +1,50 @@
+2026/01/12 15:55:10 日志文件: log/lbr_output_20260112_155510.log
+2026/01/12 15:55:10 Current nofile rlimit: curr=524287 max=524288
+2026/01/12 15:55:10 Monitoring PID: 61466
+2026/01/12 15:55:10 LBR demo is running. Press Ctrl-C to exit.
+2026/01/12 15:55:10 Attached to 8 CPUs, checking for LBR data every second...
+2026/01/12 15:55:11 No LBR data - map中无任何条目
+2026/01/12 15:55:12 No LBR data - map中无任何条目
+2026/01/12 15:55:13 已启用 DWARF 符号解析 for PID 61466
+
+=== PID: 61466, TID: 61466, COMM: test_lbr, Entries: 32 ===
+LBR Stack:
+[#00] [33m[user]+0x7f2f73043d59[0m -> [33m[user]+0x7f2f73043d63[0m
+[#01] [33m[user]+0x7f2f73043d6c[0m -> [33m[user]+0x7f2f73043bd0[0m
+[#02] [33m[user]+0x7f2f73043bd4[0m -> [33m[user]+0x7f2f73043ba6[0m
+[#03] [33m[user]+0x7f2f73043bb6[0m -> [33m[user]+0x7f2f7304394d[0m
+[#04] [33m[user]+0x7f2f7304394e[0m -> [33m[user]+0x559befcf045d[0m
+[#05] [33m[user]+0x559befcf0482[0m -> [33m[user]+0x559befcf05f5[0m
+[#06] [33m[user]+0x559befcf05f8[0m -> [33m[user]+0x559befcf0603[0m
+[#07] [33m[user]+0x559befcf060c[0m -> [33m[user]+0x559befcf0452[0m
+[#08] [33m[user]+0x559befcf0458[0m -> [33m[user]+0x559befcf00b0[0m
+[#09] [33m[user]+0x559befcf00b0[0m -> [33m[user]+0x7f2f73043940[0m
+[#10] [33m[user]+0x7f2f73043948[0m -> [33m[user]+0x7f2f73043b50[0m
+[#11] [33m[user]+0x7f2f73043b72[0m -> [33m[user]+0x7f2f73043bc0[0m
+[#12] [33m[user]+0x7f2f73043bcb[0m -> [33m[user]+0x7f2f73043d00[0m
+[#13] [33m[user]+0x7f2f73043d17[0m -> [33m[user]+0x7f2f73043d38[0m
+[#14] [33m[user]+0x7f2f73043d6c[0m -> [33m[user]+0x7f2f73043bd0[0m
+[#15] [33m[user]+0x7f2f73043bd4[0m -> [33m[user]+0x7f2f73043ba6[0m
+[#16] [33m[user]+0x7f2f73043bb6[0m -> [33m[user]+0x7f2f7304394d[0m
+[#17] [33m[user]+0x7f2f7304394e[0m -> [33m[user]+0x559befcf045d[0m
+[#18] [33m[user]+0x559befcf0482[0m -> [33m[user]+0x559befcf05f5[0m
+[#19] [33m[user]+0x559befcf05f8[0m -> [33m[user]+0x559befcf0603[0m
+[#20] [33m[user]+0x559befcf0606[0m -> [33m[user]+0x559befcf0611[0m
+[#21] [33m[user]+0x559befcf0614[0m -> [33m[user]+0x559befcf061f[0m
+[#22] [33m[user]+0x559befcf0622[0m -> [33m[user]+0x559befcf062d[0m
+[#23] [33m[user]+0x559befcf0630[0m -> [33m[user]+0x559befcf063b[0m
+[#24] [33m[user]+0x559befcf063e[0m -> [33m[user]+0x559befcf066b[0m
+[#25] [33m[user]+0x559befcf067d[0m -> [33m[user]+0x559befcf0452[0m
+[#26] [33m[user]+0x559befcf0458[0m -> [33m[user]+0x559befcf00b0[0m
+[#27] [33m[user]+0x559befcf00b0[0m -> [33m[user]+0x7f2f73043940[0m
+[#28] [33m[user]+0x7f2f73043948[0m -> [33m[user]+0x7f2f73043b50[0m
+[#29] [33m[user]+0x7f2f73043b72[0m -> [33m[user]+0x7f2f73043bc0[0m
+[#30] [33m[user]+0x7f2f73043bcb[0m -> [33m[user]+0x7f2f73043d00[0m
+[#31] [33m[user]+0x7f2f73043d17[0m -> [33m[user]+0x7f2f73043d38[0m
+2026/01/12 15:55:13 LBR数据统计: 总条目=1, 有效=1, 空数据=0, 全零数据=0
+2026/01/12 15:55:14 No LBR data - map中无任何条目
+2026/01/12 15:55:15 No LBR data - map中无任何条目
+2026/01/12 15:55:16 No LBR data - map中无任何条目
+2026/01/12 15:55:17 No LBR data - map中无任何条目
+2026/01/12 15:55:18 No LBR data - map中无任何条目
+2026/01/12 15:55:19 No LBR data - map中无任何条目
