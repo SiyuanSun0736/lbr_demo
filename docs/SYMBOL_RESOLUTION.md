@@ -18,9 +18,55 @@ LBR 捕获的数据默认只包含内存地址，例如：
 
 ## 解决方案
 
-本项目提供了**三种**用户态地址解析方式：
+本项目提供了**四种**用户态地址解析方式：
 
-### 方案 1: 使用 addr2line 工具（推荐）
+### 方案 1: 使用 SFrame 格式（推荐，轻量高效）
+
+**优点:**
+- 轻量级的栈展开格式，比 DWARF 更紧凑
+- 纯 Go 实现，无外部进程调用
+- 内存占用小，性能优异
+- 支持共享库符号解析
+
+**缺点:**
+- 需要编译器支持生成 SFrame 信息
+- 较新的技术，部分老编译器可能不支持
+- 不提供详细的源代码行号信息（仅函数级别）
+
+**使用方法:**
+```bash
+sudo ./lbr-demo -pid <PID> -sframe=true -resolve=true
+```
+
+**实现原理:**
+```go
+// 1. 打开 ELF 文件
+elfFile, _ := elf.Open(execPath)
+
+// 2. 查找 .sframe 节
+section := elfFile.Section(".sframe")
+
+// 3. 解析 SFrame 数据
+sframeData, _ := ParseSFrameSection(section.Data())
+
+// 4. 从符号表查找函数名
+funcName := resolver.findSymbol(fileOffset)
+```
+
+代码位置: [internal/sframe_resolver.go](../internal/sframe_resolver.go)
+
+**编译要求:**
+```bash
+# GCC 13+ 支持生成 SFrame 信息
+gcc -O2 -g -gsframe -o test_lbr test_lbr.c
+
+# 验证是否包含 SFrame 信息
+readelf -S test_lbr | grep sframe
+```
+
+---
+
+### 方案 2: 使用 addr2line 工具
 
 **优点:**
 - 简单易用，无需额外依赖
@@ -48,7 +94,7 @@ output, _ := cmd.Output()
 
 ---
 
-### 方案 2: 使用 DWARF 调试信息
+### 方案 3: 使用 DWARF 调试信息
 
 **优点:**
 - 纯 Go 实现，无外部依赖
@@ -83,7 +129,7 @@ symbols, _ := elfFile.Symbols()
 
 ---
 
-### 方案 3: 不解析（仅显示地址）
+### 方案 4: 不解析（仅显示地址）
 
 **用途:**
 - 性能测试
@@ -155,10 +201,13 @@ sudo ./test/test_symbol_resolution.sh
 |------|--------|------|
 | `-pid` | 0 | 目标进程 PID（0 表示监控所有进程） |
 | `-resolve` | true | 是否解析用户态地址 |
-| `-addr2line` | true | 使用 addr2line 工具解析 |
+| `-sframe` | false | 使用 SFrame 格式解析（轻量高效） |
 | `-dwarf` | false | 使用 DWARF 信息解析 |
+| `-addr2line` | true | 使用 addr2line 工具解析 |
 
-**注意:** `-addr2line` 和 `-dwarf` 不能同时为 true，优先使用 `-dwarf`。
+**解析器优先级:** `-sframe` > `-dwarf` > `-addr2line`
+
+**注意:** 同时只能启用一种解析方式，优先级高的解析器会被优先使用。
 
 ## 工作原理
 
@@ -280,8 +329,10 @@ sudo yum install binutils
 
 ### addr2line 性能
 - 每次解析需要启动外部进程
-- 批量解析可以提高性能
-- 适合中等规模的分析
+- 批量SFrame 性能
+- 启动快，内存占用小
+- 解析速度快（符号表查找）
+- 最适合生产环境使用
 
 ### DWARF 性能
 - 首次加载较慢（解析 ELF + DWARF）
@@ -289,6 +340,10 @@ sudo yum install binutils
 - 适合大量重复解析
 
 ### 优化建议
+1. **生产环境推荐使用 SFrame**（如果编译器支持）
+2. 使用批量解析接口
+3. 缓存解析结果
+4## 优化建议
 1. 使用批量解析接口
 2. 缓存解析结果
 3. 对于相同地址，避免重复解析
@@ -311,9 +366,20 @@ sudo yum install binutils
 === PID: 12345, TID: 12345, COMM: test_lbr, Entries: 32 ===
 LBR Stack:
 [#00] bubble_sort (test_lbr.c:9)          -> bubble_sort (test_lbr.c:11)
-[#01] bubble_sort (test_lbr.c:8)          -> bubble_sort (test_lbr.c:9)
-[#02] main (test_lbr.c:85)                -> bubble_sort (test_lbr.c:7)
-[#03] main (test_lbr.c:90)                -> classify_number (test_lbr.c:20)
+[#0方式对比
+
+| 特性 | SFrame | addr2line | DWARF | 不解析 |
+|------|--------|-----------|-------|--------|
+| 性能 | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| 内存占用 | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| 精确度 | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐ |
+| 兼容性 | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| 易用性 | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+
+## 总结
+
+- **生产环境推荐使用 SFrame**：轻量高效，内存占用小（需要编译器支持）
+- **开发调试推荐使用 addr2line**：兼容性好，使用简单，提供详细信息         -> classify_number (test_lbr.c:20)
 [#04] classify_number (test_lbr.c:22)     -> classify_number (test_lbr.c:32)
 [#05] main (test_lbr.c:95)                -> fibonacci (test_lbr.c:38)
 [#06] fibonacci (test_lbr.c:40)           -> fibonacci (test_lbr.c:38)

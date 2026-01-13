@@ -1,0 +1,47 @@
+2026/01/13 15:49:44 日志文件: log/lbr_output_20260113_154944.log
+2026/01/13 15:49:44 Current nofile rlimit: curr=524287 max=524288
+2026/01/13 15:49:44 Monitoring PID: 73678
+2026/01/13 15:49:44 LBR demo is running. Press Ctrl-C to exit.
+2026/01/13 15:49:44 Attached to 8 CPUs, checking for LBR data every second...
+2026/01/13 15:49:45 No LBR data - map中无任何条目
+2026/01/13 15:49:46 No LBR data - map中无任何条目
+2026/01/13 15:49:47 已启用 addr2line 符号解析 for PID 73678
+
+=== PID: 73678, TID: 73678, COMM: test_lbr, Entries: 32 ===
+LBR Stack:
+[#00] main                  -> main (test_lbr.c:171)
+[#01] main (test_lbr.c:171) -> main (test_lbr.c:178)
+[#02] main                  -> main (test_lbr.c:171)
+[#03] main (test_lbr.c:171) -> main (test_lbr.c:178)
+[#04] main                  -> main (test_lbr.c:171)
+[#05] main (test_lbr.c:171) -> main (test_lbr.c:178)
+[#06] main                  -> main (test_lbr.c:171)
+[#07] main (test_lbr.c:171) -> main (test_lbr.c:178)
+[#08] main                  -> main (test_lbr.c:171)
+[#09] main (test_lbr.c:171) -> main (test_lbr.c:178)
+[#10] main                  -> main (test_lbr.c:171)
+[#11] main (test_lbr.c:171) -> main (test_lbr.c:178)
+[#12] main                  -> main (test_lbr.c:171)
+[#13] main (test_lbr.c:171) -> main (test_lbr.c:178)
+[#14] main                  -> main (test_lbr.c:171)
+[#15] main (test_lbr.c:171) -> main (test_lbr.c:178)
+[#16] main                  -> main (test_lbr.c:171)
+[#17] main (test_lbr.c:171) -> main (test_lbr.c:178)
+[#18] main                  -> main (test_lbr.c:171)
+[#19] main (test_lbr.c:171) -> main (test_lbr.c:178)
+[#20] main                  -> main (test_lbr.c:171)
+[#21] main (test_lbr.c:171) -> main (test_lbr.c:178)
+[#22] main                  -> main (test_lbr.c:171)
+[#23] main (test_lbr.c:171) -> main (test_lbr.c:178)
+[#24] main                  -> main (test_lbr.c:171)
+[#25] main (test_lbr.c:171) -> main (test_lbr.c:178)
+[#26] main                  -> main (test_lbr.c:171)
+[#27] main (test_lbr.c:171) -> main (test_lbr.c:178)
+[#28] main                  -> main (test_lbr.c:171)
+[#29] main (test_lbr.c:171) -> main (test_lbr.c:178)
+[#30] main                  -> main (test_lbr.c:171)
+[#31] main (test_lbr.c:171) -> main (test_lbr.c:178)
+2026/01/13 15:49:47 LBR数据统计: 总条目=1, 有效=1, 空数据=0, 全零数据=0
+2026/01/13 15:49:48 No LBR data - map中无任何条目
+2026/01/13 15:49:49 No LBR data - map中无任何条目
+2026/01/13 15:49:50 No LBR data - map中无任何条目

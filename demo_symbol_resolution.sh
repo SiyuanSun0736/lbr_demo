@@ -21,7 +21,7 @@ echo -e "${GREEN}=== LBR 符号解析演示 ===${NC}\n"
 # 编译
 echo -e "${BLUE}编译测试程序...${NC}"
 cd test
-make clean && make
+make clean && make && make test_lbr_sframe
 cd ..
 
 # 编译监控程序
@@ -31,7 +31,7 @@ if [ ! -f "lbr-demo" ] || [ "cmd/main.go" -nt "lbr-demo" ]; then
 fi
 
 echo -e "\n${GREEN}启动测试程序（后台）...${NC}"
-./test/test_lbr &
+./test/test_lbr_sframe &
 TEST_PID=$!
 echo "PID: $TEST_PID"
 
@@ -40,7 +40,7 @@ sleep 2
 echo -e "\n${YELLOW}开始监控并解析符号（10秒）...${NC}"
 echo -e "${BLUE}输出将显示函数名和源代码位置${NC}\n"
 
-timeout 10 ./lbr-demo -pid $TEST_PID -addr2line=true -debug=true|| true
+timeout 10 ./lbr-demo -pid $TEST_PID -sframe=true -debug=true|| true
 
 echo -e "\n${GREEN}演示完成！${NC}"
 echo -e "\n${YELLOW}提示：${NC}"

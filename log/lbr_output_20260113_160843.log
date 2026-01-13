@@ -1,0 +1,229 @@
+2026/01/13 16:08:43 日志文件: log/lbr_output_20260113_160843.log
+2026/01/13 16:08:43 Current nofile rlimit: curr=524287 max=524288
+2026/01/13 16:08:43 Monitoring PID: 85101
+2026/01/13 16:08:43 LBR demo is running. Press Ctrl-C to exit.
+2026/01/13 16:08:43 Attached to 8 CPUs, checking for LBR data every second...
+2026/01/13 16:08:44 No LBR data - map中无任何条目
+2026/01/13 16:08:45 No LBR data - map中无任何条目
+2026/01/13 16:08:46 [DEBUG] NewSFrameResolver: 为PID 85101 创建SFrame解析器
+2026/01/13 16:08:46 [DEBUG] NewSFrameResolver: 可执行文件: /home/ssy/lbr/test/test_lbr_sframe
+2026/01/13 16:08:46 [DEBUG] loadSFrameData: SFrame Magic=0x502dee2, Version=3
+2026/01/13 16:08:46 [DEBUG] NewSFrameResolver: 成功加载SFrame数据
+2026/01/13 16:08:46 [DEBUG] loadSymbols: 加载了 31 个符号
+2026/01/13 16:08:46 [DEBUG] GetProcessMaps: 读取进程 85101 的内存映射
+2026/01/13 16:08:46 [DEBUG] GetProcessMaps: 读取到 24 个内存映射
+2026/01/13 16:08:46 [DEBUG] loadBaseAddress: 基址=0x55d09159d000, 结束=0x55d09159e000, 偏移=0x1000
+2026/01/13 16:08:46 [DEBUG] GetProcessMaps: 读取进程 85101 的内存映射
+2026/01/13 16:08:46 [DEBUG] GetProcessMaps: 读取到 24 个内存映射
+2026/01/13 16:08:46 [DEBUG] loadLibraryMapping: 加载共享库 /usr/lib/libc.so.6, 符号数: 3114
+2026/01/13 16:08:46 [DEBUG] loadLibraryMapping: 加载共享库 /usr/lib/ld-linux-x86-64.so.2, 符号数: 32
+2026/01/13 16:08:46 [DEBUG] loadLibraryMappings: 加载了 2 个共享库映射
+2026/01/13 16:08:46 [DEBUG] NewSFrameResolver: SFrame解析器创建成功
+2026/01/13 16:08:46 已启用 SFrame 符号解析 for PID 85101
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca93136
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x93136
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca93188
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x93188
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1cae3bcd
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0xe3bcd
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 clock_nanosleep+0x2d@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca93110
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x93110
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1caefc52
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0xefc52
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 nanosleep+0x12@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1cae3ba0
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0xe3ba0
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 clock_nanosleep@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1cb02299
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x102299
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 sleep+0x39@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1caefc40
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0xefc40
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 nanosleep@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55d09159d0a0
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x10a0
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到函数 _init+0xa0
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1cb02260
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x102260
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 sleep@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55d09159d5bc
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x15bc
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到函数 main+0x4fc
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55d09159d0a0
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x10a0
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到函数 _init+0xa0
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca82d3a
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x82d3a
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 puts+0xfa@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55d09159d5b7
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x15b7
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到函数 main+0x4f7
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca82e3d
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x82e3d
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 puts+0x1fd@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca82ce0
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x82ce0
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 puts+0xa0@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8df2d
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8df2d
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 _IO_file_overflow+0x6d@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca82e3a
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x82e3a
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 puts+0x1fa@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8dfc3
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8dfc3
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 _IO_file_overflow+0x103@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8df25
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8df25
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 _IO_file_overflow+0x65@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8daae
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8daae
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 _IO_do_write+0x2e@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8dfc0
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8dfc0
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 _IO_file_overflow+0x100@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8c9c7
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8c9c7
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8daa1
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8daa1
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 _IO_do_write+0x21@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8ca35
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8ca35
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8c9b7
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8c9b7
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8c9b0
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8c9b0
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8ca30
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8ca30
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8eb97
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8eb97
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 _IO_file_write+0x97@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8c976
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8c976
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8eb83
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8eb83
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 _IO_file_write+0x83@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8eb8f
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8eb8f
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 _IO_file_write+0x8f@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8eba6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8eba6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 _IO_file_write+0xa6@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8eb79
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8eb79
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 _IO_file_write+0x79@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8eb4a
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8eb4a
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 _IO_file_write+0x4a@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8eba0
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8eba0
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 _IO_file_write+0xa0@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1cb0e4ff
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x10e4ff
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 __write+0x1f@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8eb35
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8eb35
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 _IO_file_write+0x35@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca931bf
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x931bf
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1cb0e4fe
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x10e4fe
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 __write+0x1e@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca9318f
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x9318f
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca931b4
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x931b4
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca9318e
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x9318e
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca93136
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x93136
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca93188
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x93188
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca931af
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x931af
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca93110
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x93110
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1cb0e4f9
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x10e4f9
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 __write+0x19@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca931a0
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x931a0
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8eb30
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8eb30
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 _IO_file_write+0x30@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1cb0e4e0
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x10e4e0
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 __write@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8eb59
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8eb59
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 _IO_file_write+0x59@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8eb30
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8eb30
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 _IO_file_write+0x30@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8eb24
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8eb24
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 _IO_file_write+0x24@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8eb4c
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8eb4c
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 _IO_file_write+0x4c@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8c973
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8c973
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8eb00
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8eb00
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 _IO_file_write@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8c9db
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8c9db
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8c950
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8c950
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8c93f
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8c93f
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8c9d0
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8c9d0
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8da9c
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8da9c
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 找到共享库函数 _IO_do_write+0x1c@libc.so.6
+2026/01/13 16:08:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f4a1ca8c920
+2026/01/13 16:08:46 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x8c920
+
+=== PID: 85101, TID: 85101, COMM: test_lbr_sframe, Entries: 32 ===
+LBR Stack:
+[#00] [33m_IO_do_write+0x1c (libc.so.6)[0m       -> [33m[user]+0x7f4a1ca8c920[0m              
+[#01] [33m[user]+0x7f4a1ca8c93f[0m               -> [33m[user]+0x7f4a1ca8c9d0[0m              
+[#02] [33m[user]+0x7f4a1ca8c9db[0m               -> [33m[user]+0x7f4a1ca8c950[0m              
+[#03] [33m[user]+0x7f4a1ca8c973[0m               -> [33m_IO_file_write (libc.so.6)[0m         
+[#04] [33m_IO_file_write+0x24 (libc.so.6)[0m     -> [33m_IO_file_write+0x4c (libc.so.6)[0m    
+[#05] [33m_IO_file_write+0x59 (libc.so.6)[0m     -> [33m_IO_file_write+0x30 (libc.so.6)[0m    
+[#06] [33m_IO_file_write+0x30 (libc.so.6)[0m     -> [33m__write (libc.so.6)[0m                
+[#07] [33m__write+0x19 (libc.so.6)[0m            -> [33m[user]+0x7f4a1ca931a0[0m              
+[#08] [33m[user]+0x7f4a1ca931af[0m               -> [33m[user]+0x7f4a1ca93110[0m              
+[#09] [33m[user]+0x7f4a1ca93136[0m               -> [33m[user]+0x7f4a1ca93188[0m              
+[#10] [33mentry_SYSRETQ_unsafe_stack+0xa[0m      -> [33m[user]+0x7f4a1ca9318e[0m              
+[#11] [33m[user]+0x7f4a1ca9318f[0m               -> [33m[user]+0x7f4a1ca931b4[0m              
+[#12] [33m[user]+0x7f4a1ca931bf[0m               -> [33m__write+0x1e (libc.so.6)[0m           
+[#13] [33m__write+0x1f (libc.so.6)[0m            -> [33m_IO_file_write+0x35 (libc.so.6)[0m    
+[#14] [33m_IO_file_write+0x4a (libc.so.6)[0m     -> [33m_IO_file_write+0xa0 (libc.so.6)[0m    
+[#15] [33m_IO_file_write+0xa6 (libc.so.6)[0m     -> [33m_IO_file_write+0x79 (libc.so.6)[0m    
+[#16] [33m_IO_file_write+0x83 (libc.so.6)[0m     -> [33m_IO_file_write+0x8f (libc.so.6)[0m    
+[#17] [33m_IO_file_write+0x97 (libc.so.6)[0m     -> [33m[user]+0x7f4a1ca8c976[0m              
+[#18] [33m[user]+0x7f4a1ca8c9b0[0m               -> [33m[user]+0x7f4a1ca8ca30[0m              
+[#19] [33m[user]+0x7f4a1ca8ca35[0m               -> [33m[user]+0x7f4a1ca8c9b7[0m              
+[#20] [33m[user]+0x7f4a1ca8c9c7[0m               -> [33m_IO_do_write+0x21 (libc.so.6)[0m      
+[#21] [33m_IO_do_write+0x2e (libc.so.6)[0m       -> [33m_IO_file_overflow+0x100 (libc.so.6)[0m
+[#22] [33m_IO_file_overflow+0x103 (libc.so.6)[0m -> [33m_IO_file_overflow+0x65 (libc.so.6)[0m 
+[#23] [33m_IO_file_overflow+0x6d (libc.so.6)[0m  -> [33mputs+0x1fa (libc.so.6)[0m             
+[#24] [33mputs+0x1fd (libc.so.6)[0m              -> [33mputs+0xa0 (libc.so.6)[0m              
+[#25] [33mputs+0xfa (libc.so.6)[0m               -> [33mmain+0x4f7[0m                         
+[#26] [33mmain+0x4fc[0m                          -> [33m_init+0xa0[0m                         
+[#27] [33m_init+0xa0[0m                          -> [33msleep (libc.so.6)[0m                  
+[#28] [33msleep+0x39 (libc.so.6)[0m              -> [33mnanosleep (libc.so.6)[0m              
+[#29] [33mnanosleep+0x12 (libc.so.6)[0m          -> [33mclock_nanosleep (libc.so.6)[0m        
+[#30] [33mclock_nanosleep+0x2d (libc.so.6)[0m    -> [33m[user]+0x7f4a1ca93110[0m              
+[#31] [33m[user]+0x7f4a1ca93136[0m               -> [33m[user]+0x7f4a1ca93188[0m              
+2026/01/13 16:08:46 LBR数据统计: 总条目=1, 有效=1, 空数据=0, 全零数据=0
+2026/01/13 16:08:47 No LBR data - map中无任何条目
+2026/01/13 16:08:48 No LBR data - map中无任何条目
+2026/01/13 16:08:49 No LBR data - map中无任何条目
+2026/01/13 16:08:50 No LBR data - map中无任何条目
+2026/01/13 16:08:51 No LBR data - map中无任何条目
+2026/01/13 16:08:52 No LBR data - map中无任何条目

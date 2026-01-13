@@ -22,6 +22,7 @@ var (
 	targetPID      = flag.Int("pid", 0, "Target PID to monitor (0 = all processes)")
 	useAddr2line   = flag.Bool("addr2line", true, "Use addr2line for user symbol resolution")
 	useDwarf       = flag.Bool("dwarf", false, "Use DWARF for user symbol resolution (requires debug symbols)")
+	useSFrame      = flag.Bool("sframe", false, "Use SFrame for user symbol resolution (lightweight stack unwinding)")
 	resolveSymbols = flag.Bool("resolve", true, "Resolve user space addresses to symbols")
 	logDir         = flag.String("logdir", "log", "Directory to save log files")
 	debugMode      = flag.Bool("debug", false, "Enable debug logging")
@@ -179,6 +180,7 @@ func processLbrData(lbrMap *ebpf.Map, commMap *ebpf.Map, syms *lbr.Symbols, targ
 	// 用户态符号解析器（缓存）
 	var userResolver *lbr.UserSymbolResolver
 	var dwarfResolver *lbr.DwarfResolver
+	var sframeResolver *lbr.SFrameResolver
 
 	iter := lbrMap.Iterate()
 	totalEntries := 0
@@ -223,7 +225,17 @@ func processLbrData(lbrMap *ebpf.Map, commMap *ebpf.Map, syms *lbr.Symbols, targ
 
 		// 如果需要解析用户态符号，且这是目标进程，创建解析器
 		if *resolveSymbols && int(pid) == targetPID && targetPID != 0 {
-			if *useDwarf && dwarfResolver == nil {
+			// 优先级: SFrame > DWARF > addr2line
+			if *useSFrame && sframeResolver == nil {
+				if sr, err := lbr.NewSFrameResolver(int(pid)); err == nil {
+					sframeResolver = sr
+					defer sframeResolver.Close()
+					log.Printf("已启用 SFrame 符号解析 for PID %d", pid)
+				} else {
+					log.Printf("SFrame 解析器创建失败: %v，回退到 DWARF 或 addr2line", err)
+				}
+			}
+			if *useDwarf && dwarfResolver == nil && sframeResolver == nil {
 				if dr, err := lbr.NewDwarfResolver(int(pid)); err == nil {
 					dwarfResolver = dr
 					defer dwarfResolver.Close()
@@ -232,7 +244,7 @@ func processLbrData(lbrMap *ebpf.Map, commMap *ebpf.Map, syms *lbr.Symbols, targ
 					log.Printf("DWARF 解析器创建失败: %v，回退到 addr2line", err)
 				}
 			}
-			if *useAddr2line && userResolver == nil && dwarfResolver == nil {
+			if *useAddr2line && userResolver == nil && dwarfResolver == nil && sframeResolver == nil {
 				if ur, err := lbr.NewUserSymbolResolver(int(pid)); err == nil {
 					userResolver = ur
 					log.Printf("已启用 addr2line 符号解析 for PID %d", pid)
@@ -273,7 +285,15 @@ func processLbrData(lbrMap *ebpf.Map, commMap *ebpf.Map, syms *lbr.Symbols, targ
 
 			// 如果找不到内核符号，尝试解析用户态地址
 			if fromName == "" && entry.From != 0 {
-				if dwarfResolver != nil {
+				if sframeResolver != nil {
+					if info, err := sframeResolver.ResolveAddress(entry.From); err == nil {
+						fromName = info.Function
+						fromFile = info.File
+						fromLine = info.Line
+						fromLibName = info.Library
+						fromOffset = 0
+					}
+				} else if dwarfResolver != nil {
 					if info, err := dwarfResolver.ResolveAddress(entry.From); err == nil {
 						fromName = info.Function
 						fromFile = info.File
@@ -296,7 +316,15 @@ func processLbrData(lbrMap *ebpf.Map, commMap *ebpf.Map, syms *lbr.Symbols, targ
 				}
 			}
 			if toName == "" && entry.To != 0 {
-				if dwarfResolver != nil {
+				if sframeResolver != nil {
+					if info, err := sframeResolver.ResolveAddress(entry.To); err == nil {
+						toName = info.Function
+						toFile = info.File
+						toLine = info.Line
+						toLibName = info.Library
+						toOffset = 0
+					}
+				} else if dwarfResolver != nil {
 					if info, err := dwarfResolver.ResolveAddress(entry.To); err == nil {
 						toName = info.Function
 						toFile = info.File
