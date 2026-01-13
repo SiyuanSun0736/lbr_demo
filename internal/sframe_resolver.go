@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"io"
 	"os"
-	"strconv"
 	"strings"
+	"syscall"
 )
 
 // SFrameResolver 基于SFrame格式的符号解析器
@@ -495,41 +495,41 @@ func (r *SFrameResolver) readUint64(addr uint64) (uint64, error) {
 	return binary.LittleEndian.Uint64(buf), nil
 }
 
-// GetRegisters 获取进程寄存器（从/proc/pid/syscall或其他方式）
-// 简化实现：从栈顶推断寄存器值
+// GetRegisters 获取进程寄存器（使用ptrace）
 func (r *SFrameResolver) GetRegisters() (*UnwindContext, error) {
-	// 读取 /proc/pid/syscall 获取寄存器状态
-	syscallPath := fmt.Sprintf("/proc/%d/syscall", r.pid)
-	data, err := os.ReadFile(syscallPath)
+	// 使用 ptrace 附加到进程
+	err := syscall.PtraceAttach(r.pid)
 	if err != nil {
-		return nil, fmt.Errorf("failed to read syscall: %w", err)
+		return nil, fmt.Errorf("failed to attach to process: %w", err)
+	}
+	defer syscall.PtraceDetach(r.pid)
+
+	// 等待进程停止
+	var ws syscall.WaitStatus
+	_, err = syscall.Wait4(r.pid, &ws, 0, nil)
+	if err != nil {
+		return nil, fmt.Errorf("failed to wait for process: %w", err)
 	}
 
-	// syscall 文件格式: syscall_nr arg1 arg2 arg3 arg4 arg5 arg6 sp pc
-	fields := strings.Fields(string(data))
-	if len(fields) < 9 {
-		return nil, fmt.Errorf("invalid syscall format")
+	// 获取寄存器
+	var regs syscall.PtraceRegs
+	err = syscall.PtraceGetRegs(r.pid, &regs)
+	if err != nil {
+		return nil, fmt.Errorf("failed to get registers: %w", err)
 	}
 
-	ctx := &UnwindContext{}
-
-	// 解析 SP 和 PC
-	if sp, err := strconv.ParseUint(fields[7], 0, 64); err == nil {
-		ctx.SP = sp
-	}
-	if pc, err := strconv.ParseUint(fields[8], 0, 64); err == nil {
-		ctx.PC = pc
+	ctx := &UnwindContext{
+		PC: regs.Rip,
+		SP: regs.Rsp,
+		BP: regs.Rbp,
 	}
 
-	// BP 需要从栈中读取或使用其他方法获取
-	// 简化实现：假设 BP 在栈顶附近
-	if ctx.SP > 0 {
-		if bp, err := r.readUint64(ctx.SP); err == nil {
-			ctx.BP = bp
-		}
+	// 验证地址合理性
+	if ctx.SP < 0x1000 || ctx.PC < 0x1000 {
+		return nil, fmt.Errorf("invalid register values: SP=0x%x, PC=0x%x, BP=0x%x", ctx.SP, ctx.PC, ctx.BP)
 	}
 
-	debugLog("[DEBUG] GetRegisters: PC=0x%x, SP=0x%x, BP=0x%x\n", ctx.PC, ctx.SP, ctx.BP)
+	debugLog("[DEBUG] GetRegisters: PC=0x%x, SP=0x%x, BP=0x%x (via ptrace)\n", ctx.PC, ctx.SP, ctx.BP)
 	return ctx, nil
 }
 
@@ -591,35 +591,60 @@ func (r *SFrameResolver) unwindFrame(ctx *UnwindContext) error {
 		return fmt.Errorf("null base pointer")
 	}
 
+	// 验证当前BP地址的合理性
+	if ctx.BP < 0x1000 {
+		return fmt.Errorf("invalid current BP address: 0x%x", ctx.BP)
+	}
+
 	// 读取保存的BP
 	newBP, err := r.readUint64(ctx.BP)
 	if err != nil {
-		return fmt.Errorf("failed to read saved BP: %w", err)
+		return fmt.Errorf("failed to read saved BP at 0x%x: %w", ctx.BP, err)
 	}
 
 	// 读取返回地址
 	retAddr, err := r.readUint64(ctx.BP + 8)
 	if err != nil {
-		return fmt.Errorf("failed to read return address: %w", err)
+		return fmt.Errorf("failed to read return address at 0x%x: %w", ctx.BP+8, err)
 	}
 
-	// 验证新的值是否合理（在更新前检查）
-	if retAddr == 0 || newBP == 0 {
-		return fmt.Errorf("reached end of stack")
+	debugLog("[DEBUG] unwindFrame: 读取 newBP=0x%x, retAddr=0x%x (from BP=0x%x)\n", newBP, retAddr, ctx.BP)
+
+	// 验证新的值是否合理
+	if retAddr == 0 {
+		debugLog("[DEBUG] unwindFrame: 返回地址为0，到达栈底\n")
+		return fmt.Errorf("reached end of stack (null return address)")
 	}
 
-	// 检查BP是否在合理范围内（应该递增，因为栈向下增长）
-	// 保存旧BP用于比较
+	if newBP == 0 {
+		debugLog("[DEBUG] unwindFrame: 新BP为0，到达栈底\n")
+		return fmt.Errorf("reached end of stack (null BP)")
+	}
+
+	// 验证返回地址的合理性（应该是一个有效的代码地址）
+	if retAddr < 0x1000 {
+		return fmt.Errorf("invalid return address: 0x%x", retAddr)
+	}
+
+	// 检查BP是否在合理范围内
+	// 栈向下增长（从高地址到低地址），所以旧的栈帧在更高的地址
+	// 因此 newBP 应该 > oldBP
 	oldBP := ctx.BP
 	if newBP <= oldBP {
-		return fmt.Errorf("invalid BP value: 0x%x <= 0x%x", newBP, oldBP)
+		return fmt.Errorf("invalid BP progression: newBP(0x%x) <= oldBP(0x%x)", newBP, oldBP)
+	}
+
+	// 检查BP增长是否合理（不应该跳跃太大）
+	if newBP-oldBP > 0x100000 { // 1MB 的栈帧太大了
+		return fmt.Errorf("unreasonable BP jump: 0x%x bytes (newBP=0x%x, oldBP=0x%x)", newBP-oldBP, newBP, oldBP)
 	}
 
 	// 更新上下文
 	ctx.PC = retAddr
 	ctx.BP = newBP
-	ctx.SP = ctx.BP + 16 // 栈指针指向局部变量区
+	ctx.SP = newBP + 16 // 栈指针指向局部变量区
 
+	debugLog("[DEBUG] unwindFrame: 更新后 PC=0x%x, BP=0x%x, SP=0x%x\n", ctx.PC, ctx.BP, ctx.SP)
 	return nil
 }
 

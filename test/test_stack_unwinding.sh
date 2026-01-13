@@ -84,8 +84,8 @@ else
 fi
 
 echo
-echo "运行栈回溯..."
-sudo ../examples/stack_unwinding/stack_unwinding $TEST_PID
+echo "运行栈回溯（调试模式）..."
+sudo ../examples/stack_unwinding/stack_unwinding -debug $TEST_PID
 
 # 清理
 echo

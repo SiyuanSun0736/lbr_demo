@@ -1,0 +1,40 @@
+正在对进程 152255 进行栈回溯...
+日志文件: ../log/stack_unwinding_152255_20260113_185716.log
+
+2026/01/13 18:57:16 [DEBUG] NewSFrameResolver: 为PID 152255 创建SFrame解析器
+2026/01/13 18:57:16 [DEBUG] NewSFrameResolver: 可执行文件: /home/ssy/lbr/test/test_stack_unwinding
+2026/01/13 18:57:16 [DEBUG] NewSFrameResolver: 无法加载SFrame数据: no .sframe section found
+2026/01/13 18:57:16 [DEBUG] loadSymbols: 加载了 29 个符号
+2026/01/13 18:57:16 [DEBUG] GetProcessMaps: 读取进程 152255 的内存映射
+2026/01/13 18:57:16 [DEBUG] GetProcessMaps: 读取到 24 个内存映射
+2026/01/13 18:57:16 [DEBUG] loadBaseAddress: 基址=0x5630ce4c0000, 结束=0x5630ce4c1000, 偏移=0x1000
+2026/01/13 18:57:16 [DEBUG] GetProcessMaps: 读取进程 152255 的内存映射
+2026/01/13 18:57:16 [DEBUG] GetProcessMaps: 读取到 24 个内存映射
+2026/01/13 18:57:16 [DEBUG] loadLibraryMapping: 加载共享库 /usr/lib/libc.so.6, 符号数: 3114
+2026/01/13 18:57:16 [DEBUG] loadLibraryMapping: 加载共享库 /usr/lib/ld-linux-x86-64.so.2, 符号数: 32
+2026/01/13 18:57:16 [DEBUG] loadLibraryMappings: 加载了 2 个共享库映射
+2026/01/13 18:57:16 [DEBUG] NewSFrameResolver: SFrame解析器创建成功
+最大栈帧数: 32
+
+2026/01/13 18:57:16 [DEBUG] GetRegisters: PC=0x7fc03129318e, SP=0x7fff07ccfe20, BP=0x7fff07ccfe40
+2026/01/13 18:57:16 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7fc03129318e
+2026/01/13 18:57:16 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x9318e
+2026/01/13 18:57:16 [DEBUG] SFrameResolver: 未找到符号，使用偏移 0x9318e@libc.so.6
+2026/01/13 18:57:16 [DEBUG] UnwindStack: Frame 0: PC=0x7fc03129318e, SP=0x7fff07ccfe20, BP=0x7fff07ccfe40
+2026/01/13 18:57:16 [DEBUG] UnwindStack: 展开失败: invalid BP value: 0xe6 <= 0x7fff07ccfe40
+2026/01/13 18:57:16 [DEBUG] UnwindStack: 总共展开了 1 帧
+
+=== 详细栈帧信息 ===
+
+帧 #0:
+  程序计数器 (PC): 0x00007fc03129318e
+  栈指针     (SP): 0x00007fff07ccfe20
+  基址指针   (BP): 0x00007fff07ccfe40
+  函数: 0x9318e
+  库: libc.so.6
+
+=== 统计信息 ===
+总栈帧数: 1
+
+各库栈帧数:
+  libc.so.6                     : 1

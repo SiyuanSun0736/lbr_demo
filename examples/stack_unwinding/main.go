@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"io"
 	"log"
@@ -12,14 +13,25 @@ import (
 	lbr "github.com/SiyuanSun0736/lbr_demo/internal"
 )
 
+var (
+	debugMode = flag.Bool("debug", false, "启用调试日志")
+)
+
 func main() {
-	if len(os.Args) < 2 {
-		fmt.Fprintf(os.Stderr, "用法: %s <PID>\n", os.Args[0])
+	flag.Parse()
+
+	// 设置调试模式
+	lbr.SetDebugMode(*debugMode)
+
+	args := flag.Args()
+	if len(args) < 1 {
+		fmt.Fprintf(os.Stderr, "用法: %s [-debug] <PID>\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "  -debug  启用调试日志\n")
 		fmt.Fprintf(os.Stderr, "  对指定进程进行栈回溯\n")
 		os.Exit(1)
 	}
 
-	pid, err := strconv.Atoi(os.Args[1])
+	pid, err := strconv.Atoi(args[0])
 	if err != nil {
 		log.Fatalf("无效的PID: %v", err)
 	}
