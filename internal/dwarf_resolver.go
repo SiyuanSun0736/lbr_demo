@@ -27,13 +27,14 @@ func debugLog(format string, v ...interface{}) {
 
 // MemoryMapping 内存映射信息
 type MemoryMapping struct {
-	StartAddr uint64
-	EndAddr   uint64
-	Offset    uint64 // 文件偏移
-	Path      string
-	ElfFile   *elf.File
-	DwarfData *dwarf.Data
-	Symbols   []ElfSymbol
+	StartAddr  uint64
+	EndAddr    uint64
+	Offset     uint64 // 文件偏移
+	Path       string
+	ElfFile    *elf.File
+	DwarfData  *dwarf.Data
+	SFrameData *SFrameData // SFrame数据（用于栈展开）
+	Symbols    []ElfSymbol
 }
 
 // DwarfResolver 基于DWARF的符号解析器
