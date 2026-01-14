@@ -1,0 +1,344 @@
+正在对进程 141598 进行栈回溯...
+日志文件: ../log/stack_unwinding_141598_20260114_162706.log
+
+2026/01/14 16:27:06 [DEBUG] NewSFrameResolver: 为PID 141598 创建SFrame解析器
+2026/01/14 16:27:06 [DEBUG] NewSFrameResolver: 可执行文件: /home/ssy/lbr/test/test_stack_unwinding
+2026/01/14 16:27:06 [DEBUG] loadSFrameData: SFrame Magic=0x502dee2, Version=3
+2026/01/14 16:27:06 [DEBUG] NewSFrameResolver: 成功加载SFrame数据
+2026/01/14 16:27:06 [DEBUG] loadSymbols: 加载了 29 个符号
+2026/01/14 16:27:06 [DEBUG] GetProcessMaps: 读取进程 141598 的内存映射
+2026/01/14 16:27:06 [DEBUG] GetProcessMaps: 读取到 24 个内存映射
+2026/01/14 16:27:06 [DEBUG] loadBaseAddress: 基址=0x5649e4ae2000, 结束=0x5649e4ae3000, 偏移=0x1000
+2026/01/14 16:27:06 [DEBUG] GetProcessMaps: 读取进程 141598 的内存映射
+2026/01/14 16:27:06 [DEBUG] GetProcessMaps: 读取到 24 个内存映射
+2026/01/14 16:27:06 [DEBUG] loadLibraryMapping: 加载共享库 /usr/lib/libc.so.6, 符号数: 3114
+2026/01/14 16:27:06 [DEBUG] loadLibraryMapping: 加载共享库 /usr/lib/ld-linux-x86-64.so.2, 符号数: 32
+2026/01/14 16:27:06 [DEBUG] loadLibraryMappings: 加载了 2 个共享库映射
+2026/01/14 16:27:06 [DEBUG] NewSFrameResolver: SFrame解析器创建成功
+最大栈帧数: 32
+
+2026/01/14 16:27:06 [DEBUG] GetRegisters: PC=0x7f959549318e, SP=0x7ffcd6576090, BP=0x7ffcd65760a0 (via ptrace)
+2026/01/14 16:27:06 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f959549318e
+2026/01/14 16:27:06 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x9318e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 dladdr @ 0x92440, size=41, dist=0xd4e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 dladdr @ 0x92440, size=41, dist=0xd4e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 dlmopen @ 0x92bb0, size=172, dist=0x5de
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 dlmopen @ 0x92bb0, size=172, dist=0x5de
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 dlclose @ 0x924c0, size=57, dist=0xcce
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 dlclose @ 0x924c0, size=57, dist=0xcce
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 __libc_alloca_cutoff @ 0x93050, size=86, dist=0x13e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 _IO_str_pbackfail @ 0x923e0, size=30, dist=0xdae
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 dladdr1 @ 0x92470, size=71, dist=0xd1e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 dladdr1 @ 0x92470, size=71, dist=0xd1e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 dlsym @ 0x92dd0, size=193, dist=0x3be
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 dlsym @ 0x92dd0, size=193, dist=0x3be
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 dlopen @ 0x92d10, size=144, dist=0x47e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 dlopen @ 0x92d10, size=144, dist=0x47e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 dlerror @ 0x92500, size=525, dist=0xc8e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 dlerror @ 0x92500, size=525, dist=0xc8e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 dlinfo @ 0x92a20, size=140, dist=0x76e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 dlinfo @ 0x92a20, size=140, dist=0x76e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 dlvsym @ 0x92ed0, size=213, dist=0x2be
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 dlvsym @ 0x92ed0, size=213, dist=0x2be
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 目标地址=0x9318e, 检查了751个候选符号, 最佳匹配(最近)=__libc_alloca_cutoff, 距离=0x13e
+2026/01/14 16:27:06 [DEBUG] SFrameResolver: 找到共享库函数 __libc_alloca_cutoff+0x13e@libc.so.6
+2026/01/14 16:27:06 [DEBUG] UnwindStack: Frame 0: PC=0x7f959549318e, SP=0x7ffcd6576090, BP=0x7ffcd65760a0
+2026/01/14 16:27:06 [DEBUG] unwindFrame: 读取 newBP=0x7ffcd65760c0, retAddr=0x7f95954e3bd2 (from BP=0x7ffcd65760a0)
+2026/01/14 16:27:06 [DEBUG] unwindFrame: 更新后 PC=0x7f95954e3bd2, BP=0x7ffcd65760c0, SP=0x7ffcd65760d0
+2026/01/14 16:27:06 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f95954e3bd2
+2026/01/14 16:27:06 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0xe3bd2
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 clock_gettime @ 0xe3ad0, size=127, dist=0x102
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 clock_gettime @ 0xe3ad0, size=127, dist=0x102
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 __clock_gettime @ 0xe3ad0, size=127, dist=0x102
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 timespec_getres @ 0xe39f0, size=37, dist=0x1e2
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 timespec_get @ 0xe39c0, size=37, dist=0x212
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 wcsftime_l @ 0xe3970, size=68, dist=0x262
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 __wcsftime_l @ 0xe3970, size=68, dist=0x262
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 clock_getres @ 0xe3a60, size=102, dist=0x172
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 clock_getres @ 0xe3a60, size=102, dist=0x172
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 clock_nanosleep @ 0xe3ba0, size=70, dist=0x32
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 clock_nanosleep @ 0xe3ba0, size=70, dist=0x32
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 clock_getcpuclockid @ 0xe3a20, size=54, dist=0x1b2
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 clock_getcpuclockid @ 0xe3a20, size=54, dist=0x1b2
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 clock_settime @ 0xe3b50, size=76, dist=0x82
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 clock_settime @ 0xe3b50, size=76, dist=0x82
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 目标地址=0xe3bd2, 检查了1514个候选符号, 最佳匹配(范围内)=clock_nanosleep, 距离=0x32
+2026/01/14 16:27:06 [DEBUG] SFrameResolver: 找到共享库函数 clock_nanosleep+0x32@libc.so.6
+2026/01/14 16:27:06 [DEBUG] UnwindStack: Frame 1: PC=0x7f95954e3bd2, SP=0x7ffcd65760d0, BP=0x7ffcd65760c0
+2026/01/14 16:27:06 [DEBUG] unwindFrame: 读取 newBP=0x7ffcd65760d0, retAddr=0x7f95954efc57 (from BP=0x7ffcd65760c0)
+2026/01/14 16:27:06 [DEBUG] unwindFrame: 更新后 PC=0x7f95954efc57, BP=0x7ffcd65760d0, SP=0x7ffcd65760e0
+2026/01/14 16:27:06 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f95954efc57
+2026/01/14 16:27:06 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0xefc57
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 globfree @ 0xefaf0, size=97, dist=0x167
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 nanosleep @ 0xefc40, size=49, dist=0x17
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 group_member @ 0xefb60, size=221, dist=0xf7
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 globfree64 @ 0xefaf0, size=97, dist=0x167
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 glob_pattern_p @ 0xefa30, size=189, dist=0x227
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 __nanosleep @ 0xefc40, size=49, dist=0x17
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 目标地址=0xefc57, 检查了1585个候选符号, 最佳匹配(范围内)=nanosleep, 距离=0x17
+2026/01/14 16:27:06 [DEBUG] SFrameResolver: 找到共享库函数 nanosleep+0x17@libc.so.6
+2026/01/14 16:27:06 [DEBUG] UnwindStack: Frame 2: PC=0x7f95954efc57, SP=0x7ffcd65760e0, BP=0x7ffcd65760d0
+2026/01/14 16:27:06 [DEBUG] unwindFrame: 读取 newBP=0x7ffcd6576110, retAddr=0x7f959550229e (from BP=0x7ffcd65760d0)
+2026/01/14 16:27:06 [DEBUG] unwindFrame: 更新后 PC=0x7f959550229e, BP=0x7ffcd6576110, SP=0x7ffcd6576120
+2026/01/14 16:27:06 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f959550229e
+2026/01/14 16:27:06 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x10229e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 __sched_yield @ 0x101de0, size=37, dist=0x4be
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 __shm_get_name @ 0x102150, size=265, dist=0x14e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 sleep @ 0x102260, size=115, dist=0x3e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 __sched_getparam @ 0x101c60, size=37, dist=0x63e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 setsid @ 0x1020a0, size=37, dist=0x1fe
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 re_exec @ 0x101380, size=40, dist=0xf1e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 __setpgid @ 0x101f20, size=37, dist=0x37e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 setgid @ 0x101e10, size=121, dist=0x48e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 sched_setparam @ 0x101d80, size=37, dist=0x51e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 sched_rr_get_interval @ 0x101d20, size=42, dist=0x57e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 __sched_get_priority_min @ 0x101cf0, size=37, dist=0x5ae
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 sched_get_priority_max @ 0x101cc0, size=37, dist=0x5de
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 sched_setaffinity @ 0x101d50, size=42, dist=0x54e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 __sched_cpualloc @ 0x101b90, size=22, dist=0x70e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 setuid @ 0x1020d0, size=121, dist=0x1ce
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 setgroups @ 0x101e90, size=129, dist=0x40e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 setpgid @ 0x101f20, size=37, dist=0x37e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 re_search @ 0x1012e0, size=22, dist=0xfbe
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 __sched_cpufree @ 0x101bf0, size=10, dist=0x6ae
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 setresgid @ 0x101f60, size=153, dist=0x33e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 __sched_setscheduler @ 0x101db0, size=37, dist=0x4ee
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 __sched_cpucount @ 0x101bb0, size=63, dist=0x6ee
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 sched_get_priority_min @ 0x101cf0, size=37, dist=0x5ae
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 setresuid @ 0x102000, size=153, dist=0x29e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 sched_yield @ 0x101de0, size=37, dist=0x4be
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 re_search_2 @ 0x101320, size=28, dist=0xf7e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 setpgrp @ 0x101f50, size=13, dist=0x34e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 re_match @ 0x1012c0, size=25, dist=0xfde
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 re_match_2 @ 0x101300, size=26, dist=0xf9e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 re_set_registers @ 0x101340, size=51, dist=0xf5e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 sched_getscheduler @ 0x101c90, size=37, dist=0x60e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 sched_setscheduler @ 0x101db0, size=37, dist=0x4ee
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 __sched_getscheduler @ 0x101c90, size=37, dist=0x60e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 sched_getparam @ 0x101c60, size=37, dist=0x63e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 __register_atfork @ 0x1013c0, size=498, dist=0xede
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 sched_getaffinity @ 0x101c00, size=90, dist=0x69e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 __sched_get_priority_max @ 0x101cc0, size=37, dist=0x5de
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 目标地址=0x10229e, 检查了1641个候选符号, 最佳匹配(范围内)=sleep, 距离=0x3e
+2026/01/14 16:27:06 [DEBUG] SFrameResolver: 找到共享库函数 sleep+0x3e@libc.so.6
+2026/01/14 16:27:06 [DEBUG] UnwindStack: Frame 3: PC=0x7f959550229e, SP=0x7ffcd6576120, BP=0x7ffcd6576110
+2026/01/14 16:27:06 [DEBUG] unwindFrame: 读取 newBP=0x7ffcd6576120, retAddr=0x5649e4ae21b1 (from BP=0x7ffcd6576110)
+2026/01/14 16:27:06 [DEBUG] unwindFrame: 更新后 PC=0x5649e4ae21b1, BP=0x7ffcd6576120, SP=0x7ffcd6576130
+2026/01/14 16:27:06 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5649e4ae21b1
+2026/01/14 16:27:06 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x11b1
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 deregister_tm_clones @ 0x10a0, size=0, dist=0x111
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 register_tm_clones @ 0x10d0, size=0, dist=0xe1
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 __do_global_dtors_aux @ 0x1110, size=0, dist=0xa1
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 frame_dummy @ 0x1160, size=0, dist=0x51
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 function_level_5 @ 0x1169, size=74, dist=0x48
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 _start @ 0x1070, size=38, dist=0x141
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x1b1
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 目标地址=0x11b1, 检查了7个候选符号, 最佳匹配(范围内)=function_level_5, 距离=0x48
+2026/01/14 16:27:06 [DEBUG] SFrameResolver: 找到函数 function_level_5+0x48
+2026/01/14 16:27:06 [DEBUG] UnwindStack: Frame 4: PC=0x5649e4ae21b1, SP=0x7ffcd6576130, BP=0x7ffcd6576120
+2026/01/14 16:27:06 [DEBUG] unwindFrame: 读取 newBP=0x7ffcd6576130, retAddr=0x5649e4ae21cb (from BP=0x7ffcd6576120)
+2026/01/14 16:27:06 [DEBUG] unwindFrame: 更新后 PC=0x5649e4ae21cb, BP=0x7ffcd6576130, SP=0x7ffcd6576140
+2026/01/14 16:27:06 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5649e4ae21cb
+2026/01/14 16:27:06 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x11cb
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 deregister_tm_clones @ 0x10a0, size=0, dist=0x12b
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 register_tm_clones @ 0x10d0, size=0, dist=0xfb
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 __do_global_dtors_aux @ 0x1110, size=0, dist=0xbb
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 frame_dummy @ 0x1160, size=0, dist=0x6b
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 function_level_5 @ 0x1169, size=74, dist=0x62
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 function_level_4 @ 0x11b3, size=27, dist=0x18
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 _start @ 0x1070, size=38, dist=0x15b
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x1cb
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 目标地址=0x11cb, 检查了8个候选符号, 最佳匹配(范围内)=function_level_4, 距离=0x18
+2026/01/14 16:27:06 [DEBUG] SFrameResolver: 找到函数 function_level_4+0x18
+2026/01/14 16:27:06 [DEBUG] UnwindStack: Frame 5: PC=0x5649e4ae21cb, SP=0x7ffcd6576140, BP=0x7ffcd6576130
+2026/01/14 16:27:06 [DEBUG] unwindFrame: 读取 newBP=0x7ffcd6576140, retAddr=0x5649e4ae21e6 (from BP=0x7ffcd6576130)
+2026/01/14 16:27:06 [DEBUG] unwindFrame: 更新后 PC=0x5649e4ae21e6, BP=0x7ffcd6576140, SP=0x7ffcd6576150
+2026/01/14 16:27:06 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5649e4ae21e6
+2026/01/14 16:27:06 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x11e6
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 deregister_tm_clones @ 0x10a0, size=0, dist=0x146
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 register_tm_clones @ 0x10d0, size=0, dist=0x116
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 __do_global_dtors_aux @ 0x1110, size=0, dist=0xd6
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 frame_dummy @ 0x1160, size=0, dist=0x86
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 function_level_3 @ 0x11ce, size=27, dist=0x18
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 function_level_5 @ 0x1169, size=74, dist=0x7d
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 function_level_4 @ 0x11b3, size=27, dist=0x33
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 _start @ 0x1070, size=38, dist=0x176
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x1e6
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 目标地址=0x11e6, 检查了9个候选符号, 最佳匹配(范围内)=function_level_3, 距离=0x18
+2026/01/14 16:27:06 [DEBUG] SFrameResolver: 找到函数 function_level_3+0x18
+2026/01/14 16:27:06 [DEBUG] UnwindStack: Frame 6: PC=0x5649e4ae21e6, SP=0x7ffcd6576150, BP=0x7ffcd6576140
+2026/01/14 16:27:06 [DEBUG] unwindFrame: 读取 newBP=0x7ffcd6576150, retAddr=0x5649e4ae2201 (from BP=0x7ffcd6576140)
+2026/01/14 16:27:06 [DEBUG] unwindFrame: 更新后 PC=0x5649e4ae2201, BP=0x7ffcd6576150, SP=0x7ffcd6576160
+2026/01/14 16:27:06 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5649e4ae2201
+2026/01/14 16:27:06 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1201
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 deregister_tm_clones @ 0x10a0, size=0, dist=0x161
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 register_tm_clones @ 0x10d0, size=0, dist=0x131
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 __do_global_dtors_aux @ 0x1110, size=0, dist=0xf1
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 frame_dummy @ 0x1160, size=0, dist=0xa1
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 function_level_3 @ 0x11ce, size=27, dist=0x33
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 function_level_5 @ 0x1169, size=74, dist=0x98
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 function_level_2 @ 0x11e9, size=27, dist=0x18
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 function_level_4 @ 0x11b3, size=27, dist=0x4e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 _start @ 0x1070, size=38, dist=0x191
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x201
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 目标地址=0x1201, 检查了10个候选符号, 最佳匹配(范围内)=function_level_2, 距离=0x18
+2026/01/14 16:27:06 [DEBUG] SFrameResolver: 找到函数 function_level_2+0x18
+2026/01/14 16:27:06 [DEBUG] UnwindStack: Frame 7: PC=0x5649e4ae2201, SP=0x7ffcd6576160, BP=0x7ffcd6576150
+2026/01/14 16:27:06 [DEBUG] unwindFrame: 读取 newBP=0x7ffcd6576160, retAddr=0x5649e4ae221c (from BP=0x7ffcd6576150)
+2026/01/14 16:27:06 [DEBUG] unwindFrame: 更新后 PC=0x5649e4ae221c, BP=0x7ffcd6576160, SP=0x7ffcd6576170
+2026/01/14 16:27:06 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5649e4ae221c
+2026/01/14 16:27:06 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x121c
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 deregister_tm_clones @ 0x10a0, size=0, dist=0x17c
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 register_tm_clones @ 0x10d0, size=0, dist=0x14c
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 __do_global_dtors_aux @ 0x1110, size=0, dist=0x10c
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 frame_dummy @ 0x1160, size=0, dist=0xbc
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 function_level_1 @ 0x1204, size=27, dist=0x18
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 function_level_3 @ 0x11ce, size=27, dist=0x4e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 function_level_5 @ 0x1169, size=74, dist=0xb3
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 function_level_2 @ 0x11e9, size=27, dist=0x33
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 function_level_4 @ 0x11b3, size=27, dist=0x69
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 _start @ 0x1070, size=38, dist=0x1ac
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x21c
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 目标地址=0x121c, 检查了11个候选符号, 最佳匹配(范围内)=function_level_1, 距离=0x18
+2026/01/14 16:27:06 [DEBUG] SFrameResolver: 找到函数 function_level_1+0x18
+2026/01/14 16:27:06 [DEBUG] UnwindStack: Frame 8: PC=0x5649e4ae221c, SP=0x7ffcd6576170, BP=0x7ffcd6576160
+2026/01/14 16:27:06 [DEBUG] unwindFrame: 读取 newBP=0x7ffcd6576170, retAddr=0x5649e4ae2263 (from BP=0x7ffcd6576160)
+2026/01/14 16:27:06 [DEBUG] unwindFrame: 更新后 PC=0x5649e4ae2263, BP=0x7ffcd6576170, SP=0x7ffcd6576180
+2026/01/14 16:27:06 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5649e4ae2263
+2026/01/14 16:27:06 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1263
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 deregister_tm_clones @ 0x10a0, size=0, dist=0x1c3
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 register_tm_clones @ 0x10d0, size=0, dist=0x193
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 __do_global_dtors_aux @ 0x1110, size=0, dist=0x153
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 frame_dummy @ 0x1160, size=0, dist=0x103
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 function_level_1 @ 0x1204, size=27, dist=0x5f
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 function_level_3 @ 0x11ce, size=27, dist=0x95
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 function_level_5 @ 0x1169, size=74, dist=0xfa
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 function_level_2 @ 0x11e9, size=27, dist=0x7a
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 function_level_4 @ 0x11b3, size=27, dist=0xb0
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 _start @ 0x1070, size=38, dist=0x1f3
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 main @ 0x121f, size=75, dist=0x44
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x263
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 目标地址=0x1263, 检查了12个候选符号, 最佳匹配(范围内)=main, 距离=0x44
+2026/01/14 16:27:06 [DEBUG] SFrameResolver: 找到函数 main+0x44
+2026/01/14 16:27:06 [DEBUG] UnwindStack: Frame 9: PC=0x5649e4ae2263, SP=0x7ffcd6576180, BP=0x7ffcd6576170
+2026/01/14 16:27:06 [DEBUG] unwindFrame: 读取 newBP=0x7ffcd6576210, retAddr=0x7f9595427635 (from BP=0x7ffcd6576170)
+2026/01/14 16:27:06 [DEBUG] unwindFrame: 更新后 PC=0x7f9595427635, BP=0x7ffcd6576210, SP=0x7ffcd6576220
+2026/01/14 16:27:06 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f9595427635
+2026/01/14 16:27:06 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x27635
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 verrx @ 0x26d60, size=33, dist=0x8d5
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 __libc_init_first @ 0x275b0, size=5, dist=0x85
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 verr @ 0x26d42, size=30, dist=0x8f3
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 warn @ 0x26c87, size=187, dist=0x9ae
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 err @ 0x26d81, size=178, dist=0x8b4
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 vwarn @ 0x26c7b, size=12, dist=0x9ba
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 errx @ 0x26e33, size=178, dist=0x802
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 目标地址=0x27635, 检查了15个候选符号, 最佳匹配(最近)=__libc_init_first, 距离=0x85
+2026/01/14 16:27:06 [DEBUG] SFrameResolver: 找到共享库函数 __libc_init_first+0x85@libc.so.6
+2026/01/14 16:27:06 [DEBUG] UnwindStack: Frame 10: PC=0x7f9595427635, SP=0x7ffcd6576220, BP=0x7ffcd6576210
+2026/01/14 16:27:06 [DEBUG] unwindFrame: 读取 newBP=0x7ffcd6576270, retAddr=0x7f95954276e9 (from BP=0x7ffcd6576210)
+2026/01/14 16:27:06 [DEBUG] unwindFrame: 更新后 PC=0x7f95954276e9, BP=0x7ffcd6576270, SP=0x7ffcd6576280
+2026/01/14 16:27:06 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f95954276e9
+2026/01/14 16:27:06 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x276e9
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 verrx @ 0x26d60, size=33, dist=0x989
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 __libc_init_first @ 0x275b0, size=5, dist=0x139
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 verr @ 0x26d42, size=30, dist=0x9a7
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 __libc_start_main @ 0x27660, size=336, dist=0x89
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 __libc_start_main @ 0x27660, size=336, dist=0x89
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 warn @ 0x26c87, size=187, dist=0xa62
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 err @ 0x26d81, size=178, dist=0x968
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 vwarn @ 0x26c7b, size=12, dist=0xa6e
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 候选符号 errx @ 0x26e33, size=178, dist=0x8b6
+2026/01/14 16:27:06 [DEBUG] findSymbolInList: 目标地址=0x276e9, 检查了17个候选符号, 最佳匹配(范围内)=__libc_start_main, 距离=0x89
+2026/01/14 16:27:06 [DEBUG] SFrameResolver: 找到共享库函数 __libc_start_main+0x89@libc.so.6
+2026/01/14 16:27:06 [DEBUG] UnwindStack: Frame 11: PC=0x7f95954276e9, SP=0x7ffcd6576280, BP=0x7ffcd6576270
+2026/01/14 16:27:06 [DEBUG] unwindFrame: 读取 newBP=0x0, retAddr=0x5649e4ae2095 (from BP=0x7ffcd6576270)
+2026/01/14 16:27:06 [DEBUG] unwindFrame: 新BP为0，到达栈底
+2026/01/14 16:27:06 [DEBUG] UnwindStack: 展开失败: reached end of stack (null BP)
+2026/01/14 16:27:06 [DEBUG] UnwindStack: 总共展开了 12 帧
+
+=== 详细栈帧信息 ===
+
+帧 #0:
+  程序计数器 (PC): 0x00007f959549318e
+  栈指针     (SP): 0x00007ffcd6576090
+  基址指针   (BP): 0x00007ffcd65760a0
+  函数: __libc_alloca_cutoff+0x13e
+  库: libc.so.6
+
+帧 #1:
+  程序计数器 (PC): 0x00007f95954e3bd2
+  栈指针     (SP): 0x00007ffcd65760d0
+  基址指针   (BP): 0x00007ffcd65760c0
+  函数: clock_nanosleep+0x32
+  库: libc.so.6
+
+帧 #2:
+  程序计数器 (PC): 0x00007f95954efc57
+  栈指针     (SP): 0x00007ffcd65760e0
+  基址指针   (BP): 0x00007ffcd65760d0
+  函数: nanosleep+0x17
+  库: libc.so.6
+
+帧 #3:
+  程序计数器 (PC): 0x00007f959550229e
+  栈指针     (SP): 0x00007ffcd6576120
+  基址指针   (BP): 0x00007ffcd6576110
+  函数: sleep+0x3e
+  库: libc.so.6
+
+帧 #4:
+  程序计数器 (PC): 0x00005649e4ae21b1
+  栈指针     (SP): 0x00007ffcd6576130
+  基址指针   (BP): 0x00007ffcd6576120
+  函数: function_level_5+0x48
+
+帧 #5:
+  程序计数器 (PC): 0x00005649e4ae21cb
+  栈指针     (SP): 0x00007ffcd6576140
+  基址指针   (BP): 0x00007ffcd6576130
+  函数: function_level_4+0x18
+
+帧 #6:
+  程序计数器 (PC): 0x00005649e4ae21e6
+  栈指针     (SP): 0x00007ffcd6576150
+  基址指针   (BP): 0x00007ffcd6576140
+  函数: function_level_3+0x18
+
+帧 #7:
+  程序计数器 (PC): 0x00005649e4ae2201
+  栈指针     (SP): 0x00007ffcd6576160
+  基址指针   (BP): 0x00007ffcd6576150
+  函数: function_level_2+0x18
+
+帧 #8:
+  程序计数器 (PC): 0x00005649e4ae221c
+  栈指针     (SP): 0x00007ffcd6576170
+  基址指针   (BP): 0x00007ffcd6576160
+  函数: function_level_1+0x18
+
+帧 #9:
+  程序计数器 (PC): 0x00005649e4ae2263
+  栈指针     (SP): 0x00007ffcd6576180
+  基址指针   (BP): 0x00007ffcd6576170
+  函数: main+0x44
+
+帧 #10:
+  程序计数器 (PC): 0x00007f9595427635
+  栈指针     (SP): 0x00007ffcd6576220
+  基址指针   (BP): 0x00007ffcd6576210
+  函数: __libc_init_first+0x85
+  库: libc.so.6
+
+帧 #11:
+  程序计数器 (PC): 0x00007f95954276e9
+  栈指针     (SP): 0x00007ffcd6576280
+  基址指针   (BP): 0x00007ffcd6576270
+  函数: __libc_start_main+0x89
+  库: libc.so.6
+
+=== 统计信息 ===
+总栈帧数: 12
+
+各库栈帧数:
+  <main>                        : 6
+  libc.so.6                     : 6

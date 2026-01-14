@@ -338,6 +338,7 @@ func (r *SFrameResolver) ResolveAddress(addr uint64) (*AddrInfo, error) {
 	// 检查共享库
 	for i := range r.mappings {
 		if addr >= r.mappings[i].StartAddr && addr < r.mappings[i].EndAddr {
+			// 计算相对于库加载基址的偏移（符号表中的地址是相对地址）
 			fileOffset := addr - r.mappings[i].StartAddr + r.mappings[i].Offset
 			debugLog("[DEBUG] SFrameResolver: 共享库地址, 路径: %s, 偏移: 0x%x\n",
 				r.mappings[i].Path, fileOffset)
@@ -384,6 +385,13 @@ func (r *SFrameResolver) findSymbol(addr uint64) string {
 func (r *SFrameResolver) findSymbolInList(addr uint64, symbols []ElfSymbol) string {
 	var bestMatch string
 	var bestDist uint64 = ^uint64(0)
+	var bestInRange string
+	var bestInRangeDist uint64 = ^uint64(0)
+	var candidatesChecked int
+
+	// 对于超出符号范围的情况，限制更严格的距离阈值
+	// 因为ELF符号表中的size信息不总是准确的，但距离太远的匹配很可能是错误的
+	const maxOutOfRangeDistance = 0x100 // 256字节
 
 	for i := range symbols {
 		sym := &symbols[i]
@@ -394,24 +402,62 @@ func (r *SFrameResolver) findSymbolInList(addr uint64, symbols []ElfSymbol) stri
 
 		// 检查地址是否在符号范围内
 		if addr >= sym.Addr {
+			candidatesChecked++
 			dist := addr - sym.Addr
-			if sym.Size > 0 && dist >= sym.Size {
-				continue // 超出符号范围
+
+			// 调试：记录接近的符号
+			if dist < 0x1000 {
+				debugLog("[DEBUG] findSymbolInList: 候选符号 %s @ 0x%x, size=%d, dist=0x%x\n",
+					sym.Name, sym.Addr, sym.Size, dist)
 			}
-			if dist < bestDist {
+
+			// 优先选择在符号范围内的
+			if sym.Size > 0 && dist < sym.Size {
+				if dist < bestInRangeDist {
+					bestInRangeDist = dist
+					bestInRange = sym.Name
+				}
+			}
+
+			// 记录最近的符号作为后备（但对超出范围的符号使用更严格的距离限制）
+			// 如果符号有明确的size且地址超出范围，则限制在256字节内
+			// 如果符号没有size信息（size=0），则允许更大的距离（4KB）
+			maxDist := uint64(0x1000) // 默认4KB
+			if sym.Size > 0 && dist >= sym.Size {
+				// 地址超出符号范围，使用更严格的限制
+				maxDist = maxOutOfRangeDistance
+			}
+
+			if dist < maxDist && dist < bestDist {
 				bestDist = dist
 				bestMatch = sym.Name
 			}
 		}
 	}
 
-	if bestMatch != "" {
+	// 优先使用范围内的匹配
+	if bestInRange != "" {
+		debugLog("[DEBUG] findSymbolInList: 目标地址=0x%x, 检查了%d个候选符号, 最佳匹配(范围内)=%s, 距离=0x%x\n",
+			addr, candidatesChecked, bestInRange, bestInRangeDist)
+		if bestInRangeDist > 0 {
+			return fmt.Sprintf("%s+0x%x", bestInRange, bestInRangeDist)
+		}
+		return bestInRange
+	}
+
+	// 使用最近的符号（如果距离在合理范围内）
+	if bestMatch != "" && bestDist != ^uint64(0) {
+		debugLog("[DEBUG] findSymbolInList: 目标地址=0x%x, 检查了%d个候选符号, 最佳匹配(最近)=%s, 距离=0x%x\n",
+			addr, candidatesChecked, bestMatch, bestDist)
 		if bestDist > 0 {
 			return fmt.Sprintf("%s+0x%x", bestMatch, bestDist)
 		}
 		return bestMatch
 	}
 
+	// 没有找到合适的符号
+	debugLog("[DEBUG] findSymbolInList: 目标地址=0x%x, 检查了%d个候选符号, 未找到合适的符号\n",
+		addr, candidatesChecked)
 	return ""
 }
 
