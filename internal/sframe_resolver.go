@@ -846,13 +846,13 @@ func (r *SFrameResolver) findSFrameFunction(pc uint64) (*SFrameFunction, uint64)
 					// 函数地址 = FDE字段位置 + StartAddr (作为有符号偏移)
 					fdeFieldAddr := r.sframeData.sectionAddr + uint64(fdeOffset)
 					fnStartVirtAddr = uint64(int64(fdeFieldAddr) + int64(fn.StartAddr))
-					debugLog("[DEBUG] findSFrameFunction: FDE[%d] PCREL mode: fdeFieldAddr=0x%x, StartAddr=%d, fnStartVirtAddr=0x%x\n",
-						i, fdeFieldAddr, fn.StartAddr, fnStartVirtAddr)
+					// debugLog("[DEBUG] findSFrameFunction: FDE[%d] PCREL mode: fdeFieldAddr=0x%x, StartAddr=%d, fnStartVirtAddr=0x%x\n",
+					// 	i, fdeFieldAddr, fn.StartAddr, fnStartVirtAddr)
 				} else {
 					// Absolute: StartAddr是相对于.sframe节开始的偏移
 					fnStartVirtAddr = r.sframeData.sectionAddr + uint64(int64(fn.StartAddr))
-					debugLog("[DEBUG] findSFrameFunction: FDE[%d] ABS mode: sectionAddr=0x%x, StartAddr=%d, fnStartVirtAddr=0x%x\n",
-						i, r.sframeData.sectionAddr, fn.StartAddr, fnStartVirtAddr)
+					// debugLog("[DEBUG] findSFrameFunction: FDE[%d] ABS mode: sectionAddr=0x%x, StartAddr=%d, fnStartVirtAddr=0x%x\n",
+					// 	i, r.sframeData.sectionAddr, fn.StartAddr, fnStartVirtAddr)
 				}
 
 				fnEndVirtAddr := fnStartVirtAddr + uint64(fn.Size)
@@ -901,13 +901,13 @@ func (r *SFrameResolver) findSFrameFunction(pc uint64) (*SFrameFunction, uint64)
 						// PC-relative: StartAddr是相对于FDE的sfde_func_start_address字段本身的偏移
 						fdeFieldAddr := r.mappings[i].SFrameData.sectionAddr + uint64(fdeOffset)
 						fnStartVirtAddr = uint64(int64(fdeFieldAddr) + int64(fn.StartAddr))
-						debugLog("[DEBUG] findSFrameFunction: Lib FDE[%d] PCREL mode: fdeFieldAddr=0x%x, StartAddr=%d, fnStartVirtAddr=0x%x\n",
-							j, fdeFieldAddr, fn.StartAddr, fnStartVirtAddr)
+						// debugLog("[DEBUG] findSFrameFunction: Lib FDE[%d] PCREL mode: fdeFieldAddr=0x%x, StartAddr=%d, fnStartVirtAddr=0x%x\n",
+						// 	j, fdeFieldAddr, fn.StartAddr, fnStartVirtAddr)
 					} else {
 						// Absolute: StartAddr是相对于.sframe节开始的偏移
 						fnStartVirtAddr = r.mappings[i].SFrameData.sectionAddr + uint64(int64(fn.StartAddr))
-						debugLog("[DEBUG] findSFrameFunction: Lib FDE[%d] ABS mode: sectionAddr=0x%x, StartAddr=%d, fnStartVirtAddr=0x%x\n",
-							j, r.mappings[i].SFrameData.sectionAddr, fn.StartAddr, fnStartVirtAddr)
+						// debugLog("[DEBUG] findSFrameFunction: Lib FDE[%d] ABS mode: sectionAddr=0x%x, StartAddr=%d, fnStartVirtAddr=0x%x\n",
+						// 	j, r.mappings[i].SFrameData.sectionAddr, fn.StartAddr, fnStartVirtAddr)
 					}
 
 					fnEndVirtAddr := fnStartVirtAddr + uint64(fn.Size)
@@ -1046,7 +1046,13 @@ func (r *SFrameResolver) unwindFrameWithSFrame(ctx *UnwindContext) error {
 	// 验证返回地址的有效性
 	// 检查是否看起来像有效的代码地址
 	isValidCodeAddr := func(addr uint64) bool {
+		// 基本范围检查
 		if addr < 0x1000 || addr > 0x7fffffffffff {
+			return false
+		}
+		// 栈地址范围 (通常在 0x7ffc00000000 - 0x7fffffffffff)
+		// 这肯定不是代码地址,应该立即拒绝
+		if addr >= 0x7ffc00000000 && addr <= 0x7fffffffffff {
 			return false
 		}
 		// 检查是否在已知的代码区域（主程序或共享库）
@@ -1058,11 +1064,8 @@ func (r *SFrameResolver) unwindFrameWithSFrame(ctx *UnwindContext) error {
 				return true
 			}
 		}
-		// 栈地址肯定不是代码地址
-		if addr >= 0x7fff00000000 && addr <= 0x7fffffffffff {
-			return false
-		}
-		return true
+		// 不在任何已知的代码映射中
+		return false
 	}
 
 	// 对于SP-based函数，如果从计算位置读取的不是有效代码地址，

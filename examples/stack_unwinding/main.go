@@ -14,7 +14,8 @@ import (
 )
 
 var (
-	debugMode = flag.Bool("debug", false, "启用调试日志")
+	debugMode    = flag.Bool("debug", false, "启用调试日志")
+	unwindMethod = flag.String("method", "auto", "栈展开方法: auto(自动,优先SFrame), sframe(仅SFrame), fp(仅帧指针)")
 )
 
 func main() {
@@ -25,8 +26,12 @@ func main() {
 
 	args := flag.Args()
 	if len(args) < 1 {
-		fmt.Fprintf(os.Stderr, "用法: %s [-debug] <PID>\n", os.Args[0])
-		fmt.Fprintf(os.Stderr, "  -debug  启用调试日志\n")
+		fmt.Fprintf(os.Stderr, "用法: %s [-debug] [-method auto|sframe|fp] <PID>\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "  -debug         启用调试日志\n")
+		fmt.Fprintf(os.Stderr, "  -method        栈展开方法:\n")
+		fmt.Fprintf(os.Stderr, "                 auto   - 自动模式(优先SFrame,失败时回退到FP) [默认]\n")
+		fmt.Fprintf(os.Stderr, "                 sframe - 仅使用SFrame展开\n")
+		fmt.Fprintf(os.Stderr, "                 fp     - 仅使用帧指针展开\n")
 		fmt.Fprintf(os.Stderr, "  对指定进程进行栈回溯\n")
 		os.Exit(1)
 	}
@@ -67,9 +72,24 @@ func main() {
 
 	// 执行栈回溯
 	maxFrames := 32
-	fmt.Fprintf(f, "最大栈帧数: %d\n\n", maxFrames)
+	fmt.Fprintf(f, "最大栈帧数: %d\n", maxFrames)
+	fmt.Fprintf(f, "栈展开方法: %s\n\n", *unwindMethod)
 
-	frames, err := resolver.UnwindStack(maxFrames)
+	var frames []lbr.StackFrame
+	switch *unwindMethod {
+	case "sframe":
+		fmt.Fprintf(multiWriter, "使用 SFrame 栈展开...\n")
+		frames, err = resolver.UnwindStackWithSFrame(maxFrames)
+	case "fp":
+		fmt.Fprintf(multiWriter, "使用帧指针 (FP) 栈展开...\n")
+		frames, err = resolver.UnwindStackWithFP(maxFrames)
+	case "auto":
+		fmt.Fprintf(multiWriter, "使用自动模式栈展开 (优先SFrame)...\n")
+		frames, err = resolver.UnwindStack(maxFrames)
+	default:
+		log.Fatalf("无效的栈展开方法: %s (应为 auto, sframe 或 fp)", *unwindMethod)
+	}
+
 	if err != nil {
 		log.Printf("警告: 栈回溯可能不完整: %v\n", err)
 	}
