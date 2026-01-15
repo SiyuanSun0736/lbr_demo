@@ -77,7 +77,8 @@ type SFrameFunction struct {
 // 描述函数内特定位置的栈帧布局信息
 type SFrameFDE struct {
 	StartOffset uint32 // 相对于函数起始的偏移
-	FDEInfo     uint8  // FDE信息字节,包含CFA类型和偏移大小
+	FDEInfo     uint8  // FDE信息字节(保留,用于FDE级别信息)
+	FREInfo     uint8  // FRE Info Word,包含CFA base寄存器、offset大小和数量等信息
 	RepSize     uint32 // 重复次数/大小
 	CFAOffset   int32  // CFA偏移量(从SP或BP计算)
 	FPOffset    int32  // 帧指针保存位置偏移
@@ -641,7 +642,7 @@ func parseFRE(data []byte, offset int, freType uint8, abi uint8) (*SFrameFDE, in
 	offset++
 
 	// 解析 FRE Info Word
-	cfaBaseReg, offsetSize, offsetCount, _ := parseFREInfo(freInfo)
+	_, offsetSize, offsetCount, _ := parseFREInfo(freInfo)
 
 	// 确定偏移值的字节大小
 	var offsetBytes int
@@ -683,7 +684,7 @@ func parseFRE(data []byte, offset int, freType uint8, abi uint8) (*SFrameFDE, in
 	// 根据 ABI 解释偏移值
 	fde := &SFrameFDE{
 		StartOffset: startAddr,
-		FDEInfo:     freInfo,
+		FREInfo:     freInfo, // 存储 FRE Info Word
 	}
 
 	// 第一个偏移始终是 CFA offset
@@ -725,14 +726,6 @@ func parseFRE(data []byte, offset int, freType uint8, abi uint8) (*SFrameFDE, in
 		if offsetCount >= 3 {
 			fde.FPOffset = offsets[2]
 		}
-	}
-
-	// 存储 CFA base register 信息到 FDEInfo（临时使用）
-	// bit 0 存储 cfaBaseReg
-	if cfaBaseReg == SFRAME_FRE_CFA_BASE_REG_FP {
-		fde.FDEInfo |= 0x01
-	} else {
-		fde.FDEInfo &= ^uint8(0x01)
 	}
 
 	return fde, offset, nil
@@ -805,8 +798,8 @@ func findFDEForFunction(sframeFunc *SFrameFunction, sframeData *SFrameData, pcOf
 	}
 
 	if bestMatch != nil {
-		// 解析 CFA base register 从 FRE Info
-		cfaBaseReg := bestMatch.FDEInfo & 0x01
+		// 解析 CFA base register 从 FRE Info Word
+		cfaBaseReg := bestMatch.FREInfo & 0x01
 		cfaBaseStr := "SP"
 		if cfaBaseReg == SFRAME_FRE_CFA_BASE_REG_FP {
 			cfaBaseStr = "FP"
@@ -1153,7 +1146,7 @@ func (r *SFrameResolver) unwindFrameWithSFrame(ctx *UnwindContext) error {
 	// bit 0 = 0: SP-based, bit 0 = 1: FP-based
 	useFPBased := false
 	if fde != nil {
-		cfaBaseReg := fde.FDEInfo & 0x01
+		cfaBaseReg := fde.FREInfo & 0x01
 		useFPBased = (cfaBaseReg == SFRAME_FRE_CFA_BASE_REG_FP)
 	}
 
@@ -1349,7 +1342,7 @@ func (r *SFrameResolver) UnwindStack(maxFrames int) ([]StackFrame, error) {
 		if err != nil {
 			debugLog("[DEBUG] UnwindStack: SFrame展开失败，尝试FP: %v\n", err)
 			// 回退到基于帧指针的展开
-			if err := r.unwindFrame(ctx); err != nil {
+			if err := r.unwindFrameWithFP(ctx); err != nil {
 				debugLog("[DEBUG] UnwindStack: FP展开也失败: %v\n", err)
 				break
 			}
@@ -1363,8 +1356,8 @@ func (r *SFrameResolver) UnwindStack(maxFrames int) ([]StackFrame, error) {
 	return frames, nil
 }
 
-// unwindFrame 展开一个栈帧
-func (r *SFrameResolver) unwindFrame(ctx *UnwindContext) error {
+// unwindFrameWithFP 展开一个栈帧
+func (r *SFrameResolver) unwindFrameWithFP(ctx *UnwindContext) error {
 	// 基于帧指针(BP)的栈展开
 	// x86-64 标准栈帧布局：
 	// [BP]     -> 上一个BP
@@ -1392,16 +1385,16 @@ func (r *SFrameResolver) unwindFrame(ctx *UnwindContext) error {
 		return fmt.Errorf("failed to read return address at 0x%x: %w", ctx.BP+8, err)
 	}
 
-	debugLog("[DEBUG] unwindFrame: 读取 newBP=0x%x, retAddr=0x%x (from BP=0x%x)\n", newBP, retAddr, ctx.BP)
+	debugLog("[DEBUG] unwindFrameWithFP: 读取 newBP=0x%x, retAddr=0x%x (from BP=0x%x)\n", newBP, retAddr, ctx.BP)
 
 	// 验证新的值是否合理
 	if retAddr == 0 {
-		debugLog("[DEBUG] unwindFrame: 返回地址为0，到达栈底\n")
+		debugLog("[DEBUG] unwindFrameWithFP: 返回地址为0，到达栈底\n")
 		return fmt.Errorf("reached end of stack (null return address)")
 	}
 
 	if newBP == 0 {
-		debugLog("[DEBUG] unwindFrame: 新BP为0，到达栈底\n")
+		debugLog("[DEBUG] unwindFrameWithFP: 新BP为0，到达栈底\n")
 		return fmt.Errorf("reached end of stack (null BP)")
 	}
 
@@ -1430,7 +1423,7 @@ func (r *SFrameResolver) unwindFrame(ctx *UnwindContext) error {
 	// 因为: [BP] = 旧BP, [BP+8] = retAddr, [BP+16] = 调用者的栈顶
 	ctx.SP = ctx.BP
 
-	debugLog("[DEBUG] unwindFrame: 更新后 PC=0x%x, BP=0x%x, SP=0x%x\n", ctx.PC, ctx.BP, ctx.SP)
+	debugLog("[DEBUG] unwindFrameWithFP: 更新后 PC=0x%x, BP=0x%x, SP=0x%x\n", ctx.PC, ctx.BP, ctx.SP)
 	return nil
 }
 
@@ -1520,7 +1513,7 @@ func (r *SFrameResolver) UnwindStackWithFP(maxFrames int) ([]StackFrame, error) 
 			i, frame.PC, frame.SP, frame.BP)
 
 		// 仅使用FP展开
-		if err := r.unwindFrame(ctx); err != nil {
+		if err := r.unwindFrameWithFP(ctx); err != nil {
 			debugLog("[DEBUG] UnwindStackWithFP: FP展开失败: %v\n", err)
 			break
 		}
