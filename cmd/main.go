@@ -18,6 +18,12 @@ import (
 
 //go:generate go run github.com/cilium/ebpf/cmd/bpf2go -target amd64 -type lbr_data lbr ../bpf/bpf_lbr.c -- -I../bpf -mllvm -bpf-stack-size=2048
 
+type resolverCache struct {
+	sframe *lbr.SFrameResolver
+	dwarf  *lbr.DwarfResolver
+	user   *lbr.UserSymbolResolver // addr2line 回退
+}
+
 var (
 	targetPID      = flag.Int("pid", 0, "Target PID to monitor (0 = all processes)")
 	useAddr2line   = flag.Bool("addr2line", true, "Use addr2line for user symbol resolution")
@@ -29,6 +35,8 @@ var (
 )
 
 var logFile *os.File
+
+var pidResolvers = make(map[uint32]*resolverCache)
 
 func main() {
 	flag.Parse()
@@ -44,6 +52,117 @@ func main() {
 
 	if err := run(); err != nil {
 		log.Fatal(err)
+	}
+}
+
+// resolveAddrInfo 统一解析地址，返回完整符号信息
+// 优先级: kallsyms(内核) > SFrame > DWARF > addr2line > 原始地址
+func resolveAddrInfo(
+	addr uint64,
+	syms *lbr.Symbols,
+	cache *resolverCache,
+) (name string, offset uint64, file string, line int, libName string) {
+	if addr == 0 {
+		return
+	}
+
+	// 1. 内核地址: 使用 kallsyms
+	if addr > 0xffff800000000000 {
+		if syms != nil {
+			n, off, ok := syms.Find(addr)
+			if ok {
+				return n, off, "", 0, ""
+			}
+		}
+		return "[kernel]", addr, "", 0, ""
+	}
+
+	if cache == nil {
+		return "[user]", addr, "", 0, ""
+	}
+
+	// 2. 用户态地址: SFrame
+	if cache.sframe != nil {
+		if info, err := cache.sframe.ResolveAddress(addr); err == nil && info.Function != "" {
+			return info.Function, 0, info.File, info.Line, info.Library
+		}
+	}
+
+	// 3. 用户态地址: DWARF
+	if cache.dwarf != nil {
+		if info, err := cache.dwarf.ResolveAddress(addr); err == nil && info.Function != "" {
+			return info.Function, 0, info.File, info.Line, info.Library
+		}
+	}
+
+	// 4. 用户态地址: addr2line
+	if cache.user != nil {
+		if fn, f, l, err := cache.user.ResolveAddress(addr); err == nil && fn != "" {
+			return fn, 0, f, l, ""
+		}
+	}
+
+	// 5. 回退: 原始地址
+	return "[user]", addr, "", 0, ""
+}
+
+// getOrCreateCache 获取或创建 PID 对应的解析器缓存
+// 优先级: SFrame > DWARF > addr2line，每级在上一级不可用时作为后备
+func getOrCreateCache(pid uint32) *resolverCache {
+	if cache, ok := pidResolvers[pid]; ok {
+		return cache
+	}
+
+	cache := &resolverCache{}
+
+	// 优先尝试 SFrame（轻量级，无需调试符号）
+	if *useSFrame {
+		sr, err := lbr.NewSFrameResolver(int(pid))
+		if err == nil {
+			cache.sframe = sr
+			log.Printf("[resolver] PID %d: 已启用 SFrame", pid)
+		} else {
+			log.Printf("[resolver] PID %d: SFrame 失败 (%v)，尝试下一级", pid, err)
+		}
+	}
+
+	// SFrame 不可用时尝试 DWARF
+	if *useDwarf && cache.sframe == nil {
+		dr, err := lbr.NewDwarfResolver(int(pid))
+		if err == nil {
+			cache.dwarf = dr
+			log.Printf("[resolver] PID %d: 已启用 DWARF", pid)
+		} else {
+			log.Printf("[resolver] PID %d: DWARF 失败 (%v)，尝试下一级", pid, err)
+		}
+	}
+
+	// SFrame 和 DWARF 均不可用时回退到 addr2line
+	if *useAddr2line && cache.sframe == nil && cache.dwarf == nil {
+		ur, err := lbr.NewUserSymbolResolver(int(pid))
+		if err == nil {
+			cache.user = ur
+			log.Printf("[resolver] PID %d: 已启用 addr2line", pid)
+		} else {
+			log.Printf("[resolver] PID %d: addr2line 失败 (%v)", pid, err)
+		}
+	}
+
+	pidResolvers[pid] = cache
+	return cache
+}
+
+// closeAllResolvers 关闭所有解析器并清空缓存
+func closeAllResolvers() {
+	for pid, cache := range pidResolvers {
+		if cache.sframe != nil {
+			cache.sframe.Close()
+		}
+		if cache.dwarf != nil {
+			cache.dwarf.Close()
+		}
+		// UserSymbolResolver 无需显式关闭（无底层文件句柄）
+		delete(pidResolvers, pid)
 	}
 }
 
@@ -85,6 +204,7 @@ func run() error {
 	ctx, stop := signal.NotifyContext(context.Background(),
 		syscall.SIGINT, syscall.SIGTERM)
 	defer stop()
+	defer closeAllResolvers()
 
 	var r syscall.Rlimit
 	err := syscall.Getrlimit(syscall.RLIMIT_NOFILE, &r)
@@ -177,11 +297,6 @@ func processLbrData(lbrMap *ebpf.Map, commMap *ebpf.Map, syms *lbr.Symbols, targ
 	// 获取当前进程的 PID，用于过滤自己
 	currentPID := uint32(os.Getpid())
 
-	// 用户态符号解析器（缓存）
-	var userResolver *lbr.UserSymbolResolver
-	var dwarfResolver *lbr.DwarfResolver
-	var sframeResolver *lbr.SFrameResolver
-
 	iter := lbrMap.Iterate()
 	totalEntries := 0
 	validEntries := 0
@@ -223,42 +338,16 @@ func processLbrData(lbrMap *ebpf.Map, commMap *ebpf.Map, syms *lbr.Symbols, targ
 			continue
 		}
 
-		// 如果需要解析用户态符号，且这是目标进程，创建解析器
-		if *resolveSymbols && int(pid) == targetPID && targetPID != 0 {
-			// 优先级: SFrame > DWARF > addr2line
-			if *useSFrame && sframeResolver == nil {
-				if sr, err := lbr.NewSFrameResolver(int(pid)); err == nil {
-					sframeResolver = sr
-					defer sframeResolver.Close()
-					log.Printf("已启用 SFrame 符号解析 for PID %d", pid)
-				} else {
-					log.Printf("SFrame 解析器创建失败: %v，回退到 DWARF 或 addr2line", err)
-				}
-			}
-			if *useDwarf && dwarfResolver == nil && sframeResolver == nil {
-				if dr, err := lbr.NewDwarfResolver(int(pid)); err == nil {
-					dwarfResolver = dr
-					defer dwarfResolver.Close()
-					log.Printf("已启用 DWARF 符号解析 for PID %d", pid)
-				} else {
-					log.Printf("DWARF 解析器创建失败: %v，回退到 addr2line", err)
-				}
-			}
-			if *useAddr2line && userResolver == nil && dwarfResolver == nil && sframeResolver == nil {
-				if ur, err := lbr.NewUserSymbolResolver(int(pid)); err == nil {
-					userResolver = ur
-					log.Printf("已启用 addr2line 符号解析 for PID %d", pid)
-				} else {
-					log.Printf("addr2line 解析器创建失败: %v", err)
-				}
-			}
+		// 按需获取或创建该 PID 的符号解析器缓存（SFrame > DWARF > addr2line）
+		var cache *resolverCache
+		if *resolveSymbols && (targetPID == 0 || int(pid) == targetPID) {
+			cache = getOrCreateCache(pid)
 		}
 
 		// 获取进程名称
 		var comm [16]byte
 		commName := "<unknown>"
 		if err := commMap.Lookup(&key, &comm); err == nil {
-			// 找到第一个空字节作为字符串结尾
 			for i, b := range comm {
 				if b == 0 {
 					commName = string(comm[:i])
@@ -274,95 +363,26 @@ func processLbrData(lbrMap *ebpf.Map, commMap *ebpf.Map, syms *lbr.Symbols, targ
 		for i := 0; i < numEntries && i < 32; i++ {
 			entry := &data.Entries[i]
 
-			// 先尝试内核符号
-			fromName, fromOffset, _ := syms.Find(entry.From)
-			toName, toOffset, _ := syms.Find(entry.To)
-
-			var fromFile, toFile string
-			var fromLine, toLine int
-
-			var fromLibName, toLibName string
-
-			// 如果找不到内核符号，尝试解析用户态地址
-			if fromName == "" && entry.From != 0 {
-				if sframeResolver != nil {
-					if info, err := sframeResolver.ResolveAddress(entry.From); err == nil {
-						fromName = info.Function
-						fromFile = info.File
-						fromLine = info.Line
-						fromLibName = info.Library
-						fromOffset = 0
-					}
-				} else if dwarfResolver != nil {
-					if info, err := dwarfResolver.ResolveAddress(entry.From); err == nil {
-						fromName = info.Function
-						fromFile = info.File
-						fromLine = info.Line
-						fromLibName = info.Library
-						fromOffset = 0
-					}
-				} else if userResolver != nil {
-					if fn, file, line, err := userResolver.ResolveAddress(entry.From); err == nil {
-						fromName = fn
-						fromFile = file
-						fromLine = line
-						fromOffset = 0
-					}
-				}
-				// 如果仍然没有解析到，标记为用户态地址
-				if fromName == "" {
-					fromName = fmt.Sprintf("[user]")
-					fromOffset = entry.From
-				}
-			}
-			if toName == "" && entry.To != 0 {
-				if sframeResolver != nil {
-					if info, err := sframeResolver.ResolveAddress(entry.To); err == nil {
-						toName = info.Function
-						toFile = info.File
-						toLine = info.Line
-						toLibName = info.Library
-						toOffset = 0
-					}
-				} else if dwarfResolver != nil {
-					if info, err := dwarfResolver.ResolveAddress(entry.To); err == nil {
-						toName = info.Function
-						toFile = info.File
-						toLine = info.Line
-						toLibName = info.Library
-						toOffset = 0
-					}
-				} else if userResolver != nil {
-					if fn, file, line, err := userResolver.ResolveAddress(entry.To); err == nil {
-						toName = fn
-						toFile = file
-						toLine = line
-						toOffset = 0
-					}
-				}
-				// 如果仍然没有解析到，标记为用户态地址
-				if toName == "" {
-					toName = fmt.Sprintf("[user]")
-					toOffset = entry.To
-				}
-			}
+			// 统一解析 From / To 地址（内核符号 → SFrame → DWARF → addr2line → 原始地址）
+			fromName, fromOff, fromFile, fromLine, fromLib := resolveAddrInfo(entry.From, syms, cache)
+			toName, toOff, toFile, toLine, toLib := resolveAddrInfo(entry.To, syms, cache)
 
 			stack.AddEntry(lbr.BranchEntry{
 				From: &lbr.BranchEndpoint{
 					Addr:     entry.From,
 					FuncName: fromName,
-					Offset:   fromOffset,
+					Offset:   fromOff,
 					File:     fromFile,
 					Line:     fromLine,
-					LibName:  fromLibName,
+					LibName:  fromLib,
 				},
 				To: &lbr.BranchEndpoint{
 					Addr:     entry.To,
 					FuncName: toName,
-					Offset:   toOffset,
+					Offset:   toOff,
 					File:     toFile,
 					Line:     toLine,
-					LibName:  toLibName,
+					LibName:  toLib,
 				},
 			})
 		}
@@ -373,15 +393,12 @@ func processLbrData(lbrMap *ebpf.Map, commMap *ebpf.Map, syms *lbr.Symbols, targ
 		if logFile != nil {
 			logFile.WriteString(output)
 		}
-
-		// 输出到控制台
 		stack.Output(os.Stdout)
-		// 也输出到日志文件
 		if logFile != nil {
 			stack.Output(logFile)
 		}
 
-		// Delete processed entry
+		// 删除已处理的条目
 		_ = lbrMap.Delete(key)
 	}
 
