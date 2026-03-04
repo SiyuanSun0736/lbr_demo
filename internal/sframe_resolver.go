@@ -946,6 +946,36 @@ func (r *SFrameResolver) readUint64(addr uint64) (uint64, error) {
 	return binary.LittleEndian.Uint64(buf), nil
 }
 
+// NewUnwindContextFromPC 从PC地址创建栈回溯上下文
+// 这个方法会尝试通过读取进程寄存器来获取SP和BP
+// 如果无法获取，则只设置PC，SP和BP为0（部分功能可能受限）
+func (r *SFrameResolver) NewUnwindContextFromPC(pc uint64) (*UnwindContext, error) {
+	ctx := &UnwindContext{
+		PC: pc,
+	}
+
+	// 尝试获取当前的SP和BP作为参考
+	// 注意：这只是一个近似值，可能不准确
+	if regs, err := r.GetRegisters(); err == nil {
+		ctx.SP = regs.SP
+		ctx.BP = regs.BP
+		debugLog("[DEBUG] NewUnwindContextFromPC: 使用当前寄存器作为参考: SP=0x%x, BP=0x%x\n", ctx.SP, ctx.BP)
+	} else {
+		debugLog("[DEBUG] NewUnwindContextFromPC: 无法获取寄存器，SP和BP将为0\n")
+	}
+
+	return ctx, nil
+}
+
+// NewUnwindContextFromRegs 从完整的寄存器信息创建栈回溯上下文
+func NewUnwindContextFromRegs(pc, sp, bp uint64) *UnwindContext {
+	return &UnwindContext{
+		PC: pc,
+		SP: sp,
+		BP: bp,
+	}
+}
+
 // GetRegisters 获取进程寄存器（使用ptrace）
 func (r *SFrameResolver) GetRegisters() (*UnwindContext, error) {
 	// 使用 ptrace 附加到进程
@@ -1302,7 +1332,29 @@ func (r *SFrameResolver) unwindFrameWithSFrame(ctx *UnwindContext) error {
 	return nil
 }
 
-// UnwindStack 执行栈回溯
+// UnwindStackFromContext 从指定的上下文开始执行栈回溯
+// 允许从任意PC地址开始回溯，而不是只能从当前进程状态开始
+func (r *SFrameResolver) UnwindStackFromContext(ctx *UnwindContext, maxFrames int) ([]StackFrame, error) {
+	if maxFrames <= 0 {
+		maxFrames = 32 // 默认最大32帧
+	}
+
+	// 验证上下文的有效性
+	if ctx.PC == 0 || ctx.SP == 0 {
+		return nil, fmt.Errorf("invalid context: PC=0x%x, SP=0x%x", ctx.PC, ctx.SP)
+	}
+
+	// 创建上下文的副本，避免修改原始上下文
+	contextCopy := &UnwindContext{
+		PC: ctx.PC,
+		SP: ctx.SP,
+		BP: ctx.BP,
+	}
+
+	return r.doUnwindStack(contextCopy, maxFrames)
+}
+
+// UnwindStack 从进程当前状态执行栈回溯
 func (r *SFrameResolver) UnwindStack(maxFrames int) ([]StackFrame, error) {
 	if maxFrames <= 0 {
 		maxFrames = 32 // 默认最大32帧
@@ -1313,6 +1365,12 @@ func (r *SFrameResolver) UnwindStack(maxFrames int) ([]StackFrame, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed to get registers: %w", err)
 	}
+
+	return r.doUnwindStack(ctx, maxFrames)
+}
+
+// doUnwindStack 执行实际的栈回溯逻辑
+func (r *SFrameResolver) doUnwindStack(ctx *UnwindContext, maxFrames int) ([]StackFrame, error) {
 
 	frames := make([]StackFrame, 0, maxFrames)
 
@@ -1427,7 +1485,32 @@ func (r *SFrameResolver) unwindFrameWithFP(ctx *UnwindContext) error {
 	return nil
 }
 
-// UnwindStackWithSFrame 仅使用SFrame执行栈回溯（不回退到FP）
+// UnwindStackWithSFrameFromContext 从指定上下文开始，仅使用SFrame执行栈回溯（不回退到FP）
+func (r *SFrameResolver) UnwindStackWithSFrameFromContext(ctx *UnwindContext, maxFrames int) ([]StackFrame, error) {
+	if maxFrames <= 0 {
+		maxFrames = 32
+	}
+
+	if r.sframeData == nil || !r.sframeData.hasData {
+		return nil, fmt.Errorf("no SFrame data available")
+	}
+
+	// 验证上下文
+	if ctx.PC == 0 || ctx.SP == 0 {
+		return nil, fmt.Errorf("invalid context: PC=0x%x, SP=0x%x", ctx.PC, ctx.SP)
+	}
+
+	// 创建上下文副本
+	contextCopy := &UnwindContext{
+		PC: ctx.PC,
+		SP: ctx.SP,
+		BP: ctx.BP,
+	}
+
+	return r.doUnwindStackWithSFrame(contextCopy, maxFrames)
+}
+
+// UnwindStackWithSFrame 从进程当前状态开始，仅使用SFrame执行栈回溯（不回退到FP）
 func (r *SFrameResolver) UnwindStackWithSFrame(maxFrames int) ([]StackFrame, error) {
 	if maxFrames <= 0 {
 		maxFrames = 32
@@ -1442,6 +1525,12 @@ func (r *SFrameResolver) UnwindStackWithSFrame(maxFrames int) ([]StackFrame, err
 	if err != nil {
 		return nil, fmt.Errorf("failed to get registers: %w", err)
 	}
+
+	return r.doUnwindStackWithSFrame(ctx, maxFrames)
+}
+
+// doUnwindStackWithSFrame 执行实际的SFrame栈回溯逻辑
+func (r *SFrameResolver) doUnwindStackWithSFrame(ctx *UnwindContext, maxFrames int) ([]StackFrame, error) {
 
 	frames := make([]StackFrame, 0, maxFrames)
 
@@ -1477,7 +1566,28 @@ func (r *SFrameResolver) UnwindStackWithSFrame(maxFrames int) ([]StackFrame, err
 	return frames, nil
 }
 
-// UnwindStackWithFP 仅使用帧指针执行栈回溯
+// UnwindStackWithFPFromContext 从指定上下文开始，仅使用帧指针执行栈回溯
+func (r *SFrameResolver) UnwindStackWithFPFromContext(ctx *UnwindContext, maxFrames int) ([]StackFrame, error) {
+	if maxFrames <= 0 {
+		maxFrames = 32
+	}
+
+	// 验证上下文
+	if ctx.PC == 0 || ctx.SP == 0 {
+		return nil, fmt.Errorf("invalid context: PC=0x%x, SP=0x%x", ctx.PC, ctx.SP)
+	}
+
+	// 创建上下文副本
+	contextCopy := &UnwindContext{
+		PC: ctx.PC,
+		SP: ctx.SP,
+		BP: ctx.BP,
+	}
+
+	return r.doUnwindStackWithFP(contextCopy, maxFrames)
+}
+
+// UnwindStackWithFP 从进程当前状态开始，仅使用帧指针执行栈回溯
 func (r *SFrameResolver) UnwindStackWithFP(maxFrames int) ([]StackFrame, error) {
 	if maxFrames <= 0 {
 		maxFrames = 32
@@ -1488,6 +1598,12 @@ func (r *SFrameResolver) UnwindStackWithFP(maxFrames int) ([]StackFrame, error) 
 	if err != nil {
 		return nil, fmt.Errorf("failed to get registers: %w", err)
 	}
+
+	return r.doUnwindStackWithFP(ctx, maxFrames)
+}
+
+// doUnwindStackWithFP 执行实际的FP栈回溯逻辑
+func (r *SFrameResolver) doUnwindStackWithFP(ctx *UnwindContext, maxFrames int) ([]StackFrame, error) {
 
 	frames := make([]StackFrame, 0, maxFrames)
 

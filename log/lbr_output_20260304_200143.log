@@ -1,0 +1,453 @@
+2026/03/04 20:01:43 日志文件: log/lbr_output_20260304_200143.log
+2026/03/04 20:01:43 Current nofile rlimit: curr=524287 max=524288
+2026/03/04 20:01:43 Monitoring PID: 205446
+2026/03/04 20:01:43 LBR demo is running. Press Ctrl-C to exit.
+2026/03/04 20:01:43 Attached to 8 CPUs, checking for LBR data every second...
+2026/03/04 20:01:44 No LBR data - map中无任何条目
+2026/03/04 20:01:45 No LBR data - map中无任何条目
+2026/03/04 20:01:46 [DEBUG] NewSFrameResolver: 为PID 205446 创建SFrame解析器
+2026/03/04 20:01:46 [DEBUG] NewSFrameResolver: 可执行文件: /home/ssy/lbr/test/test_lbr_sframe
+2026/03/04 20:01:46 [DEBUG] loadSFrameData: SFrame Magic=0xdee2, Version=3, Flags=0x5
+2026/03/04 20:01:46 [DEBUG] loadSFrameData: ABI=3 (AMD64 little-endian)
+2026/03/04 20:01:46 [DEBUG] loadSFrameData: FixedFPOffset=0, FixedRAOffset=-8, AuxHdrLen=0
+2026/03/04 20:01:46 [DEBUG] loadSFrameData: NumFDEs=8, NumFREs=40, FRELen=222, FDEOff=0, FREOff=128
+2026/03/04 20:01:46 [DEBUG] loadSFrameData: 成功解析 8 个SFrame FDE
+2026/03/04 20:01:46 [DEBUG] loadSFrameData: FRE数据位于偏移 156, 总长度 222
+2026/03/04 20:01:46 [DEBUG] NewSFrameResolver: 成功加载SFrame数据
+2026/03/04 20:01:46 [DEBUG] loadSymbols: 加载了 31 个符号
+2026/03/04 20:01:46 [DEBUG] GetProcessMaps: 读取进程 205446 的内存映射
+2026/03/04 20:01:46 [DEBUG] GetProcessMaps: 读取到 24 个内存映射
+2026/03/04 20:01:46 [DEBUG] loadBaseAddress: 基址=0x5575b054e000, 结束=0x5575b054f000, 偏移=0x1000
+2026/03/04 20:01:46 [DEBUG] GetProcessMaps: 读取进程 205446 的内存映射
+2026/03/04 20:01:46 [DEBUG] GetProcessMaps: 读取到 24 个内存映射
+2026/03/04 20:01:46 [DEBUG] loadLibraryMapping: 加载共享库 /usr/lib/libc.so.6, 符号数: 3121, SFrame: false
+2026/03/04 20:01:46 [DEBUG] loadLibraryMapping: 加载共享库 /usr/lib/ld-linux-x86-64.so.2, 符号数: 32, SFrame: false
+2026/03/04 20:01:46 [DEBUG] loadLibraryMappings: 加载了 2 个共享库映射
+2026/03/04 20:01:46 [DEBUG] NewSFrameResolver: SFrame解析器创建成功
+2026/03/04 20:01:46 已启用 SFrame 符号解析 for PID 205446
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e52b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x152b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x46b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x52b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x152b, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e500
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x440
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1500, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e54c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x154c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x48c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x54c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x154c, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e529
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x469
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1529, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e52b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x152b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x46b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x52b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x152b, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e500
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x440
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1500, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e54c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x154c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x48c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x54c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x154c, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e529
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x469
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1529, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e52b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x152b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x46b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x52b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x152b, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e500
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x440
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1500, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e54c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x154c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x48c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x54c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x154c, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e529
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x469
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1529, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e52b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x152b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x46b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x52b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x152b, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e500
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x440
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1500, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e54c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x154c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x48c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x54c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x154c, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e529
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x469
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1529, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e52b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x152b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x46b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x52b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x152b, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e500
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x440
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1500, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e54c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x154c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x48c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x54c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x154c, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e529
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x469
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1529, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e52b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x152b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x46b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x52b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x152b, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e500
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x440
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1500, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e54c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x154c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x48c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x54c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x154c, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e529
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x469
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1529, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e52b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x152b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x46b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x52b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x152b, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e500
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x440
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1500, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e54c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x154c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x48c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x54c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x154c, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e529
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x469
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1529, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e52b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x152b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x46b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x52b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x152b, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e500
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x440
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1500, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e54c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x154c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x48c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x54c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x154c, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e529
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x469
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1529, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e52b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x152b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x46b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x52b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x152b, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e500
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x440
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1500, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e54c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x154c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x48c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x54c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x154c, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e529
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x469
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1529, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e52b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x152b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x46b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x52b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x152b, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e500
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x440
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1500, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e54c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x154c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x48c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x54c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x154c, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e529
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x469
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1529, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e52b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x152b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x46b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x52b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x152b, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e500
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x440
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1500, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e54c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x154c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x48c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x54c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x154c, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e529
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x469
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1529, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e52b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x152b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x46b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x52b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x152b, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e500
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x440
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1500, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e54c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x154c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x48c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x54c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x154c, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e529
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x469
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1529, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e52b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x152b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x46b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x52b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x152b, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e500
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x440
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1500, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e54c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x154c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x48c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x54c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x154c, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e529
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x469
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1529, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e52b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x152b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x46b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x52b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x152b, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e500
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x440
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1500, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e54c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x154c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x48c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x54c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x154c, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e529
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x469
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1529, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e52b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x152b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x46b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x52b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x152b, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e500
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x440
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1500, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e54c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x154c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x48c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x54c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x154c, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e529
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x469
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1529, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e52b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x152b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x46b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x52b
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x152b, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x46b
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e500
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x440
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x500
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1500, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x440
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e54c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x154c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x48c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x54c
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x154c, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x48c
+2026/03/04 20:01:46 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5575b054e529
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 main @ 0x10c0, size=1479, dist=0x469
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x529
+2026/03/04 20:01:46 [DEBUG] findSymbolInList: 目标地址=0x1529, 检查了2个候选符号, 最佳匹配(范围内)=main, 距离=0x469
+2026/03/04 20:01:46 [DEBUG] SFrameResolver: 找到函数 main+0x469
+
+=== PID: 205446, TID: 205446, COMM: test_lbr_sframe, Entries: 32 ===
+LBR Stack:
+[#00] [33mmain+0x48c[0m -> [33mmain+0x469[0m
+[#01] [33mmain+0x46b[0m -> [33mmain+0x440[0m
+[#02] [33mmain+0x48c[0m -> [33mmain+0x469[0m
+[#03] [33mmain+0x46b[0m -> [33mmain+0x440[0m
+[#04] [33mmain+0x48c[0m -> [33mmain+0x469[0m
+[#05] [33mmain+0x46b[0m -> [33mmain+0x440[0m
+[#06] [33mmain+0x48c[0m -> [33mmain+0x469[0m
+[#07] [33mmain+0x46b[0m -> [33mmain+0x440[0m
+[#08] [33mmain+0x48c[0m -> [33mmain+0x469[0m
+[#09] [33mmain+0x46b[0m -> [33mmain+0x440[0m
+[#10] [33mmain+0x48c[0m -> [33mmain+0x469[0m
+[#11] [33mmain+0x46b[0m -> [33mmain+0x440[0m
+[#12] [33mmain+0x48c[0m -> [33mmain+0x469[0m
+[#13] [33mmain+0x46b[0m -> [33mmain+0x440[0m
+[#14] [33mmain+0x48c[0m -> [33mmain+0x469[0m
+[#15] [33mmain+0x46b[0m -> [33mmain+0x440[0m
+[#16] [33mmain+0x48c[0m -> [33mmain+0x469[0m
+[#17] [33mmain+0x46b[0m -> [33mmain+0x440[0m
+[#18] [33mmain+0x48c[0m -> [33mmain+0x469[0m
+[#19] [33mmain+0x46b[0m -> [33mmain+0x440[0m
+[#20] [33mmain+0x48c[0m -> [33mmain+0x469[0m
+[#21] [33mmain+0x46b[0m -> [33mmain+0x440[0m
+[#22] [33mmain+0x48c[0m -> [33mmain+0x469[0m
+[#23] [33mmain+0x46b[0m -> [33mmain+0x440[0m
+[#24] [33mmain+0x48c[0m -> [33mmain+0x469[0m
+[#25] [33mmain+0x46b[0m -> [33mmain+0x440[0m
+[#26] [33mmain+0x48c[0m -> [33mmain+0x469[0m
+[#27] [33mmain+0x46b[0m -> [33mmain+0x440[0m
+[#28] [33mmain+0x48c[0m -> [33mmain+0x469[0m
+[#29] [33mmain+0x46b[0m -> [33mmain+0x440[0m
+[#30] [33mmain+0x48c[0m -> [33mmain+0x469[0m
+[#31] [33mmain+0x46b[0m -> [33mmain+0x440[0m
+2026/03/04 20:01:46 LBR数据统计: 总条目=1, 有效=1, 空数据=0, 全零数据=0
+2026/03/04 20:01:47 No LBR data - map中无任何条目
+2026/03/04 20:01:48 No LBR data - map中无任何条目
+2026/03/04 20:01:49 No LBR data - map中无任何条目
+2026/03/04 20:01:50 No LBR data - map中无任何条目
+2026/03/04 20:01:51 No LBR data - map中无任何条目
+2026/03/04 20:01:52 No LBR data - map中无任何条目

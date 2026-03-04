@@ -1,0 +1,97 @@
+2026/03/04 21:00:31 日志文件: log/lbr_output_20260304_210031.log
+2026/03/04 21:00:31 Current nofile rlimit: curr=524287 max=524288
+2026/03/04 21:00:31 Monitoring PID: 240842
+2026/03/04 21:00:31 LBR demo is running. Press Ctrl-C to exit.
+2026/03/04 21:00:31 Attached to 8 CPUs, checking for LBR data every second...
+2026/03/04 21:00:32 No LBR data - map中无任何条目
+2026/03/04 21:00:33 No LBR data - map中无任何条目
+2026/03/04 21:00:34 已启用 SFrame 符号解析和栈展开 for PID 240842
+
+=== PID: 240842, TID: 240842, COMM: test_lbr_sframe, Entries: 32 ===
+
+[LBR Branch History]
+LBR Stack:
+[#00] [33mrand+0xe (libc.so.6)[0m      -> [33mmain+0x39d[0m               
+[#01] [33mmain+0x3c2[0m                -> [33mmain+0x535[0m               
+[#02] [33mmain+0x538[0m                -> [33mmain+0x543[0m               
+[#03] [33mmain+0x546[0m                -> [33mmain+0x551[0m               
+[#04] [33mmain+0x554[0m                -> [33mmain+0x55f[0m               
+[#05] [33mmain+0x562[0m                -> [33mmain+0x56d[0m               
+[#06] [33mmain+0x576[0m                -> [33mmain+0x392[0m               
+[#07] [33mmain+0x398[0m                -> [33m_init+0xb0[0m               
+[#08] [33m_init+0xb0[0m                -> [33mrand (libc.so.6)[0m         
+[#09] [33mrand+0x8 (libc.so.6)[0m      -> [33mrandom (libc.so.6)[0m       
+[#10] [33mrandom+0x22 (libc.so.6)[0m   -> [33mrandom+0x70 (libc.so.6)[0m  
+[#11] [33mrandom+0x7b (libc.so.6)[0m   -> [33mrandom_r (libc.so.6)[0m     
+[#12] [33mrandom_r+0x17 (libc.so.6)[0m -> [33mrandom_r+0x38 (libc.so.6)[0m
+[#13] [33mrandom_r+0x6c (libc.so.6)[0m -> [33mrandom+0x80 (libc.so.6)[0m  
+[#14] [33mrandom+0x84 (libc.so.6)[0m   -> [33mrandom+0x56 (libc.so.6)[0m  
+[#15] [33mrandom+0x66 (libc.so.6)[0m   -> [33mrand+0xd (libc.so.6)[0m     
+[#16] [33mrand+0xe (libc.so.6)[0m      -> [33mmain+0x39d[0m               
+[#17] [33mmain+0x3c2[0m                -> [33mmain+0x535[0m               
+[#18] [33mmain+0x538[0m                -> [33mmain+0x543[0m               
+[#19] [33mmain+0x546[0m                -> [33mmain+0x551[0m               
+[#20] [33mmain+0x55a[0m                -> [33mmain+0x392[0m               
+[#21] [33mmain+0x398[0m                -> [33m_init+0xb0[0m               
+[#22] [33m_init+0xb0[0m                -> [33mrand (libc.so.6)[0m         
+[#23] [33mrand+0x8 (libc.so.6)[0m      -> [33mrandom (libc.so.6)[0m       
+[#24] [33mrandom+0x22 (libc.so.6)[0m   -> [33mrandom+0x70 (libc.so.6)[0m  
+[#25] [33mrandom+0x7b (libc.so.6)[0m   -> [33mrandom_r (libc.so.6)[0m     
+[#26] [33mrandom_r+0x17 (libc.so.6)[0m -> [33mrandom_r+0x38 (libc.so.6)[0m
+[#27] [33mrandom_r+0x6c (libc.so.6)[0m -> [33mrandom+0x80 (libc.so.6)[0m  
+[#28] [33mrandom+0x84 (libc.so.6)[0m   -> [33mrandom+0x56 (libc.so.6)[0m  
+[#29] [33mrandom+0x66 (libc.so.6)[0m   -> [33mrand+0xd (libc.so.6)[0m     
+[#30] [33mrand+0xe (libc.so.6)[0m      -> [33mmain+0x39d[0m               
+[#31] [33mmain+0x3c2[0m                -> [33mmain+0x535[0m               
+
+[Stack Unwinding - Full Call Stack]
+使用采样时寄存器状态: RIP=0x55ef2cb0b5fe, RSP=0x7ffcfe1199a0, RBP=0x7ffcfe1199b0
+#00  0x000055ef2cb0b5fe in [36mmain+0x53e[0m
+
+展开了 1 个栈帧
+2026/03/04 21:00:34 LBR数据统计: 总条目=1, 有效=1, 空数据=0, 全零数据=0
+2026/03/04 21:00:35 No LBR data - map中无任何条目
+2026/03/04 21:00:36 No LBR data - map中无任何条目
+2026/03/04 21:00:37 No LBR data - map中无任何条目
+2026/03/04 21:00:38 No LBR data - map中无任何条目
+2026/03/04 21:00:39 No LBR data - map中无任何条目
+2026/03/04 21:00:40 No LBR data - map中无任何条目
+2026/03/04 21:00:41 
+收到退出信号，正在分析统计数据...
+2026/03/04 21:00:41 
+========================================
+2026/03/04 21:00:41 访问频率最高的 5 个地址:
+2026/03/04 21:00:41 ========================================
+
+========================================
+访问频率最高的 5 个地址:
+========================================
+2026/03/04 21:00:41 无法创建SFrame解析器: failed to read exe link: readlink /proc/240842/exe: no such file or directory
+2026/03/04 21:00:41 
+#1 地址: 0x000055ef2cb0b0b0 (访问次数: 4)
+
+#1 地址: 0x000055ef2cb0b0b0 (访问次数: 4)
+2026/03/04 21:00:41 
+#2 地址: 0x000055ef2cb0b45d (访问次数: 3)
+
+#2 地址: 0x000055ef2cb0b45d (访问次数: 3)
+2026/03/04 21:00:41 
+#3 地址: 0x000055ef2cb0b5f5 (访问次数: 3)
+
+#3 地址: 0x000055ef2cb0b5f5 (访问次数: 3)
+2026/03/04 21:00:41 
+#4 地址: 0x00007f13804d274e (访问次数: 3)
+
+#4 地址: 0x00007f13804d274e (访问次数: 3)
+2026/03/04 21:00:41 
+#5 地址: 0x000055ef2cb0b482 (访问次数: 3)
+
+#5 地址: 0x000055ef2cb0b482 (访问次数: 3)
+2026/03/04 21:00:41 
+========================================
+总计统计了 32 个不同的地址
+========================================
+
+========================================
+总计统计了 32 个不同的地址
+========================================

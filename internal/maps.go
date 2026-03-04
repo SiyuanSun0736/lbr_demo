@@ -14,6 +14,9 @@ import (
 type LbrData struct {
 	PidTgid uint64
 	NrBytes int64
+	Rip     uint64 // 指令指针 (RIP) - 采样时的PC
+	Rsp     uint64 // 栈指针 (RSP) - 采样时的SP
+	Rbp     uint64 // 帧指针 (RBP) - 采样时的BP
 	Entries [32]struct {
 		From  uint64
 		To    uint64

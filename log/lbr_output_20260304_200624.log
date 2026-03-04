@@ -1,0 +1,50 @@
+2026/03/04 20:06:24 日志文件: log/lbr_output_20260304_200624.log
+2026/03/04 20:06:24 Current nofile rlimit: curr=524287 max=524288
+2026/03/04 20:06:24 Monitoring PID: 208256
+2026/03/04 20:06:24 LBR demo is running. Press Ctrl-C to exit.
+2026/03/04 20:06:24 Attached to 8 CPUs, checking for LBR data every second...
+2026/03/04 20:06:25 No LBR data - map中无任何条目
+2026/03/04 20:06:26 No LBR data - map中无任何条目
+2026/03/04 20:06:27 已启用 SFrame 符号解析 for PID 208256
+
+=== PID: 208256, TID: 208256, COMM: test_lbr_sframe, Entries: 32 ===
+LBR Stack:
+[#00] [33mmain+0x562[0m                -> [33mmain+0x56d[0m               
+[#01] [33mmain+0x570[0m                -> [33mmain+0x57b[0m               
+[#02] [33mmain+0x57e[0m                -> [33mmain+0x5ab[0m               
+[#03] [33mmain+0x5bd[0m                -> [33mmain+0x392[0m               
+[#04] [33mmain+0x398[0m                -> [33m_init+0xb0[0m               
+[#05] [33m_init+0xb0[0m                -> [33mrand (libc.so.6)[0m         
+[#06] [33mrand+0x8 (libc.so.6)[0m      -> [33mrandom (libc.so.6)[0m       
+[#07] [33mrandom+0x22 (libc.so.6)[0m   -> [33mrandom+0x70 (libc.so.6)[0m  
+[#08] [33mrandom+0x7b (libc.so.6)[0m   -> [33mrandom_r (libc.so.6)[0m     
+[#09] [33mrandom_r+0x17 (libc.so.6)[0m -> [33mrandom_r+0x38 (libc.so.6)[0m
+[#10] [33mrandom_r+0x6c (libc.so.6)[0m -> [33mrandom+0x80 (libc.so.6)[0m  
+[#11] [33mrandom+0x84 (libc.so.6)[0m   -> [33mrandom+0x56 (libc.so.6)[0m  
+[#12] [33mrandom+0x66 (libc.so.6)[0m   -> [33mrand+0xd (libc.so.6)[0m     
+[#13] [33mrand+0xe (libc.so.6)[0m      -> [33mmain+0x39d[0m               
+[#14] [33mmain+0x3c2[0m                -> [33mmain+0x535[0m               
+[#15] [33mmain+0x538[0m                -> [33mmain+0x543[0m               
+[#16] [33mmain+0x546[0m                -> [33mmain+0x551[0m               
+[#17] [33mmain+0x554[0m                -> [33mmain+0x55f[0m               
+[#18] [33mmain+0x562[0m                -> [33mmain+0x56d[0m               
+[#19] [33mmain+0x570[0m                -> [33mmain+0x57b[0m               
+[#20] [33mmain+0x57e[0m                -> [33mmain+0x5ab[0m               
+[#21] [33mmain+0x5bd[0m                -> [33mmain+0x392[0m               
+[#22] [33mmain+0x398[0m                -> [33m_init+0xb0[0m               
+[#23] [33m_init+0xb0[0m                -> [33mrand (libc.so.6)[0m         
+[#24] [33mrand+0x8 (libc.so.6)[0m      -> [33mrandom (libc.so.6)[0m       
+[#25] [33mrandom+0x22 (libc.so.6)[0m   -> [33mrandom+0x70 (libc.so.6)[0m  
+[#26] [33mrandom+0x7b (libc.so.6)[0m   -> [33mrandom_r (libc.so.6)[0m     
+[#27] [33mrandom_r+0x17 (libc.so.6)[0m -> [33mrandom_r+0x38 (libc.so.6)[0m
+[#28] [33mrandom_r+0x6c (libc.so.6)[0m -> [33mrandom+0x80 (libc.so.6)[0m  
+[#29] [33mrandom+0x84 (libc.so.6)[0m   -> [33mrandom+0x56 (libc.so.6)[0m  
+[#30] [33mrandom+0x66 (libc.so.6)[0m   -> [33mrand+0xd (libc.so.6)[0m     
+[#31] [33mrand+0xe (libc.so.6)[0m      -> [33mmain+0x39d[0m               
+2026/03/04 20:06:27 LBR数据统计: 总条目=1, 有效=1, 空数据=0, 全零数据=0
+2026/03/04 20:06:28 No LBR data - map中无任何条目
+2026/03/04 20:06:29 No LBR data - map中无任何条目
+2026/03/04 20:06:30 No LBR data - map中无任何条目
+2026/03/04 20:06:31 No LBR data - map中无任何条目
+2026/03/04 20:06:32 No LBR data - map中无任何条目
+2026/03/04 20:06:33 No LBR data - map中无任何条目
