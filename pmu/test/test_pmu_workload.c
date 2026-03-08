@@ -8,7 +8,7 @@
  *   - 指令密集循环  → iTLB/icache 压力
  *
  * 用法：
- *   ./test_pmu_workload [duration_sec]
+ *   ./test/test_pmu_workload [duration_sec]
  *   默认运行 60 秒。
  */
 

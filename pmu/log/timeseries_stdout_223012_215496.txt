@@ -1,0 +1,177 @@
+=== PMU Time-Series Sampler ===
+Target PID   : 215504
+Interval     : 500 ms
+Log file     : log/pmu_timeseries_20260308_223014.csv
+Symlink      : log/pmu_timeseries.csv
+
+Opened 24/24 counters:
+  + dTLB-loads
+  + dTLB-load-misses
+  + dTLB-stores
+  + dTLB-store-misses
+  + iTLB-loads
+  + iTLB-load-misses
+  + L1-dcache-loads
+  + L1-dcache-load-misses
+  + L1-dcache-stores
+  + L1-icache-load-misses
+  + l1d.replacement
+  + l1d_pend_miss.fb_full
+  + l1d_pend_miss.pending
+  + LLC-loads
+  + LLC-load-misses
+  + LLC-stores
+  + LLC-store-misses
+  + cache-references
+  + cache-misses
+  + mem-loads
+  + mem-stores
+  + mem_inst_retired.all_loads
+  + mem_inst_retired.all_stores
+  + mem_inst_retired.any
+
+Monitoring… (Ctrl+C to stop)
+
+t=500ms  2026-03-08 22:30:14.567
+  TLB:
+    dTLB-loads                              79945632
+    dTLB-load-misses                         7458319
+    dTLB-stores                             52927702
+    dTLB-store-misses                           3500
+    iTLB-loads                                  5828
+    iTLB-load-misses                            6027
+  Cache:
+    L1-dcache-loads                         33950988
+    L1-dcache-load-misses                   19424222
+    L1-dcache-stores                          810616
+    L1-icache-load-misses                     434516
+    l1d.replacement                         20013282
+    l1d_pend_miss.fb_full                   15407562
+    l1d_pend_miss.pending                 3675013780
+    LLC-loads                               16571929
+    LLC-load-misses                         10978537
+    LLC-stores                                180720
+    LLC-store-misses                          129912
+    cache-references                        30794033
+    cache-misses                            21939825
+  Memory instructions:
+    mem-loads                                9019001
+    mem-stores                                167259
+    mem_inst_retired.all_loads             121633588
+    mem_inst_retired.all_stores            101852245
+    mem_inst_retired.any                   180641627
+t=1000ms  2026-03-08 22:30:15.067
+  TLB:
+    dTLB-loads                              48639617
+    dTLB-load-misses                         7531055
+    dTLB-stores                             69076358
+    dTLB-store-misses                           4906
+    iTLB-loads                                  6171
+    iTLB-load-misses                            4712
+  Cache:
+    L1-dcache-loads                        146508459
+    L1-dcache-load-misses                   17495221
+    L1-dcache-stores                       128318136
+    L1-icache-load-misses                     484970
+    l1d.replacement                         19016137
+    l1d_pend_miss.fb_full                   13539997
+    l1d_pend_miss.pending                 3598266767
+    LLC-loads                               16958592
+    LLC-load-misses                         11590645
+    LLC-stores                                 21483
+    LLC-store-misses                            2011
+    cache-references                        34597255
+    cache-misses                            22960673
+  Memory instructions:
+    mem-loads                               10969293
+    mem-stores                                  2137
+    mem_inst_retired.all_loads              14828551
+    mem_inst_retired.all_stores              6551157
+    mem_inst_retired.any                    55832845
+t=1500ms  2026-03-08 22:30:15.567
+  TLB:
+    dTLB-loads                              15513815
+    dTLB-load-misses                         8414220
+    dTLB-stores                               722929
+    dTLB-store-misses                           4844
+    iTLB-loads                                  5543
+    iTLB-load-misses                            5127
+  Cache:
+    L1-dcache-loads                         71593990
+    L1-dcache-load-misses                   18805226
+    L1-dcache-stores                        59438239
+    L1-icache-load-misses                     347664
+    l1d.replacement                         22800511
+    l1d_pend_miss.fb_full                   18616931
+    l1d_pend_miss.pending                 3503299720
+    LLC-loads                               15436967
+    LLC-load-misses                          9978096
+    LLC-stores                                256835
+    LLC-store-misses                          117733
+    cache-references                        34572514
+    cache-misses                            23864583
+  Memory instructions:
+    mem-loads                               11080795
+    mem-stores                                 74732
+    mem_inst_retired.all_loads              55921776
+    mem_inst_retired.all_stores             26888708
+    mem_inst_retired.any                    42539353
+t=2000ms  2026-03-08 22:30:16.067
+  TLB:
+    dTLB-loads                              37655061
+    dTLB-load-misses                         8800346
+    dTLB-stores                             65105536
+    dTLB-store-misses                           5362
+    iTLB-loads                                  7231
+    iTLB-load-misses                            4259
+  Cache:
+    L1-dcache-loads                        141202613
+    L1-dcache-load-misses                   20770361
+    L1-dcache-stores                       141655679
+    L1-icache-load-misses                     291159
+    l1d.replacement                         16089871
+    l1d_pend_miss.fb_full                    6157896
+    l1d_pend_miss.pending                 2536364838
+    LLC-loads                               15109904
+    LLC-load-misses                         12127227
+    LLC-stores                                 62993
+    LLC-store-misses                             915
+    cache-references                        42033359
+    cache-misses                            27566548
+  Memory instructions:
+    mem-loads                               14411074
+    mem-stores                                  1095
+    mem_inst_retired.all_loads              17717386
+    mem_inst_retired.all_stores               686648
+    mem_inst_retired.any                    28366920
+t=2500ms  2026-03-08 22:30:16.567
+  TLB:
+    dTLB-loads                              18468679
+    dTLB-load-misses                         7357801
+    dTLB-stores                             33223466
+    dTLB-store-misses                           4852
+    iTLB-loads                                  7075
+    iTLB-load-misses                            4802
+  Cache:
+    L1-dcache-loads                         98812040
+    L1-dcache-load-misses                   17729408
+    L1-dcache-stores                        90540108
+    L1-icache-load-misses                     300584
+    l1d.replacement                         20541419
+    l1d_pend_miss.fb_full                   16428161
+    l1d_pend_miss.pending                 3475645014
+    LLC-loads                               15592827
+    LLC-load-misses                         10114854
+    LLC-stores                                152578
+    LLC-store-misses                           72308
+    cache-references                        33699861
+    cache-misses                            24227906
+  Memory instructions:
+    mem-loads                               11466328
+    mem-stores                                 34913
+    mem_inst_retired.all_loads              26157314
+    mem_inst_retired.all_stores               714494
+    mem_inst_retired.any                    15070062
+
+Log file closed.
+Exiting.

@@ -17,7 +17,10 @@ TEST_DURATION=30        # 固定测试时长（秒）
 SAMPLE_INTERVAL_MS=100  # pmu_monitor_all_time 的采样间隔（与源码 SAMPLE_INTERVAL_MS 保持一致）
 WORKLOAD_DURATION=120   # 工作负载最长持续时间（秒，须大于 TEST_DURATION）
 MONITOR_BIN="./pmu_monitor_all_time"
-WORKLOAD_BIN="./test_pmu_workload"
+WORKLOAD_BIN="./test/test_pmu_workload"
+WORKLOAD_NAME="$(basename "$WORKLOAD_BIN")"
+# 唯一运行 ID（时间戳 + PID），用于生成临时文件名
+RUN_ID="$(date +%s)_$$"
 LOG_LINK="log/pmu_monitor_all_time.log"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -89,10 +92,10 @@ fi
 assert_true "pmu_monitor_all_time 可执行文件存在" test -x "$MONITOR_BIN"
 
 if [[ ! -x "$WORKLOAD_BIN" ]]; then
-    info "编译 test_pmu_workload..."
-    make test_pmu_workload
+    info "编译 test/.."
+    make test
 fi
-assert_true "test_pmu_workload 可执行文件存在" test -x "$WORKLOAD_BIN"
+assert_true "test 可执行文件存在" test -x "$WORKLOAD_BIN"
 echo
 
 # ── 步骤 3：启动工作负载 ─────────────────────────────────────────────────────
@@ -109,11 +112,13 @@ assert_true "工作负载进程存活" kill -0 "$WORKLOAD_PID"
 echo
 
 # ── 步骤 4：启动监控器 ───────────────────────────────────────────────────────
-MONITOR_LOG="log/monitor_stderr_$$.txt"
+MONITOR_LOG="log/monitor_stderr_${RUN_ID}.txt"
 info "启动 pmu_monitor_all_time 监控 PID $WORKLOAD_PID..."
-"$MONITOR_BIN" "$WORKLOAD_PID" >"log/monitor_stdout_$$.txt" 2>"$MONITOR_LOG" &
+"$MONITOR_BIN" "$WORKLOAD_PID" >"log/monitor_stdout_${RUN_ID}.txt" 2>"$MONITOR_LOG" &
 MONITOR_PID=$!
 info "监控器 PID: $MONITOR_PID"
+
+# (延迟创建 stdout/stderr 链接至脚本末尾，保留原始 *_$$.txt)
 
 # 固定等待 TEST_DURATION 秒
 info "等待 ${TEST_DURATION} 秒完成采集..."
@@ -140,6 +145,8 @@ assert_true "日志符号链接存在" test -L "$LOG_LINK"
 
 REAL_LOG="$(readlink -f "$LOG_LINK" 2>/dev/null || echo "")"
 assert_true "日志真实文件存在" test -f "$REAL_LOG"
+
+# (延迟创建日志文件的 workload-specific 链接至脚本末尾)
 
 # 日志必须有标题行 + 至少 SAMPLE_COUNT 行数据
 TOTAL_LINES=$(wc -l < "$REAL_LOG")
@@ -201,8 +208,23 @@ fi
 ACTIVE_COUNT=$(( ENABLED_COUNT - NA_COUNT ))
 info "计数器统计：共 ${ENABLED_COUNT} 个，活跃 ${ACTIVE_COUNT} 个，不可用 ${NA_COUNT} 个"
 
-# 清理临时文件
-rm -f "log/monitor_stdout_$$.txt" "log/monitor_stderr_$$.txt"
+# 保留原始 *_$$.txt，不删除它们；在脚本末尾创建 workload-specific 链接
+
+
+# 在脚本结束时创建工作负载专用的 stdout/stderr 和日志 链接，保留原始 *_$$.txt
+WORKLOAD_SPECIFIC="log/pmu_monitor_all_time_${WORKLOAD_NAME}.log"
+if [[ -n "$REAL_LOG" && -f "$REAL_LOG" ]]; then
+    ln -sf "$REAL_LOG" "$WORKLOAD_SPECIFIC"
+    ln -sf "$WORKLOAD_SPECIFIC" "log/pmu_monitor_all_time.log"
+    info "已创建符号链接：log/pmu_monitor_all_time.log -> ${WORKLOAD_SPECIFIC}"
+fi
+
+if [[ -f "log/monitor_stdout_${RUN_ID}.txt" ]]; then
+    ln -sf "log/monitor_stdout_${RUN_ID}.txt" "log/monitor_stdout_${WORKLOAD_NAME}.txt"
+fi
+if [[ -f "log/monitor_stderr_${RUN_ID}.txt" ]]; then
+    ln -sf "log/monitor_stderr_${RUN_ID}.txt" "log/monitor_stderr_${WORKLOAD_NAME}.txt"
+fi
 
 # ── 汇总 ─────────────────────────────────────────────────────────────────────
 echo

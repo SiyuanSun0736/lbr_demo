@@ -17,7 +17,10 @@ INTERVAL_MS=500         # pmu_timeseries 采样间隔（毫秒）
 TEST_DURATION=30        # 测试持续时间（秒）
 WORKLOAD_DURATION=120   # 工作负载最长持续时间（秒，大于 TEST_DURATION 即可）
 TIMESERIES_BIN="./pmu_timeseries"
-WORKLOAD_BIN="./test_pmu_workload"
+WORKLOAD_BIN="./test/test_pmu_workload"
+WORKLOAD_NAME="$(basename "$WORKLOAD_BIN")"
+# 唯一运行 ID，包含时间（时分秒）与 PID，确保整个脚本一致使用同一后缀
+RUN_ID="$(date +%H%M%S)_$$"
 LOG_LINK="log/pmu_timeseries.csv"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -89,10 +92,10 @@ fi
 assert_true "pmu_timeseries 可执行文件存在" test -x "$TIMESERIES_BIN"
 
 if [[ ! -x "$WORKLOAD_BIN" ]]; then
-    info "编译 test_pmu_workload..."
-    make test_pmu_workload
+    info "编译 test/.."
+    make test   
 fi
-assert_true "test_pmu_workload 可执行文件存在" test -x "$WORKLOAD_BIN"
+assert_true "test 可执行文件存在" test -x "$WORKLOAD_BIN"
 echo
 
 # ── 步骤 3：启动工作负载 ──────────────────────────────────────────────────────
@@ -110,9 +113,11 @@ echo
 # ── 步骤 4：启动 pmu_timeseries ───────────────────────────────────────────────
 info "启动 pmu_timeseries 监控 PID $WORKLOAD_PID（间隔 ${INTERVAL_MS} ms）..."
 "$TIMESERIES_BIN" "$WORKLOAD_PID" -i "$INTERVAL_MS" \
-    >"log/timeseries_stdout_$$.txt" 2>"log/timeseries_stderr_$$.txt" &
+    >"log/timeseries_stdout_${RUN_ID}.txt" 2>"log/timeseries_stderr_${RUN_ID}.txt" &
 TIMESERIES_PID=$!
 info "采集器 PID: $TIMESERIES_PID"
+
+# (延迟创建 stdout/stderr 链接至脚本末尾，保留原始 *_$$.txt)
 
 # 等待指定测试时长
 info "等待 ${TEST_DURATION} 秒完成采集..."
@@ -139,6 +144,8 @@ assert_true "日志符号链接存在" test -L "$LOG_LINK"
 
 REAL_LOG="$(readlink -f "$LOG_LINK" 2>/dev/null || echo "")"
 assert_true "日志真实文件存在" test -f "$REAL_LOG"
+
+# (延迟创建 CSV 链接至脚本末尾)
 
 # 行数验证（标题行 + 数据行）
 TOTAL_LINES=$(wc -l < "$REAL_LOG")
@@ -222,8 +229,36 @@ fi
 ACTIVE_COUNT=$(( COUNTER_COLS - EMPTY_COUNT ))
 info "计数器统计：共 ${COUNTER_COLS} 个，活跃 ${ACTIVE_COUNT} 个，不可用 ${EMPTY_COUNT} 个"
 info "日志路径：$REAL_LOG"
-info "采集器标准输出：log/timeseries_stdout_$$.txt"
-info "采集器标准错误：log/timeseries_stderr_$$.txt"
+info "采集器标准输出：log/timeseries_stdout_${RUN_ID}.txt"
+info "采集器标准错误：log/timeseries_stderr_${RUN_ID}.txt"
+
+## 在脚本结束前创建工作负载专用的 stdout/stderr 和 CSV 符号链接，保留原始 *_$$.txt
+# 在 log 目录内创建链接，确保相对目标位于同一目录，避免产生多余的 "log/" 前缀
+WORKLOAD_SPECIFIC_BASENAME="pmu_timeseries_${WORKLOAD_NAME}.csv"
+if [[ -n "$REAL_LOG" && -f "$REAL_LOG" ]]; then
+    mkdir -p log
+    (
+        cd log
+        ln -sf "$REAL_LOG" "$WORKLOAD_SPECIFIC_BASENAME"
+        ln -sf "$WORKLOAD_SPECIFIC_BASENAME" pmu_timeseries.csv
+    )
+    info "已创建符号链接：log/pmu_timeseries.csv -> ${WORKLOAD_SPECIFIC_BASENAME}"
+fi
+
+# 创建 stdout/stderr 链接（优先使用 PID 版本，如果存在），在 log 目录中操作以保持目标一致
+if [[ -f "log/timeseries_stdout_${RUN_ID}.txt" ]]; then
+    (
+        cd log
+        ln -sf "timeseries_stdout_${RUN_ID}.txt" "timeseries_stdout_${WORKLOAD_NAME}.txt"
+        
+    )
+fi
+if [[ -f "log/timeseries_stderr_${RUN_ID}.txt" ]]; then
+    (
+        cd log
+        ln -sf "timeseries_stderr_${RUN_ID}.txt" "timeseries_stderr_${WORKLOAD_NAME}.txt"
+    )
+fi
 
 # ── 汇总 ──────────────────────────────────────────────────────────────────────
 echo

@@ -2,8 +2,8 @@ CC := gcc
 CFLAGS := -O2 -Wall -Wextra
 LDFLAGS := -lm
 
-TARGETS := l1_dcache l1d_pend_miss l1_icache llc_cache dtlb itlb mem_inst pmu_monitor_all_time pmu_timeseries pmu_timeseries_sp test_pmu_workload
-SOURCES := l1_dcache.c l1d_pend_miss.c l1_icache.c llc_cache.c dtlb.c itlb.c mem_inst.c pmu_monitor_all_time.c pmu_timeseries.c pmu_timeseries_sp.c test_pmu_workload.c
+TARGETS := l1_dcache l1d_pend_miss l1_icache llc_cache dtlb itlb mem_inst pmu_monitor_all_time pmu_timeseries pmu_timeseries_sp
+SOURCES := l1_dcache.c l1d_pend_miss.c l1_icache.c llc_cache.c dtlb.c itlb.c mem_inst.c pmu_monitor_all_time.c pmu_timeseries.c pmu_timeseries_sp.c
 
 .PHONY: all clean help
 
@@ -39,8 +39,10 @@ pmu_timeseries: pmu_timeseries.o
 pmu_timeseries_sp: pmu_timeseries_sp.o
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
-test_pmu_workload: test_pmu_workload.o
-	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+
+.PHONY: test
+test:
+	$(MAKE) -C test all
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
@@ -71,7 +73,7 @@ help:
 	@echo "  make dtlb              # Build only dtlb"
 	@echo "  make itlb              # Build only itlb"
 	@echo "  make mem_inst              # Build only mem_inst"
-	@echo "  make test_pmu_workload     # Build PMU workload test program"
+	@echo "  make test                # Build test programs under pmu/test/"
 	@echo "  make clean                 # Remove compiled files"
 	@echo "  ./pmu_monitor_all_time      # Run comprehensive monitor"
 	@echo "  ./pmu_monitor_all_time <PID># Monitor specific process by PID"
@@ -89,7 +91,7 @@ help:
 	@echo "  ./itlb <PID>           # Monitor specific process by PID"
 	@echo "  ./mem_inst             # Run mem_inst with current process"
 	@echo "  ./mem_inst <PID>           # Monitor specific process by PID"
-	@echo "  ./test_pmu_workload [sec]  # Run workload (generates PMU events)"
+	@echo "  ./test/test_pmu_workload [sec]  # Run workload (generates PMU events)"
 	@echo "  bash test_pmu_monitor_all_time.sh  # Run full functional test"
 	@echo ""
 	@echo "Note: May require elevated privileges (sudo) to run"
