@@ -1,0 +1,17 @@
+PMU 全量采集+可视化报告 — Mon Mar  9 02:43:17 PM CST 2026
+采样间隔 500 ms，每轮 15 s
+------------------------------------------------------
+PLOT_PASS  综合压力测试
+PLOT_PASS  dTLB 压力测试
+PLOT_PASS  iTLB 压力测试
+PLOT_PASS  L1D 缓存测试
+PLOT_PASS  L1I 缓存测试
+PLOT_PASS  L1D 悬挂缺失测试
+PLOT_PASS  LLC 缓存测试
+PLOT_PASS  内存指令吞吐测试
+PLOT_PASS  空载基准对比
+PLOT_PASS  空载基准对比（忙循环）
+PLOT_PASS  额外压力测试
+PLOT_PASS  额外压力测试（较轻负载）
+------------------------------------------------------
+采集 通过 0 / 失败 0  |  绘图 通过 12 / 失败 0  |  跳过 0

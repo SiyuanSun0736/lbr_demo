@@ -1,0 +1,2 @@
+Warning: small time_running for LLC-stores: 42050058 (time_enabled=498321142)
+Warning: small time_running for LLC-store-misses: 41968437 (time_enabled=498358697)

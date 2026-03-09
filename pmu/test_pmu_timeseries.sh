@@ -12,12 +12,12 @@
 
 set -euo pipefail
 
-# ── 配置 ────────────────────────────────────────────────────────────────────
-INTERVAL_MS=500         # pmu_timeseries 采样间隔（毫秒）
-TEST_DURATION=30        # 测试持续时间（秒）
-WORKLOAD_DURATION=120   # 工作负载最长持续时间（秒，大于 TEST_DURATION 即可）
-TIMESERIES_BIN="./pmu_timeseries"
-WORKLOAD_BIN="./test/test_pmu_workload"
+# ── 配置（支持通过环境变量从外部脚本覆盖）────────────────────────────────
+INTERVAL_MS="${INTERVAL_MS:-500}"               # pmu_timeseries 采样间隔（毫秒）
+TEST_DURATION="${TEST_DURATION:-30}"            # 测试持续时间（秒）
+WORKLOAD_DURATION="${WORKLOAD_DURATION:-120}"   # 工作负载最长持续时间（秒）
+TIMESERIES_BIN="${TIMESERIES_BIN:-./pmu_timeseries}"
+WORKLOAD_BIN="${WORKLOAD_BIN:-./test/test_pmu_workload}"
 WORKLOAD_NAME="$(basename "$WORKLOAD_BIN")"
 # 唯一运行 ID，包含时间（时分秒）与 PID，确保整个脚本一致使用同一后缀
 RUN_ID="$(date +%H%M%S)_$$"

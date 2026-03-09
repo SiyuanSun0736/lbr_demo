@@ -1,13 +1,19 @@
 #!/usr/bin/env python3
 """
 PMU Timeseries Visualization Script
-读取 ../log/pmu_timeseries.csv 并为各类性能指标生成时间序列图表。
-图片自动保存至 plots/ 目录。
+读取 ../log/pmu_timeseries_test_{project}.csv 并为各类性能指标生成时间序列图表。
+图片自动保存至 plots/{timestamp}_{project}/ 目录。
 
 用法:
-    python3 plot_pmu_timeseries.py
+    python3 plot_pmu_timeseries.py -p <project>
+    python3 plot_pmu_timeseries.py --project dtlb
+
+项目名对应 CSV 文件中的 {project} 部分，例如：
+    dtlb, itlb, l1dcache, l1icache, l1d_pend_miss, llc, mem_inst, pmu_workload
 """
 
+import argparse
+import sys
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
@@ -21,9 +27,12 @@ from datetime import datetime
 def load_csv(csv_path: str) -> pd.DataFrame:
     if not os.path.exists(csv_path):
         raise FileNotFoundError(f"错误: 找不到文件 {csv_path}")
-    df = pd.read_csv(csv_path)
+    try:
+        df = pd.read_csv(csv_path)
+    except pd.errors.EmptyDataError:
+        raise ValueError(f"错误: 文件为空（无标题行）{csv_path}")
     if df.empty:
-        raise ValueError("警告: 文件为空")
+        raise ValueError(f"错误: 文件无数据行（仅有标题）{csv_path}")
     df['timestamp'] = pd.to_datetime(df['timestamp'])
     print(f"成功读取 {len(df)} 条记录，时间范围: "
           f"{df['timestamp'].iloc[0]} ~ {df['timestamp'].iloc[-1]}")
@@ -49,9 +58,13 @@ def preprocess_time_columns(df: pd.DataFrame, tr_fraction: float = 0.1) -> pd.Da
             base = col[:-len('_time_running')]
             bad_col = base + '_bad_tr'
             if base in df2.columns:
-                mask = df2[col].fillna(0).astype(float) < min_tr_ns
-                df2.loc[mask, base] = np.nan
-                df2[bad_col] = mask
+                tr_mask = df2[col].fillna(0).astype(float) < min_tr_ns
+                # 原始 CSV 中显式为 0 的单元格保持 0，不覆盖为 NaN；
+                # 仅对非零或空（NaN）的值应用过滤
+                explicit_zero = df2[base].fillna(1.0) == 0.0
+                apply_mask = tr_mask & ~explicit_zero
+                df2.loc[apply_mask, base] = np.nan
+                df2[bad_col] = apply_mask
     return df2
 
 
@@ -103,6 +116,13 @@ def print_stats(df: pd.DataFrame, cols: list):
             print(f"    {col:40s} 均值={s.mean():>14.0f}  最大={s.max():>14.0f}  最小={s.min():>14.0f}")
 
 
+def safe_col(df: pd.DataFrame, col: str) -> pd.Series:
+    """安全获取列：若列不存在则返回全 NaN 序列，避免 KeyError。"""
+    if col in df.columns:
+        return df[col]
+    return pd.Series(np.nan, index=df.index, dtype=float)
+
+
 # ─────────────────────── 1. TLB 指标 ───────────────────────────
 
 def plot_tlb(df: pd.DataFrame, output_dir: str):
@@ -113,28 +133,28 @@ def plot_tlb(df: pd.DataFrame, output_dir: str):
     ts = df['timestamp']
 
     ax = axes[0, 0]
-    ax.plot(ts, df['dTLB-loads'], 'b-o', markersize=3, linewidth=1.5, label='dTLB-loads')
+    ax.plot(ts, safe_col(df, 'dTLB-loads'), 'b-o', markersize=3, linewidth=1.5, label='dTLB-loads')
     ax.set_title('dTLB Loads', fontweight='bold')
     ax.set_ylabel('Count')
     ax.legend(); ax.grid(True, alpha=0.3)
 
     ax = axes[0, 1]
-    ax.plot(ts, df['dTLB-stores'], 'g-o', markersize=3, linewidth=1.5, label='dTLB-stores')
+    ax.plot(ts, safe_col(df, 'dTLB-stores'), 'g-o', markersize=3, linewidth=1.5, label='dTLB-stores')
     ax.set_title('dTLB Stores', fontweight='bold')
     ax.set_ylabel('Count')
     ax.legend(); ax.grid(True, alpha=0.3)
 
     ax = axes[1, 0]
-    ax.plot(ts, df['iTLB-loads'], 'c-o', markersize=3, linewidth=1.5, label='iTLB-loads')
-    ax.plot(ts, df['iTLB-load-misses'], color='orange', marker='s', markersize=3, linewidth=1.5, label='iTLB-load-misses')
+    ax.plot(ts, safe_col(df, 'iTLB-loads'), 'c-o', markersize=3, linewidth=1.5, label='iTLB-loads')
+    ax.plot(ts, safe_col(df, 'iTLB-load-misses'), color='orange', marker='s', markersize=3, linewidth=1.5, label='iTLB-load-misses')
     ax.set_title('iTLB Loads & Misses', fontweight='bold')
     ax.set_ylabel('Count'); ax.set_xlabel('Time')
     ax.legend(); ax.grid(True, alpha=0.3)
 
     ax = axes[1, 1]
-    ax.plot(ts, miss_rate(df['dTLB-loads'],  df['dTLB-load-misses']),  'r-o', markersize=3, linewidth=1.5, label='dTLB Load Miss Rate')
-    ax.plot(ts, miss_rate(df['dTLB-stores'], df['dTLB-store-misses']), 'm-s', markersize=3, linewidth=1.5, label='dTLB Store Miss Rate')
-    ax.plot(ts, miss_rate(df['iTLB-loads'],  df['iTLB-load-misses']),  color='orange', marker='^', markersize=3, linewidth=1.5, label='iTLB Load Miss Rate')
+    ax.plot(ts, miss_rate(safe_col(df, 'dTLB-loads'),  safe_col(df, 'dTLB-load-misses')),  'r-o', markersize=3, linewidth=1.5, label='dTLB Load Miss Rate')
+    ax.plot(ts, miss_rate(safe_col(df, 'dTLB-stores'), safe_col(df, 'dTLB-store-misses')), 'm-s', markersize=3, linewidth=1.5, label='dTLB Store Miss Rate')
+    ax.plot(ts, miss_rate(safe_col(df, 'iTLB-loads'),  safe_col(df, 'iTLB-load-misses')),  color='orange', marker='^', markersize=3, linewidth=1.5, label='iTLB Load Miss Rate')
     ax.set_title('TLB Miss Rates', fontweight='bold')
     ax.set_ylabel('Miss Rate (%)'); ax.set_xlabel('Time')
     ax.legend(); ax.grid(True, alpha=0.3)
@@ -157,27 +177,27 @@ def plot_l1_cache(df: pd.DataFrame, output_dir: str):
     ts = df['timestamp']
 
     ax = axes[0, 0]
-    ax.plot(ts, df['L1-dcache-loads'], 'b-o', markersize=3, linewidth=1.5, label='L1-dcache-loads')
+    ax.plot(ts, safe_col(df, 'L1-dcache-loads'), 'b-o', markersize=3, linewidth=1.5, label='L1-dcache-loads')
     ax.set_title('L1 D-Cache Loads', fontweight='bold')
     ax.set_ylabel('Count')
     ax.legend(); ax.grid(True, alpha=0.3)
 
     ax = axes[0, 1]
-    ax.plot(ts, df['L1-dcache-stores'], 'g-o', markersize=3, linewidth=1.5, label='L1-dcache-stores')
+    ax.plot(ts, safe_col(df, 'L1-dcache-stores'), 'g-o', markersize=3, linewidth=1.5, label='L1-dcache-stores')
     ax.set_title('L1 D-Cache Stores', fontweight='bold')
     ax.set_ylabel('Count')
     ax.legend(); ax.grid(True, alpha=0.3)
 
     ax = axes[1, 0]
-    ax.plot(ts, df['L1-dcache-load-misses'], 'r-o', markersize=3, linewidth=1.5, label='L1-dcache-load-misses')
-    ax.plot(ts, df['L1-icache-load-misses'], 'orange', marker='s', markersize=3, linewidth=1.5, label='L1-icache-load-misses')
+    ax.plot(ts, safe_col(df, 'L1-dcache-load-misses'), 'r-o', markersize=3, linewidth=1.5, label='L1-dcache-load-misses')
+    ax.plot(ts, safe_col(df, 'L1-icache-load-misses'), 'orange', marker='s', markersize=3, linewidth=1.5, label='L1-icache-load-misses')
     ax.set_title('L1 Cache Load Misses', fontweight='bold')
     ax.set_ylabel('Count'); ax.set_xlabel('Time')
     ax.legend(); ax.grid(True, alpha=0.3)
 
     ax = axes[1, 1]
-    ax.plot(ts, miss_rate(df['L1-dcache-loads'], df['L1-dcache-load-misses']), 'r-o', markersize=3, linewidth=1.5, label='L1-dcache Load Miss Rate')
-    ax.plot(ts, df['l1d.replacement'], 'purple', marker='^', markersize=3, linewidth=1.5, label='l1d.replacement')
+    ax.plot(ts, miss_rate(safe_col(df, 'L1-dcache-loads'), safe_col(df, 'L1-dcache-load-misses')), 'r-o', markersize=3, linewidth=1.5, label='L1-dcache Load Miss Rate')
+    ax.plot(ts, safe_col(df, 'l1d.replacement'), 'purple', marker='^', markersize=3, linewidth=1.5, label='l1d.replacement')
     ax.set_title('L1 D-Cache Miss Rate & Replacement', fontweight='bold')
     ax.set_ylabel('Miss Rate (%) / Count'); ax.set_xlabel('Time')
     ax.legend(); ax.grid(True, alpha=0.3)
@@ -204,7 +224,7 @@ def plot_l1d_pending(df: pd.DataFrame, output_dir: str):
     titles = ['L1D Replacement', 'L1D Pend Miss: FB Full', 'L1D Pend Miss: Pending']
 
     for ax, col, title, color in zip(axes, cols, titles, colors):
-        ax.plot(ts, df[col], color=color, marker='o', markersize=3, linewidth=1.5, label=col)
+        ax.plot(ts, safe_col(df, col), color=color, marker='o', markersize=3, linewidth=1.5, label=col)
         ax.set_title(title, fontweight='bold')
         ax.set_ylabel('Count')
         ax.set_xlabel('Time')
@@ -227,28 +247,28 @@ def plot_llc(df: pd.DataFrame, output_dir: str):
     ts = df['timestamp']
 
     ax = axes[0, 0]
-    ax.plot(ts, df['LLC-loads'], 'b-o', markersize=3, linewidth=1.5, label='LLC-loads')
+    ax.plot(ts, safe_col(df, 'LLC-loads'), 'b-o', markersize=3, linewidth=1.5, label='LLC-loads')
     ax.set_title('LLC Loads', fontweight='bold')
     ax.set_ylabel('Count')
     ax.legend(); ax.grid(True, alpha=0.3)
 
     ax = axes[0, 1]
-    ax.plot(ts, df['LLC-stores'], 'g-o', markersize=3, linewidth=1.5, label='LLC-stores')
+    ax.plot(ts, safe_col(df, 'LLC-stores'), 'g-o', markersize=3, linewidth=1.5, label='LLC-stores')
     ax.set_title('LLC Stores', fontweight='bold')
     ax.set_ylabel('Count')
     ax.legend(); ax.grid(True, alpha=0.3)
 
     ax = axes[1, 0]
-    ax.plot(ts, df['LLC-load-misses'],  'r-o', markersize=3, linewidth=1.5, label='LLC-load-misses')
-    ax.plot(ts, df['LLC-store-misses'], 'm-s', markersize=3, linewidth=1.5, label='LLC-store-misses')
+    ax.plot(ts, safe_col(df, 'LLC-load-misses'),  'r-o', markersize=3, linewidth=1.5, label='LLC-load-misses')
+    ax.plot(ts, safe_col(df, 'LLC-store-misses'), 'm-s', markersize=3, linewidth=1.5, label='LLC-store-misses')
     ax.set_title('LLC Misses', fontweight='bold')
     ax.set_ylabel('Count'); ax.set_xlabel('Time')
     ax.legend(); ax.grid(True, alpha=0.3)
 
     ax = axes[1, 1]
-    ax.plot(ts, miss_rate(df['LLC-loads'],  df['LLC-load-misses']),  'r-o', markersize=3, linewidth=1.5, label='LLC Load Miss Rate')
-    ax.plot(ts, miss_rate(df['LLC-stores'], df['LLC-store-misses']), 'm-s', markersize=3, linewidth=1.5, label='LLC Store Miss Rate')
-    ax.plot(ts, miss_rate(df['cache-references'], df['cache-misses']), 'orange', marker='^', markersize=3, linewidth=1.5, label='Cache Miss Rate')
+    ax.plot(ts, miss_rate(safe_col(df, 'LLC-loads'),  safe_col(df, 'LLC-load-misses')),  'r-o', markersize=3, linewidth=1.5, label='LLC Load Miss Rate')
+    ax.plot(ts, miss_rate(safe_col(df, 'LLC-stores'), safe_col(df, 'LLC-store-misses')), 'm-s', markersize=3, linewidth=1.5, label='LLC Store Miss Rate')
+    ax.plot(ts, miss_rate(safe_col(df, 'cache-references'), safe_col(df, 'cache-misses')), 'orange', marker='^', markersize=3, linewidth=1.5, label='Cache Miss Rate')
     ax.set_title('LLC / Cache Miss Rates', fontweight='bold')
     ax.set_ylabel('Miss Rate (%)'); ax.set_xlabel('Time')
     ax.legend(); ax.grid(True, alpha=0.3)
@@ -271,30 +291,30 @@ def plot_mem_inst(df: pd.DataFrame, output_dir: str):
     ts = df['timestamp']
 
     ax = axes[0, 0]
-    ax.plot(ts, df['mem_inst_retired.all_loads'],  'b-o', markersize=3, linewidth=1.5, label='all_loads')
-    ax.plot(ts, df['mem_inst_retired.all_stores'], 'g-s', markersize=3, linewidth=1.5, label='all_stores')
+    ax.plot(ts, safe_col(df, 'mem_inst_retired.all_loads'),  'b-o', markersize=3, linewidth=1.5, label='all_loads')
+    ax.plot(ts, safe_col(df, 'mem_inst_retired.all_stores'), 'g-s', markersize=3, linewidth=1.5, label='all_stores')
     ax.set_title('mem_inst_retired: Loads & Stores', fontweight='bold')
     ax.set_ylabel('Count')
     ax.legend(); ax.grid(True, alpha=0.3)
 
     ax = axes[0, 1]
-    ax.plot(ts, df['mem_inst_retired.any'], 'purple', marker='o', markersize=3, linewidth=1.5, label='any')
+    ax.plot(ts, safe_col(df, 'mem_inst_retired.any'), 'purple', marker='o', markersize=3, linewidth=1.5, label='any')
     ax.set_title('mem_inst_retired: Any', fontweight='bold')
     ax.set_ylabel('Count')
     ax.legend(); ax.grid(True, alpha=0.3)
 
     ax = axes[1, 0]
-    ax.plot(ts, df['mem-loads'],  'steelblue', marker='o', markersize=3, linewidth=1.5, label='mem-loads')
-    ax.plot(ts, df['mem-stores'], 'tomato',    marker='s', markersize=3, linewidth=1.5, label='mem-stores')
+    ax.plot(ts, safe_col(df, 'mem-loads'),  'steelblue', marker='o', markersize=3, linewidth=1.5, label='mem-loads')
+    ax.plot(ts, safe_col(df, 'mem-stores'), 'tomato',    marker='s', markersize=3, linewidth=1.5, label='mem-stores')
     ax.set_title('mem-loads / mem-stores (perf event)', fontweight='bold')
     ax.set_ylabel('Count'); ax.set_xlabel('Time')
     ax.legend(); ax.grid(True, alpha=0.3)
 
     ax = axes[1, 1]
     # 使用安全比率计算，避免小分母导致 >100% 的异常值
-    denom_series = df['mem_inst_retired.any'] if 'mem_inst_retired.any' in df.columns else pd.Series(0, index=df.index)
-    load_ratio = safe_ratio(df['mem_inst_retired.all_loads'], denom_series, percent=True, min_denom=5.0)
-    store_ratio = safe_ratio(df['mem_inst_retired.all_stores'], denom_series, percent=True, min_denom=5.0)
+    denom_series = safe_col(df, 'mem_inst_retired.any')
+    load_ratio = safe_ratio(safe_col(df, 'mem_inst_retired.all_loads'), denom_series, percent=True, min_denom=5.0)
+    store_ratio = safe_ratio(safe_col(df, 'mem_inst_retired.all_stores'), denom_series, percent=True, min_denom=5.0)
     ax.plot(ts, load_ratio,  'b-o', markersize=3, linewidth=1.5, label='Load / Any (%)')
     ax.plot(ts, store_ratio, 'g-s', markersize=3, linewidth=1.5, label='Store / Any (%)')
     ax.set_title('Load & Store Ratio in mem_inst_retired', fontweight='bold')
@@ -346,17 +366,33 @@ def plot_overview(df: pd.DataFrame, output_dir: str):
 # ─────────────────────────── 主入口 ─────────────────────────────
 
 def main():
+    parser = argparse.ArgumentParser(description='PMU Timeseries Visualization')
+    parser.add_argument('-p', '--project', default=None,
+                        help='项目名，对应 pmu_timeseries_test_{project}.csv，例如: dtlb, itlb, llc；'
+                             '不指定时默认读取 pmu_timeseries.csv')
+    args = parser.parse_args()
+    project = args.project
+
     script_dir = os.path.dirname(os.path.abspath(__file__))
 
-    csv_path = os.path.normpath(os.path.join(script_dir, '../log/pmu_timeseries.csv'))
-    # 将输出目录放在按时间命名的子目录中，方便归档
+    if project:
+        csv_path = os.path.normpath(os.path.join(script_dir, f'../log/pmu_timeseries_test_{project}.csv'))
+    else:
+        csv_path = os.path.normpath(os.path.join(script_dir, '../log/pmu_timeseries.csv'))
+    # 将输出目录放在按时间+项目名命名的子目录中，方便归档
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-    output_dir = os.path.normpath(os.path.join(script_dir, 'plots', timestamp))
+    dir_suffix = f'{timestamp}_{project}' if project else timestamp
+    output_dir = os.path.normpath(os.path.join(script_dir, 'plots', dir_suffix))
 
     print(f"输入文件: {csv_path}")
     print(f"输出目录: {output_dir}")
 
-    df = load_csv(csv_path)
+    try:
+        df = load_csv(csv_path)
+    except (FileNotFoundError, ValueError) as e:
+        print(f"\n{e}")
+        print("无可用数据，跳过绘图。")
+        sys.exit(0)
     # 根据 time_running 过滤不可靠样本
     df_filtered = preprocess_time_columns(df, tr_fraction=0.1)
 
