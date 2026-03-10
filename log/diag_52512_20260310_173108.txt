@@ -1,0 +1,16 @@
+==== diag for PID=52512 at 20260310_173108 ====
+LOG_LINE: 2026/03/10 17:07:44 [Phase 2] 尝试挂载 uprobe: file=/home/ssy/lbr/test/test_lbr_sframe offset=0x15e5 pid=52512
+
+ps -p 52512 -o pid,comm,etime,cmd:
+    PID COMMAND             ELAPSED CMD
+
+head /proc/52512/maps (first 200 lines):
+head: cannot open '/proc/52512/maps' for reading: No such file or directory
+(failed to read /proc/52512/maps)
+
+ls -l /proc/52512/ns:
+ls: cannot access '/proc/52512/ns': No such file or directory
+
+cat /proc/52512/status:
+cat: /proc/52512/status: No such file or directory
+==== end ====
