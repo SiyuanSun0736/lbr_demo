@@ -1,9 +1,0 @@
-
-=== [1] probe_addr=0x000055d4d5f3a1c0  PID=26920  TID=26920   RIP=0x000055d4d5f3a1c0  RSP=0x00007ffc686acde0  RBP=0x00007ffc686ace00 ===
-  #0  0x000055d4d5f3a1c0  main+0x100
-
-=== [2] probe_addr=0x000055d4d5f3a1e5  PID=26920  TID=26920   RIP=0x000055d4d5f3a1e5  RSP=0x00007ffc686acde0  RBP=0x00007ffc686ace00 ===
-  #0  0x000055d4d5f3a1e5  main+0x125
-
-=== [3] probe_addr=0x000055d4d5f3a1d3  PID=26920  TID=26920   RIP=0x000055d4d5f3a1d3  RSP=0x00007ffc686acde0  RBP=0x00007ffc686ace00 ===
-  #0  0x000055d4d5f3a1d3  main+0x113

@@ -753,6 +753,23 @@ func startUprobeReader(ctx context.Context, stop context.CancelFunc) {
 			if logFile != nil {
 				logFile.WriteString(msg)
 			}
+
+			// 打印 BPF 捕获的栈快照信息，便于排查 snapshort 是否有效
+			stackInfo := fmt.Sprintf("[Phase 2] regs.StackLen=%d\n", regs.StackLen)
+			fmt.Print(stackInfo)
+			if logFile != nil {
+				logFile.WriteString(stackInfo)
+			}
+			if regs.StackLen > 0 {
+				n := int(regs.StackLen)
+				if n > 32 {
+					n = 32
+				}
+				fmt.Printf("[Phase 2] stack_snapshot_first_%d_bytes: % x\n", n, regs.StackData[:n])
+				if logFile != nil {
+					logFile.WriteString(fmt.Sprintf("[Phase 2] stack_snapshot_first_%d_bytes: % x\n", n, regs.StackData[:n]))
+				}
+			}
 			// one-shot：先尝试直接 VA 匹配，失败则通过文件偏移反查原始 link
 			var closedLink bool
 			if val, loaded := uprobeByAddr.LoadAndDelete(regs.ProbeAddr); loaded {

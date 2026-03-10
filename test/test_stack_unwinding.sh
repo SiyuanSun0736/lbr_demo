@@ -15,18 +15,15 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
-# 检查是否已编译测试程序
-if [ ! -f test_stack_unwinding ]; then
-    echo -e "${YELLOW}测试程序未编译，正在编译...${NC}"
-    make test_stack_unwinding
-fi
+# 编译测试程序
 
-# 检查是否已编译栈回溯工具
-if [ ! -f ../lbr-demo ]; then
-    echo -e "${YELLOW}lbr-demo 未编译，需要先编译主程序${NC}"
-    echo "请运行: cd .. && make"
-    exit 1
-fi
+make test_stack_unwinding
+
+
+# 编译栈回溯工具
+cd ..
+make
+cd test
 
 echo -e "${GREEN}步骤 1: 启动测试程序${NC}"
 ./test_stack_unwinding &

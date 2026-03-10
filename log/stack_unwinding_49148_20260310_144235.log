@@ -1,0 +1,505 @@
+正在对进程 49148 进行栈回溯...
+日志文件: ../log/stack_unwinding_49148_20260310_144235.log
+
+2026/03/10 14:42:35 [DEBUG] NewSFrameResolver: 为PID 49148 创建SFrame解析器
+2026/03/10 14:42:35 [DEBUG] NewSFrameResolver: 可执行文件: /home/ssy/lbr/test/test_stack_unwinding
+2026/03/10 14:42:35 [DEBUG] loadSFrameData: SFrame Magic=0xdee2, Version=3, Flags=0x5
+2026/03/10 14:42:35 [DEBUG] loadSFrameData: ABI=3 (AMD64 little-endian)
+2026/03/10 14:42:35 [DEBUG] loadSFrameData: FixedFPOffset=0, FixedRAOffset=-8, AuxHdrLen=0
+2026/03/10 14:42:35 [DEBUG] loadSFrameData: NumFDEs=8, NumFREs=27, FRELen=138, FDEOff=0, FREOff=128
+2026/03/10 14:42:35 [DEBUG] loadSFrameData: 成功解析 8 个SFrame FDE
+2026/03/10 14:42:35 [DEBUG] loadSFrameData: FRE数据位于偏移 156, 总长度 138
+2026/03/10 14:42:35 [DEBUG] NewSFrameResolver: 成功加载SFrame数据
+2026/03/10 14:42:35 [DEBUG] loadSymbols: 加载了 29 个符号
+2026/03/10 14:42:35 [DEBUG] GetProcessMaps: 读取进程 49148 的内存映射
+2026/03/10 14:42:35 [DEBUG] GetProcessMaps: 读取到 24 个内存映射
+2026/03/10 14:42:35 [DEBUG] loadBaseAddress: 基址=0x55e95ff8a000, 结束=0x55e95ff8b000, 偏移=0x1000
+2026/03/10 14:42:35 [DEBUG] GetProcessMaps: 读取进程 49148 的内存映射
+2026/03/10 14:42:35 [DEBUG] GetProcessMaps: 读取到 24 个内存映射
+2026/03/10 14:42:35 [DEBUG] loadLibraryMapping: 加载共享库 /usr/lib/libc.so.6, 符号数: 3121, SFrame: false
+2026/03/10 14:42:35 [DEBUG] loadLibraryMapping: 加载共享库 /usr/lib/ld-linux-x86-64.so.2, 符号数: 32, SFrame: false
+2026/03/10 14:42:35 [DEBUG] loadLibraryMappings: 加载了 2 个共享库映射
+2026/03/10 14:42:35 [DEBUG] NewSFrameResolver: SFrame解析器创建成功
+最大栈帧数: 32
+栈展开方法: sframe
+
+使用 SFrame 栈展开...
+2026/03/10 14:42:35 [DEBUG] GetRegisters: PC=0x7ffbb0ab03be, SP=0x7fffb48b0640, BP=0x7fffb48b0650 (via ptrace)
+2026/03/10 14:42:35 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7ffbb0ab03be
+2026/03/10 14:42:35 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x933be
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 dladdr @ 0x92690, size=41, dist=0xd2e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 dladdr @ 0x92690, size=41, dist=0xd2e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 dlmopen @ 0x92e00, size=172, dist=0x5be
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 dlmopen @ 0x92e00, size=172, dist=0x5be
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 dlclose @ 0x92710, size=57, dist=0xcae
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 dlclose @ 0x92710, size=57, dist=0xcae
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 __libc_alloca_cutoff @ 0x932a0, size=47, dist=0x11e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 _IO_str_pbackfail @ 0x92630, size=30, dist=0xd8e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 dladdr1 @ 0x926c0, size=71, dist=0xcfe
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 dladdr1 @ 0x926c0, size=71, dist=0xcfe
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 dlsym @ 0x93020, size=193, dist=0x39e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 dlsym @ 0x93020, size=193, dist=0x39e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 dlopen @ 0x92f60, size=144, dist=0x45e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 dlopen @ 0x92f60, size=144, dist=0x45e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 dlerror @ 0x92750, size=525, dist=0xc6e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 dlerror @ 0x92750, size=525, dist=0xc6e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 dlinfo @ 0x92c70, size=140, dist=0x74e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 dlinfo @ 0x92c70, size=140, dist=0x74e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 dlvsym @ 0x93120, size=213, dist=0x29e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 dlvsym @ 0x93120, size=213, dist=0x29e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 目标地址=0x933be, 检查了753个候选符号, 未找到合适的符号
+2026/03/10 14:42:35 [DEBUG] SFrameResolver: 未找到符号，使用偏移 0x933be@libc.so.6
+2026/03/10 14:42:35 [DEBUG] UnwindStackWithSFrame: Frame 0: PC=0x7ffbb0ab03be, SP=0x7fffb48b0640, BP=0x7fffb48b0650
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: 共享库无SFrame数据 lib=/usr/lib/libc.so.6
+2026/03/10 14:42:35 [DEBUG] UnwindStackWithSFrame: SFrame展开失败，尝试FP过渡: no SFrame info for PC 0x7ffbb0ab03be
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithFP: 读取 newBP=0x7fffb48b0670, retAddr=0x7ffbb0b00452 (from BP=0x7fffb48b0650)
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithFP: 更新后 PC=0x7ffbb0b00452, BP=0x7fffb48b0670, SP=0x7fffb48b0670
+2026/03/10 14:42:35 [DEBUG] UnwindStackWithSFrame: FP过渡展开成功
+2026/03/10 14:42:35 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7ffbb0b00452
+2026/03/10 14:42:35 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0xe3452
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 clock_gettime @ 0xe3350, size=127, dist=0x102
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 clock_gettime @ 0xe3350, size=127, dist=0x102
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 __clock_gettime @ 0xe3350, size=127, dist=0x102
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 timespec_getres @ 0xe3270, size=42, dist=0x1e2
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 timespec_get @ 0xe3240, size=42, dist=0x212
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 wcsftime_l @ 0xe31f0, size=68, dist=0x262
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 __wcsftime_l @ 0xe31f0, size=68, dist=0x262
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 clock_getres @ 0xe32e0, size=102, dist=0x172
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 clock_getres @ 0xe32e0, size=102, dist=0x172
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 clock_nanosleep @ 0xe3420, size=70, dist=0x32
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 clock_nanosleep @ 0xe3420, size=70, dist=0x32
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 clock_getcpuclockid @ 0xe32a0, size=54, dist=0x1b2
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 clock_getcpuclockid @ 0xe32a0, size=54, dist=0x1b2
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 clock_settime @ 0xe33d0, size=76, dist=0x82
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 clock_settime @ 0xe33d0, size=76, dist=0x82
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 目标地址=0xe3452, 检查了1519个候选符号, 最佳匹配(范围内)=clock_nanosleep, 距离=0x32
+2026/03/10 14:42:35 [DEBUG] SFrameResolver: 找到共享库函数 clock_nanosleep+0x32@libc.so.6
+2026/03/10 14:42:35 [DEBUG] UnwindStackWithSFrame: Frame 1: PC=0x7ffbb0b00452, SP=0x7fffb48b0670, BP=0x7fffb48b0670
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: 共享库无SFrame数据 lib=/usr/lib/libc.so.6
+2026/03/10 14:42:35 [DEBUG] UnwindStackWithSFrame: SFrame展开失败，尝试FP过渡: no SFrame info for PC 0x7ffbb0b00452
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithFP: 读取 newBP=0x7fffb48b0680, retAddr=0x7ffbb0b0c537 (from BP=0x7fffb48b0670)
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithFP: 更新后 PC=0x7ffbb0b0c537, BP=0x7fffb48b0680, SP=0x7fffb48b0680
+2026/03/10 14:42:35 [DEBUG] UnwindStackWithSFrame: FP过渡展开成功
+2026/03/10 14:42:35 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7ffbb0b0c537
+2026/03/10 14:42:35 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0xef537
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 globfree @ 0xef3d0, size=97, dist=0x167
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 nanosleep @ 0xef520, size=49, dist=0x17
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 group_member @ 0xef440, size=221, dist=0xf7
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 globfree64 @ 0xef3d0, size=97, dist=0x167
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 glob_pattern_p @ 0xef310, size=189, dist=0x227
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 __nanosleep @ 0xef520, size=49, dist=0x17
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 目标地址=0xef537, 检查了1590个候选符号, 最佳匹配(范围内)=nanosleep, 距离=0x17
+2026/03/10 14:42:35 [DEBUG] SFrameResolver: 找到共享库函数 nanosleep+0x17@libc.so.6
+2026/03/10 14:42:35 [DEBUG] UnwindStackWithSFrame: Frame 2: PC=0x7ffbb0b0c537, SP=0x7fffb48b0680, BP=0x7fffb48b0680
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: 共享库无SFrame数据 lib=/usr/lib/libc.so.6
+2026/03/10 14:42:35 [DEBUG] UnwindStackWithSFrame: SFrame展开失败，尝试FP过渡: no SFrame info for PC 0x7ffbb0b0c537
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithFP: 读取 newBP=0x7fffb48b06c0, retAddr=0x7ffbb0b1eb8e (from BP=0x7fffb48b0680)
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithFP: 更新后 PC=0x7ffbb0b1eb8e, BP=0x7fffb48b06c0, SP=0x7fffb48b06c0
+2026/03/10 14:42:35 [DEBUG] UnwindStackWithSFrame: FP过渡展开成功
+2026/03/10 14:42:35 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7ffbb0b1eb8e
+2026/03/10 14:42:35 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x101b8e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 __sched_yield @ 0x1016e0, size=37, dist=0x4ae
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 __shm_get_name @ 0x101a50, size=246, dist=0x13e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 sleep @ 0x101b50, size=115, dist=0x3e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 __sched_getparam @ 0x101560, size=37, dist=0x62e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 setsid @ 0x1019a0, size=37, dist=0x1ee
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 re_exec @ 0x100c80, size=40, dist=0xf0e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 __setpgid @ 0x101820, size=37, dist=0x36e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 setgid @ 0x101710, size=121, dist=0x47e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 sched_setparam @ 0x101680, size=37, dist=0x50e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 sched_rr_get_interval @ 0x101620, size=42, dist=0x56e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 __sched_get_priority_min @ 0x1015f0, size=37, dist=0x59e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 sched_get_priority_max @ 0x1015c0, size=37, dist=0x5ce
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 sched_setaffinity @ 0x101650, size=42, dist=0x53e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 __sched_cpualloc @ 0x101490, size=22, dist=0x6fe
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 setuid @ 0x1019d0, size=121, dist=0x1be
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 setgroups @ 0x101790, size=129, dist=0x3fe
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 setpgid @ 0x101820, size=37, dist=0x36e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 re_search @ 0x100be0, size=22, dist=0xfae
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 __sched_cpufree @ 0x1014f0, size=10, dist=0x69e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 setresgid @ 0x101860, size=153, dist=0x32e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 __sched_setscheduler @ 0x1016b0, size=37, dist=0x4de
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 __sched_cpucount @ 0x1014b0, size=63, dist=0x6de
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 sched_get_priority_min @ 0x1015f0, size=37, dist=0x59e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 setresuid @ 0x101900, size=153, dist=0x28e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 sched_yield @ 0x1016e0, size=37, dist=0x4ae
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 re_search_2 @ 0x100c20, size=28, dist=0xf6e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 setpgrp @ 0x101850, size=13, dist=0x33e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 re_match @ 0x100bc0, size=25, dist=0xfce
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 re_match_2 @ 0x100c00, size=26, dist=0xf8e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 re_set_registers @ 0x100c40, size=51, dist=0xf4e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 sched_getscheduler @ 0x101590, size=37, dist=0x5fe
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 sched_setscheduler @ 0x1016b0, size=37, dist=0x4de
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 __sched_getscheduler @ 0x101590, size=37, dist=0x5fe
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 sched_getparam @ 0x101560, size=37, dist=0x62e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 __register_atfork @ 0x100cc0, size=498, dist=0xece
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 sched_getaffinity @ 0x101500, size=90, dist=0x68e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 __sched_get_priority_max @ 0x1015c0, size=37, dist=0x5ce
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 目标地址=0x101b8e, 检查了1646个候选符号, 最佳匹配(范围内)=sleep, 距离=0x3e
+2026/03/10 14:42:35 [DEBUG] SFrameResolver: 找到共享库函数 sleep+0x3e@libc.so.6
+2026/03/10 14:42:35 [DEBUG] UnwindStackWithSFrame: Frame 3: PC=0x7ffbb0b1eb8e, SP=0x7fffb48b06c0, BP=0x7fffb48b06c0
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: 共享库无SFrame数据 lib=/usr/lib/libc.so.6
+2026/03/10 14:42:35 [DEBUG] UnwindStackWithSFrame: SFrame展开失败，尝试FP过渡: no SFrame info for PC 0x7ffbb0b1eb8e
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithFP: 读取 newBP=0x7fffb48b06d0, retAddr=0x55e95ff8a1b1 (from BP=0x7fffb48b06c0)
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithFP: 更新后 PC=0x55e95ff8a1b1, BP=0x7fffb48b06d0, SP=0x7fffb48b06d0
+2026/03/10 14:42:35 [DEBUG] UnwindStackWithSFrame: FP过渡展开成功
+2026/03/10 14:42:35 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55e95ff8a1b1
+2026/03/10 14:42:35 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x11b1
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 deregister_tm_clones @ 0x10a0, size=0, dist=0x111
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 register_tm_clones @ 0x10d0, size=0, dist=0xe1
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 __do_global_dtors_aux @ 0x1110, size=0, dist=0xa1
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 frame_dummy @ 0x1160, size=0, dist=0x51
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 function_level_5 @ 0x1169, size=74, dist=0x48
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 _start @ 0x1070, size=38, dist=0x141
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x1b1
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 目标地址=0x11b1, 检查了7个候选符号, 最佳匹配(范围内)=function_level_5, 距离=0x48
+2026/03/10 14:42:35 [DEBUG] SFrameResolver: 找到函数 function_level_5+0x48
+2026/03/10 14:42:35 [DEBUG] UnwindStackWithSFrame: Frame 4: PC=0x55e95ff8a1b1, SP=0x7fffb48b06d0, BP=0x7fffb48b06d0
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: 主程序地址 PC=0x55e95ff8a1b1, baseAddr=0x55e95ff8a000, baseOffset=0x1000, sectionAddr=0x2268, 函数数=8, PCREL=true
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[0] 范围[0x55e95ff8a020, 0x55e95ff8a030), size=16 (StartAddr=0xffffed9c, virtStart=0x1020)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[1] 范围[0x55e95ff8a030, 0x55e95ff8a070), size=64 (StartAddr=0xffffed9c, virtStart=0x1030)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[2] 范围[0x55e95ff8a169, 0x55e95ff8a1b3), size=74 (StartAddr=0xffffeec5, virtStart=0x1169)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: 候选主程序SFrame函数 @ 0x55e95ff8a169 (virtual=0x1169), PC=0x55e95ff8a1b1, size=74
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[3] 范围[0x55e95ff8a1b3, 0x55e95ff8a1ce), size=27 (StartAddr=0xffffeeff, virtStart=0x11b3)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[4] 范围[0x55e95ff8a1ce, 0x55e95ff8a1e9), size=27 (StartAddr=0xffffef0a, virtStart=0x11ce)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[5] 范围[0x55e95ff8a1e9, 0x55e95ff8a204), size=27 (StartAddr=0xffffef15, virtStart=0x11e9)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[6] 范围[0x55e95ff8a204, 0x55e95ff8a21f), size=27 (StartAddr=0xffffef20, virtStart=0x1204)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[7] 范围[0x55e95ff8a21f, 0x55e95ff8a26a), size=75 (StartAddr=0xffffef2b, virtStart=0x121f)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: 找到主程序SFrame函数 @ 0x55e95ff8a169, PC=0x55e95ff8a1b1, size=74
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: pcOffset=0x48, FuncInfo=0x0, StartFREOff=0, FuncSize=74, NumFREs=0
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: 解析FRE, freType=0, freDataStart=156
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #0: StartOffset=0x3, CFAOffset=0, RAOffset=-8, FPOffset=0
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #1: StartOffset=0x0, CFAOffset=0, RAOffset=-8, FPOffset=0
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #2: StartOffset=0x0, CFAOffset=0, RAOffset=-8, FPOffset=0
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #3: StartOffset=0x3, CFAOffset=1, RAOffset=-8, FPOffset=5
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #4: StartOffset=0x4, CFAOffset=16, RAOffset=-8, FPOffset=-16
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: 找到匹配的FRE, CFA_BASE=SP, CFAOffset=16, RAOffset=-8, FPOffset=-16
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithSFrame: 函数size=74, pcOffset=0x48, useFPBased=false (from FRE)
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithSFrame: SP-based CFA (来自FDE), CFA=0x7fffb48b06e0 (SP=0x7fffb48b06d0 + 16)
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithSFrame: 读取返回地址，位置=0x7fffb48b06d8 (CFA=0x7fffb48b06e0, RAOffset=-8)
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithSFrame: 读取保存的BP=0x7fffb48b06e0 (from CFA+-16=0x7fffb48b06d0), useFPBased=false
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithSFrame: retAddr=0x55e95ff8a1cb, newBP=0x7fffb48b06e0, newSP=0x7fffb48b06e0
+2026/03/10 14:42:35 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55e95ff8a1cb
+2026/03/10 14:42:35 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x11cb
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 deregister_tm_clones @ 0x10a0, size=0, dist=0x12b
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 register_tm_clones @ 0x10d0, size=0, dist=0xfb
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 __do_global_dtors_aux @ 0x1110, size=0, dist=0xbb
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 frame_dummy @ 0x1160, size=0, dist=0x6b
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 function_level_5 @ 0x1169, size=74, dist=0x62
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 function_level_4 @ 0x11b3, size=27, dist=0x18
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 _start @ 0x1070, size=38, dist=0x15b
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x1cb
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 目标地址=0x11cb, 检查了8个候选符号, 最佳匹配(范围内)=function_level_4, 距离=0x18
+2026/03/10 14:42:35 [DEBUG] SFrameResolver: 找到函数 function_level_4+0x18
+2026/03/10 14:42:35 [DEBUG] UnwindStackWithSFrame: Frame 5: PC=0x55e95ff8a1cb, SP=0x7fffb48b06e0, BP=0x7fffb48b06e0
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: 主程序地址 PC=0x55e95ff8a1cb, baseAddr=0x55e95ff8a000, baseOffset=0x1000, sectionAddr=0x2268, 函数数=8, PCREL=true
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[0] 范围[0x55e95ff8a020, 0x55e95ff8a030), size=16 (StartAddr=0xffffed9c, virtStart=0x1020)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[1] 范围[0x55e95ff8a030, 0x55e95ff8a070), size=64 (StartAddr=0xffffed9c, virtStart=0x1030)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[2] 范围[0x55e95ff8a169, 0x55e95ff8a1b3), size=74 (StartAddr=0xffffeec5, virtStart=0x1169)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[3] 范围[0x55e95ff8a1b3, 0x55e95ff8a1ce), size=27 (StartAddr=0xffffeeff, virtStart=0x11b3)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: 候选主程序SFrame函数 @ 0x55e95ff8a1b3 (virtual=0x11b3), PC=0x55e95ff8a1cb, size=27
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[4] 范围[0x55e95ff8a1ce, 0x55e95ff8a1e9), size=27 (StartAddr=0xffffef0a, virtStart=0x11ce)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[5] 范围[0x55e95ff8a1e9, 0x55e95ff8a204), size=27 (StartAddr=0xffffef15, virtStart=0x11e9)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[6] 范围[0x55e95ff8a204, 0x55e95ff8a21f), size=27 (StartAddr=0xffffef20, virtStart=0x1204)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[7] 范围[0x55e95ff8a21f, 0x55e95ff8a26a), size=75 (StartAddr=0xffffef2b, virtStart=0x121f)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: 找到主程序SFrame函数 @ 0x55e95ff8a1b3, PC=0x55e95ff8a1cb, size=27
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: pcOffset=0x18, FuncInfo=0x0, StartFREOff=16, FuncSize=27, NumFREs=0
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: 解析FRE, freType=0, freDataStart=172
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #0: StartOffset=0x4, CFAOffset=0, RAOffset=-8, FPOffset=0
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #1: StartOffset=0x0, CFAOffset=0, RAOffset=-8, FPOffset=0
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #2: StartOffset=0x0, CFAOffset=0, RAOffset=-8, FPOffset=0
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #3: StartOffset=0x3, CFAOffset=1, RAOffset=-8, FPOffset=5
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #4: StartOffset=0x4, CFAOffset=16, RAOffset=-8, FPOffset=-16
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #5: StartOffset=0x1a, CFAOffset=8, RAOffset=-8, FPOffset=-16
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: 找到匹配的FRE, CFA_BASE=SP, CFAOffset=16, RAOffset=-8, FPOffset=-16
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithSFrame: 函数size=27, pcOffset=0x18, useFPBased=false (from FRE)
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithSFrame: SP-based CFA (来自FDE), CFA=0x7fffb48b06f0 (SP=0x7fffb48b06e0 + 16)
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithSFrame: 读取返回地址，位置=0x7fffb48b06e8 (CFA=0x7fffb48b06f0, RAOffset=-8)
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithSFrame: 读取保存的BP=0x7fffb48b06f0 (from CFA+-16=0x7fffb48b06e0), useFPBased=false
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithSFrame: retAddr=0x55e95ff8a1e6, newBP=0x7fffb48b06f0, newSP=0x7fffb48b06f0
+2026/03/10 14:42:35 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55e95ff8a1e6
+2026/03/10 14:42:35 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x11e6
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 deregister_tm_clones @ 0x10a0, size=0, dist=0x146
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 register_tm_clones @ 0x10d0, size=0, dist=0x116
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 __do_global_dtors_aux @ 0x1110, size=0, dist=0xd6
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 frame_dummy @ 0x1160, size=0, dist=0x86
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 function_level_3 @ 0x11ce, size=27, dist=0x18
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 function_level_5 @ 0x1169, size=74, dist=0x7d
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 function_level_4 @ 0x11b3, size=27, dist=0x33
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 _start @ 0x1070, size=38, dist=0x176
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x1e6
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 目标地址=0x11e6, 检查了9个候选符号, 最佳匹配(范围内)=function_level_3, 距离=0x18
+2026/03/10 14:42:35 [DEBUG] SFrameResolver: 找到函数 function_level_3+0x18
+2026/03/10 14:42:35 [DEBUG] UnwindStackWithSFrame: Frame 6: PC=0x55e95ff8a1e6, SP=0x7fffb48b06f0, BP=0x7fffb48b06f0
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: 主程序地址 PC=0x55e95ff8a1e6, baseAddr=0x55e95ff8a000, baseOffset=0x1000, sectionAddr=0x2268, 函数数=8, PCREL=true
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[0] 范围[0x55e95ff8a020, 0x55e95ff8a030), size=16 (StartAddr=0xffffed9c, virtStart=0x1020)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[1] 范围[0x55e95ff8a030, 0x55e95ff8a070), size=64 (StartAddr=0xffffed9c, virtStart=0x1030)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[2] 范围[0x55e95ff8a169, 0x55e95ff8a1b3), size=74 (StartAddr=0xffffeec5, virtStart=0x1169)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[3] 范围[0x55e95ff8a1b3, 0x55e95ff8a1ce), size=27 (StartAddr=0xffffeeff, virtStart=0x11b3)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[4] 范围[0x55e95ff8a1ce, 0x55e95ff8a1e9), size=27 (StartAddr=0xffffef0a, virtStart=0x11ce)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: 候选主程序SFrame函数 @ 0x55e95ff8a1ce (virtual=0x11ce), PC=0x55e95ff8a1e6, size=27
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[5] 范围[0x55e95ff8a1e9, 0x55e95ff8a204), size=27 (StartAddr=0xffffef15, virtStart=0x11e9)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[6] 范围[0x55e95ff8a204, 0x55e95ff8a21f), size=27 (StartAddr=0xffffef20, virtStart=0x1204)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[7] 范围[0x55e95ff8a21f, 0x55e95ff8a26a), size=75 (StartAddr=0xffffef2b, virtStart=0x121f)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: 找到主程序SFrame函数 @ 0x55e95ff8a1ce, PC=0x55e95ff8a1e6, size=27
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: pcOffset=0x18, FuncInfo=0x0, StartFREOff=36, FuncSize=27, NumFREs=0
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: 解析FRE, freType=0, freDataStart=192
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #0: StartOffset=0x4, CFAOffset=0, RAOffset=-8, FPOffset=0
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #1: StartOffset=0x0, CFAOffset=0, RAOffset=-8, FPOffset=0
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #2: StartOffset=0x0, CFAOffset=0, RAOffset=-8, FPOffset=0
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #3: StartOffset=0x3, CFAOffset=1, RAOffset=-8, FPOffset=5
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #4: StartOffset=0x4, CFAOffset=16, RAOffset=-8, FPOffset=-16
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #5: StartOffset=0x1a, CFAOffset=8, RAOffset=-8, FPOffset=-16
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: 找到匹配的FRE, CFA_BASE=SP, CFAOffset=16, RAOffset=-8, FPOffset=-16
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithSFrame: 函数size=27, pcOffset=0x18, useFPBased=false (from FRE)
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithSFrame: SP-based CFA (来自FDE), CFA=0x7fffb48b0700 (SP=0x7fffb48b06f0 + 16)
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithSFrame: 读取返回地址，位置=0x7fffb48b06f8 (CFA=0x7fffb48b0700, RAOffset=-8)
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithSFrame: 读取保存的BP=0x7fffb48b0700 (from CFA+-16=0x7fffb48b06f0), useFPBased=false
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithSFrame: retAddr=0x55e95ff8a201, newBP=0x7fffb48b0700, newSP=0x7fffb48b0700
+2026/03/10 14:42:35 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55e95ff8a201
+2026/03/10 14:42:35 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1201
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 deregister_tm_clones @ 0x10a0, size=0, dist=0x161
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 register_tm_clones @ 0x10d0, size=0, dist=0x131
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 __do_global_dtors_aux @ 0x1110, size=0, dist=0xf1
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 frame_dummy @ 0x1160, size=0, dist=0xa1
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 function_level_3 @ 0x11ce, size=27, dist=0x33
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 function_level_5 @ 0x1169, size=74, dist=0x98
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 function_level_2 @ 0x11e9, size=27, dist=0x18
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 function_level_4 @ 0x11b3, size=27, dist=0x4e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 _start @ 0x1070, size=38, dist=0x191
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x201
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 目标地址=0x1201, 检查了10个候选符号, 最佳匹配(范围内)=function_level_2, 距离=0x18
+2026/03/10 14:42:35 [DEBUG] SFrameResolver: 找到函数 function_level_2+0x18
+2026/03/10 14:42:35 [DEBUG] UnwindStackWithSFrame: Frame 7: PC=0x55e95ff8a201, SP=0x7fffb48b0700, BP=0x7fffb48b0700
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: 主程序地址 PC=0x55e95ff8a201, baseAddr=0x55e95ff8a000, baseOffset=0x1000, sectionAddr=0x2268, 函数数=8, PCREL=true
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[0] 范围[0x55e95ff8a020, 0x55e95ff8a030), size=16 (StartAddr=0xffffed9c, virtStart=0x1020)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[1] 范围[0x55e95ff8a030, 0x55e95ff8a070), size=64 (StartAddr=0xffffed9c, virtStart=0x1030)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[2] 范围[0x55e95ff8a169, 0x55e95ff8a1b3), size=74 (StartAddr=0xffffeec5, virtStart=0x1169)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[3] 范围[0x55e95ff8a1b3, 0x55e95ff8a1ce), size=27 (StartAddr=0xffffeeff, virtStart=0x11b3)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[4] 范围[0x55e95ff8a1ce, 0x55e95ff8a1e9), size=27 (StartAddr=0xffffef0a, virtStart=0x11ce)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[5] 范围[0x55e95ff8a1e9, 0x55e95ff8a204), size=27 (StartAddr=0xffffef15, virtStart=0x11e9)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: 候选主程序SFrame函数 @ 0x55e95ff8a1e9 (virtual=0x11e9), PC=0x55e95ff8a201, size=27
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[6] 范围[0x55e95ff8a204, 0x55e95ff8a21f), size=27 (StartAddr=0xffffef20, virtStart=0x1204)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[7] 范围[0x55e95ff8a21f, 0x55e95ff8a26a), size=75 (StartAddr=0xffffef2b, virtStart=0x121f)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: 找到主程序SFrame函数 @ 0x55e95ff8a1e9, PC=0x55e95ff8a201, size=27
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: pcOffset=0x18, FuncInfo=0x0, StartFREOff=56, FuncSize=27, NumFREs=0
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: 解析FRE, freType=0, freDataStart=212
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #0: StartOffset=0x4, CFAOffset=0, RAOffset=-8, FPOffset=0
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #1: StartOffset=0x0, CFAOffset=0, RAOffset=-8, FPOffset=0
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #2: StartOffset=0x0, CFAOffset=0, RAOffset=-8, FPOffset=0
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #3: StartOffset=0x3, CFAOffset=1, RAOffset=-8, FPOffset=5
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #4: StartOffset=0x4, CFAOffset=16, RAOffset=-8, FPOffset=-16
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #5: StartOffset=0x1a, CFAOffset=8, RAOffset=-8, FPOffset=-16
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: 找到匹配的FRE, CFA_BASE=SP, CFAOffset=16, RAOffset=-8, FPOffset=-16
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithSFrame: 函数size=27, pcOffset=0x18, useFPBased=false (from FRE)
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithSFrame: SP-based CFA (来自FDE), CFA=0x7fffb48b0710 (SP=0x7fffb48b0700 + 16)
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithSFrame: 读取返回地址，位置=0x7fffb48b0708 (CFA=0x7fffb48b0710, RAOffset=-8)
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithSFrame: 读取保存的BP=0x7fffb48b0710 (from CFA+-16=0x7fffb48b0700), useFPBased=false
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithSFrame: retAddr=0x55e95ff8a21c, newBP=0x7fffb48b0710, newSP=0x7fffb48b0710
+2026/03/10 14:42:35 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55e95ff8a21c
+2026/03/10 14:42:35 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x121c
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 deregister_tm_clones @ 0x10a0, size=0, dist=0x17c
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 register_tm_clones @ 0x10d0, size=0, dist=0x14c
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 __do_global_dtors_aux @ 0x1110, size=0, dist=0x10c
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 frame_dummy @ 0x1160, size=0, dist=0xbc
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 function_level_1 @ 0x1204, size=27, dist=0x18
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 function_level_3 @ 0x11ce, size=27, dist=0x4e
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 function_level_5 @ 0x1169, size=74, dist=0xb3
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 function_level_2 @ 0x11e9, size=27, dist=0x33
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 function_level_4 @ 0x11b3, size=27, dist=0x69
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 _start @ 0x1070, size=38, dist=0x1ac
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x21c
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 目标地址=0x121c, 检查了11个候选符号, 最佳匹配(范围内)=function_level_1, 距离=0x18
+2026/03/10 14:42:35 [DEBUG] SFrameResolver: 找到函数 function_level_1+0x18
+2026/03/10 14:42:35 [DEBUG] UnwindStackWithSFrame: Frame 8: PC=0x55e95ff8a21c, SP=0x7fffb48b0710, BP=0x7fffb48b0710
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: 主程序地址 PC=0x55e95ff8a21c, baseAddr=0x55e95ff8a000, baseOffset=0x1000, sectionAddr=0x2268, 函数数=8, PCREL=true
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[0] 范围[0x55e95ff8a020, 0x55e95ff8a030), size=16 (StartAddr=0xffffed9c, virtStart=0x1020)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[1] 范围[0x55e95ff8a030, 0x55e95ff8a070), size=64 (StartAddr=0xffffed9c, virtStart=0x1030)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[2] 范围[0x55e95ff8a169, 0x55e95ff8a1b3), size=74 (StartAddr=0xffffeec5, virtStart=0x1169)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[3] 范围[0x55e95ff8a1b3, 0x55e95ff8a1ce), size=27 (StartAddr=0xffffeeff, virtStart=0x11b3)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[4] 范围[0x55e95ff8a1ce, 0x55e95ff8a1e9), size=27 (StartAddr=0xffffef0a, virtStart=0x11ce)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[5] 范围[0x55e95ff8a1e9, 0x55e95ff8a204), size=27 (StartAddr=0xffffef15, virtStart=0x11e9)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[6] 范围[0x55e95ff8a204, 0x55e95ff8a21f), size=27 (StartAddr=0xffffef20, virtStart=0x1204)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: 候选主程序SFrame函数 @ 0x55e95ff8a204 (virtual=0x1204), PC=0x55e95ff8a21c, size=27
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[7] 范围[0x55e95ff8a21f, 0x55e95ff8a26a), size=75 (StartAddr=0xffffef2b, virtStart=0x121f)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: 找到主程序SFrame函数 @ 0x55e95ff8a204, PC=0x55e95ff8a21c, size=27
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: pcOffset=0x18, FuncInfo=0x0, StartFREOff=76, FuncSize=27, NumFREs=0
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: 解析FRE, freType=0, freDataStart=232
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #0: StartOffset=0x4, CFAOffset=0, RAOffset=-8, FPOffset=0
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #1: StartOffset=0x0, CFAOffset=0, RAOffset=-8, FPOffset=0
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #2: StartOffset=0x0, CFAOffset=0, RAOffset=-8, FPOffset=0
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #3: StartOffset=0x3, CFAOffset=1, RAOffset=-8, FPOffset=5
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #4: StartOffset=0x4, CFAOffset=16, RAOffset=-8, FPOffset=-16
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #5: StartOffset=0x1a, CFAOffset=8, RAOffset=-8, FPOffset=-16
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: 找到匹配的FRE, CFA_BASE=SP, CFAOffset=16, RAOffset=-8, FPOffset=-16
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithSFrame: 函数size=27, pcOffset=0x18, useFPBased=false (from FRE)
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithSFrame: SP-based CFA (来自FDE), CFA=0x7fffb48b0720 (SP=0x7fffb48b0710 + 16)
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithSFrame: 读取返回地址，位置=0x7fffb48b0718 (CFA=0x7fffb48b0720, RAOffset=-8)
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithSFrame: 读取保存的BP=0x7fffb48b0720 (from CFA+-16=0x7fffb48b0710), useFPBased=false
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithSFrame: retAddr=0x55e95ff8a263, newBP=0x7fffb48b0720, newSP=0x7fffb48b0720
+2026/03/10 14:42:35 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55e95ff8a263
+2026/03/10 14:42:35 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1263
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 deregister_tm_clones @ 0x10a0, size=0, dist=0x1c3
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 register_tm_clones @ 0x10d0, size=0, dist=0x193
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 __do_global_dtors_aux @ 0x1110, size=0, dist=0x153
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 frame_dummy @ 0x1160, size=0, dist=0x103
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 function_level_1 @ 0x1204, size=27, dist=0x5f
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 function_level_3 @ 0x11ce, size=27, dist=0x95
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 function_level_5 @ 0x1169, size=74, dist=0xfa
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 function_level_2 @ 0x11e9, size=27, dist=0x7a
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 function_level_4 @ 0x11b3, size=27, dist=0xb0
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 _start @ 0x1070, size=38, dist=0x1f3
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 main @ 0x121f, size=75, dist=0x44
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 _init @ 0x1000, size=0, dist=0x263
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 目标地址=0x1263, 检查了12个候选符号, 最佳匹配(范围内)=main, 距离=0x44
+2026/03/10 14:42:35 [DEBUG] SFrameResolver: 找到函数 main+0x44
+2026/03/10 14:42:35 [DEBUG] UnwindStackWithSFrame: Frame 9: PC=0x55e95ff8a263, SP=0x7fffb48b0720, BP=0x7fffb48b0720
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: 主程序地址 PC=0x55e95ff8a263, baseAddr=0x55e95ff8a000, baseOffset=0x1000, sectionAddr=0x2268, 函数数=8, PCREL=true
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[0] 范围[0x55e95ff8a020, 0x55e95ff8a030), size=16 (StartAddr=0xffffed9c, virtStart=0x1020)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[1] 范围[0x55e95ff8a030, 0x55e95ff8a070), size=64 (StartAddr=0xffffed9c, virtStart=0x1030)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[2] 范围[0x55e95ff8a169, 0x55e95ff8a1b3), size=74 (StartAddr=0xffffeec5, virtStart=0x1169)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[3] 范围[0x55e95ff8a1b3, 0x55e95ff8a1ce), size=27 (StartAddr=0xffffeeff, virtStart=0x11b3)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[4] 范围[0x55e95ff8a1ce, 0x55e95ff8a1e9), size=27 (StartAddr=0xffffef0a, virtStart=0x11ce)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[5] 范围[0x55e95ff8a1e9, 0x55e95ff8a204), size=27 (StartAddr=0xffffef15, virtStart=0x11e9)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[6] 范围[0x55e95ff8a204, 0x55e95ff8a21f), size=27 (StartAddr=0xffffef20, virtStart=0x1204)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: PCINC FDE[7] 范围[0x55e95ff8a21f, 0x55e95ff8a26a), size=75 (StartAddr=0xffffef2b, virtStart=0x121f)
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: 候选主程序SFrame函数 @ 0x55e95ff8a21f (virtual=0x121f), PC=0x55e95ff8a263, size=75
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: 找到主程序SFrame函数 @ 0x55e95ff8a21f, PC=0x55e95ff8a263, size=75
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: pcOffset=0x44, FuncInfo=0x0, StartFREOff=96, FuncSize=75, NumFREs=0
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: 解析FRE, freType=0, freDataStart=252
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #0: StartOffset=0x4, CFAOffset=0, RAOffset=-8, FPOffset=0
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #1: StartOffset=0x0, CFAOffset=0, RAOffset=-8, FPOffset=0
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #2: StartOffset=0x0, CFAOffset=0, RAOffset=-8, FPOffset=0
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #3: StartOffset=0x3, CFAOffset=1, RAOffset=-8, FPOffset=5
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #4: StartOffset=0x4, CFAOffset=16, RAOffset=-8, FPOffset=-16
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: FRE #5: StartOffset=0x4a, CFAOffset=8, RAOffset=-8, FPOffset=-16
+2026/03/10 14:42:35 [DEBUG] findFDEForFunction: 找到匹配的FRE, CFA_BASE=SP, CFAOffset=16, RAOffset=-8, FPOffset=-16
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithSFrame: 函数size=75, pcOffset=0x44, useFPBased=false (from FRE)
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithSFrame: SP-based CFA (来自FDE), CFA=0x7fffb48b0730 (SP=0x7fffb48b0720 + 16)
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithSFrame: 读取返回地址，位置=0x7fffb48b0728 (CFA=0x7fffb48b0730, RAOffset=-8)
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithSFrame: 读取保存的BP=0x7fffb48b07d0 (from CFA+-16=0x7fffb48b0720), useFPBased=false
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithSFrame: retAddr=0x7ffbb0a446c1, newBP=0x7fffb48b07d0, newSP=0x7fffb48b0730
+2026/03/10 14:42:35 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7ffbb0a446c1
+2026/03/10 14:42:35 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x276c1
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 verrx @ 0x26ddc, size=33, dist=0x8e5
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 __libc_init_first @ 0x27630, size=5, dist=0x91
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 verr @ 0x26dbe, size=30, dist=0x903
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 warn @ 0x26d03, size=187, dist=0x9be
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 err @ 0x26dfd, size=178, dist=0x8c4
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 vwarn @ 0x26cf7, size=12, dist=0x9ca
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 errx @ 0x26eaf, size=178, dist=0x812
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 目标地址=0x276c1, 检查了15个候选符号, 最佳匹配(最近)=__libc_init_first, 距离=0x91
+2026/03/10 14:42:35 [DEBUG] SFrameResolver: 找到共享库函数 __libc_init_first+0x91@libc.so.6
+2026/03/10 14:42:35 [DEBUG] UnwindStackWithSFrame: Frame 10: PC=0x7ffbb0a446c1, SP=0x7fffb48b0730, BP=0x7fffb48b07d0
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: 共享库无SFrame数据 lib=/usr/lib/libc.so.6
+2026/03/10 14:42:35 [DEBUG] UnwindStackWithSFrame: SFrame展开失败，尝试FP过渡: no SFrame info for PC 0x7ffbb0a446c1
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithFP: 读取 newBP=0x7fffb48b0830, retAddr=0x7ffbb0a447f9 (from BP=0x7fffb48b07d0)
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithFP: 更新后 PC=0x7ffbb0a447f9, BP=0x7fffb48b0830, SP=0x7fffb48b0830
+2026/03/10 14:42:35 [DEBUG] UnwindStackWithSFrame: FP过渡展开成功
+2026/03/10 14:42:35 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7ffbb0a447f9
+2026/03/10 14:42:35 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x277f9
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 verrx @ 0x26ddc, size=33, dist=0xa1d
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 __libc_init_first @ 0x27630, size=5, dist=0x1c9
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 verr @ 0x26dbe, size=30, dist=0xa3b
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 __libc_start_main @ 0x27770, size=336, dist=0x89
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 __libc_start_main @ 0x27770, size=336, dist=0x89
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 warn @ 0x26d03, size=187, dist=0xaf6
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 err @ 0x26dfd, size=178, dist=0x9fc
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 vwarn @ 0x26cf7, size=12, dist=0xb02
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 候选符号 errx @ 0x26eaf, size=178, dist=0x94a
+2026/03/10 14:42:35 [DEBUG] findSymbolInList: 目标地址=0x277f9, 检查了17个候选符号, 最佳匹配(范围内)=__libc_start_main, 距离=0x89
+2026/03/10 14:42:35 [DEBUG] SFrameResolver: 找到共享库函数 __libc_start_main+0x89@libc.so.6
+2026/03/10 14:42:35 [DEBUG] UnwindStackWithSFrame: Frame 11: PC=0x7ffbb0a447f9, SP=0x7fffb48b0830, BP=0x7fffb48b0830
+2026/03/10 14:42:35 [DEBUG] findSFrameFunction: 共享库无SFrame数据 lib=/usr/lib/libc.so.6
+2026/03/10 14:42:35 [DEBUG] UnwindStackWithSFrame: SFrame展开失败，尝试FP过渡: no SFrame info for PC 0x7ffbb0a447f9
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithFP: 读取 newBP=0x0, retAddr=0x55e95ff8a095 (from BP=0x7fffb48b0830)
+2026/03/10 14:42:35 [DEBUG] unwindFrameWithFP: 新BP为0，到达栈底
+2026/03/10 14:42:35 [DEBUG] UnwindStackWithSFrame: FP展开也失败: reached end of stack (null BP)
+2026/03/10 14:42:35 [DEBUG] UnwindStackWithSFrame: 总共展开了 12 帧
+
+=== 详细栈帧信息 ===
+
+帧 #0:
+  程序计数器 (PC): 0x00007ffbb0ab03be
+  栈指针     (SP): 0x00007fffb48b0640
+  基址指针   (BP): 0x00007fffb48b0650
+  函数: 0x933be
+  库: libc.so.6
+
+帧 #1:
+  程序计数器 (PC): 0x00007ffbb0b00452
+  栈指针     (SP): 0x00007fffb48b0670
+  基址指针   (BP): 0x00007fffb48b0670
+  函数: clock_nanosleep+0x32
+  库: libc.so.6
+
+帧 #2:
+  程序计数器 (PC): 0x00007ffbb0b0c537
+  栈指针     (SP): 0x00007fffb48b0680
+  基址指针   (BP): 0x00007fffb48b0680
+  函数: nanosleep+0x17
+  库: libc.so.6
+
+帧 #3:
+  程序计数器 (PC): 0x00007ffbb0b1eb8e
+  栈指针     (SP): 0x00007fffb48b06c0
+  基址指针   (BP): 0x00007fffb48b06c0
+  函数: sleep+0x3e
+  库: libc.so.6
+
+帧 #4:
+  程序计数器 (PC): 0x000055e95ff8a1b1
+  栈指针     (SP): 0x00007fffb48b06d0
+  基址指针   (BP): 0x00007fffb48b06d0
+  函数: function_level_5+0x48
+
+帧 #5:
+  程序计数器 (PC): 0x000055e95ff8a1cb
+  栈指针     (SP): 0x00007fffb48b06e0
+  基址指针   (BP): 0x00007fffb48b06e0
+  函数: function_level_4+0x18
+
+帧 #6:
+  程序计数器 (PC): 0x000055e95ff8a1e6
+  栈指针     (SP): 0x00007fffb48b06f0
+  基址指针   (BP): 0x00007fffb48b06f0
+  函数: function_level_3+0x18
+
+帧 #7:
+  程序计数器 (PC): 0x000055e95ff8a201
+  栈指针     (SP): 0x00007fffb48b0700
+  基址指针   (BP): 0x00007fffb48b0700
+  函数: function_level_2+0x18
+
+帧 #8:
+  程序计数器 (PC): 0x000055e95ff8a21c
+  栈指针     (SP): 0x00007fffb48b0710
+  基址指针   (BP): 0x00007fffb48b0710
+  函数: function_level_1+0x18
+
+帧 #9:
+  程序计数器 (PC): 0x000055e95ff8a263
+  栈指针     (SP): 0x00007fffb48b0720
+  基址指针   (BP): 0x00007fffb48b0720
+  函数: main+0x44
+
+帧 #10:
+  程序计数器 (PC): 0x00007ffbb0a446c1
+  栈指针     (SP): 0x00007fffb48b0730
+  基址指针   (BP): 0x00007fffb48b07d0
+  函数: __libc_init_first+0x91
+  库: libc.so.6
+
+帧 #11:
+  程序计数器 (PC): 0x00007ffbb0a447f9
+  栈指针     (SP): 0x00007fffb48b0830
+  基址指针   (BP): 0x00007fffb48b0830
+  函数: __libc_start_main+0x89
+  库: libc.so.6
+
+=== 统计信息 ===
+总栈帧数: 12
+
+各库栈帧数:
+  libc.so.6                     : 6
+  <main>                        : 6

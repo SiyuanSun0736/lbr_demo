@@ -1,9 +1,0 @@
-
-=== [1] probe_addr=0x0000556994ebb1e5  PID=310750 TID=310750  RIP=0x0000556994ebb1e5  RSP=0x00007ffdfa6ad2b0  RBP=0x00007ffdfa6ad2d0 ===
-  #0  0x0000556994ebb1e5  main+0x125
-
-=== [2] probe_addr=0x0000556994ebb1c0  PID=310750 TID=310750  RIP=0x0000556994ebb1c0  RSP=0x00007ffdfa6ad2b0  RBP=0x00007ffdfa6ad2d0 ===
-  #0  0x0000556994ebb1c0  main+0x100
-
-=== [3] probe_addr=0x0000556994ebb1d3  PID=310750 TID=310750  RIP=0x0000556994ebb1d3  RSP=0x00007ffdfa6ad2b0  RBP=0x00007ffdfa6ad2d0 ===
-  #0  0x0000556994ebb1d3  main+0x113

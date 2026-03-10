@@ -10,9 +10,9 @@ test_lbr: test_lbr.c
 # 使用 -Wa,--gsframe 将选项传递给汇编器生成 SFrame V2 格式
 test_lbr_sframe: test_lbr.c
 	@echo "使用 -Wa,--gsframe 编译以生成 SFrame section..."
-	@gcc -O2 -g -Wa,--gsframe -o test_lbr_sframe test_lbr.c 2>/dev/null || \
+	@gcc -O0 -g  -fno-omit-frame-pointer -Wa,--gsframe -o test_lbr_sframe test_lbr.c 2>/dev/null || \
 		(echo "警告: --gsframe 不支持（需要 Binutils 2.41+），使用 -g 编译..." && \
-		 gcc -O2 -g -o test_lbr_sframe test_lbr.c)
+		 gcc -O0 -g -fno-omit-frame-pointer -o test_lbr_sframe test_lbr.c)
 	@echo "编译完成，检查 SFrame section 和 segment："
 	@readelf -S test_lbr_sframe | grep "\.sframe" && echo "✓ 找到 .sframe section" || echo "✗ 未找到 .sframe section"
 	@readelf -l test_lbr_sframe | grep "GNU_SFRAME" && echo "✓ 找到 GNU_SFRAME segment" || echo "✗ 未找到 GNU_SFRAME segment"
