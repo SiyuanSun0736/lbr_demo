@@ -1,0 +1,19 @@
+PMU 对比绘图报告 — Mon Mar  9 02:02:25 PM CST 2026
+专项测试数: 7  |  基准: baseline_sleep pmu_workload
+------------------------------------------------------
+PASS  dtlb_vs_baseline_sleep
+PASS  itlb_vs_baseline_sleep
+PASS  l1dcache_vs_baseline_sleep
+PASS  l1icache_vs_baseline_sleep
+PASS  l1d_pend_miss_vs_baseline_sleep
+PASS  llc_vs_baseline_sleep
+PASS  mem_inst_vs_baseline_sleep
+PASS  dtlb_vs_pmu_workload
+PASS  itlb_vs_pmu_workload
+PASS  l1dcache_vs_pmu_workload
+PASS  l1icache_vs_pmu_workload
+PASS  l1d_pend_miss_vs_pmu_workload
+PASS  llc_vs_pmu_workload
+PASS  mem_inst_vs_pmu_workload
+------------------------------------------------------
+通过 14 / 失败 0 / 跳过 0

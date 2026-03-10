@@ -2,8 +2,8 @@ CC := gcc
 CFLAGS := -O2 -Wall -Wextra
 LDFLAGS := -lm
 
-TARGETS := l1_dcache l1d_pend_miss l1_icache llc_cache dtlb itlb mem_inst pmu_monitor_all
-SOURCES := l1_dcache.c l1d_pend_miss.c l1_icache.c llc_cache.c dtlb.c itlb.c mem_inst.c pmu_monitor_all.c
+TARGETS := l1_dcache l1d_pend_miss l1_icache llc_cache dtlb itlb mem_inst pmu_monitor_all_time pmu_timeseries pmu_timeseries_sp
+SOURCES := l1_dcache.c l1d_pend_miss.c l1_icache.c llc_cache.c dtlb.c itlb.c mem_inst.c pmu_monitor_all_time.c pmu_timeseries.c pmu_timeseries_sp.c
 
 .PHONY: all clean help
 
@@ -30,8 +30,19 @@ itlb: itlb.o
 mem_inst: mem_inst.o
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
-pmu_monitor_all: pmu_monitor_all.o
+pmu_monitor_all_time: pmu_monitor_all_time.o
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+
+pmu_timeseries: pmu_timeseries.o
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+
+pmu_timeseries_sp: pmu_timeseries_sp.o
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+
+
+.PHONY: test
+test:
+	$(MAKE) -C test all
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
@@ -48,23 +59,24 @@ help:
 	@echo "  dtlb            - Build the dtlb program"
 	@echo "  itlb            - Build the itlb program"
 	@echo "  mem_inst        - Build the mem_inst program"
-	@echo "  pmu_monitor_all - Build the comprehensive monitoring program"
+	@echo "  pmu_monitor_all_time - Build the comprehensive monitoring program"
 	@echo "  clean           - Remove compiled files"
 	@echo "  help            - Show this help message"
 	@echo ""
 	@echo "Usage:"
 	@echo "  make                   # Build all programs"
-	@echo "  make pmu_monitor_all   # Build comprehensive monitor"
+	@echo "  make pmu_monitor_all_time   # Build comprehensive monitor"
 	@echo "  make l1_dcache         # Build only l1_dcache"
 	@echo "  make l1d_pend_miss     # Build only l1d_pend_miss"
 	@echo "  make l1_icache         # Build only l1_icache"
 	@echo "  make llc_cache         # Build only llc_cache"
 	@echo "  make dtlb              # Build only dtlb"
 	@echo "  make itlb              # Build only itlb"
-	@echo "  make mem_inst          # Build only mem_inst"
-	@echo "  make clean             # Remove compiled files"
-	@echo "  ./pmu_monitor_all      # Run comprehensive monitor"
-	@echo "  ./pmu_monitor_all <PID># Monitor specific process by PID"
+	@echo "  make mem_inst              # Build only mem_inst"
+	@echo "  make test                # Build test programs under pmu/test/"
+	@echo "  make clean                 # Remove compiled files"
+	@echo "  ./pmu_monitor_all_time      # Run comprehensive monitor"
+	@echo "  ./pmu_monitor_all_time <PID># Monitor specific process by PID"
 	@echo "  ./l1_dcache            # Run l1_dcache with current process"
 	@echo "  ./l1_dcache <PID>      # Monitor specific process by PID"
 	@echo "  ./l1d_pend_miss        # Run l1d_pend_miss with current process"
@@ -78,9 +90,12 @@ help:
 	@echo "  ./itlb                 # Run itlb with current process"
 	@echo "  ./itlb <PID>           # Monitor specific process by PID"
 	@echo "  ./mem_inst             # Run mem_inst with current process"
-	@echo "  ./mem_inst <PID>       # Monitor specific process by PID"
+	@echo "  ./mem_inst <PID>           # Monitor specific process by PID"
+	@echo "  ./test/test_pmu_workload [sec]  # Run workload (generates PMU events)"
+	@echo "  bash test_pmu_monitor_all_time.sh  # Run full functional test"
 	@echo ""
 	@echo "Note: May require elevated privileges (sudo) to run"
 
 clean:
 	rm -f $(TARGETS) *.o
+

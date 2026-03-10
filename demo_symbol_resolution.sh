@@ -41,7 +41,7 @@ echo -e "\n${YELLOW}开始监控并解析符号（10秒）...${NC}"
 echo -e "${BLUE}输出将显示函数名和源代码位置${NC}\n"
 
 # timeout 10 ./lbr-demo -pid $TEST_PID -sframe=true -debug=true|| true
-timeout 10 ./lbr-demo -pid $TEST_PID || true
+timeout 10 ./lbr-demo -pid $TEST_PID -sframe=true -debug=true|| true
 echo -e "\n${GREEN}演示完成！${NC}"
 echo -e "\n${YELLOW}提示：${NC}"
 echo "• 使用 -dwarf=true 切换到 DWARF 解析"

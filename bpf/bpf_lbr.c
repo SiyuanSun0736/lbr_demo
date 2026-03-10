@@ -9,9 +9,6 @@ volatile const __u32 CPU_MASK = 0xFFFF;
 struct lbr_data {
     __u64 pid_tgid;
     __s64 nr_bytes;
-    __u64 rip;  // 程序计数器 (PC)
-    __u64 rsp;  // 栈指针 (SP)
-    __u64 rbp;  // 帧指针 (BP)
     struct perf_branch_entry entries[MAX_LBR_ENTRIES];
 };
 
@@ -61,13 +58,6 @@ int capture_lbr(struct bpf_perf_event_data *ctx)
 
     lbr->pid_tgid = pid_tgid;
     lbr->nr_bytes = ret;
-    
-    // 记录寄存器状态（从 perf_event 上下文中获取）
-    // 这些寄存器值对于栈回溯至关重要
-    // 在 x86-64 架构中，直接访问 pt_regs 结构的字段
-    lbr->rip = ctx->regs.ip;   // 指令指针 (RIP)
-    lbr->rsp = ctx->regs.sp;   // 栈指针 (RSP)
-    lbr->rbp = ctx->regs.bp;   // 帧指针 (RBP)
     
     // 获取并存储进程名称
     char comm[16] = {};

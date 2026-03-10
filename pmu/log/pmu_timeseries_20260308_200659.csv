@@ -1,0 +1,3 @@
+elapsed_ms,timestamp,dTLB-loads,dTLB-load-misses,dTLB-stores,dTLB-store-misses,iTLB-loads,iTLB-load-misses,L1-dcache-loads,L1-dcache-load-misses,L1-dcache-stores,L1-icache-load-misses,l1d.replacement,l1d_pend_miss.fb_full,l1d_pend_miss.pending,LLC-loads,LLC-load-misses,LLC-stores,LLC-store-misses,cache-references,cache-misses,mem-loads,mem-stores,mem_inst_retired.all_loads,mem_inst_retired.all_stores,mem_inst_retired.any
+1000,2026-03-08 20:07:00.615,109569409,124584,85294260,3420,,,,,,,,,,,,,,,,,,,,
+2000,2026-03-08 20:07:01.615,129875879,76872,102305143,3361,,,,,,,,,,,,,,,,,,,,

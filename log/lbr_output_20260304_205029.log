@@ -1,4 +1,0 @@
-2026/03/04 20:50:29 日志文件: log/lbr_output_20260304_205029.log
-2026/03/04 20:50:29 Current nofile rlimit: curr=524287 max=524288
-2026/03/04 20:50:29 Monitoring all processes
-2026/03/04 20:50:30 failed to load BPF objects: field CaptureLbr: program capture_lbr: load program: permission denied: invalid access to map value, value_size=6272 off=5696 size=768: R1 max value is outside of the allowed memory range (30 line(s) omitted)

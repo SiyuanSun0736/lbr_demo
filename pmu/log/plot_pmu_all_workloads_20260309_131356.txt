@@ -1,0 +1,8 @@
+PMU 全量采集+可视化报告 — Mon Mar  9 01:13:56 PM CST 2026
+采样间隔 500 ms，每轮 15 s
+------------------------------------------------------
+COLLECT_PASS  综合压力测试
+PLOT_PASS  综合压力测试
+COLLECT_FAIL  dTLB 压力测试  (exit=130)
+PLOT_PASS  dTLB 压力测试
+COLLECT_FAIL  iTLB 压力测试  (exit=130)

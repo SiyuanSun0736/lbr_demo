@@ -365,6 +365,26 @@ func (a *AddrInfo) String() string {
 	return a.Function
 }
 
+// GetFileOffset 根据虚拟地址返回其所在文件的路径及文件内偏移（用于 uprobe 挂载）。
+// 不调用 addr2line，仅依赖 /proc/pid/maps 完成计算。
+func (r *UserSymbolResolver) GetFileOffset(addr uint64) (filePath string, fileOffset uint64, err error) {
+	mmap := r.findMemoryMap(addr)
+	if mmap == nil {
+		return "", 0, fmt.Errorf("address 0x%x not in any memory map", addr)
+	}
+	if mmap.Pathname == "" || mmap.Pathname == "[stack]" || mmap.Pathname == "[heap]" ||
+		mmap.Pathname == "[vdso]" || mmap.Pathname == "[vsyscall]" {
+		return "", 0, fmt.Errorf("address in special region: %s", mmap.Pathname)
+	}
+	if mmap.Pathname == r.execPath {
+		// 主可执行文件（含 PIE）：file_offset = VA - segment_start + segment_file_offset
+		// 与共享库算法一致，避免 baseAddr 计算差异导致偏移错误
+		return r.execPath, addr - mmap.StartAddr + mmap.Offset, nil
+	}
+	// 共享库：file_offset = VA - segment_start + segment_file_offset
+	return mmap.Pathname, addr - mmap.StartAddr + mmap.Offset, nil
+}
+
 // GetProcessMaps 获取进程内存映射（用于计算偏移）
 func GetProcessMaps(pid int) ([]MemoryMap, error) {
 	debugLog("[DEBUG] GetProcessMaps: 读取进程 %d 的内存映射\n", pid)

@@ -1,0 +1,445 @@
+=== PMU Time-Series Sampler ===
+Target PID   : 157159
+Interval     : 500 ms
+Log file     : log/pmu_timeseries_20260308_202311.csv
+Symlink      : log/pmu_timeseries.csv
+
+Opened 4/24 counters:
+  + dTLB-loads
+  + dTLB-load-misses
+  + dTLB-stores
+  + dTLB-store-misses
+    (unavailable) iTLB-loads
+    (unavailable) iTLB-load-misses
+    (unavailable) L1-dcache-loads
+    (unavailable) L1-dcache-load-misses
+    (unavailable) L1-dcache-stores
+    (unavailable) L1-icache-load-misses
+    (unavailable) l1d.replacement
+    (unavailable) l1d_pend_miss.fb_full
+    (unavailable) l1d_pend_miss.pending
+    (unavailable) LLC-loads
+    (unavailable) LLC-load-misses
+    (unavailable) LLC-stores
+    (unavailable) LLC-store-misses
+    (unavailable) cache-references
+    (unavailable) cache-misses
+    (unavailable) mem-loads
+    (unavailable) mem-stores
+    (unavailable) mem_inst_retired.all_loads
+    (unavailable) mem_inst_retired.all_stores
+    (unavailable) mem_inst_retired.any
+
+Monitoring… (Ctrl+C to stop)
+
+t=500ms  2026-03-08 20:23:11.593
+  TLB:
+    dTLB-loads                              84232262
+    dTLB-load-misses                         5281493
+    dTLB-stores                             67853535
+    dTLB-store-misses                          17327
+  Cache:
+  Memory instructions:
+t=1000ms  2026-03-08 20:23:12.093
+  TLB:
+    dTLB-loads                              48457466
+    dTLB-load-misses                         2843013
+    dTLB-stores                             35293148
+    dTLB-store-misses                          16865
+  Cache:
+  Memory instructions:
+t=1500ms  2026-03-08 20:23:12.593
+  TLB:
+    dTLB-loads                              68049243
+    dTLB-load-misses                         4419676
+    dTLB-stores                             52149850
+    dTLB-store-misses                          14414
+  Cache:
+  Memory instructions:
+t=2000ms  2026-03-08 20:23:13.093
+  TLB:
+    dTLB-loads                              63525418
+    dTLB-load-misses                         3383068
+    dTLB-stores                             51333768
+    dTLB-store-misses                          12755
+  Cache:
+  Memory instructions:
+t=2500ms  2026-03-08 20:23:13.593
+  TLB:
+    dTLB-loads                              65240056
+    dTLB-load-misses                         3961970
+    dTLB-stores                             51032806
+    dTLB-store-misses                          11996
+  Cache:
+  Memory instructions:
+t=3000ms  2026-03-08 20:23:14.093
+  TLB:
+    dTLB-loads                              84300144
+    dTLB-load-misses                         5277700
+    dTLB-stores                             67802309
+    dTLB-store-misses                          16024
+  Cache:
+  Memory instructions:
+t=3500ms  2026-03-08 20:23:14.593
+  TLB:
+    dTLB-loads                              65693521
+    dTLB-load-misses                         3956444
+    dTLB-stores                             50982470
+    dTLB-store-misses                          11815
+  Cache:
+  Memory instructions:
+t=4000ms  2026-03-08 20:23:15.093
+  TLB:
+    dTLB-loads                              65546374
+    dTLB-load-misses                         3956285
+    dTLB-stores                             51007671
+    dTLB-store-misses                          12033
+  Cache:
+  Memory instructions:
+t=4500ms  2026-03-08 20:23:15.593
+  TLB:
+    dTLB-loads                              84359642
+    dTLB-load-misses                         5273735
+    dTLB-stores                             67778090
+    dTLB-store-misses                          15509
+  Cache:
+  Memory instructions:
+t=5000ms  2026-03-08 20:23:16.093
+  TLB:
+    dTLB-loads                              66176706
+    dTLB-load-misses                         3968238
+    dTLB-stores                             51189159
+    dTLB-store-misses                          12686
+  Cache:
+  Memory instructions:
+t=5500ms  2026-03-08 20:23:16.593
+  TLB:
+    dTLB-loads                              68653345
+    dTLB-load-misses                         3980394
+    dTLB-stores                             52404307
+    dTLB-store-misses                          19886
+  Cache:
+  Memory instructions:
+t=6000ms  2026-03-08 20:23:17.093
+  TLB:
+    dTLB-loads                              84968782
+    dTLB-load-misses                         5290216
+    dTLB-stores                             68052720
+    dTLB-store-misses                          18196
+  Cache:
+  Memory instructions:
+t=6500ms  2026-03-08 20:23:17.593
+  TLB:
+    dTLB-loads                              67591719
+    dTLB-load-misses                         3971211
+    dTLB-stores                             51859636
+    dTLB-store-misses                          13683
+  Cache:
+  Memory instructions:
+t=7000ms  2026-03-08 20:23:18.093
+  TLB:
+    dTLB-loads                              68285225
+    dTLB-load-misses                         4098341
+    dTLB-stores                             51835525
+    dTLB-store-misses                          13774
+  Cache:
+  Memory instructions:
+t=7500ms  2026-03-08 20:23:18.593
+  TLB:
+    dTLB-loads                              83817907
+    dTLB-load-misses                         5145017
+    dTLB-stores                             67785223
+    dTLB-store-misses                          15417
+  Cache:
+  Memory instructions:
+t=8000ms  2026-03-08 20:23:19.093
+  TLB:
+    dTLB-loads                              64691220
+    dTLB-load-misses                         3981500
+    dTLB-stores                             51122116
+    dTLB-store-misses                          14148
+  Cache:
+  Memory instructions:
+t=8500ms  2026-03-08 20:23:19.593
+  TLB:
+    dTLB-loads                              45447847
+    dTLB-load-misses                         2668134
+    dTLB-stores                             34281263
+    dTLB-store-misses                           8735
+  Cache:
+  Memory instructions:
+t=9000ms  2026-03-08 20:23:20.093
+  TLB:
+    dTLB-loads                              64833914
+    dTLB-load-misses                         3981031
+    dTLB-stores                             51229245
+    dTLB-store-misses                          17704
+  Cache:
+  Memory instructions:
+t=9500ms  2026-03-08 20:23:20.593
+  TLB:
+    dTLB-loads                              67112330
+    dTLB-load-misses                         4851114
+    dTLB-stores                             51092362
+    dTLB-store-misses                          13163
+  Cache:
+  Memory instructions:
+t=10000ms  2026-03-08 20:23:21.093
+  TLB:
+    dTLB-loads                              62910620
+    dTLB-load-misses                         3101451
+    dTLB-stores                             51022308
+    dTLB-store-misses                          12052
+  Cache:
+  Memory instructions:
+t=10500ms  2026-03-08 20:23:21.593
+  TLB:
+    dTLB-loads                              64914406
+    dTLB-load-misses                         3981216
+    dTLB-stores                             51027582
+    dTLB-store-misses                          12122
+  Cache:
+  Memory instructions:
+t=11000ms  2026-03-08 20:23:22.093
+  TLB:
+    dTLB-loads                              66209262
+    dTLB-load-misses                         4584527
+    dTLB-stores                             51025313
+    dTLB-store-misses                          12006
+  Cache:
+  Memory instructions:
+t=11500ms  2026-03-08 20:23:22.593
+  TLB:
+    dTLB-loads                              82833505
+    dTLB-load-misses                         4657149
+    dTLB-stores                             67799266
+    dTLB-store-misses                          15543
+  Cache:
+  Memory instructions:
+t=12001ms  2026-03-08 20:23:23.093
+  TLB:
+    dTLB-loads                              65806305
+    dTLB-load-misses                         3955780
+    dTLB-stores                             51023220
+    dTLB-store-misses                          11922
+  Cache:
+  Memory instructions:
+t=12500ms  2026-03-08 20:23:23.593
+  TLB:
+    dTLB-loads                              66470542
+    dTLB-load-misses                         4231161
+    dTLB-stores                             51030271
+    dTLB-store-misses                          11902
+  Cache:
+  Memory instructions:
+t=13000ms  2026-03-08 20:23:24.093
+  TLB:
+    dTLB-loads                              83522427
+    dTLB-load-misses                         4999777
+    dTLB-stores                             67801460
+    dTLB-store-misses                          15418
+  Cache:
+  Memory instructions:
+t=13500ms  2026-03-08 20:23:24.593
+  TLB:
+    dTLB-loads                              65514142
+    dTLB-load-misses                         3955852
+    dTLB-stores                             51008897
+    dTLB-store-misses                          11910
+  Cache:
+  Memory instructions:
+t=14000ms  2026-03-08 20:23:25.093
+  TLB:
+    dTLB-loads                              85298457
+    dTLB-load-misses                         5273538
+    dTLB-stores                             67795586
+    dTLB-store-misses                          15500
+  Cache:
+  Memory instructions:
+t=14500ms  2026-03-08 20:23:25.593
+  TLB:
+    dTLB-loads                              65573592
+    dTLB-load-misses                         3957596
+    dTLB-stores                             51008845
+    dTLB-store-misses                          11885
+  Cache:
+  Memory instructions:
+t=15000ms  2026-03-08 20:23:26.093
+  TLB:
+    dTLB-loads                              65262200
+    dTLB-load-misses                         3970587
+    dTLB-stores                             51128166
+    dTLB-store-misses                          14241
+  Cache:
+  Memory instructions:
+t=15500ms  2026-03-08 20:23:26.593
+  TLB:
+    dTLB-loads                              64690535
+    dTLB-load-misses                         3981676
+    dTLB-stores                             51091001
+    dTLB-store-misses                          13615
+  Cache:
+  Memory instructions:
+t=16000ms  2026-03-08 20:23:27.093
+  TLB:
+    dTLB-loads                              64508715
+    dTLB-load-misses                         4010902
+    dTLB-stores                             51379308
+    dTLB-store-misses                          13186
+  Cache:
+  Memory instructions:
+t=16500ms  2026-03-08 20:23:27.593
+  TLB:
+    dTLB-loads                              46999723
+    dTLB-load-misses                         3386187
+    dTLB-stores                             34229935
+    dTLB-store-misses                           8532
+  Cache:
+  Memory instructions:
+t=17000ms  2026-03-08 20:23:28.093
+  TLB:
+    dTLB-loads                              82531666
+    dTLB-load-misses                         4566631
+    dTLB-stores                             67783173
+    dTLB-store-misses                          15533
+  Cache:
+  Memory instructions:
+t=17500ms  2026-03-08 20:23:28.593
+  TLB:
+    dTLB-loads                              45545546
+    dTLB-load-misses                         2682283
+    dTLB-stores                             34246749
+    dTLB-store-misses                           8614
+  Cache:
+  Memory instructions:
+t=18000ms  2026-03-08 20:23:29.093
+  TLB:
+    dTLB-loads                              63474925
+    dTLB-load-misses                         4046226
+    dTLB-stores                             51054468
+    dTLB-store-misses                          13704
+  Cache:
+  Memory instructions:
+t=18500ms  2026-03-08 20:23:29.593
+  TLB:
+    dTLB-loads                              45827135
+    dTLB-load-misses                         2928449
+    dTLB-stores                             34261245
+    dTLB-store-misses                           8539
+  Cache:
+  Memory instructions:
+t=19000ms  2026-03-08 20:23:30.093
+  TLB:
+    dTLB-loads                              63451978
+    dTLB-load-misses                         3752396
+    dTLB-stores                             51027083
+    dTLB-store-misses                          12159
+  Cache:
+  Memory instructions:
+t=19500ms  2026-03-08 20:23:30.593
+  TLB:
+    dTLB-loads                              65574541
+    dTLB-load-misses                         3971154
+    dTLB-stores                             51158874
+    dTLB-store-misses                          12150
+  Cache:
+  Memory instructions:
+t=20000ms  2026-03-08 20:23:31.093
+  TLB:
+    dTLB-loads                              67024382
+    dTLB-load-misses                         4374148
+    dTLB-stores                             51475722
+    dTLB-store-misses                          12926
+  Cache:
+  Memory instructions:
+t=20500ms  2026-03-08 20:23:31.593
+  TLB:
+    dTLB-loads                              83201463
+    dTLB-load-misses                         4886473
+    dTLB-stores                             67784837
+    dTLB-store-misses                          15448
+  Cache:
+  Memory instructions:
+t=21000ms  2026-03-08 20:23:32.093
+  TLB:
+    dTLB-loads                              45813299
+    dTLB-load-misses                         2713639
+    dTLB-stores                             34234938
+    dTLB-store-misses                           8514
+  Cache:
+  Memory instructions:
+t=21500ms  2026-03-08 20:23:32.593
+  TLB:
+    dTLB-loads                              63636065
+    dTLB-load-misses                         3962482
+    dTLB-stores                             51027330
+    dTLB-store-misses                          12035
+  Cache:
+  Memory instructions:
+t=22000ms  2026-03-08 20:23:33.093
+  TLB:
+    dTLB-loads                              64852960
+    dTLB-load-misses                         3983223
+    dTLB-stores                             51024677
+    dTLB-store-misses                          11963
+  Cache:
+  Memory instructions:
+t=22500ms  2026-03-08 20:23:33.593
+  TLB:
+    dTLB-loads                              64630963
+    dTLB-load-misses                         3991864
+    dTLB-stores                             51019339
+    dTLB-store-misses                          11996
+  Cache:
+  Memory instructions:
+t=23000ms  2026-03-08 20:23:34.093
+  TLB:
+    dTLB-loads                              65388325
+    dTLB-load-misses                         3967942
+    dTLB-stores                             51018171
+    dTLB-store-misses                          11851
+  Cache:
+  Memory instructions:
+t=23500ms  2026-03-08 20:23:34.593
+  TLB:
+    dTLB-loads                              84304100
+    dTLB-load-misses                         5280547
+    dTLB-stores                             67794553
+    dTLB-store-misses                          15432
+  Cache:
+  Memory instructions:
+t=24000ms  2026-03-08 20:23:35.093
+  TLB:
+    dTLB-loads                              64805352
+    dTLB-load-misses                         3980601
+    dTLB-stores                             51018650
+    dTLB-store-misses                          11944
+  Cache:
+  Memory instructions:
+t=24500ms  2026-03-08 20:23:35.593
+  TLB:
+    dTLB-loads                              45234335
+    dTLB-load-misses                         2705905
+    dTLB-stores                             34234428
+    dTLB-store-misses                           8535
+  Cache:
+  Memory instructions:
+t=25000ms  2026-03-08 20:23:36.093
+  TLB:
+    dTLB-loads                              64668950
+    dTLB-load-misses                         3993171
+    dTLB-stores                             51017866
+    dTLB-store-misses                          12027
+  Cache:
+  Memory instructions:
+t=25500ms  2026-03-08 20:23:36.593
+  TLB:
+    dTLB-loads                              64441206
+    dTLB-load-misses                         4013347
+    dTLB-stores                             51017971
+    dTLB-store-misses                          12141
+  Cache:
+  Memory instructions:
+
+Log file closed.
+Exiting.

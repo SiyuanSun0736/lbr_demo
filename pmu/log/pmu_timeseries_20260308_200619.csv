@@ -1,0 +1,8 @@
+elapsed_ms,timestamp,dTLB-loads,dTLB-load-misses,dTLB-stores,dTLB-store-misses,iTLB-loads,iTLB-load-misses,L1-dcache-loads,L1-dcache-load-misses,L1-dcache-stores,L1-icache-load-misses,l1d.replacement,l1d_pend_miss.fb_full,l1d_pend_miss.pending,LLC-loads,LLC-load-misses,LLC-stores,LLC-store-misses,cache-references,cache-misses,mem-loads,mem-stores,mem_inst_retired.all_loads,mem_inst_retired.all_stores,mem_inst_retired.any
+1000,2026-03-08 20:06:20.204,108768362,137168,85224443,3125,,,,,,,,,,,,,,,,,,,,
+2000,2026-03-08 20:06:21.204,130637460,82200,102809876,4444,,,,,,,,,,,,,,,,,,,,
+3000,2026-03-08 20:06:22.204,151855836,22462,118792977,2339,,,,,,,,,,,,,,,,,,,,
+4000,2026-03-08 20:06:23.204,171358697,19151,135528478,2298,,,,,,,,,,,,,,,,,,,,
+5000,2026-03-08 20:06:24.204,171294784,22138,135499617,2263,,,,,,,,,,,,,,,,,,,,
+6000,2026-03-08 20:06:25.204,153581420,18452,118697304,2228,,,,,,,,,,,,,,,,,,,,
+7000,2026-03-08 20:06:26.204,170070882,17959,135500487,2224,,,,,,,,,,,,,,,,,,,,
