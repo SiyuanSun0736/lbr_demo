@@ -3,7 +3,7 @@
 all: generate build build-examples
 
 generate:
-	go generate ./...
+	sudo -E $(shell which go) generate ./...
 
 build: generate
 	go build -o lbr-demo ./cmd

@@ -17,9 +17,6 @@ type lbrLbrData struct {
 	_       structs.HostLayout
 	PidTgid uint64
 	NrBytes int64
-	Rip     uint64
-	Rsp     uint64
-	Rbp     uint64
 	Entries [32]struct {
 		_    structs.HostLayout
 		From uint64

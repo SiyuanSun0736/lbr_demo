@@ -1,4 +1,0 @@
-2026/01/12 16:09:49 日志文件: log/lbr_output_20260112_160949.log
-2026/01/12 16:09:49 Current nofile rlimit: curr=524287 max=524288
-2026/01/12 16:09:49 Monitoring all processes
-2026/01/12 16:09:49 failed to prepare BPF maps: failed to create .data.lbrs map: creating map: map create: operation not permitted (MEMLOCK may be too low, consider rlimit.RemoveMemlock)

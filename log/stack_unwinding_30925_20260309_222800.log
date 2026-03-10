@@ -1,0 +1,70 @@
+正在对进程 30925 进行栈回溯...
+日志文件: ../log/stack_unwinding_30925_20260309_222800.log
+
+2026/03/09 22:28:00 [DEBUG] NewSFrameResolver: 为PID 30925 创建SFrame解析器
+2026/03/09 22:28:00 [DEBUG] NewSFrameResolver: 可执行文件: /home/ssy/lbr/test/test_stack_unwinding
+2026/03/09 22:28:00 [DEBUG] loadSFrameData: SFrame Magic=0xdee2, Version=3, Flags=0x5
+2026/03/09 22:28:00 [DEBUG] loadSFrameData: ABI=3 (AMD64 little-endian)
+2026/03/09 22:28:00 [DEBUG] loadSFrameData: FixedFPOffset=0, FixedRAOffset=-8, AuxHdrLen=0
+2026/03/09 22:28:00 [DEBUG] loadSFrameData: NumFDEs=8, NumFREs=27, FRELen=138, FDEOff=0, FREOff=128
+2026/03/09 22:28:00 [DEBUG] loadSFrameData: 成功解析 8 个SFrame FDE
+2026/03/09 22:28:00 [DEBUG] loadSFrameData: FRE数据位于偏移 156, 总长度 138
+2026/03/09 22:28:00 [DEBUG] NewSFrameResolver: 成功加载SFrame数据
+2026/03/09 22:28:00 [DEBUG] loadSymbols: 加载了 29 个符号
+2026/03/09 22:28:00 [DEBUG] GetProcessMaps: 读取进程 30925 的内存映射
+2026/03/09 22:28:00 [DEBUG] GetProcessMaps: 读取到 24 个内存映射
+2026/03/09 22:28:00 [DEBUG] loadBaseAddress: 基址=0x56482154f000, 结束=0x564821550000, 偏移=0x1000
+2026/03/09 22:28:00 [DEBUG] GetProcessMaps: 读取进程 30925 的内存映射
+2026/03/09 22:28:00 [DEBUG] GetProcessMaps: 读取到 24 个内存映射
+2026/03/09 22:28:00 [DEBUG] loadLibraryMapping: 加载共享库 /usr/lib/libc.so.6, 符号数: 3121, SFrame: false
+2026/03/09 22:28:00 [DEBUG] loadLibraryMapping: 加载共享库 /usr/lib/ld-linux-x86-64.so.2, 符号数: 32, SFrame: false
+2026/03/09 22:28:00 [DEBUG] loadLibraryMappings: 加载了 2 个共享库映射
+2026/03/09 22:28:00 [DEBUG] NewSFrameResolver: SFrame解析器创建成功
+最大栈帧数: 32
+栈展开方法: sframe
+
+使用 SFrame 栈展开...
+2026/03/09 22:28:00 [DEBUG] GetRegisters: PC=0x7f49edeb93be, SP=0x7ffe11f338e0, BP=0x7ffe11f338f0 (via ptrace)
+2026/03/09 22:28:00 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f49edeb93be
+2026/03/09 22:28:00 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x933be
+2026/03/09 22:28:00 [DEBUG] findSymbolInList: 候选符号 dladdr @ 0x92690, size=41, dist=0xd2e
+2026/03/09 22:28:00 [DEBUG] findSymbolInList: 候选符号 dladdr @ 0x92690, size=41, dist=0xd2e
+2026/03/09 22:28:00 [DEBUG] findSymbolInList: 候选符号 dlmopen @ 0x92e00, size=172, dist=0x5be
+2026/03/09 22:28:00 [DEBUG] findSymbolInList: 候选符号 dlmopen @ 0x92e00, size=172, dist=0x5be
+2026/03/09 22:28:00 [DEBUG] findSymbolInList: 候选符号 dlclose @ 0x92710, size=57, dist=0xcae
+2026/03/09 22:28:00 [DEBUG] findSymbolInList: 候选符号 dlclose @ 0x92710, size=57, dist=0xcae
+2026/03/09 22:28:00 [DEBUG] findSymbolInList: 候选符号 __libc_alloca_cutoff @ 0x932a0, size=47, dist=0x11e
+2026/03/09 22:28:00 [DEBUG] findSymbolInList: 候选符号 _IO_str_pbackfail @ 0x92630, size=30, dist=0xd8e
+2026/03/09 22:28:00 [DEBUG] findSymbolInList: 候选符号 dladdr1 @ 0x926c0, size=71, dist=0xcfe
+2026/03/09 22:28:00 [DEBUG] findSymbolInList: 候选符号 dladdr1 @ 0x926c0, size=71, dist=0xcfe
+2026/03/09 22:28:00 [DEBUG] findSymbolInList: 候选符号 dlsym @ 0x93020, size=193, dist=0x39e
+2026/03/09 22:28:00 [DEBUG] findSymbolInList: 候选符号 dlsym @ 0x93020, size=193, dist=0x39e
+2026/03/09 22:28:00 [DEBUG] findSymbolInList: 候选符号 dlopen @ 0x92f60, size=144, dist=0x45e
+2026/03/09 22:28:00 [DEBUG] findSymbolInList: 候选符号 dlopen @ 0x92f60, size=144, dist=0x45e
+2026/03/09 22:28:00 [DEBUG] findSymbolInList: 候选符号 dlerror @ 0x92750, size=525, dist=0xc6e
+2026/03/09 22:28:00 [DEBUG] findSymbolInList: 候选符号 dlerror @ 0x92750, size=525, dist=0xc6e
+2026/03/09 22:28:00 [DEBUG] findSymbolInList: 候选符号 dlinfo @ 0x92c70, size=140, dist=0x74e
+2026/03/09 22:28:00 [DEBUG] findSymbolInList: 候选符号 dlinfo @ 0x92c70, size=140, dist=0x74e
+2026/03/09 22:28:00 [DEBUG] findSymbolInList: 候选符号 dlvsym @ 0x93120, size=213, dist=0x29e
+2026/03/09 22:28:00 [DEBUG] findSymbolInList: 候选符号 dlvsym @ 0x93120, size=213, dist=0x29e
+2026/03/09 22:28:00 [DEBUG] findSymbolInList: 目标地址=0x933be, 检查了753个候选符号, 未找到合适的符号
+2026/03/09 22:28:00 [DEBUG] SFrameResolver: 未找到符号，使用偏移 0x933be@libc.so.6
+2026/03/09 22:28:00 [DEBUG] UnwindStackWithSFrame: Frame 0: PC=0x7f49edeb93be, SP=0x7ffe11f338e0, BP=0x7ffe11f338f0
+2026/03/09 22:28:00 [DEBUG] findSFrameFunction: 共享库无SFrame数据 lib=/usr/lib/libc.so.6
+2026/03/09 22:28:00 [DEBUG] UnwindStackWithSFrame: SFrame展开失败: no SFrame info for PC 0x7f49edeb93be
+2026/03/09 22:28:00 [DEBUG] UnwindStackWithSFrame: 总共展开了 1 帧
+
+=== 详细栈帧信息 ===
+
+帧 #0:
+  程序计数器 (PC): 0x00007f49edeb93be
+  栈指针     (SP): 0x00007ffe11f338e0
+  基址指针   (BP): 0x00007ffe11f338f0
+  函数: 0x933be
+  库: libc.so.6
+
+=== 统计信息 ===
+总栈帧数: 1
+
+各库栈帧数:
+  libc.so.6                     : 1

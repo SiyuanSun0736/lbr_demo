@@ -1,4 +1,0 @@
-2026/01/13 16:06:32 日志文件: log/lbr_output_20260113_160632.log
-2026/01/13 16:06:32 Current nofile rlimit: curr=524287 max=524288
-2026/01/13 16:06:32 Monitoring PID: 83786
-2026/01/13 16:06:32 failed to attach perf_event: failed to open perf event on CPU 0: no such process

@@ -120,9 +120,11 @@ type StackFrame struct {
 
 // UnwindContext 栈展开上下文
 type UnwindContext struct {
-	PC uint64
-	SP uint64
-	BP uint64
+	PC            uint64
+	SP            uint64
+	BP            uint64
+	StackBase     uint64 // uprobe 触发时的 RSP（快照基地址）
+	StackSnapshot []byte // BPF 在 uprobe 触发瞬间抓取的原始栈字节（从 StackBase 起）
 }
 
 // GetABIDescription 返回 ABI 值的描述
@@ -747,8 +749,8 @@ func findFDEForFunction(sframeFunc *SFrameFunction, sframeData *SFrameData, pcOf
 	}
 
 	// 解析FRE数据
-	// 根据SFrame规范，FuncInfo低4位包含FRE类型信息
-	freType := sframeFunc.FuncInfo & 0x0F
+	// 根据SFrame v2规范，FuncInfo低2位（bits[1:0]）为FRE类型字段
+	freType := sframeFunc.FuncInfo & 0x03
 
 	// 计算FRE数据的起始位置
 	// FRE数据位于: 头部 + FREOff + StartFREOff
@@ -946,6 +948,19 @@ func (r *SFrameResolver) readUint64(addr uint64) (uint64, error) {
 	return binary.LittleEndian.Uint64(buf), nil
 }
 
+// readUint64WithCtx 优先从 BPF 栈快照读取，快照不覆盖时回退到 /proc/pid/mem。
+// BPF 快照在 uprobe 触发瞬间同步采集，不存在 /proc/pid/mem 异步读取时的
+// 栈内容过期（TOCTOU）问题。
+func (r *SFrameResolver) readUint64WithCtx(addr uint64, ctx *UnwindContext) (uint64, error) {
+	if ctx != nil && len(ctx.StackSnapshot) >= 8 && addr >= ctx.StackBase {
+		off := addr - ctx.StackBase
+		if off+8 <= uint64(len(ctx.StackSnapshot)) {
+			return binary.LittleEndian.Uint64(ctx.StackSnapshot[off : off+8]), nil
+		}
+	}
+	return r.readUint64(addr)
+}
+
 // NewUnwindContextFromPC 从PC地址创建栈回溯上下文
 // 这个方法会尝试通过读取进程寄存器来获取SP和BP
 // 如果无法获取，则只设置PC，SP和BP为0（部分功能可能受限）
@@ -1019,8 +1034,9 @@ func (r *SFrameResolver) findSFrameFunction(pc uint64) (*SFrameFunction, uint64)
 	// 检查主程序范围
 	if pc >= r.baseAddr && pc < r.baseAddrEnd {
 		if r.sframeData != nil && r.sframeData.hasData {
-			debugLog("[DEBUG] findSFrameFunction: 主程序地址 PC=0x%x, baseAddr=0x%x, 函数数=%d\n",
-				pc, r.baseAddr, len(r.sframeData.Functions))
+			debugLog("[DEBUG] findSFrameFunction: 主程序地址 PC=0x%x, baseAddr=0x%x, baseOffset=0x%x, sectionAddr=0x%x, 函数数=%d, PCREL=%v\n",
+				pc, r.baseAddr, r.baseOffset, r.sframeData.sectionAddr, len(r.sframeData.Functions),
+				r.sframeData.Header.Flags&0x4 != 0)
 
 			// 常量定义
 			const SFRAME_F_FDE_FUNC_START_PCREL = 0x4
@@ -1034,8 +1050,24 @@ func (r *SFrameResolver) findSFrameFunction(pc uint64) (*SFrameFunction, uint64)
 			headerSize := 28 + int(r.sframeData.Header.AuxHdrLen)
 			fdeArrayStart := headerSize + int(r.sframeData.Header.FDEOff)
 
+			// 遍历所有FDE，选最精确的 PCINC（普通函数）类 FDE；
+			// 完全跳过 PCMASK（PLT stub）类 FDE：
+			//   - PCMASK FDE（FuncInfo bit4=1）专为重复模式的 PLT stub 设计，
+			//     其 FRE 编码约定与普通函数完全不同，不能用于 main/fibonacci 等函数；
+			//   - 当且仅当没有任何 PCINC FDE 覆盖该 PC 时，才保留 PCMASK 作为最后兜底，
+			//     但此时也应优选 FP-based 回退路径，因此这里直接返回 nil 让调用方回退。
+			const SFRAME_FDE_TYPE_PCMASK = 0x1
+			var bestFn *SFrameFunction
+			var bestFnStart uint64
 			for i := range r.sframeData.Functions {
 				fn := &r.sframeData.Functions[i]
+
+				// 跳过 PCMASK 类型的 FDE（PLT stub 专用）
+				fdeType := (fn.FuncInfo >> 4) & 0x01
+				if fdeType == SFRAME_FDE_TYPE_PCMASK {
+					debugLog("[DEBUG] findSFrameFunction: 跳过PCMASK FDE[%d] (FuncInfo=0x%x)\n", i, fn.FuncInfo)
+					continue
+				}
 
 				// 当前FDE的文件偏移（每个FDE 20字节）
 				fdeOffset := fdeArrayStart + i*20
@@ -1045,33 +1077,38 @@ func (r *SFrameResolver) findSFrameFunction(pc uint64) (*SFrameFunction, uint64)
 
 				if r.sframeData.Header.Flags&SFRAME_F_FDE_FUNC_START_PCREL != 0 {
 					// PC-relative: StartAddr是相对于FDE的sfde_func_start_address字段本身的偏移
-					// FDE字段位置 = .sframe节地址 + FDE偏移
-					// 函数地址 = FDE字段位置 + StartAddr (作为有符号偏移)
 					fdeFieldAddr := r.sframeData.sectionAddr + uint64(fdeOffset)
 					fnStartVirtAddr = uint64(int64(fdeFieldAddr) + int64(fn.StartAddr))
-					// debugLog("[DEBUG] findSFrameFunction: FDE[%d] PCREL mode: fdeFieldAddr=0x%x, StartAddr=%d, fnStartVirtAddr=0x%x\n",
-					// 	i, fdeFieldAddr, fn.StartAddr, fnStartVirtAddr)
 				} else {
 					// Absolute: StartAddr是相对于.sframe节开始的偏移
 					fnStartVirtAddr = r.sframeData.sectionAddr + uint64(int64(fn.StartAddr))
-					// debugLog("[DEBUG] findSFrameFunction: FDE[%d] ABS mode: sectionAddr=0x%x, StartAddr=%d, fnStartVirtAddr=0x%x\n",
-					// 	i, r.sframeData.sectionAddr, fn.StartAddr, fnStartVirtAddr)
 				}
 
 				fnEndVirtAddr := fnStartVirtAddr + uint64(fn.Size)
 
 				// 转换为运行时地址并比较
-				// 运行时地址 = 基址 + (虚拟地址 - 基址偏移)
 				fnStartRuntimeAddr := r.baseAddr + (fnStartVirtAddr - r.baseOffset)
 				fnEndRuntimeAddr := r.baseAddr + (fnEndVirtAddr - r.baseOffset)
 
+				debugLog("[DEBUG] findSFrameFunction: PCINC FDE[%d] 范围[0x%x, 0x%x), size=%d (StartAddr=0x%x, virtStart=0x%x)\n",
+					i, fnStartRuntimeAddr, fnEndRuntimeAddr, fn.Size, uint32(fn.StartAddr), fnStartVirtAddr)
+
 				if pc >= fnStartRuntimeAddr && pc < fnEndRuntimeAddr {
-					debugLog("[DEBUG] findSFrameFunction: 找到主程序SFrame函数 @ 0x%x (virtual=0x%x), PC=0x%x, size=%d\n",
+					debugLog("[DEBUG] findSFrameFunction: 候选主程序SFrame函数 @ 0x%x (virtual=0x%x), PC=0x%x, size=%d\n",
 						fnStartRuntimeAddr, fnStartVirtAddr, pc, fn.Size)
-					return fn, fnStartRuntimeAddr
+					// 选起始地址最大的那个（最精确覆盖）
+					if fnStartRuntimeAddr > bestFnStart {
+						bestFnStart = fnStartRuntimeAddr
+						bestFn = fn
+					}
 				}
 			}
-			debugLog("[DEBUG] findSFrameFunction: 主程序中未找到匹配的SFrame函数 (PC=0x%x)\n", pc)
+			if bestFn != nil {
+				debugLog("[DEBUG] findSFrameFunction: 找到主程序SFrame函数 @ 0x%x, PC=0x%x, size=%d\n",
+					bestFnStart, pc, bestFn.Size)
+				return bestFn, bestFnStart
+			}
+			debugLog("[DEBUG] findSFrameFunction: 主程序中未找到匹配的PCINC SFrame函数，回退FP (PC=0x%x)\n", pc)
 		}
 		return nil, 0
 	}
@@ -1090,9 +1127,18 @@ func (r *SFrameResolver) findSFrameFunction(pc uint64) (*SFrameFunction, uint64)
 				headerSize := 28 + int(r.mappings[i].SFrameData.Header.AuxHdrLen)
 				fdeArrayStart := headerSize + int(r.mappings[i].SFrameData.Header.FDEOff)
 
-				// 在共享库SFrame函数列表中查找
+				// 在共享库SFrame函数列表中查找，只选 PCINC 类型（跳过 PCMASK/PLT stub）
+				const SFRAME_FDE_TYPE_PCMASK = 0x1
+				var bestLibFn *SFrameFunction
+				var bestLibFnStart uint64
 				for j := range r.mappings[i].SFrameData.Functions {
 					fn := &r.mappings[i].SFrameData.Functions[j]
+
+					// 跳过 PCMASK 类型的 FDE
+					fdeType := (fn.FuncInfo >> 4) & 0x01
+					if fdeType == SFRAME_FDE_TYPE_PCMASK {
+						continue
+					}
 
 					// 当前FDE的文件偏移（每个FDE 20字节）
 					fdeOffset := fdeArrayStart + j*20
@@ -1104,13 +1150,9 @@ func (r *SFrameResolver) findSFrameFunction(pc uint64) (*SFrameFunction, uint64)
 						// PC-relative: StartAddr是相对于FDE的sfde_func_start_address字段本身的偏移
 						fdeFieldAddr := r.mappings[i].SFrameData.sectionAddr + uint64(fdeOffset)
 						fnStartVirtAddr = uint64(int64(fdeFieldAddr) + int64(fn.StartAddr))
-						// debugLog("[DEBUG] findSFrameFunction: Lib FDE[%d] PCREL mode: fdeFieldAddr=0x%x, StartAddr=%d, fnStartVirtAddr=0x%x\n",
-						// 	j, fdeFieldAddr, fn.StartAddr, fnStartVirtAddr)
 					} else {
 						// Absolute: StartAddr是相对于.sframe节开始的偏移
 						fnStartVirtAddr = r.mappings[i].SFrameData.sectionAddr + uint64(int64(fn.StartAddr))
-						// debugLog("[DEBUG] findSFrameFunction: Lib FDE[%d] ABS mode: sectionAddr=0x%x, StartAddr=%d, fnStartVirtAddr=0x%x\n",
-						// 	j, r.mappings[i].SFrameData.sectionAddr, fn.StartAddr, fnStartVirtAddr)
 					}
 
 					fnEndVirtAddr := fnStartVirtAddr + uint64(fn.Size)
@@ -1119,12 +1161,17 @@ func (r *SFrameResolver) findSFrameFunction(pc uint64) (*SFrameFunction, uint64)
 					fnStartRuntimeAddr := r.mappings[i].StartAddr + (fnStartVirtAddr - r.mappings[i].Offset)
 					fnEndRuntimeAddr := r.mappings[i].StartAddr + (fnEndVirtAddr - r.mappings[i].Offset)
 
-					// 比较运行时地址
 					if pc >= fnStartRuntimeAddr && pc < fnEndRuntimeAddr {
-						debugLog("[DEBUG] findSFrameFunction: 找到共享库SFrame函数 @ 0x%x (virtual=0x%x), size=%d, lib=%s\n",
-							fnStartRuntimeAddr, fnStartVirtAddr, fn.Size, r.mappings[i].Path)
-						return fn, fnStartRuntimeAddr
+						if fnStartRuntimeAddr > bestLibFnStart {
+							bestLibFnStart = fnStartRuntimeAddr
+							bestLibFn = fn
+						}
 					}
+				}
+				if bestLibFn != nil {
+					debugLog("[DEBUG] findSFrameFunction: 找到共享库SFrame函数 @ 0x%x, size=%d, lib=%s\n",
+						bestLibFnStart, bestLibFn.Size, r.mappings[i].Path)
+					return bestLibFn, bestLibFnStart
 				}
 			} else {
 				debugLog("[DEBUG] findSFrameFunction: 共享库无SFrame数据 lib=%s\n", r.mappings[i].Path)
@@ -1241,7 +1288,7 @@ func (r *SFrameResolver) unwindFrameWithSFrame(ctx *UnwindContext) error {
 	debugLog("[DEBUG] unwindFrameWithSFrame: 读取返回地址，位置=0x%x (CFA=0x%x, RAOffset=%d)\n",
 		retAddrLoc, cfa, raOffset)
 
-	retAddr, err := r.readUint64(retAddrLoc)
+	retAddr, err := r.readUint64WithCtx(retAddrLoc, ctx)
 	if err != nil {
 		return fmt.Errorf("failed to read return address at 0x%x: %w", retAddrLoc, err)
 	}
@@ -1278,7 +1325,7 @@ func (r *SFrameResolver) unwindFrameWithSFrame(ctx *UnwindContext) error {
 		debugLog("[DEBUG] unwindFrameWithSFrame: SP-based读取失败(retAddr=0x%x无效)，尝试从BP+8读取\n", retAddr)
 		// 尝试从BP+8读取返回地址
 		altRetAddrLoc := ctx.BP + 8
-		altRetAddr, altErr := r.readUint64(altRetAddrLoc)
+		altRetAddr, altErr := r.readUint64WithCtx(altRetAddrLoc, ctx)
 		if altErr == nil && isValidCodeAddr(altRetAddr) {
 			// 从BP读取成功，说明函数实际使用了帧指针
 			debugLog("[DEBUG] unwindFrameWithSFrame: 从BP+8成功读取返回地址 0x%x，切换到FP-based\n", altRetAddr)
@@ -1300,7 +1347,7 @@ func (r *SFrameResolver) unwindFrameWithSFrame(ctx *UnwindContext) error {
 		// FPOffset 是相对于 CFA 的偏移
 		// 无论是 SP-based 还是 FP-based CFA，都可能保存了 FP
 		fpLoc := uint64(int64(cfa) + int64(fde.FPOffset))
-		newBP, err = r.readUint64(fpLoc)
+		newBP, err = r.readUint64WithCtx(fpLoc, ctx)
 		if err != nil {
 			debugLog("[DEBUG] unwindFrameWithSFrame: 读取BP失败 at 0x%x: %v\n", fpLoc, err)
 			// 读取失败时保持旧BP
@@ -1346,9 +1393,11 @@ func (r *SFrameResolver) UnwindStackFromContext(ctx *UnwindContext, maxFrames in
 
 	// 创建上下文的副本，避免修改原始上下文
 	contextCopy := &UnwindContext{
-		PC: ctx.PC,
-		SP: ctx.SP,
-		BP: ctx.BP,
+		PC:            ctx.PC,
+		SP:            ctx.SP,
+		BP:            ctx.BP,
+		StackBase:     ctx.StackBase,
+		StackSnapshot: ctx.StackSnapshot, // 只读引用，无需深拷贝
 	}
 
 	return r.doUnwindStack(contextCopy, maxFrames)
@@ -1432,13 +1481,13 @@ func (r *SFrameResolver) unwindFrameWithFP(ctx *UnwindContext) error {
 	}
 
 	// 读取保存的BP
-	newBP, err := r.readUint64(ctx.BP)
+	newBP, err := r.readUint64WithCtx(ctx.BP, ctx)
 	if err != nil {
 		return fmt.Errorf("failed to read saved BP at 0x%x: %w", ctx.BP, err)
 	}
 
 	// 读取返回地址
-	retAddr, err := r.readUint64(ctx.BP + 8)
+	retAddr, err := r.readUint64WithCtx(ctx.BP+8, ctx)
 	if err != nil {
 		return fmt.Errorf("failed to read return address at 0x%x: %w", ctx.BP+8, err)
 	}
