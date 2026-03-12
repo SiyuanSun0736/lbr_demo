@@ -106,6 +106,5 @@ frames, _ := r.UnwindStackFromContext(ctx, 16)
 
 ## 未来的工作
 
-- 使解析符号和unwind结构,优化程序结构
 - glibc库和vmlinux等无sframe段的部分怎么处理,目前为退回fp
 

@@ -1,0 +1,109 @@
+==== diag for PID=348110 at 20260312_224409 ====
+LOG_LINE: 2026/03/12 22:44:09 [Phase 2] 尝试挂载 uprobe: file=/home/ssy/lbr/test/test_stack_unwinding1 offset=0x12f5 pid=348110
+
+ps -p 348110 -o pid,comm,etime,cmd:
+    PID COMMAND             ELAPSED CMD
+ 348110 test_stack_unwi       00:12 /home/ssy/lbr/test/test_stack_unwinding1
+
+head /proc/348110/maps (first 200 lines):
+55ba74cf9000-55ba74cfa000 r--p 00000000 08:23 33555452                   /home/ssy/lbr/test/test_stack_unwinding1
+55ba74cfa000-55ba74cfb000 r-xp 00001000 08:23 33555452                   /home/ssy/lbr/test/test_stack_unwinding1
+55ba74cfb000-55ba74cfc000 r--p 00002000 08:23 33555452                   /home/ssy/lbr/test/test_stack_unwinding1
+55ba74cfc000-55ba74cfd000 r--p 00002000 08:23 33555452                   /home/ssy/lbr/test/test_stack_unwinding1
+55ba74cfd000-55ba74cfe000 rw-p 00003000 08:23 33555452                   /home/ssy/lbr/test/test_stack_unwinding1
+7f4e85c87000-7f4e85c8a000 rw-p 00000000 00:00 0 
+7f4e85c8a000-7f4e85cae000 r--p 00000000 08:23 46665018                   /usr/lib/libc.so.6
+7f4e85cae000-7f4e85e1f000 r-xp 00024000 08:23 46665018                   /usr/lib/libc.so.6
+7f4e85e1f000-7f4e85e6d000 r--p 00195000 08:23 46665018                   /usr/lib/libc.so.6
+7f4e85e6d000-7f4e85e71000 r--p 001e2000 08:23 46665018                   /usr/lib/libc.so.6
+7f4e85e71000-7f4e85e73000 rw-p 001e6000 08:23 46665018                   /usr/lib/libc.so.6
+7f4e85e73000-7f4e85e7d000 rw-p 00000000 00:00 0 
+7f4e85ec4000-7f4e85ec8000 r--p 00000000 00:00 0                          [vvar]
+7f4e85ec8000-7f4e85eca000 r--p 00000000 00:00 0                          [vvar_vclock]
+7f4e85eca000-7f4e85ecc000 r-xp 00000000 00:00 0                          [vdso]
+7f4e85ecc000-7f4e85ecd000 r--p 00000000 08:23 46664999                   /usr/lib/ld-linux-x86-64.so.2
+7f4e85ecd000-7f4e85ef7000 r-xp 00001000 08:23 46664999                   /usr/lib/ld-linux-x86-64.so.2
+7f4e85ef7000-7f4e85f02000 r--p 0002b000 08:23 46664999                   /usr/lib/ld-linux-x86-64.so.2
+7f4e85f02000-7f4e85f04000 r--p 00036000 08:23 46664999                   /usr/lib/ld-linux-x86-64.so.2
+7f4e85f04000-7f4e85f05000 rw-p 00038000 08:23 46664999                   /usr/lib/ld-linux-x86-64.so.2
+7f4e85f05000-7f4e85f06000 rw-p 00000000 00:00 0 
+7ffee09bc000-7ffee09dd000 rw-p 00000000 00:00 0                          [stack]
+7fffffffe000-7ffffffff000 --xp 00000000 00:00 0                          [uprobes]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+
+ls -l /proc/348110/ns:
+total 0
+lrwxrwxrwx 1 root root 0 Mar 12 22:44 cgroup -> cgroup:[4026531835]
+lrwxrwxrwx 1 root root 0 Mar 12 22:44 ipc -> ipc:[4026531839]
+lrwxrwxrwx 1 root root 0 Mar 12 22:44 mnt -> mnt:[4026531832]
+lrwxrwxrwx 1 root root 0 Mar 12 22:44 net -> net:[4026531833]
+lrwxrwxrwx 1 root root 0 Mar 12 22:44 pid -> pid:[4026531836]
+lrwxrwxrwx 1 root root 0 Mar 12 22:44 pid_for_children -> pid:[4026531836]
+lrwxrwxrwx 1 root root 0 Mar 12 22:44 time -> time:[4026531834]
+lrwxrwxrwx 1 root root 0 Mar 12 22:44 time_for_children -> time:[4026531834]
+lrwxrwxrwx 1 root root 0 Mar 12 22:44 user -> user:[4026531837]
+lrwxrwxrwx 1 root root 0 Mar 12 22:44 uts -> uts:[4026531838]
+
+cat /proc/348110/status:
+Name:	test_stack_unwi
+Umask:	0022
+State:	R (running)
+Tgid:	348110
+Ngid:	0
+Pid:	348110
+PPid:	347797
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	256
+Groups:	0 
+NStgid:	348110
+NSpid:	348110
+NSpgid:	347797
+NSsid:	347796
+Kthread:	0
+VmPeak:	    2708 kB
+VmSize:	    2428 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	    1368 kB
+VmRSS:	    1368 kB
+RssAnon:	     100 kB
+RssFile:	    1268 kB
+RssShmem:	       0 kB
+VmData:	      72 kB
+VmStk:	     132 kB
+VmExe:	       4 kB
+VmLib:	    1656 kB
+VmPTE:	      48 kB
+VmSwap:	       0 kB
+HugetlbPages:	       0 kB
+CoreDumping:	0
+THP_enabled:	1
+untag_mask:	0xffffffffffffffff
+Threads:	1
+SigQ:	2/62821
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000000000
+SigIgn:	0000000000000004
+SigCgt:	0000000000004002
+CapInh:	0000000800000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+Speculation_Store_Bypass:	thread vulnerable
+SpeculationIndirectBranch:	conditional enabled
+Cpus_allowed:	ff
+Cpus_allowed_list:	0-7
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	5
+nonvoluntary_ctxt_switches:	2434
+x86_Thread_features:	
+x86_Thread_features_locked:	
+==== end ====
