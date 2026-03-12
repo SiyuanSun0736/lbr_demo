@@ -17,6 +17,7 @@ type lbrLbrData struct {
 	_       structs.HostLayout
 	PidTgid uint64
 	NrBytes int64
+	Comm    [16]int8
 	Entries [32]struct {
 		_    structs.HostLayout
 		From uint64
@@ -74,8 +75,7 @@ type lbrProgramSpecs struct {
 //
 // It can be passed ebpf.CollectionSpec.Assign.
 type lbrMapSpecs struct {
-	CommMap *ebpf.MapSpec `ebpf:"comm_map"`
-	LbrMap  *ebpf.MapSpec `ebpf:"lbr_map"`
+	LbrMap *ebpf.MapSpec `ebpf:"lbr_map"`
 }
 
 // lbrVariableSpecs contains global variables before they are loaded into the kernel.
@@ -107,13 +107,11 @@ func (o *lbrObjects) Close() error {
 //
 // It can be passed to loadLbrObjects or ebpf.CollectionSpec.LoadAndAssign.
 type lbrMaps struct {
-	CommMap *ebpf.Map `ebpf:"comm_map"`
-	LbrMap  *ebpf.Map `ebpf:"lbr_map"`
+	LbrMap *ebpf.Map `ebpf:"lbr_map"`
 }
 
 func (m *lbrMaps) Close() error {
 	return _LbrClose(
-		m.CommMap,
 		m.LbrMap,
 	)
 }

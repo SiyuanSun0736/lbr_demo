@@ -10,6 +10,9 @@ import (
 	"syscall"
 )
 
+// TODO: 1.PC_MASK部分解析有问题
+// TODO: 2.PTL的解析有问题
+// TODO: 3.Flex类型的FDE解析未实现
 // SFrameMagic SFrame格式的魔数
 const SFrameMagic = 0xdee2
 
@@ -94,7 +97,7 @@ type SFrameFDE struct {
 
 // FRE Info Word 常量定义
 const (
-	// FRE Data Word Size (bits 1-2 of FRE info byte)
+	// FRE Data Word Size (bits 5-6 of FRE info byte, V3)
 	// V3规范将 SFRAME_FRE_OFFSET_<N>B 重命名为 SFRAME_FRE_DATAWORD_<N>B
 	SFRAME_FRE_DATAWORD_1B = 0 // 1字节数据字
 	SFRAME_FRE_DATAWORD_2B = 1 // 2字节数据字
@@ -105,8 +108,9 @@ const (
 	SFRAME_FRE_OFFSET_4B = SFRAME_FRE_DATAWORD_4B
 
 	// FRE CFA Base Register ID (bit 0 of FRE info byte)
-	SFRAME_FRE_CFA_BASE_REG_SP = 0 // SP-based CFA
-	SFRAME_FRE_CFA_BASE_REG_FP = 1 // FP-based CFA
+	// SFrame spec (SFRAME_BASE_REG_FP=0, SFRAME_BASE_REG_SP=1)
+	SFRAME_FRE_CFA_BASE_REG_FP = 0 // FP-based CFA
+	SFRAME_FRE_CFA_BASE_REG_SP = 1 // SP-based CFA
 
 	// SFrame Flags (sfp_flags)
 	SFRAME_F_FDE_SORTED           = 0x1 // FDE按PC排序
@@ -123,19 +127,21 @@ const (
 )
 
 // parseFREInfo 解析 FRE Info Word
-// 位布局（来自 GNU binutils include/sframe.h）：
+// 位布局（SFrame V3 规范 §2.4.1，From MSB to LSB）：
 //
-//	bit  0   : CFA base register (0=SP, 1=FP)
-//	bits 1-2 : offset size (0=1B, 1=2B, 2=4B)  SFRAME_FRE_INFO_OFFSET_SIZE_SHIFT=1, MASK=0x6
-//	bits 3-6 : offset count                     SFRAME_FRE_INFO_NUM_OFFSETS_SHIFT=3,  MASK=0x78
-//	bit  7   : mangled RA flag
+//	bit  0   : fre_cfa_base_reg_id (0=FP, 1=SP)
+//	bits 1-4 : fre_dataword_count  SFRAME_FRE_INFO_NUM_OFFSETS_SHIFT=1, MASK=0x1E
+//	bits 5-6 : fre_dataword_size   SFRAME_FRE_INFO_DATAWORD_SIZE_SHIFT=5, MASK=0x60
+//	bit  7   : fre_mangled_ra_p
+//
+// 注意：V2 旧布局为 bits 1-2=size、bits 3-6=count，V3 将两者互换。
 func parseFREInfo(freInfo uint8) (cfaBaseReg uint8, offsetSize uint8, offsetCount uint8, mangledRA bool) {
-	// bit 0: CFA base register (0=SP, 1=FP)
+	// bit 0: CFA base register (0=FP, 1=SP)
 	cfaBaseReg = freInfo & 0x01
-	// bits 1-2: offset size (0=1B, 1=2B, 2=4B)
-	offsetSize = (freInfo >> 1) & 0x03
-	// bits 3-6: offset count (最多15个偏移)
-	offsetCount = (freInfo >> 3) & 0x0F
+	// bits 1-4: fre_dataword_count（最多15个数据字）
+	offsetCount = (freInfo >> 1) & 0x0F
+	// bits 5-6: fre_dataword_size (0=1B, 1=2B, 2=4B)
+	offsetSize = (freInfo >> 5) & 0x03
 	// bit 7: mangled RA flag
 	mangledRA = (freInfo>>7)&0x01 != 0
 	return
@@ -236,10 +242,10 @@ func NewSFrameResolver(pid int) (*SFrameResolver, error) {
 	return resolver, nil
 }
 
-// loadSFrameData 从ELF文件加载SFrame数据
-func (r *SFrameResolver) loadSFrameData() (*SFrameData, error) {
-	// 查找.sframe节
-	section := r.elfFile.Section(".sframe")
+// parseSFrameDataFromELF 从 ELF 文件中解析 .sframe 节并返回 SFrameData。
+// loadSFrameData 和 loadLibraryMapping 均通过此函数复用解析逻辑。
+func parseSFrameDataFromELF(elfFile *elf.File) (*SFrameData, error) {
+	section := elfFile.Section(".sframe")
 	if section == nil {
 		return nil, fmt.Errorf("no .sframe section found")
 	}
@@ -249,28 +255,22 @@ func (r *SFrameResolver) loadSFrameData() (*SFrameData, error) {
 		return nil, fmt.Errorf("failed to read .sframe section: %w", err)
 	}
 
-	if len(data) < 16 {
-		return nil, fmt.Errorf("invalid .sframe section size")
-	}
-
-	sframe := &SFrameData{
-		hasData:     true,
-		sectionAddr: section.Addr, // 保存.sframe节的虚拟地址
-		sectionData: data,         // 保存原始数据用于FRE解析
-	}
-
-	// 确保有足够的数据来读取完整头部(V2需要28字节)
 	if len(data) < 28 {
 		return nil, fmt.Errorf("invalid .sframe section size: need at least 28 bytes, got %d", len(data))
 	}
 
-	// 解析SFrame Preamble (4字节)
+	sframe := &SFrameData{
+		hasData:     true,
+		sectionAddr: section.Addr,
+		sectionData: data,
+	}
+
+	// 解析 SFrame Preamble (4字节)
 	sframe.Header.Magic = binary.LittleEndian.Uint16(data[0:2])
 	sframe.Header.Version = data[2]
 	sframe.Header.Flags = data[3]
 
-	// Only AMD64
-	// 解析SFrame Header (从偏移4开始)
+	// 解析 SFrame Header (从偏移4开始)
 	sframe.Header.ABI = data[4]
 	sframe.Header.FixedFPOffset = int8(data[5])
 	sframe.Header.FixedRAOffset = int8(data[6])
@@ -281,21 +281,22 @@ func (r *SFrameResolver) loadSFrameData() (*SFrameData, error) {
 	sframe.Header.FDEOff = binary.LittleEndian.Uint32(data[20:24])
 	sframe.Header.FREOff = binary.LittleEndian.Uint32(data[24:28])
 
-	debugLog("[DEBUG] loadSFrameData: SFrame Magic=0x%x, Version=%d, Flags=0x%x\n",
-		sframe.Header.Magic, sframe.Header.Version, sframe.Header.Flags)
-	debugLog("[DEBUG] loadSFrameData: ABI=%d (%s)\n",
-		sframe.Header.ABI, GetABIDescription(sframe.Header.ABI))
-	debugLog("[DEBUG] loadSFrameData: FixedFPOffset=%d, FixedRAOffset=%d, AuxHdrLen=%d\n",
-		sframe.Header.FixedFPOffset, sframe.Header.FixedRAOffset, sframe.Header.AuxHdrLen)
-	debugLog("[DEBUG] loadSFrameData: NumFDEs=%d, NumFREs=%d, FRELen=%d, FDEOff=%d, FREOff=%d\n",
-		sframe.Header.NumFDEs, sframe.Header.NumFREs, sframe.Header.FRELen,
-		sframe.Header.FDEOff, sframe.Header.FREOff)
-
-	// 校验魔数 (SFrame 魔数应该是 0xdee2)
 	if sframe.Header.Magic != SFrameMagic {
 		return nil, fmt.Errorf("invalid SFrame magic number: got 0x%x, expected 0x%x",
 			sframe.Header.Magic, SFrameMagic)
 	}
+	debugLog("sframe.Header.Magic : 0x%x", sframe.Header.Magic)
+	debugLog("sframe.Header.Version : %d", sframe.Header.Version)
+	debugLog("sframe.Header.Flags : 0x%x", sframe.Header.Flags)
+	debugLog("sframe.Header.ABI : %d (%s)", sframe.Header.ABI, GetABIDescription(sframe.Header.ABI))
+	debugLog("sframe.Header.FixedFPOffset : %d", sframe.Header.FixedFPOffset)
+	debugLog("sframe.Header.FixedRAOffset : %d", sframe.Header.FixedRAOffset)
+	debugLog("sframe.Header.AuxHdrLen : %d", sframe.Header.AuxHdrLen)
+	debugLog("sframe.Header.NumFDEs : %d", sframe.Header.NumFDEs)
+	debugLog("sframe.Header.NumFREs : %d", sframe.Header.NumFREs)
+	debugLog("sframe.Header.FRELen : %d", sframe.Header.FRELen)
+	debugLog("sframe.Header.FDEOff : %d", sframe.Header.FDEOff)
+	debugLog("sframe.Header.FREOff : %d", sframe.Header.FREOff)
 
 	// 解析函数条目 (Function Descriptor Entries)
 	// V2格式: 20字节/FDE (int32 StartAddr + uint32 Size + uint32 StartFREOff + uint32 NumFREs + uint8 FuncInfo + uint8 RepSize + uint16 Padding)
@@ -312,7 +313,6 @@ func (r *SFrameResolver) loadSFrameData() (*SFrameData, error) {
 	}
 
 	offset := fdeStartOffset
-
 	for i := uint32(0); i < sframe.Header.NumFDEs && offset+functionEntrySize <= len(data); i++ {
 		var fn SFrameFunction
 		if sframe.Header.Version >= 3 {
@@ -321,6 +321,18 @@ func (r *SFrameResolver) loadSFrameData() (*SFrameData, error) {
 				Size:        binary.LittleEndian.Uint32(data[offset+8 : offset+12]),
 				StartFREOff: binary.LittleEndian.Uint32(data[offset+12 : offset+16]),
 				// NumFREs/FuncInfo/RepSize 在 V3 FDE 中不存在; FREByteLen 稍后由 sframeComputeFREByteLens 计算
+			}
+			// 打印解析后的 VA（PCREL: fdeFieldAddr + StartAddr；非PCREL: sectionAddr + StartAddr）
+			{
+				const SFRAME_F_FDE_FUNC_START_PCREL_INNER = 0x4
+				var displayVA uint64
+				if sframe.Header.Flags&SFRAME_F_FDE_FUNC_START_PCREL_INNER != 0 {
+					fdeFieldAddr := sframe.sectionAddr + uint64(fdeStartOffset+int(i)*functionEntrySize)
+					displayVA = uint64(int64(fdeFieldAddr) + fn.StartAddr)
+				} else {
+					displayVA = sframe.sectionAddr + uint64(fn.StartAddr)
+				}
+				debugLog("StartAddr=0x%x(pcrel_raw=0x%x), Size=%d, StartFREOff=%d\n", displayVA, uint64(fn.StartAddr), fn.Size, fn.StartFREOff)
 			}
 		} else {
 			fn = SFrameFunction{
@@ -336,6 +348,7 @@ func (r *SFrameResolver) loadSFrameData() (*SFrameData, error) {
 		sframe.Functions = append(sframe.Functions, fn)
 		offset += functionEntrySize
 	}
+
 	// V3: FDE Index 无 NumFREs/FuncInfo 字段，通过相邻 StartFREOff 差值计算总字节范围
 	if sframe.Header.Version >= 3 {
 		sframeComputeFREByteLens(sframe.Functions, sframe.Header.FRELen)
@@ -354,7 +367,7 @@ func (r *SFrameResolver) loadSFrameData() (*SFrameData, error) {
 			fn.FuncInfo = data[attrOff+2]
 			fn.FuncInfo2 = data[attrOff+3]
 			fn.RepSize = data[attrOff+4]
-			debugLog("[DEBUG] loadSFrameData: V3 FDE[%d] 属性: NumFREs=%d, FuncInfo=0x%x(fre_type=%d,pctype=%d,signal=%v), FuncInfo2=0x%x(fde_type=%d), RepSize=%d\n",
+			debugLog("[DEBUG] parseSFrameDataFromELF: V3 FDE[%d] 属性: NumFREs=%d, FuncInfo=0x%x(fre_type=%d,pctype=%d,signal=%v), FuncInfo2=0x%x(fde_type=%d), RepSize=%d\n",
 				i, fn.NumFREs,
 				fn.FuncInfo, fn.FuncInfo&0x0F, (fn.FuncInfo>>4)&0x01, (fn.FuncInfo>>7) != 0,
 				fn.FuncInfo2, fn.FuncInfo2&0x1F,
@@ -362,15 +375,46 @@ func (r *SFrameResolver) loadSFrameData() (*SFrameData, error) {
 		}
 	}
 
-	debugLog("[DEBUG] loadSFrameData: 成功解析 %d 个SFrame FDE\n", len(sframe.Functions))
+	// 对比验证：用逐条解析法（calcFRESize）重新计算 FREByteLen，与差值法结果比较
+	if sframe.Header.Version >= 3 {
+		parsedLens := sframeComputeFREByteLensByParsing(sframe.Functions, sframe, data)
+		mismatchCount := 0
+		for i, fn := range sframe.Functions {
+			parsed := parsedLens[i]
+			diff := fn.FREByteLen
+			if parsed == diff {
+				//debugLog("[DEBUG] parseSFrameDataFromELF: FDE[%d] FREByteLen 一致: diff=%d parsed=%d ✓\n", i, diff, parsed)
+			} else {
+				//debugLog("[DEBUG] parseSFrameDataFromELF: FDE[%d] FREByteLen 不一致: diff=%d parsed=%d ✗ (StartFREOff=%d NumFREs=%d FuncInfo=0x%x)\n",
+				//	i, diff, parsed, fn.StartFREOff, fn.NumFREs, fn.FuncInfo)
+				mismatchCount++
+			}
+		}
+		if mismatchCount == 0 {
+			//debugLog("[DEBUG] parseSFrameDataFromELF: FREByteLen 差值法 vs 解析法 全部一致 (%d 个FDE)\n", len(sframe.Functions))
+		} else {
+			//debugLog("[DEBUG] parseSFrameDataFromELF: FREByteLen 差值法 vs 解析法 发现 %d 处不一致（共 %d 个FDE）\n",
+			//	mismatchCount, len(sframe.Functions))
+		}
+	}
 
-	// SFrame V2中，FRE(Frame Row Entries)是实际的栈展开信息
-	// FDE(Function Descriptor Entries)只是函数描述符
-	// 目前我们已经有了FDE信息，FRE解析可以在需要时进行
-	// FRE数据从 headerSize + FREOff 开始
-	debugLog("[DEBUG] loadSFrameData: FRE数据位于偏移 %d, 总长度 %d\n",
+	debugLog("[DEBUG] parseSFrameDataFromELF: 成功解析 %d 个SFrame FDE, Version=%d\n", len(sframe.Functions), sframe.Header.Version)
+	debugLog("[DEBUG] parseSFrameDataFromELF: FRE数据位于偏移 %d, 总长度 %d\n",
 		headerSize+int(sframe.Header.FREOff), sframe.Header.FRELen)
 
+	return sframe, nil
+}
+
+// loadSFrameData 从ELF文件加载SFrame数据
+func (r *SFrameResolver) loadSFrameData() (*SFrameData, error) {
+	sframe, err := parseSFrameDataFromELF(r.elfFile)
+	if err != nil {
+		return nil, err
+	}
+	debugLog("[DEBUG] loadSFrameData: SFrame Magic=0x%x, Version=%d, ABI=%d (%s), NumFDEs=%d\n",
+		sframe.Header.Magic, sframe.Header.Version,
+		sframe.Header.ABI, GetABIDescription(sframe.Header.ABI),
+		len(sframe.Functions))
 	return sframe, nil
 }
 
@@ -538,95 +582,12 @@ func (r *SFrameResolver) loadLibraryMapping(path string, startAddr, endAddr, off
 
 	// 尝试加载共享库的SFrame数据
 	var sframeData *SFrameData
-	section := elfFile.Section(".sframe")
-	if section != nil {
-		data, err := section.Data()
-		if err == nil && len(data) >= 28 {
-			sframe := &SFrameData{
-				hasData:     true,
-				sectionAddr: section.Addr, // 保存.sframe节的虚拟地址
-				sectionData: data,         // 保存原始数据用于FRE解析
-			}
-
-			// 解析SFrame Preamble (4字节)
-			sframe.Header.Magic = binary.LittleEndian.Uint16(data[0:2])
-			sframe.Header.Version = data[2]
-			sframe.Header.Flags = data[3]
-
-			// 解析SFrame Header (从偏移4开始)
-			sframe.Header.ABI = data[4]
-			sframe.Header.FixedFPOffset = int8(data[5])
-			sframe.Header.FixedRAOffset = int8(data[6])
-			sframe.Header.AuxHdrLen = data[7]
-			sframe.Header.NumFDEs = binary.LittleEndian.Uint32(data[8:12])
-			sframe.Header.NumFREs = binary.LittleEndian.Uint32(data[12:16])
-			sframe.Header.FRELen = binary.LittleEndian.Uint32(data[16:20])
-			sframe.Header.FDEOff = binary.LittleEndian.Uint32(data[20:24])
-			sframe.Header.FREOff = binary.LittleEndian.Uint32(data[24:28])
-
-			if sframe.Header.Magic == SFrameMagic {
-				// 解析函数条目 (Function Descriptor Entries)
-				// V2: 20字节/FDE (int32 StartAddr); V3: 16字节/FDE (int64 StartAddr, 无NumFREs/FuncInfo)
-				headerSize := 28 + int(sframe.Header.AuxHdrLen)
-				fdeStartOffset := headerSize + int(sframe.Header.FDEOff)
-				functionEntrySize := 20
-				if sframe.Header.Version >= 3 {
-					functionEntrySize = 16
-				}
-
-				if fdeStartOffset < len(data) {
-					offset := fdeStartOffset
-					for i := uint32(0); i < sframe.Header.NumFDEs && offset+functionEntrySize <= len(data); i++ {
-						var fn SFrameFunction
-						if sframe.Header.Version >= 3 {
-							fn = SFrameFunction{
-								StartAddr:   int64(binary.LittleEndian.Uint64(data[offset : offset+8])),
-								Size:        binary.LittleEndian.Uint32(data[offset+8 : offset+12]),
-								StartFREOff: binary.LittleEndian.Uint32(data[offset+12 : offset+16]),
-							}
-						} else {
-							fn = SFrameFunction{
-								StartAddr:   int64(int32(binary.LittleEndian.Uint32(data[offset : offset+4]))),
-								Size:        binary.LittleEndian.Uint32(data[offset+4 : offset+8]),
-								StartFREOff: binary.LittleEndian.Uint32(data[offset+8 : offset+12]),
-								NumFREs:     binary.LittleEndian.Uint32(data[offset+12 : offset+16]),
-								FuncInfo:    data[offset+16],
-								RepSize:     data[offset+17],
-								Padding:     binary.LittleEndian.Uint16(data[offset+18 : offset+20]),
-							}
-						}
-						sframe.Functions = append(sframe.Functions, fn)
-						offset += functionEntrySize
-					}
-					if sframe.Header.Version >= 3 {
-						sframeComputeFREByteLens(sframe.Functions, sframe.Header.FRELen)
-
-						// V3: 解析 sframe_func_desc_attr (5字节)
-						freSubStart := headerSize + int(sframe.Header.FREOff)
-						for fi := range sframe.Functions {
-							fn := &sframe.Functions[fi]
-							attrOff := freSubStart + int(fn.StartFREOff)
-							if attrOff+5 > len(data) {
-								continue
-							}
-							fn.NumFREs = uint32(binary.LittleEndian.Uint16(data[attrOff : attrOff+2]))
-							fn.FuncInfo = data[attrOff+2]
-							fn.FuncInfo2 = data[attrOff+3]
-							fn.RepSize = data[attrOff+4]
-						}
-					}
-					sframeData = sframe
-					debugLog("[DEBUG] loadLibraryMapping: 成功加载共享库SFrame数据 %s, Version=%d, FDE数: %d\n",
-						path, sframe.Header.Version, len(sframe.Functions))
-				} else {
-					debugLog("[DEBUG] loadLibraryMapping: FDE偏移超出范围 %s: %d >= %d\n", path, fdeStartOffset, len(data))
-				}
-			} else {
-				debugLog("[DEBUG] loadLibraryMapping: SFrame魔数不匹配 %s: 0x%x\n", path, sframe.Header.Magic)
-			}
-		} else if err == nil {
-			debugLog("[DEBUG] loadLibraryMapping: SFrame数据太小 %s: %d 字节\n", path, len(data))
-		}
+	if sd, err := parseSFrameDataFromELF(elfFile); err != nil {
+		debugLog("[DEBUG] loadLibraryMapping: 加载共享库SFrame数据失败 %s: %v\n", path, err)
+	} else {
+		sframeData = sd
+		debugLog("[DEBUG] loadLibraryMapping: 成功加载共享库SFrame数据 %s, Version=%d, FDE数: %d\n",
+			path, sd.Header.Version, len(sd.Functions))
 	}
 
 	mapping := MemoryMapping{
@@ -723,31 +684,92 @@ func sframeComputeFREByteLens(functions []SFrameFunction, totalFRELen uint32) {
 	}
 }
 
-// createDefaultFDE 为函数创建默认的FDE
-// 注意：FuncInfo的低4位是FRE类型，第4位是FDE类型（PCINC/PCMASK）
-// CFA base寄存器（FP或SP）的信息在FRE Info Word的bit 0中，不在这里
-// 这里使用启发式方法：小函数假设SP-based，大函数假设FP-based
-func createDefaultFDE(fn *SFrameFunction) *SFrameFDE {
-	fde := &SFrameFDE{
-		StartOffset: 0,
-		FDEInfo:     0,
-		RepSize:     fn.Size,
+// calcFRESize 计算单条 FRE 的字节大小（不解析偏移值语义，仅计算字节数）。
+// 布局：[start_addr: addrSize] [fre_info: 1B] [offsets: offsetCount * offsetBytes]
+// addrSize 由 freType 决定（0→1B, 1→2B, 2→4B）；
+// offsetBytes 和 offsetCount 由 fre_info 字节的 bits[5:6] 和 bits[1:4] 决定。
+// 返回 (字节数, 是否成功)。
+func calcFRESize(data []byte, offset int, freType uint8) (int, bool) {
+	var addrSize int
+	switch freType {
+	case 0:
+		addrSize = 1
+	case 1:
+		addrSize = 2
+	case 2:
+		addrSize = 4
+	default:
+		return 0, false
 	}
-
-	// 对于AMD64，RA总是在CFA-8，这是固定的
-	fde.RAOffset = -8
-
-	// 对于小函数，假设SP-based (CFA = SP + 8)
-	if fn.Size <= 64 {
-		// SP-based
-		fde.CFAOffset = 8
-	} else {
-		// FP-based (CFA = BP + 16)
-		fde.CFAOffset = 16
-		fde.FPOffset = -16 // FP在CFA-16位置
+	if offset+addrSize+1 > len(data) {
+		return 0, false
 	}
+	freInfo := data[offset+addrSize]
+	offsetCount := int((freInfo >> 1) & 0x0F)
+	offsetSizeCode := (freInfo >> 5) & 0x03
+	var offsetBytes int
+	switch offsetSizeCode {
+	case SFRAME_FRE_DATAWORD_1B:
+		offsetBytes = 1
+	case SFRAME_FRE_DATAWORD_2B:
+		offsetBytes = 2
+	case SFRAME_FRE_DATAWORD_4B:
+		offsetBytes = 4
+	default:
+		return 0, false
+	}
+	total := addrSize + 1 + offsetCount*offsetBytes
+	if offset+total > len(data) {
+		return 0, false
+	}
+	return total, true
+}
 
-	return fde
+// sframeComputeFREByteLensByParsing 通过逐条解析 FRE 的字节大小来计算每个 V3 函数的
+// FRE 字节范围，作为对比验证手段（与 sframeComputeFREByteLens 差值法结果互相校验）。
+//
+// 对于 V3：每个函数的 FRE 数据以 5 字节 sframe_func_desc_attr 开头，其中含 NumFREs。
+// FREByteLen_parsed = 5(attr) + Σ calcFRESize(每条FRE)
+//
+// 返回值：与 functions 等长的切片，存储逐条解析得到的 FREByteLen；
+// 若某函数解析失败，对应位置为 0。
+func sframeComputeFREByteLensByParsing(functions []SFrameFunction, sframe *SFrameData, sectionData []byte) []uint32 {
+	result := make([]uint32, len(functions))
+	if sframe == nil || sframe.Header.Version < 3 {
+		return result
+	}
+	headerSize := 28 + int(sframe.Header.AuxHdrLen)
+	freSubStart := headerSize + int(sframe.Header.FREOff)
+
+	for i := range functions {
+		fn := &functions[i]
+		attrOff := freSubStart + int(fn.StartFREOff)
+		if attrOff+5 > len(sectionData) {
+			debugLog("[DEBUG] sframeComputeFREByteLensByParsing: FDE[%d] attr 超出范围\n", i)
+			continue
+		}
+		numFREs := int(uint32(sectionData[attrOff]) | uint32(sectionData[attrOff+1])<<8)
+		funcInfo := sectionData[attrOff+2]
+		freType := funcInfo & 0x0F
+
+		offset := attrOff + 5 // 跳过 sframe_func_desc_attr
+		totalFREBytes := 0
+		ok := true
+		for j := 0; j < numFREs; j++ {
+			sz, valid := calcFRESize(sectionData, offset, freType)
+			if !valid {
+				debugLog("[DEBUG] sframeComputeFREByteLensByParsing: FDE[%d] FRE[%d] 解析失败, offset=%d\n", i, j, offset)
+				ok = false
+				break
+			}
+			totalFREBytes += sz
+			offset += sz
+		}
+		if ok {
+			result[i] = uint32(5 + totalFREBytes)
+		}
+	}
+	return result
 }
 
 // parseFRE 从二进制数据中解析单个 FRE
@@ -826,6 +848,7 @@ func parseFRE(data []byte, offset int, freType uint8, abi uint8) (*SFrameFDE, in
 			offset += 4
 		}
 		offsets[i] = val
+		debugLog("offsets[%d]: %d\n", i, val)
 	}
 
 	// 根据 ABI 解释偏移值
@@ -843,8 +866,11 @@ func parseFRE(data []byte, offset int, freType uint8, abi uint8) (*SFrameFDE, in
 	switch abi {
 	case SFRAME_ABI_AMD64_ENDIAN_LITTLE:
 		// AMD64: offset1 = CFA, offset2 = FP (如果存在)
-		// RA 总是在 CFA-8 (固定)
-		fde.RAOffset = -8
+		// RA 总是在 CFA-8 (固定)，但 offsetCount==0 表示 RA undefined（最外层帧），不应设置
+		// 规范 §1.3 Errata 2: offsetCount==0 => RA is undefined, outermost frame reached
+		if offsetCount >= 1 {
+			fde.RAOffset = -8
+		}
 		if offsetCount >= 2 {
 			fde.FPOffset = offsets[1]
 		}
@@ -886,11 +912,10 @@ func findFDEForFunction(sframeFunc *SFrameFunction, sframeData *SFrameData, pcOf
 	debugLog("[DEBUG] findFDEForFunction: pcOffset=0x%x, FuncInfo=0x%x, FuncInfo2=0x%x, StartFREOff=%d, FuncSize=%d, NumFREs=%d, FREByteLen=%d\n",
 		pcOffset, sframeFunc.FuncInfo, sframeFunc.FuncInfo2, sframeFunc.StartFREOff, sframeFunc.Size, sframeFunc.NumFREs, sframeFunc.FREByteLen)
 
-	// 如果sframeData为空或没有FRE，使用默认FDE
+	// 如果sframeData为空或没有FRE，无法用SFrame展开，回退到FP
 	if sframeData == nil || sectionData == nil || (sframeFunc.NumFREs == 0 && sframeFunc.FREByteLen == 0) {
-		fde := createDefaultFDE(sframeFunc)
-		debugLog("[DEBUG] findFDEForFunction: 无FRE数据，使用默认FDE, CFAOffset=%d\n", fde.CFAOffset)
-		return fde
+		debugLog("[DEBUG] findFDEForFunction: 无FRE数据，返回nil\n")
+		return nil
 	}
 
 	// V3: 检查 FLEX FDE 类型 (sfda_func_info2 bits 0-4)
@@ -898,8 +923,8 @@ func findFDEForFunction(sframeFunc *SFrameFunction, sframeData *SFrameData, pcOf
 	if sframeData.Header.Version >= 3 {
 		fdeTypeV3 := sframeFunc.FuncInfo2 & 0x1F
 		if fdeTypeV3 == SFRAME_FDE_TYPE_FLEX {
-			debugLog("[DEBUG] findFDEForFunction: FLEX FDE (sfda_func_info2=0x%x)，目前使用默认FDE\n", sframeFunc.FuncInfo2)
-			return createDefaultFDE(sframeFunc)
+			debugLog("[DEBUG] findFDEForFunction: FLEX FDE (sfda_func_info2=0x%x)，无法展开，回退到FP\n", sframeFunc.FuncInfo2)
+			return nil
 		}
 		// V3 outermost frame: DEFAULT 类型 + NumFREs=0 表示最外层帧
 		if fdeTypeV3 == SFRAME_FDE_TYPE_DEFAULT && sframeFunc.NumFREs == 0 {
@@ -909,7 +934,7 @@ func findFDEForFunction(sframeFunc *SFrameFunction, sframeData *SFrameData, pcOf
 	}
 
 	// FRE 类型: bits 0-3 of FuncInfo (V2来自FDE Index; V3来自sframe_func_desc_attr)
-	freType := sframeFunc.FuncInfo & 0x03
+	freType := sframeFunc.FuncInfo & 0x0F
 
 	// 计算FRE数据的起始位置。
 	// V3: sframe_func_desc_attr (5字节) 位于每函数 FRE 数据开头，需跳过。
@@ -917,6 +942,7 @@ func findFDEForFunction(sframeFunc *SFrameFunction, sframeData *SFrameData, pcOf
 	headerSize := 28 + int(sframeData.Header.AuxHdrLen)
 	freAttrStart := headerSize + int(sframeData.Header.FREOff) + int(sframeFunc.StartFREOff)
 	freDataStart := freAttrStart
+	var num uint32
 	if sframeData.Header.Version >= 3 {
 		freDataStart = freAttrStart + 5 // 跳过 sframe_func_desc_attr
 	}
@@ -924,8 +950,8 @@ func findFDEForFunction(sframeFunc *SFrameFunction, sframeData *SFrameData, pcOf
 	debugLog("[DEBUG] findFDEForFunction: freType=%d, freAttrStart=%d, freDataStart=%d\n", freType, freAttrStart, freDataStart)
 
 	if freDataStart >= len(sectionData) {
-		debugLog("[DEBUG] findFDEForFunction: FRE数据超出范围，使用默认FDE\n")
-		return createDefaultFDE(sframeFunc)
+		debugLog("[DEBUG] findFDEForFunction: FRE数据超出范围，返回nil\n")
+		return nil
 	}
 
 	// 遍历所有 FRE，查找匹配的
@@ -970,6 +996,7 @@ func findFDEForFunction(sframeFunc *SFrameFunction, sframeData *SFrameData, pcOf
 			}
 		}
 		if isMatch {
+			num = i
 			bestMatch = fre
 		}
 
@@ -981,16 +1008,17 @@ func findFDEForFunction(sframeFunc *SFrameFunction, sframeData *SFrameData, pcOf
 		cfaBaseReg := bestMatch.FREInfo & 0x01
 		cfaBaseStr := "SP"
 		if cfaBaseReg == SFRAME_FRE_CFA_BASE_REG_FP {
+			debugLog("[DEBUG] findFDEForFunction: CFA_BASE=FP")
 			cfaBaseStr = "FP"
 		}
-		debugLog("[DEBUG] findFDEForFunction: 找到匹配的FRE, CFA_BASE=%s, CFAOffset=%d, RAOffset=%d, FPOffset=%d\n",
-			cfaBaseStr, bestMatch.CFAOffset, bestMatch.RAOffset, bestMatch.FPOffset)
+		debugLog("[DEBUG] findFDEForFunction: 找到匹配的FRE#%d, CFA_BASE=%s, CFAOffset=%d, RAOffset=%d, FPOffset=%d\n",
+			num, cfaBaseStr, bestMatch.CFAOffset, bestMatch.RAOffset, bestMatch.FPOffset)
 		return bestMatch
 	}
 
-	// 没有找到匹配的FRE，使用默认值
-	debugLog("[DEBUG] findFDEForFunction: 未找到匹配的FRE，使用默认FDE\n")
-	return createDefaultFDE(sframeFunc)
+	// 没有找到匹配的FRE，无法用SFrame展开，回退到FP
+	debugLog("[DEBUG] findFDEForFunction: 未找到匹配的FRE，返回nil\n")
+	return nil
 }
 
 // findSymbol 在主程序符号表中查找符号
@@ -1024,8 +1052,8 @@ func (r *SFrameResolver) findSymbolInList(addr uint64, symbols []ElfSymbol) stri
 
 			// 调试：记录接近的符号
 			if dist < 0x1000 {
-				debugLog("[DEBUG] findSymbolInList: 候选符号 %s @ 0x%x, size=%d, dist=0x%x\n",
-					sym.Name, sym.Addr, sym.Size, dist)
+				//debugLog("[DEBUG] findSymbolInList: 候选符号 %s @ 0x%x, size=%d, dist=0x%x\n",
+				//	sym.Name, sym.Addr, sym.Size, dist)
 			}
 
 			// 优先选择在符号范围内的
@@ -1054,8 +1082,8 @@ func (r *SFrameResolver) findSymbolInList(addr uint64, symbols []ElfSymbol) stri
 
 	// 优先使用范围内的匹配
 	if bestInRange != "" {
-		debugLog("[DEBUG] findSymbolInList: 目标地址=0x%x, 检查了%d个候选符号, 最佳匹配(范围内)=%s, 距离=0x%x\n",
-			addr, candidatesChecked, bestInRange, bestInRangeDist)
+		//debugLog("[DEBUG] findSymbolInList: 目标地址=0x%x, 检查了%d个候选符号, 最佳匹配(范围内)=%s, 距离=0x%x\n",
+		//	addr, candidatesChecked, bestInRange, bestInRangeDist)
 		if bestInRangeDist > 0 {
 			return fmt.Sprintf("%s+0x%x", bestInRange, bestInRangeDist)
 		}
@@ -1064,8 +1092,8 @@ func (r *SFrameResolver) findSymbolInList(addr uint64, symbols []ElfSymbol) stri
 
 	// 使用最近的符号（如果距离在合理范围内）
 	if bestMatch != "" && bestDist != ^uint64(0) {
-		debugLog("[DEBUG] findSymbolInList: 目标地址=0x%x, 检查了%d个候选符号, 最佳匹配(最近)=%s, 距离=0x%x\n",
-			addr, candidatesChecked, bestMatch, bestDist)
+		//debugLog("[DEBUG] findSymbolInList: 目标地址=0x%x, 检查了%d个候选符号, 最佳匹配(最近)=%s, 距离=0x%x\n",
+		//	addr, candidatesChecked, bestMatch, bestDist)
 		if bestDist > 0 {
 			return fmt.Sprintf("%s+0x%x", bestMatch, bestDist)
 		}
@@ -1073,8 +1101,8 @@ func (r *SFrameResolver) findSymbolInList(addr uint64, symbols []ElfSymbol) stri
 	}
 
 	// 没有找到合适的符号
-	debugLog("[DEBUG] findSymbolInList: 目标地址=0x%x, 检查了%d个候选符号, 未找到合适的符号\n",
-		addr, candidatesChecked)
+	//debugLog("[DEBUG] findSymbolInList: 目标地址=0x%x, 检查了%d个候选符号, 未找到合适的符号\n",
+	//	addr, candidatesChecked)
 	return ""
 }
 
@@ -1239,6 +1267,7 @@ func (r *SFrameResolver) findSFrameFunction(pc uint64) (*SFrameFunction, uint64)
 			}
 			var bestFn *SFrameFunction
 			var bestFnStart uint64
+			var num int
 			for i := range r.sframeData.Functions {
 				fn := &r.sframeData.Functions[i]
 
@@ -1270,8 +1299,8 @@ func (r *SFrameResolver) findSFrameFunction(pc uint64) (*SFrameFunction, uint64)
 				fnStartRuntimeAddr := r.baseAddr + (fnStartVirtAddr - r.baseOffset)
 				fnEndRuntimeAddr := r.baseAddr + (fnEndVirtAddr - r.baseOffset)
 
-				debugLog("[DEBUG] findSFrameFunction: PCINC FDE[%d] 范围[0x%x, 0x%x), size=%d (StartAddr=0x%x, virtStart=0x%x)\n",
-					i, fnStartRuntimeAddr, fnEndRuntimeAddr, fn.Size, uint32(fn.StartAddr), fnStartVirtAddr)
+				debugLog("[DEBUG] findSFrameFunction: PCINC FDE[%d] 范围[0x%x, 0x%x), size=%d (StartAddr_pcrel=0x%x, virtStart=0x%x)\n",
+					i, fnStartRuntimeAddr, fnEndRuntimeAddr, fn.Size, uint64(fn.StartAddr), fnStartVirtAddr)
 
 				if pc >= fnStartRuntimeAddr && pc < fnEndRuntimeAddr {
 					debugLog("[DEBUG] findSFrameFunction: 候选主程序SFrame函数 @ 0x%x (virtual=0x%x), PC=0x%x, size=%d\n",
@@ -1280,12 +1309,13 @@ func (r *SFrameResolver) findSFrameFunction(pc uint64) (*SFrameFunction, uint64)
 					if fnStartRuntimeAddr > bestFnStart {
 						bestFnStart = fnStartRuntimeAddr
 						bestFn = fn
+						num = i
 					}
 				}
 			}
 			if bestFn != nil {
-				debugLog("[DEBUG] findSFrameFunction: 找到主程序SFrame函数 @ 0x%x, PC=0x%x, size=%d\n",
-					bestFnStart, pc, bestFn.Size)
+				debugLog("[DEBUG] findSFrameFunction: 找到主程序SFrame函数 #@%d @ 0x%x, PC=0x%x, size=%d\n",
+					num, bestFnStart, pc, bestFn.Size)
 				return bestFn, bestFnStart
 			}
 			debugLog("[DEBUG] findSFrameFunction: 主程序中未找到匹配的PCINC SFrame函数，回退FP (PC=0x%x)\n", pc)
@@ -1315,6 +1345,7 @@ func (r *SFrameResolver) findSFrameFunction(pc uint64) (*SFrameFunction, uint64)
 				}
 				var bestLibFn *SFrameFunction
 				var bestLibFnStart uint64
+				var num int
 				for j := range r.mappings[i].SFrameData.Functions {
 					fn := &r.mappings[i].SFrameData.Functions[j]
 
@@ -1348,12 +1379,13 @@ func (r *SFrameResolver) findSFrameFunction(pc uint64) (*SFrameFunction, uint64)
 						if fnStartRuntimeAddr > bestLibFnStart {
 							bestLibFnStart = fnStartRuntimeAddr
 							bestLibFn = fn
+							num = j
 						}
 					}
 				}
 				if bestLibFn != nil {
-					debugLog("[DEBUG] findSFrameFunction: 找到共享库SFrame函数 @ 0x%x, size=%d, lib=%s\n",
-						bestLibFnStart, bestLibFn.Size, r.mappings[i].Path)
+					debugLog("[DEBUG] findSFrameFunction: 找到共享库SFrame函数 #@%d @ 0x%x, size=%d, lib=%s\n",
+						num, bestLibFnStart, bestLibFn.Size, r.mappings[i].Path)
 					return bestLibFn, bestLibFnStart
 				}
 			} else {
@@ -1407,20 +1439,14 @@ func (r *SFrameResolver) unwindFrameWithSFrame(ctx *UnwindContext) error {
 		return fmt.Errorf("outermost frame reached (V3 DEFAULT FDE with no FREs)")
 	}
 
-	// 从 FRE Info Word 的 bit 0 确定 CFA 基寄存器
-	// bit 0 = 0: SP-based, bit 0 = 1: FP-based
-	useFPBased := false
-	if fde != nil {
-		cfaBaseReg := fde.FREInfo & 0x01
-		useFPBased = (cfaBaseReg == SFRAME_FRE_CFA_BASE_REG_FP)
+	// 没有 FDE，无法用 SFrame 展开，让调用者回退到 FP
+	if fde == nil {
+		return fmt.Errorf("no FDE found for PC 0x%x", ctx.PC)
 	}
 
-	// 如果没有 FDE 信息，根据 SFrame header 的 Flags 确定
-	if fde == nil && sframeData != nil {
-		// SFRAME_F_FRAME_POINTER = 0x2: 所有函数都保留FP
-		const SFRAME_F_FRAME_POINTER = 0x2
-		useFPBased = (sframeData.Header.Flags&SFRAME_F_FRAME_POINTER != 0)
-	}
+	// 从 FRE Info Word 的 bit 0 确定 CFA 基寄存器
+	// SFrame spec: bit 0 = 0: FP-based (SFRAME_BASE_REG_FP=0), bit 0 = 1: SP-based (SFRAME_BASE_REG_SP=1)
+	useFPBased := (fde.FREInfo & 0x01) == SFRAME_FRE_CFA_BASE_REG_FP
 
 	debugLog("[DEBUG] unwindFrameWithSFrame: 函数size=%d, pcOffset=0x%x, useFPBased=%v (from FRE)\n",
 		sframeFunc.Size, pcOffset, useFPBased)
@@ -1428,32 +1454,28 @@ func (r *SFrameResolver) unwindFrameWithSFrame(ctx *UnwindContext) error {
 	var cfa uint64 // Canonical Frame Address
 
 	if !useFPBased {
-		// SP-based CFA: CFA = SP + offset
-		// 对于SP-based栈帧，返回地址通常在栈顶(SP+0)
-		// CFA是调用后的栈指针位置，通常是SP + 8（因为call指令push了返回地址）
-		if fde != nil && fde.CFAOffset > 0 {
-			cfa = ctx.SP + uint64(fde.CFAOffset)
+		// SP-based CFA。SFrame 规范：CFA = SP + offset1，offset1 直接存为正数（如 sp+8、sp+16）。
+		if fde != nil && fde.CFAOffset != 0 {
+			cfa = uint64(int64(ctx.SP) + int64(fde.CFAOffset))
 			debugLog("[DEBUG] unwindFrameWithSFrame: SP-based CFA (来自FDE), CFA=0x%x (SP=0x%x + %d)\n",
 				cfa, ctx.SP, fde.CFAOffset)
 		} else {
-			// 使用默认偏移
-			// 对于x86-64，call指令会push返回地址(8字节)
-			// 所以调用者的栈指针位置是当前SP + 8
-			defaultOffset := int32(8)
-			cfa = ctx.SP + uint64(defaultOffset)
-			debugLog("[DEBUG] unwindFrameWithSFrame: SP-based CFA (使用默认偏移), CFA=0x%x (SP=0x%x + %d)\n",
-				cfa, ctx.SP, defaultOffset)
+			// 无 FDE 信息，使用默认偏移：call 指令 push 了返回地址(8字节)，栈深度=1
+			cfa = ctx.SP + 8
+			debugLog("[DEBUG] unwindFrameWithSFrame: SP-based CFA (使用默认偏移), CFA=0x%x (SP=0x%x + 8)\n",
+				cfa, ctx.SP)
 		}
 	} else {
-		// FP-based CFA: CFA = BP + offset
-		// 在x86-64标准帧布局中，BP指向保存的旧BP，返回地址在BP+8，所以CFA应该是BP+16
-		offset := int32(16) // 默认值
-		if fde != nil && fde.CFAOffset > 0 {
-			offset = fde.CFAOffset
+		// FP-based CFA。SFrame 规范：CFA = FP + offset1，offset1 直接存为正数（如 fp+16）。
+		if fde != nil && fde.CFAOffset != 0 {
+			cfa = uint64(int64(ctx.BP) + int64(fde.CFAOffset))
+			debugLog("[DEBUG] unwindFrameWithSFrame: FP-based CFA (来自FDE), CFA=0x%x (BP=0x%x + %d)\n",
+				cfa, ctx.BP, fde.CFAOffset)
+		} else {
+			cfa = ctx.BP + 16
+			debugLog("[DEBUG] unwindFrameWithSFrame: FP-based CFA (使用默认偏移), CFA=0x%x (BP=0x%x + 16)\n",
+				cfa, ctx.BP)
 		}
-		cfa = ctx.BP + uint64(offset)
-		debugLog("[DEBUG] unwindFrameWithSFrame: FP-based CFA, CFA=0x%x (BP=0x%x + %d)\n",
-			cfa, ctx.BP, offset)
 	}
 
 	// 验证CFA的合理性
@@ -1465,7 +1487,7 @@ func (r *SFrameResolver) unwindFrameWithSFrame(ctx *UnwindContext) error {
 	// 对于SP-based: 返回地址在CFA-8的位置（即当前SP位置，因为CFA=SP+8）
 	// 对于FP-based: 返回地址在CFA-8的位置（即BP+8）
 	raOffset := int32(-8)
-	if fde != nil && fde.RAOffset != 0 {
+	if fde.RAOffset != 0 {
 		raOffset = fde.RAOffset
 	}
 
@@ -1481,112 +1503,35 @@ func (r *SFrameResolver) unwindFrameWithSFrame(ctx *UnwindContext) error {
 		return fmt.Errorf("failed to read return address at 0x%x: %w", retAddrLoc, err)
 	}
 
-	// 验证返回地址的有效性
-	// 检查是否看起来像有效的代码地址
-	isValidCodeAddr := func(addr uint64) bool {
-		// 基本范围检查
-		if addr < 0x1000 || addr > 0x7fffffffffff {
-			return false
-		}
-		// 栈地址范围 (通常在 0x7ffc00000000 - 0x7fffffffffff)
-		// 这肯定不是代码地址,应该立即拒绝
-		if addr >= 0x7ffc00000000 && addr <= 0x7fffffffffff {
-			return false
-		}
-		// 检查是否在已知的代码区域（主程序或共享库）
-		if addr >= r.baseAddr && addr < r.baseAddrEnd {
-			return true
-		}
-		for i := range r.mappings {
-			if addr >= r.mappings[i].StartAddr && addr < r.mappings[i].EndAddr {
-				return true
-			}
-		}
-		// 不在任何已知的代码映射中
-		return false
-	}
-
-	// 对于SP-based函数，如果从计算位置读取的不是有效代码地址，
-	// 可能是因为函数实际使用了帧指针但我们的启发式判断错误
-	// 尝试从BP+8读取返回地址作为后备
-	// 记录是否发生了 SP→FP fallback，用于后续 newBP 计算
-	spToFPFallback := false
-	if !isValidCodeAddr(retAddr) && !useFPBased && ctx.BP != 0 {
-		debugLog("[DEBUG] unwindFrameWithSFrame: SP-based读取失败(retAddr=0x%x无效)，尝试从BP+8读取\n", retAddr)
-		// 尝试从BP+8读取返回地址
-		altRetAddrLoc := ctx.BP + 8
-		altRetAddr, altErr := r.readUint64WithCtx(altRetAddrLoc, ctx)
-		if altErr == nil && isValidCodeAddr(altRetAddr) {
-			// 从BP读取成功，说明函数实际使用了帧指针
-			debugLog("[DEBUG] unwindFrameWithSFrame: 从BP+8成功读取返回地址 0x%x，切换到FP-based\n", altRetAddr)
-			retAddr = altRetAddr
-			retAddrLoc = altRetAddrLoc
-			// 更新为FP-based展开，标记发生了 SP→FP fallback
-			useFPBased = true
-			spToFPFallback = true
-			cfa = ctx.BP + 16
-		} else {
-			return fmt.Errorf("invalid return address: 0x%x (alt: 0x%x, err: %v)", retAddr, altRetAddr, altErr)
-		}
-	} else if !isValidCodeAddr(retAddr) {
-		return fmt.Errorf("invalid return address: 0x%x (looks like stack address)", retAddr)
-	}
-
 	// 读取保存的 BP（如果有 FPOffset 信息）
 	var newBP uint64
-	if spToFPFallback {
-		// SP→FP fallback 场景：FRE 中的 FPOffset 是相对于 SP-based CFA 的偏移，
-		// 而此刻 cfa 已切换为 BP+16（FP-based），二者基准不同，直接使用 FPOffset 会
-		// 得到错误地址（通常落在 RSP 以下，导致读出垃圾值）。
-		// 正确做法：按标准 x86-64 帧布局从 [BP+0] 读取调用者保存的 BP。
-		savedBP, bpErr := r.readUint64WithCtx(ctx.BP, ctx)
-		if bpErr != nil {
-			debugLog("[DEBUG] unwindFrameWithSFrame: SP→FP fallback 读取 [BP]=0x%x 失败: %v，保持旧BP\n", ctx.BP, bpErr)
-			newBP = ctx.BP
-		} else if savedBP != 0 && savedBP <= ctx.BP {
-			debugLog("[DEBUG] unwindFrameWithSFrame: SP→FP fallback [BP]=0x%x 未增长，保持旧BP\n", savedBP)
-			newBP = ctx.BP
-		} else {
-			debugLog("[DEBUG] unwindFrameWithSFrame: SP→FP fallback 从 [BP+0] 读取 savedBP=0x%x\n", savedBP)
-			newBP = savedBP
-		}
-	} else if fde != nil && fde.FPOffset != 0 {
-		// FPOffset 是相对于 CFA 的偏移
-		// 无论是 SP-based 还是 FP-based CFA，都可能保存了 FP
+	if fde.FPOffset != 0 {
+		// FPOffset 是相对于 CFA 的偏移: FP = CFA + FPOffset
 		fpLoc := uint64(int64(cfa) + int64(fde.FPOffset))
+		debugLog("[DEBUG] unwindFrameWithSFrame: 计算 FP 位置 = CFA + FPOffset, CFA=0x%x, FPOffset=%d, FP_location=0x%x\n",
+			cfa, fde.FPOffset, fpLoc)
 		newBP, err = r.readUint64WithCtx(fpLoc, ctx)
 		if err != nil {
 			debugLog("[DEBUG] unwindFrameWithSFrame: 读取BP失败 at 0x%x: %v\n", fpLoc, err)
-			// 读取失败时保持旧BP
 			newBP = ctx.BP
 		} else {
-			// 验证BP的合理性
-			if newBP != 0 && newBP <= ctx.BP && ctx.BP != 0 {
-				debugLog("[DEBUG] unwindFrameWithSFrame: BP未增长: newBP=0x%x <= oldBP=0x%x，保持旧BP\n", newBP, ctx.BP)
-				newBP = ctx.BP
-			} else {
-				debugLog("[DEBUG] unwindFrameWithSFrame: 读取保存的BP=0x%x (from CFA+%d=0x%x), useFPBased=%v\n",
-					newBP, fde.FPOffset, fpLoc, useFPBased)
-			}
+			debugLog("[DEBUG] unwindFrameWithSFrame: 读取保存的BP=0x%x (from CFA+%d=0x%x)\n",
+				newBP, fde.FPOffset, fpLoc)
 		}
 	} else if useFPBased {
-		// FP-based 帧（CFA = BP+16），即使 SFrame 未记录 FPOffset，
-		// x86-64 标准帧布局保证 [BP+0] 处存储了 caller 的 BP。
+		// FP-based 帧未记录 FPOffset，按 x86-64 标准布局从 [BP+0] 读取 caller BP
 		savedBP, bpErr := r.readUint64WithCtx(ctx.BP, ctx)
 		if bpErr != nil {
-			debugLog("[DEBUG] unwindFrameWithSFrame: FP-based 读取 [BP+0]=0x%x 失败: %v，保持旧BP\n", ctx.BP, bpErr)
-			newBP = ctx.BP
-		} else if savedBP != 0 && savedBP <= ctx.BP {
-			debugLog("[DEBUG] unwindFrameWithSFrame: FP-based [BP+0]=0x%x 未增长，保持旧BP\n", savedBP)
+			debugLog("[DEBUG] unwindFrameWithSFrame: FP-based 读取 [BP+0] 失败: %v，保持旧BP\n", bpErr)
 			newBP = ctx.BP
 		} else {
 			debugLog("[DEBUG] unwindFrameWithSFrame: FP-based 从 [BP+0] 读取 caller BP=0x%x\n", savedBP)
 			newBP = savedBP
 		}
 	} else {
-		// 没有 FPOffset 信息，保持当前BP
+		// SP-based 无 FPOffset，保持当前 BP
 		newBP = ctx.BP
-		debugLog("[DEBUG] unwindFrameWithSFrame: 无FPOffset信息，保持BP=0x%x\n", ctx.BP)
+		debugLog("[DEBUG] unwindFrameWithSFrame: SP-based 无FPOffset，保持BP=0x%x\n", ctx.BP)
 	}
 
 	debugLog("[DEBUG] unwindFrameWithSFrame: retAddr=0x%x, newBP=0x%x, newSP=0x%x\n",
@@ -1669,35 +1614,6 @@ func (r *SFrameResolver) doUnwindStack(ctx *UnwindContext, maxFrames int) ([]Sta
 		err := r.unwindFrameWithSFrame(ctx)
 		if err != nil {
 			debugLog("[DEBUG] UnwindStack: SFrame展开失败，尝试FP: %v\n", err)
-			// 检测 PLT stub / 无帧函数：BP 远高于 SP（中间横跨多个帧），
-			// 此时 BP 不指向当前函数的帧边界，应先用 [RSP] 恢复真实返回地址。
-			// PLT 条目不压入 BP，进入时 RSP 直接指向返回地址。
-			if ctx.BP > ctx.SP+16 {
-				if retFromRSP, rErr := r.readUint64WithCtx(ctx.SP, ctx); rErr == nil {
-					// 验证是否为有效代码地址（主程序或已映射共享库）
-					isCode := (retFromRSP >= 0x1000 && retFromRSP < 0x7ffc00000000)
-					if isCode {
-						inCode := retFromRSP >= r.baseAddr && retFromRSP < r.baseAddrEnd
-						if !inCode {
-							for mi := range r.mappings {
-								if retFromRSP >= r.mappings[mi].StartAddr && retFromRSP < r.mappings[mi].EndAddr {
-									inCode = true
-									break
-								}
-							}
-						}
-						isCode = inCode
-					}
-					if isCode {
-						debugLog("[DEBUG] UnwindStack: 检测到 PLT/无帧函数，从 [RSP]=0x%x 恢复返回地址 0x%x\n", ctx.SP, retFromRSP)
-						ctx.PC = retFromRSP
-						// SP 越过已消耗的返回地址槽，BP 保持不变（由调用者帧负责）
-						ctx.SP = ctx.SP + 8
-						debugLog("[DEBUG] UnwindStack: PLT/无帧回退成功，新 PC=0x%x SP=0x%x\n", ctx.PC, ctx.SP)
-						continue
-					}
-				}
-			}
 			// 回退到基于帧指针的展开
 			if err := r.unwindFrameWithFP(ctx); err != nil {
 				debugLog("[DEBUG] UnwindStack: FP展开也失败: %v\n", err)

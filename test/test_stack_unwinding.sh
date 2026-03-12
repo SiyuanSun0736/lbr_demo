@@ -17,7 +17,7 @@ NC='\033[0m' # No Color
 
 # 编译测试程序
 
-make test_stack_unwinding
+make test_stack_unwinding1
 
 
 # 编译栈回溯工具
@@ -26,7 +26,7 @@ make
 cd test
 
 echo -e "${GREEN}步骤 1: 启动测试程序${NC}"
-./test_stack_unwinding &
+./test_stack_unwinding1 &
 TEST_PID=$!
 echo "测试进程 PID: $TEST_PID"
 
@@ -47,7 +47,7 @@ ps -p $TEST_PID -o pid,comm,state,cmd
 echo
 echo -e "${GREEN}步骤 3: 查看内存映射${NC}"
 echo "可执行段:"
-grep -E "test_stack_unwinding" /proc/$TEST_PID/maps | head -n 3
+grep -E "test_stack_unwinding1" /proc/$TEST_PID/maps | head -n 3
 
 echo
 echo -e "${GREEN}步骤 4: 尝试读取寄存器信息${NC}"

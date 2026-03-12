@@ -48,4 +48,4 @@ echo "• 使用 -dwarf=true 切换到 DWARF 解析"
 echo "• 使用 -resolve=false 查看原始地址"
 echo "• 运行 test/test_symbol_resolution.sh 进行完整测试"
 
-wait $TEST_PID 2>/dev/null || true
+kill $TEST_PID && echo -e "\n${GREEN}测试程序已结束${NC}"

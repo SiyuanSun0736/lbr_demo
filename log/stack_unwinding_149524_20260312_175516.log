@@ -1,0 +1,118 @@
+正在对进程 149524 进行栈回溯...
+日志文件: ../log/stack_unwinding_149524_20260312_175516.log
+
+2026/03/12 17:55:16 [DEBUG] NewSFrameResolver: 为PID 149524 创建SFrame解析器
+2026/03/12 17:55:16 [DEBUG] NewSFrameResolver: 可执行文件: /home/ssy/lbr/test/test_stack_unwinding2
+2026/03/12 17:55:16 sframe.Header.Magic : 0xdee2
+2026/03/12 17:55:16 sframe.Header.Version : 3
+2026/03/12 17:55:16 sframe.Header.Flags : 0x5
+2026/03/12 17:55:16 sframe.Header.ABI : 3 (AMD64 little-endian)
+2026/03/12 17:55:16 sframe.Header.FixedFPOffset : 0
+2026/03/12 17:55:16 sframe.Header.FixedRAOffset : -8
+2026/03/12 17:55:16 sframe.Header.AuxHdrLen : 0
+2026/03/12 17:55:16 sframe.Header.NumFDEs : 9
+2026/03/12 17:55:16 sframe.Header.NumFREs : 32
+2026/03/12 17:55:16 sframe.Header.FRELen : 166
+2026/03/12 17:55:16 sframe.Header.FDEOff : 0
+2026/03/12 17:55:16 sframe.Header.FREOff : 144
+2026/03/12 17:55:16 StartAddr=0x1020(pcrel_raw=0xffffffffffffee6c), Size=16, StartFREOff=144
+2026/03/12 17:55:16 StartAddr=0x1030(pcrel_raw=0xffffffffffffee6c), Size=16, StartFREOff=155
+2026/03/12 17:55:16 StartAddr=0x1139(pcrel_raw=0xffffffffffffef65), Size=20, StartFREOff=0
+2026/03/12 17:55:16 StartAddr=0x114d(pcrel_raw=0xffffffffffffef69), Size=235, StartFREOff=20
+2026/03/12 17:55:16 StartAddr=0x1238(pcrel_raw=0xfffffffffffff044), Size=69, StartFREOff=40
+2026/03/12 17:55:16 StartAddr=0x127d(pcrel_raw=0xfffffffffffff079), Size=59, StartFREOff=60
+2026/03/12 17:55:16 StartAddr=0x12b8(pcrel_raw=0xfffffffffffff0a4), Size=12, StartFREOff=80
+2026/03/12 17:55:16 StartAddr=0x12c4(pcrel_raw=0xfffffffffffff0a0), Size=56, StartFREOff=100
+2026/03/12 17:55:16 StartAddr=0x12fc(pcrel_raw=0xfffffffffffff0c8), Size=351, StartFREOff=120
+2026/03/12 17:55:16 [DEBUG] parseSFrameDataFromELF: V3 FDE[0] 属性: NumFREs=2, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 17:55:16 [DEBUG] parseSFrameDataFromELF: V3 FDE[1] 属性: NumFREs=2, FuncInfo=0x10(fre_type=0,pctype=1,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=16
+2026/03/12 17:55:16 [DEBUG] parseSFrameDataFromELF: V3 FDE[2] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 17:55:16 [DEBUG] parseSFrameDataFromELF: V3 FDE[3] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 17:55:16 [DEBUG] parseSFrameDataFromELF: V3 FDE[4] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 17:55:16 [DEBUG] parseSFrameDataFromELF: V3 FDE[5] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 17:55:16 [DEBUG] parseSFrameDataFromELF: V3 FDE[6] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 17:55:16 [DEBUG] parseSFrameDataFromELF: V3 FDE[7] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 17:55:16 [DEBUG] parseSFrameDataFromELF: V3 FDE[8] 属性: NumFREs=4, FuncInfo=0x1(fre_type=1,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 17:55:16 [DEBUG] parseSFrameDataFromELF: 成功解析 9 个SFrame FDE, Version=3
+2026/03/12 17:55:16 [DEBUG] parseSFrameDataFromELF: FRE数据位于偏移 172, 总长度 166
+2026/03/12 17:55:16 [DEBUG] loadSFrameData: SFrame Magic=0xdee2, Version=3, ABI=3 (AMD64 little-endian), NumFDEs=9
+2026/03/12 17:55:16 [DEBUG] NewSFrameResolver: 成功加载SFrame数据
+2026/03/12 17:55:16 [DEBUG] loadSymbols: 加载了 3 个PLT符号
+2026/03/12 17:55:16 [DEBUG] loadSymbols: 加载了 34 个符号（含PLT）
+2026/03/12 17:55:16 [DEBUG] GetProcessMaps: 读取进程 149524 的内存映射
+2026/03/12 17:55:16 [DEBUG] GetProcessMaps: 读取到 23 个内存映射
+2026/03/12 17:55:16 [DEBUG] loadBaseAddress: 基址=0x556db995e000, 结束=0x556db995f000, 偏移=0x1000
+2026/03/12 17:55:16 [DEBUG] GetProcessMaps: 读取进程 149524 的内存映射
+2026/03/12 17:55:16 [DEBUG] GetProcessMaps: 读取到 23 个内存映射
+2026/03/12 17:55:16 [DEBUG] loadLibraryMapping: 加载共享库SFrame数据失败 /usr/lib/libc.so.6: no .sframe section found
+2026/03/12 17:55:16 [DEBUG] loadLibraryMapping: 加载共享库 /usr/lib/libc.so.6, 符号数: 3121, SFrame: false
+2026/03/12 17:55:16 [DEBUG] loadLibraryMapping: 加载共享库SFrame数据失败 /usr/lib/ld-linux-x86-64.so.2: no .sframe section found
+2026/03/12 17:55:16 [DEBUG] loadLibraryMapping: 加载共享库 /usr/lib/ld-linux-x86-64.so.2, 符号数: 32, SFrame: false
+2026/03/12 17:55:16 [DEBUG] loadLibraryMappings: 加载了 2 个共享库映射
+2026/03/12 17:55:16 [DEBUG] NewSFrameResolver: SFrame解析器创建成功
+最大栈帧数: 32
+栈展开方法: fp
+
+使用帧指针 (FP) 栈展开...
+2026/03/12 17:55:16 [DEBUG] GetRegisters: PC=0x556db995e2f2, SP=0x7ffe19b84b30, BP=0x7ffe19b84b30 (via ptrace)
+2026/03/12 17:55:16 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x556db995e2f2
+2026/03/12 17:55:16 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x12f2
+2026/03/12 17:55:16 [DEBUG] SFrameResolver: 找到函数 sum_even_numbers+0x2e
+2026/03/12 17:55:16 [DEBUG] UnwindStackWithFP: Frame 0: PC=0x556db995e2f2, SP=0x7ffe19b84b30, BP=0x7ffe19b84b30
+2026/03/12 17:55:16 [DEBUG] unwindFrameWithFP: 读取 newBP=0x7ffe19b84b60, retAddr=0x556db995e379 (from BP=0x7ffe19b84b30)
+2026/03/12 17:55:16 [DEBUG] unwindFrameWithFP: 更新后 PC=0x556db995e379, BP=0x7ffe19b84b60, SP=0x7ffe19b84b60
+2026/03/12 17:55:16 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x556db995e379
+2026/03/12 17:55:16 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1379
+2026/03/12 17:55:16 [DEBUG] SFrameResolver: 找到函数 main+0x7d
+2026/03/12 17:55:16 [DEBUG] UnwindStackWithFP: Frame 1: PC=0x556db995e379, SP=0x7ffe19b84b60, BP=0x7ffe19b84b60
+2026/03/12 17:55:16 [DEBUG] unwindFrameWithFP: 读取 newBP=0x7ffe19b84c10, retAddr=0x7f2cb09e46c1 (from BP=0x7ffe19b84b60)
+2026/03/12 17:55:16 [DEBUG] unwindFrameWithFP: 更新后 PC=0x7f2cb09e46c1, BP=0x7ffe19b84c10, SP=0x7ffe19b84c10
+2026/03/12 17:55:16 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f2cb09e46c1
+2026/03/12 17:55:16 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x276c1
+2026/03/12 17:55:16 [DEBUG] SFrameResolver: 找到共享库函数 __libc_init_first+0x91@libc.so.6
+2026/03/12 17:55:16 [DEBUG] UnwindStackWithFP: Frame 2: PC=0x7f2cb09e46c1, SP=0x7ffe19b84c10, BP=0x7ffe19b84c10
+2026/03/12 17:55:16 [DEBUG] unwindFrameWithFP: 读取 newBP=0x7ffe19b84c70, retAddr=0x7f2cb09e47f9 (from BP=0x7ffe19b84c10)
+2026/03/12 17:55:16 [DEBUG] unwindFrameWithFP: 更新后 PC=0x7f2cb09e47f9, BP=0x7ffe19b84c70, SP=0x7ffe19b84c70
+2026/03/12 17:55:16 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f2cb09e47f9
+2026/03/12 17:55:16 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x277f9
+2026/03/12 17:55:16 [DEBUG] SFrameResolver: 找到共享库函数 __libc_start_main+0x89@libc.so.6
+2026/03/12 17:55:16 [DEBUG] UnwindStackWithFP: Frame 3: PC=0x7f2cb09e47f9, SP=0x7ffe19b84c70, BP=0x7ffe19b84c70
+2026/03/12 17:55:16 [DEBUG] unwindFrameWithFP: 读取 newBP=0x0, retAddr=0x556db995e065 (from BP=0x7ffe19b84c70)
+2026/03/12 17:55:16 [DEBUG] unwindFrameWithFP: 新BP为0，到达栈底
+2026/03/12 17:55:16 [DEBUG] UnwindStackWithFP: FP展开失败: reached end of stack (null BP)
+2026/03/12 17:55:16 [DEBUG] UnwindStackWithFP: 总共展开了 4 帧
+
+=== 详细栈帧信息 ===
+
+帧 #0:
+  程序计数器 (PC): 0x0000556db995e2f2
+  栈指针     (SP): 0x00007ffe19b84b30
+  基址指针   (BP): 0x00007ffe19b84b30
+  函数: sum_even_numbers+0x2e
+
+帧 #1:
+  程序计数器 (PC): 0x0000556db995e379
+  栈指针     (SP): 0x00007ffe19b84b60
+  基址指针   (BP): 0x00007ffe19b84b60
+  函数: main+0x7d
+
+帧 #2:
+  程序计数器 (PC): 0x00007f2cb09e46c1
+  栈指针     (SP): 0x00007ffe19b84c10
+  基址指针   (BP): 0x00007ffe19b84c10
+  函数: __libc_init_first+0x91
+  库: libc.so.6
+
+帧 #3:
+  程序计数器 (PC): 0x00007f2cb09e47f9
+  栈指针     (SP): 0x00007ffe19b84c70
+  基址指针   (BP): 0x00007ffe19b84c70
+  函数: __libc_start_main+0x89
+  库: libc.so.6
+
+=== 统计信息 ===
+总栈帧数: 4
+
+各库栈帧数:
+  <main>                        : 2
+  libc.so.6                     : 2

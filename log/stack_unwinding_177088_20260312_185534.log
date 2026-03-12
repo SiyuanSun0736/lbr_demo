@@ -1,0 +1,1066 @@
+正在对进程 177088 进行栈回溯...
+日志文件: ../log/stack_unwinding_177088_20260312_185534.log
+
+2026/03/12 18:55:34 [DEBUG] NewSFrameResolver: 为PID 177088 创建SFrame解析器
+2026/03/12 18:55:34 [DEBUG] NewSFrameResolver: 可执行文件: /home/ssy/lbr/test/test_stack_unwinding1
+2026/03/12 18:55:34 sframe.Header.Magic : 0xdee2
+2026/03/12 18:55:34 sframe.Header.Version : 3
+2026/03/12 18:55:34 sframe.Header.Flags : 0x5
+2026/03/12 18:55:34 sframe.Header.ABI : 3 (AMD64 little-endian)
+2026/03/12 18:55:34 sframe.Header.FixedFPOffset : 0
+2026/03/12 18:55:34 sframe.Header.FixedRAOffset : -8
+2026/03/12 18:55:34 sframe.Header.AuxHdrLen : 0
+2026/03/12 18:55:34 sframe.Header.NumFDEs : 10
+2026/03/12 18:55:34 sframe.Header.NumFREs : 42
+2026/03/12 18:55:34 sframe.Header.FRELen : 215
+2026/03/12 18:55:34 sframe.Header.FDEOff : 0
+2026/03/12 18:55:34 sframe.Header.FREOff : 160
+2026/03/12 18:55:34 StartAddr=0x1020(pcrel_raw=0xffffffffffffee3c), Size=16, StartFREOff=193
+2026/03/12 18:55:34 StartAddr=0x1030(pcrel_raw=0xffffffffffffee3c), Size=16, StartFREOff=204
+2026/03/12 18:55:34 StartAddr=0x1040(pcrel_raw=0xffffffffffffee3c), Size=242, StartFREOff=147
+2026/03/12 18:55:34 StartAddr=0x1240(pcrel_raw=0xfffffffffffff02c), Size=11, StartFREOff=0
+2026/03/12 18:55:34 StartAddr=0x1250(pcrel_raw=0xfffffffffffff02c), Size=101, StartFREOff=8
+2026/03/12 18:55:34 StartAddr=0x12c0(pcrel_raw=0xfffffffffffff08c), Size=42, StartFREOff=16
+2026/03/12 18:55:34 StartAddr=0x12f0(pcrel_raw=0xfffffffffffff0ac), Size=876, StartFREOff=24
+2026/03/12 18:55:34 StartAddr=0x1660(pcrel_raw=0xfffffffffffff40c), Size=1, StartFREOff=108
+2026/03/12 18:55:34 StartAddr=0x1670(pcrel_raw=0xfffffffffffff40c), Size=128, StartFREOff=116
+2026/03/12 18:55:34 StartAddr=0x16f0(pcrel_raw=0xfffffffffffff47c), Size=45, StartFREOff=139
+2026/03/12 18:55:34 [DEBUG] parseSFrameDataFromELF: V3 FDE[0] 属性: NumFREs=2, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:55:34 [DEBUG] parseSFrameDataFromELF: V3 FDE[1] 属性: NumFREs=2, FuncInfo=0x10(fre_type=0,pctype=1,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=16
+2026/03/12 18:55:34 [DEBUG] parseSFrameDataFromELF: V3 FDE[2] 属性: NumFREs=11, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:55:34 [DEBUG] parseSFrameDataFromELF: V3 FDE[3] 属性: NumFREs=1, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:55:34 [DEBUG] parseSFrameDataFromELF: V3 FDE[4] 属性: NumFREs=1, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:55:34 [DEBUG] parseSFrameDataFromELF: V3 FDE[5] 属性: NumFREs=1, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:55:34 [DEBUG] parseSFrameDataFromELF: V3 FDE[6] 属性: NumFREs=16, FuncInfo=0x1(fre_type=1,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:55:34 [DEBUG] parseSFrameDataFromELF: V3 FDE[7] 属性: NumFREs=1, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:55:34 [DEBUG] parseSFrameDataFromELF: V3 FDE[8] 属性: NumFREs=6, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:55:34 [DEBUG] parseSFrameDataFromELF: V3 FDE[9] 属性: NumFREs=1, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:55:34 [DEBUG] parseSFrameDataFromELF: 成功解析 10 个SFrame FDE, Version=3
+2026/03/12 18:55:34 [DEBUG] parseSFrameDataFromELF: FRE数据位于偏移 188, 总长度 215
+2026/03/12 18:55:34 [DEBUG] loadSFrameData: SFrame Magic=0xdee2, Version=3, ABI=3 (AMD64 little-endian), NumFDEs=10
+2026/03/12 18:55:34 [DEBUG] NewSFrameResolver: 成功加载SFrame数据
+2026/03/12 18:55:34 [DEBUG] loadSymbols: 加载了 3 个PLT符号
+2026/03/12 18:55:34 [DEBUG] loadSymbols: 加载了 35 个符号（含PLT）
+2026/03/12 18:55:34 [DEBUG] GetProcessMaps: 读取进程 177088 的内存映射
+2026/03/12 18:55:34 [DEBUG] GetProcessMaps: 读取到 23 个内存映射
+2026/03/12 18:55:34 [DEBUG] loadBaseAddress: 基址=0x555db22f2000, 结束=0x555db22f3000, 偏移=0x1000
+2026/03/12 18:55:34 [DEBUG] GetProcessMaps: 读取进程 177088 的内存映射
+2026/03/12 18:55:34 [DEBUG] GetProcessMaps: 读取到 23 个内存映射
+2026/03/12 18:55:34 [DEBUG] loadLibraryMapping: 加载共享库SFrame数据失败 /usr/lib/libc.so.6: no .sframe section found
+2026/03/12 18:55:34 [DEBUG] loadLibraryMapping: 加载共享库 /usr/lib/libc.so.6, 符号数: 3121, SFrame: false
+2026/03/12 18:55:34 [DEBUG] loadLibraryMapping: 加载共享库SFrame数据失败 /usr/lib/ld-linux-x86-64.so.2: no .sframe section found
+2026/03/12 18:55:34 [DEBUG] loadLibraryMapping: 加载共享库 /usr/lib/ld-linux-x86-64.so.2, 符号数: 32, SFrame: false
+2026/03/12 18:55:34 [DEBUG] loadLibraryMappings: 加载了 2 个共享库映射
+2026/03/12 18:55:34 [DEBUG] NewSFrameResolver: SFrame解析器创建成功
+最大栈帧数: 32
+栈展开方法: sframe
+
+使用 SFrame 栈展开...
+2026/03/12 18:55:34 [DEBUG] GetRegisters: PC=0x555db22f26dc, SP=0x7ffd8bf0d370, BP=0x47 (via ptrace)
+2026/03/12 18:55:34 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x555db22f26dc
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16dc
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 找到函数 deep_call+0x6c
+2026/03/12 18:55:34 [DEBUG] UnwindStackWithSFrame: Frame 0: PC=0x555db22f26dc, SP=0x7ffd8bf0d370, BP=0x47
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 主程序地址 PC=0x555db22f26dc, baseAddr=0x555db22f2000, baseOffset=0x1000, sectionAddr=0x21c8, 函数数=10, PCREL=true
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[0] 范围[0x555db22f2020, 0x555db22f2030), size=16 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1020)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 跳过PCMASK FDE[1] (FuncInfo=0x10)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[2] 范围[0x555db22f2040, 0x555db22f2132), size=242 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1040)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[3] 范围[0x555db22f2240, 0x555db22f224b), size=11 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1240)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[4] 范围[0x555db22f2250, 0x555db22f22b5), size=101 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1250)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[5] 范围[0x555db22f22c0, 0x555db22f22ea), size=42 (StartAddr_pcrel=0xfffffffffffff08c, virtStart=0x12c0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[6] 范围[0x555db22f22f0, 0x555db22f265c), size=876 (StartAddr_pcrel=0xfffffffffffff0ac, virtStart=0x12f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[7] 范围[0x555db22f2660, 0x555db22f2661), size=1 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1660)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[8] 范围[0x555db22f2670, 0x555db22f26f0), size=128 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1670)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 候选主程序SFrame函数 @ 0x555db22f2670 (virtual=0x1670), PC=0x555db22f26dc, size=128
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[9] 范围[0x555db22f26f0, 0x555db22f271d), size=45 (StartAddr_pcrel=0xfffffffffffff47c, virtStart=0x16f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 找到主程序SFrame函数 #@8 @ 0x555db22f2670, PC=0x555db22f26dc, size=128
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: pcOffset=0x6c, FuncInfo=0x0, FuncInfo2=0x0, StartFREOff=116, FuncSize=128, NumFREs=6, FREByteLen=23
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: freType=0, freAttrStart=304, freDataStart=309
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #0: StartOffset=0x0, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #1: StartOffset=0x4, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #2: StartOffset=0x1d, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #3: StartOffset=0x20, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #4: StartOffset=0x44, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #5: StartOffset=0x48, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: 找到匹配的FRE#5, CFA_BASE=SP, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 函数size=128, pcOffset=0x6c, useFPBased=false (from FRE)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based CFA (来自FDE), CFA=0x7ffd8bf0d3a0 (SP=0x7ffd8bf0d370 + 48)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 读取返回地址，位置=0x7ffd8bf0d398 (CFA=0x7ffd8bf0d3a0, RAOffset=-8)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based 无FPOffset，保持BP=0x47
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: retAddr=0x555db22f26d8, newBP=0x47, newSP=0x7ffd8bf0d3a0
+2026/03/12 18:55:34 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x555db22f26d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 找到函数 deep_call+0x68
+2026/03/12 18:55:34 [DEBUG] UnwindStackWithSFrame: Frame 1: PC=0x555db22f26d8, SP=0x7ffd8bf0d3a0, BP=0x47
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 主程序地址 PC=0x555db22f26d8, baseAddr=0x555db22f2000, baseOffset=0x1000, sectionAddr=0x21c8, 函数数=10, PCREL=true
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[0] 范围[0x555db22f2020, 0x555db22f2030), size=16 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1020)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 跳过PCMASK FDE[1] (FuncInfo=0x10)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[2] 范围[0x555db22f2040, 0x555db22f2132), size=242 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1040)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[3] 范围[0x555db22f2240, 0x555db22f224b), size=11 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1240)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[4] 范围[0x555db22f2250, 0x555db22f22b5), size=101 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1250)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[5] 范围[0x555db22f22c0, 0x555db22f22ea), size=42 (StartAddr_pcrel=0xfffffffffffff08c, virtStart=0x12c0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[6] 范围[0x555db22f22f0, 0x555db22f265c), size=876 (StartAddr_pcrel=0xfffffffffffff0ac, virtStart=0x12f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[7] 范围[0x555db22f2660, 0x555db22f2661), size=1 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1660)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[8] 范围[0x555db22f2670, 0x555db22f26f0), size=128 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1670)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 候选主程序SFrame函数 @ 0x555db22f2670 (virtual=0x1670), PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[9] 范围[0x555db22f26f0, 0x555db22f271d), size=45 (StartAddr_pcrel=0xfffffffffffff47c, virtStart=0x16f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 找到主程序SFrame函数 #@8 @ 0x555db22f2670, PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: pcOffset=0x68, FuncInfo=0x0, FuncInfo2=0x0, StartFREOff=116, FuncSize=128, NumFREs=6, FREByteLen=23
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: freType=0, freAttrStart=304, freDataStart=309
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #0: StartOffset=0x0, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #1: StartOffset=0x4, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #2: StartOffset=0x1d, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #3: StartOffset=0x20, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #4: StartOffset=0x44, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #5: StartOffset=0x48, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: 找到匹配的FRE#5, CFA_BASE=SP, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 函数size=128, pcOffset=0x68, useFPBased=false (from FRE)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based CFA (来自FDE), CFA=0x7ffd8bf0d3d0 (SP=0x7ffd8bf0d3a0 + 48)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 读取返回地址，位置=0x7ffd8bf0d3c8 (CFA=0x7ffd8bf0d3d0, RAOffset=-8)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based 无FPOffset，保持BP=0x47
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: retAddr=0x555db22f26d8, newBP=0x47, newSP=0x7ffd8bf0d3d0
+2026/03/12 18:55:34 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x555db22f26d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 找到函数 deep_call+0x68
+2026/03/12 18:55:34 [DEBUG] UnwindStackWithSFrame: Frame 2: PC=0x555db22f26d8, SP=0x7ffd8bf0d3d0, BP=0x47
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 主程序地址 PC=0x555db22f26d8, baseAddr=0x555db22f2000, baseOffset=0x1000, sectionAddr=0x21c8, 函数数=10, PCREL=true
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[0] 范围[0x555db22f2020, 0x555db22f2030), size=16 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1020)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 跳过PCMASK FDE[1] (FuncInfo=0x10)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[2] 范围[0x555db22f2040, 0x555db22f2132), size=242 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1040)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[3] 范围[0x555db22f2240, 0x555db22f224b), size=11 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1240)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[4] 范围[0x555db22f2250, 0x555db22f22b5), size=101 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1250)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[5] 范围[0x555db22f22c0, 0x555db22f22ea), size=42 (StartAddr_pcrel=0xfffffffffffff08c, virtStart=0x12c0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[6] 范围[0x555db22f22f0, 0x555db22f265c), size=876 (StartAddr_pcrel=0xfffffffffffff0ac, virtStart=0x12f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[7] 范围[0x555db22f2660, 0x555db22f2661), size=1 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1660)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[8] 范围[0x555db22f2670, 0x555db22f26f0), size=128 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1670)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 候选主程序SFrame函数 @ 0x555db22f2670 (virtual=0x1670), PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[9] 范围[0x555db22f26f0, 0x555db22f271d), size=45 (StartAddr_pcrel=0xfffffffffffff47c, virtStart=0x16f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 找到主程序SFrame函数 #@8 @ 0x555db22f2670, PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: pcOffset=0x68, FuncInfo=0x0, FuncInfo2=0x0, StartFREOff=116, FuncSize=128, NumFREs=6, FREByteLen=23
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: freType=0, freAttrStart=304, freDataStart=309
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #0: StartOffset=0x0, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #1: StartOffset=0x4, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #2: StartOffset=0x1d, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #3: StartOffset=0x20, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #4: StartOffset=0x44, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #5: StartOffset=0x48, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: 找到匹配的FRE#5, CFA_BASE=SP, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 函数size=128, pcOffset=0x68, useFPBased=false (from FRE)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based CFA (来自FDE), CFA=0x7ffd8bf0d400 (SP=0x7ffd8bf0d3d0 + 48)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 读取返回地址，位置=0x7ffd8bf0d3f8 (CFA=0x7ffd8bf0d400, RAOffset=-8)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based 无FPOffset，保持BP=0x47
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: retAddr=0x555db22f26d8, newBP=0x47, newSP=0x7ffd8bf0d400
+2026/03/12 18:55:34 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x555db22f26d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 找到函数 deep_call+0x68
+2026/03/12 18:55:34 [DEBUG] UnwindStackWithSFrame: Frame 3: PC=0x555db22f26d8, SP=0x7ffd8bf0d400, BP=0x47
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 主程序地址 PC=0x555db22f26d8, baseAddr=0x555db22f2000, baseOffset=0x1000, sectionAddr=0x21c8, 函数数=10, PCREL=true
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[0] 范围[0x555db22f2020, 0x555db22f2030), size=16 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1020)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 跳过PCMASK FDE[1] (FuncInfo=0x10)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[2] 范围[0x555db22f2040, 0x555db22f2132), size=242 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1040)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[3] 范围[0x555db22f2240, 0x555db22f224b), size=11 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1240)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[4] 范围[0x555db22f2250, 0x555db22f22b5), size=101 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1250)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[5] 范围[0x555db22f22c0, 0x555db22f22ea), size=42 (StartAddr_pcrel=0xfffffffffffff08c, virtStart=0x12c0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[6] 范围[0x555db22f22f0, 0x555db22f265c), size=876 (StartAddr_pcrel=0xfffffffffffff0ac, virtStart=0x12f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[7] 范围[0x555db22f2660, 0x555db22f2661), size=1 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1660)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[8] 范围[0x555db22f2670, 0x555db22f26f0), size=128 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1670)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 候选主程序SFrame函数 @ 0x555db22f2670 (virtual=0x1670), PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[9] 范围[0x555db22f26f0, 0x555db22f271d), size=45 (StartAddr_pcrel=0xfffffffffffff47c, virtStart=0x16f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 找到主程序SFrame函数 #@8 @ 0x555db22f2670, PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: pcOffset=0x68, FuncInfo=0x0, FuncInfo2=0x0, StartFREOff=116, FuncSize=128, NumFREs=6, FREByteLen=23
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: freType=0, freAttrStart=304, freDataStart=309
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #0: StartOffset=0x0, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #1: StartOffset=0x4, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #2: StartOffset=0x1d, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #3: StartOffset=0x20, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #4: StartOffset=0x44, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #5: StartOffset=0x48, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: 找到匹配的FRE#5, CFA_BASE=SP, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 函数size=128, pcOffset=0x68, useFPBased=false (from FRE)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based CFA (来自FDE), CFA=0x7ffd8bf0d430 (SP=0x7ffd8bf0d400 + 48)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 读取返回地址，位置=0x7ffd8bf0d428 (CFA=0x7ffd8bf0d430, RAOffset=-8)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based 无FPOffset，保持BP=0x47
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: retAddr=0x555db22f26d8, newBP=0x47, newSP=0x7ffd8bf0d430
+2026/03/12 18:55:34 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x555db22f26d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 找到函数 deep_call+0x68
+2026/03/12 18:55:34 [DEBUG] UnwindStackWithSFrame: Frame 4: PC=0x555db22f26d8, SP=0x7ffd8bf0d430, BP=0x47
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 主程序地址 PC=0x555db22f26d8, baseAddr=0x555db22f2000, baseOffset=0x1000, sectionAddr=0x21c8, 函数数=10, PCREL=true
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[0] 范围[0x555db22f2020, 0x555db22f2030), size=16 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1020)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 跳过PCMASK FDE[1] (FuncInfo=0x10)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[2] 范围[0x555db22f2040, 0x555db22f2132), size=242 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1040)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[3] 范围[0x555db22f2240, 0x555db22f224b), size=11 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1240)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[4] 范围[0x555db22f2250, 0x555db22f22b5), size=101 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1250)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[5] 范围[0x555db22f22c0, 0x555db22f22ea), size=42 (StartAddr_pcrel=0xfffffffffffff08c, virtStart=0x12c0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[6] 范围[0x555db22f22f0, 0x555db22f265c), size=876 (StartAddr_pcrel=0xfffffffffffff0ac, virtStart=0x12f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[7] 范围[0x555db22f2660, 0x555db22f2661), size=1 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1660)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[8] 范围[0x555db22f2670, 0x555db22f26f0), size=128 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1670)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 候选主程序SFrame函数 @ 0x555db22f2670 (virtual=0x1670), PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[9] 范围[0x555db22f26f0, 0x555db22f271d), size=45 (StartAddr_pcrel=0xfffffffffffff47c, virtStart=0x16f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 找到主程序SFrame函数 #@8 @ 0x555db22f2670, PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: pcOffset=0x68, FuncInfo=0x0, FuncInfo2=0x0, StartFREOff=116, FuncSize=128, NumFREs=6, FREByteLen=23
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: freType=0, freAttrStart=304, freDataStart=309
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #0: StartOffset=0x0, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #1: StartOffset=0x4, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #2: StartOffset=0x1d, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #3: StartOffset=0x20, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #4: StartOffset=0x44, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #5: StartOffset=0x48, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: 找到匹配的FRE#5, CFA_BASE=SP, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 函数size=128, pcOffset=0x68, useFPBased=false (from FRE)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based CFA (来自FDE), CFA=0x7ffd8bf0d460 (SP=0x7ffd8bf0d430 + 48)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 读取返回地址，位置=0x7ffd8bf0d458 (CFA=0x7ffd8bf0d460, RAOffset=-8)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based 无FPOffset，保持BP=0x47
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: retAddr=0x555db22f26d8, newBP=0x47, newSP=0x7ffd8bf0d460
+2026/03/12 18:55:34 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x555db22f26d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 找到函数 deep_call+0x68
+2026/03/12 18:55:34 [DEBUG] UnwindStackWithSFrame: Frame 5: PC=0x555db22f26d8, SP=0x7ffd8bf0d460, BP=0x47
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 主程序地址 PC=0x555db22f26d8, baseAddr=0x555db22f2000, baseOffset=0x1000, sectionAddr=0x21c8, 函数数=10, PCREL=true
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[0] 范围[0x555db22f2020, 0x555db22f2030), size=16 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1020)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 跳过PCMASK FDE[1] (FuncInfo=0x10)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[2] 范围[0x555db22f2040, 0x555db22f2132), size=242 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1040)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[3] 范围[0x555db22f2240, 0x555db22f224b), size=11 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1240)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[4] 范围[0x555db22f2250, 0x555db22f22b5), size=101 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1250)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[5] 范围[0x555db22f22c0, 0x555db22f22ea), size=42 (StartAddr_pcrel=0xfffffffffffff08c, virtStart=0x12c0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[6] 范围[0x555db22f22f0, 0x555db22f265c), size=876 (StartAddr_pcrel=0xfffffffffffff0ac, virtStart=0x12f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[7] 范围[0x555db22f2660, 0x555db22f2661), size=1 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1660)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[8] 范围[0x555db22f2670, 0x555db22f26f0), size=128 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1670)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 候选主程序SFrame函数 @ 0x555db22f2670 (virtual=0x1670), PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[9] 范围[0x555db22f26f0, 0x555db22f271d), size=45 (StartAddr_pcrel=0xfffffffffffff47c, virtStart=0x16f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 找到主程序SFrame函数 #@8 @ 0x555db22f2670, PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: pcOffset=0x68, FuncInfo=0x0, FuncInfo2=0x0, StartFREOff=116, FuncSize=128, NumFREs=6, FREByteLen=23
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: freType=0, freAttrStart=304, freDataStart=309
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #0: StartOffset=0x0, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #1: StartOffset=0x4, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #2: StartOffset=0x1d, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #3: StartOffset=0x20, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #4: StartOffset=0x44, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #5: StartOffset=0x48, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: 找到匹配的FRE#5, CFA_BASE=SP, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 函数size=128, pcOffset=0x68, useFPBased=false (from FRE)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based CFA (来自FDE), CFA=0x7ffd8bf0d490 (SP=0x7ffd8bf0d460 + 48)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 读取返回地址，位置=0x7ffd8bf0d488 (CFA=0x7ffd8bf0d490, RAOffset=-8)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based 无FPOffset，保持BP=0x47
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: retAddr=0x555db22f26d8, newBP=0x47, newSP=0x7ffd8bf0d490
+2026/03/12 18:55:34 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x555db22f26d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 找到函数 deep_call+0x68
+2026/03/12 18:55:34 [DEBUG] UnwindStackWithSFrame: Frame 6: PC=0x555db22f26d8, SP=0x7ffd8bf0d490, BP=0x47
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 主程序地址 PC=0x555db22f26d8, baseAddr=0x555db22f2000, baseOffset=0x1000, sectionAddr=0x21c8, 函数数=10, PCREL=true
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[0] 范围[0x555db22f2020, 0x555db22f2030), size=16 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1020)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 跳过PCMASK FDE[1] (FuncInfo=0x10)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[2] 范围[0x555db22f2040, 0x555db22f2132), size=242 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1040)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[3] 范围[0x555db22f2240, 0x555db22f224b), size=11 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1240)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[4] 范围[0x555db22f2250, 0x555db22f22b5), size=101 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1250)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[5] 范围[0x555db22f22c0, 0x555db22f22ea), size=42 (StartAddr_pcrel=0xfffffffffffff08c, virtStart=0x12c0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[6] 范围[0x555db22f22f0, 0x555db22f265c), size=876 (StartAddr_pcrel=0xfffffffffffff0ac, virtStart=0x12f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[7] 范围[0x555db22f2660, 0x555db22f2661), size=1 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1660)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[8] 范围[0x555db22f2670, 0x555db22f26f0), size=128 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1670)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 候选主程序SFrame函数 @ 0x555db22f2670 (virtual=0x1670), PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[9] 范围[0x555db22f26f0, 0x555db22f271d), size=45 (StartAddr_pcrel=0xfffffffffffff47c, virtStart=0x16f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 找到主程序SFrame函数 #@8 @ 0x555db22f2670, PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: pcOffset=0x68, FuncInfo=0x0, FuncInfo2=0x0, StartFREOff=116, FuncSize=128, NumFREs=6, FREByteLen=23
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: freType=0, freAttrStart=304, freDataStart=309
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #0: StartOffset=0x0, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #1: StartOffset=0x4, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #2: StartOffset=0x1d, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #3: StartOffset=0x20, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #4: StartOffset=0x44, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #5: StartOffset=0x48, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: 找到匹配的FRE#5, CFA_BASE=SP, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 函数size=128, pcOffset=0x68, useFPBased=false (from FRE)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based CFA (来自FDE), CFA=0x7ffd8bf0d4c0 (SP=0x7ffd8bf0d490 + 48)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 读取返回地址，位置=0x7ffd8bf0d4b8 (CFA=0x7ffd8bf0d4c0, RAOffset=-8)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based 无FPOffset，保持BP=0x47
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: retAddr=0x555db22f26d8, newBP=0x47, newSP=0x7ffd8bf0d4c0
+2026/03/12 18:55:34 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x555db22f26d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 找到函数 deep_call+0x68
+2026/03/12 18:55:34 [DEBUG] UnwindStackWithSFrame: Frame 7: PC=0x555db22f26d8, SP=0x7ffd8bf0d4c0, BP=0x47
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 主程序地址 PC=0x555db22f26d8, baseAddr=0x555db22f2000, baseOffset=0x1000, sectionAddr=0x21c8, 函数数=10, PCREL=true
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[0] 范围[0x555db22f2020, 0x555db22f2030), size=16 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1020)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 跳过PCMASK FDE[1] (FuncInfo=0x10)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[2] 范围[0x555db22f2040, 0x555db22f2132), size=242 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1040)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[3] 范围[0x555db22f2240, 0x555db22f224b), size=11 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1240)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[4] 范围[0x555db22f2250, 0x555db22f22b5), size=101 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1250)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[5] 范围[0x555db22f22c0, 0x555db22f22ea), size=42 (StartAddr_pcrel=0xfffffffffffff08c, virtStart=0x12c0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[6] 范围[0x555db22f22f0, 0x555db22f265c), size=876 (StartAddr_pcrel=0xfffffffffffff0ac, virtStart=0x12f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[7] 范围[0x555db22f2660, 0x555db22f2661), size=1 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1660)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[8] 范围[0x555db22f2670, 0x555db22f26f0), size=128 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1670)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 候选主程序SFrame函数 @ 0x555db22f2670 (virtual=0x1670), PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[9] 范围[0x555db22f26f0, 0x555db22f271d), size=45 (StartAddr_pcrel=0xfffffffffffff47c, virtStart=0x16f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 找到主程序SFrame函数 #@8 @ 0x555db22f2670, PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: pcOffset=0x68, FuncInfo=0x0, FuncInfo2=0x0, StartFREOff=116, FuncSize=128, NumFREs=6, FREByteLen=23
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: freType=0, freAttrStart=304, freDataStart=309
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #0: StartOffset=0x0, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #1: StartOffset=0x4, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #2: StartOffset=0x1d, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #3: StartOffset=0x20, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #4: StartOffset=0x44, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #5: StartOffset=0x48, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: 找到匹配的FRE#5, CFA_BASE=SP, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 函数size=128, pcOffset=0x68, useFPBased=false (from FRE)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based CFA (来自FDE), CFA=0x7ffd8bf0d4f0 (SP=0x7ffd8bf0d4c0 + 48)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 读取返回地址，位置=0x7ffd8bf0d4e8 (CFA=0x7ffd8bf0d4f0, RAOffset=-8)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based 无FPOffset，保持BP=0x47
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: retAddr=0x555db22f26d8, newBP=0x47, newSP=0x7ffd8bf0d4f0
+2026/03/12 18:55:34 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x555db22f26d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 找到函数 deep_call+0x68
+2026/03/12 18:55:34 [DEBUG] UnwindStackWithSFrame: Frame 8: PC=0x555db22f26d8, SP=0x7ffd8bf0d4f0, BP=0x47
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 主程序地址 PC=0x555db22f26d8, baseAddr=0x555db22f2000, baseOffset=0x1000, sectionAddr=0x21c8, 函数数=10, PCREL=true
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[0] 范围[0x555db22f2020, 0x555db22f2030), size=16 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1020)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 跳过PCMASK FDE[1] (FuncInfo=0x10)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[2] 范围[0x555db22f2040, 0x555db22f2132), size=242 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1040)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[3] 范围[0x555db22f2240, 0x555db22f224b), size=11 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1240)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[4] 范围[0x555db22f2250, 0x555db22f22b5), size=101 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1250)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[5] 范围[0x555db22f22c0, 0x555db22f22ea), size=42 (StartAddr_pcrel=0xfffffffffffff08c, virtStart=0x12c0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[6] 范围[0x555db22f22f0, 0x555db22f265c), size=876 (StartAddr_pcrel=0xfffffffffffff0ac, virtStart=0x12f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[7] 范围[0x555db22f2660, 0x555db22f2661), size=1 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1660)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[8] 范围[0x555db22f2670, 0x555db22f26f0), size=128 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1670)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 候选主程序SFrame函数 @ 0x555db22f2670 (virtual=0x1670), PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[9] 范围[0x555db22f26f0, 0x555db22f271d), size=45 (StartAddr_pcrel=0xfffffffffffff47c, virtStart=0x16f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 找到主程序SFrame函数 #@8 @ 0x555db22f2670, PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: pcOffset=0x68, FuncInfo=0x0, FuncInfo2=0x0, StartFREOff=116, FuncSize=128, NumFREs=6, FREByteLen=23
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: freType=0, freAttrStart=304, freDataStart=309
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #0: StartOffset=0x0, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #1: StartOffset=0x4, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #2: StartOffset=0x1d, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #3: StartOffset=0x20, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #4: StartOffset=0x44, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #5: StartOffset=0x48, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: 找到匹配的FRE#5, CFA_BASE=SP, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 函数size=128, pcOffset=0x68, useFPBased=false (from FRE)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based CFA (来自FDE), CFA=0x7ffd8bf0d520 (SP=0x7ffd8bf0d4f0 + 48)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 读取返回地址，位置=0x7ffd8bf0d518 (CFA=0x7ffd8bf0d520, RAOffset=-8)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based 无FPOffset，保持BP=0x47
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: retAddr=0x555db22f26d8, newBP=0x47, newSP=0x7ffd8bf0d520
+2026/03/12 18:55:34 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x555db22f26d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 找到函数 deep_call+0x68
+2026/03/12 18:55:34 [DEBUG] UnwindStackWithSFrame: Frame 9: PC=0x555db22f26d8, SP=0x7ffd8bf0d520, BP=0x47
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 主程序地址 PC=0x555db22f26d8, baseAddr=0x555db22f2000, baseOffset=0x1000, sectionAddr=0x21c8, 函数数=10, PCREL=true
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[0] 范围[0x555db22f2020, 0x555db22f2030), size=16 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1020)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 跳过PCMASK FDE[1] (FuncInfo=0x10)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[2] 范围[0x555db22f2040, 0x555db22f2132), size=242 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1040)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[3] 范围[0x555db22f2240, 0x555db22f224b), size=11 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1240)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[4] 范围[0x555db22f2250, 0x555db22f22b5), size=101 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1250)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[5] 范围[0x555db22f22c0, 0x555db22f22ea), size=42 (StartAddr_pcrel=0xfffffffffffff08c, virtStart=0x12c0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[6] 范围[0x555db22f22f0, 0x555db22f265c), size=876 (StartAddr_pcrel=0xfffffffffffff0ac, virtStart=0x12f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[7] 范围[0x555db22f2660, 0x555db22f2661), size=1 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1660)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[8] 范围[0x555db22f2670, 0x555db22f26f0), size=128 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1670)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 候选主程序SFrame函数 @ 0x555db22f2670 (virtual=0x1670), PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[9] 范围[0x555db22f26f0, 0x555db22f271d), size=45 (StartAddr_pcrel=0xfffffffffffff47c, virtStart=0x16f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 找到主程序SFrame函数 #@8 @ 0x555db22f2670, PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: pcOffset=0x68, FuncInfo=0x0, FuncInfo2=0x0, StartFREOff=116, FuncSize=128, NumFREs=6, FREByteLen=23
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: freType=0, freAttrStart=304, freDataStart=309
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #0: StartOffset=0x0, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #1: StartOffset=0x4, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #2: StartOffset=0x1d, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #3: StartOffset=0x20, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #4: StartOffset=0x44, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #5: StartOffset=0x48, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: 找到匹配的FRE#5, CFA_BASE=SP, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 函数size=128, pcOffset=0x68, useFPBased=false (from FRE)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based CFA (来自FDE), CFA=0x7ffd8bf0d550 (SP=0x7ffd8bf0d520 + 48)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 读取返回地址，位置=0x7ffd8bf0d548 (CFA=0x7ffd8bf0d550, RAOffset=-8)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based 无FPOffset，保持BP=0x47
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: retAddr=0x555db22f26d8, newBP=0x47, newSP=0x7ffd8bf0d550
+2026/03/12 18:55:34 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x555db22f26d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 找到函数 deep_call+0x68
+2026/03/12 18:55:34 [DEBUG] UnwindStackWithSFrame: Frame 10: PC=0x555db22f26d8, SP=0x7ffd8bf0d550, BP=0x47
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 主程序地址 PC=0x555db22f26d8, baseAddr=0x555db22f2000, baseOffset=0x1000, sectionAddr=0x21c8, 函数数=10, PCREL=true
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[0] 范围[0x555db22f2020, 0x555db22f2030), size=16 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1020)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 跳过PCMASK FDE[1] (FuncInfo=0x10)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[2] 范围[0x555db22f2040, 0x555db22f2132), size=242 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1040)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[3] 范围[0x555db22f2240, 0x555db22f224b), size=11 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1240)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[4] 范围[0x555db22f2250, 0x555db22f22b5), size=101 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1250)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[5] 范围[0x555db22f22c0, 0x555db22f22ea), size=42 (StartAddr_pcrel=0xfffffffffffff08c, virtStart=0x12c0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[6] 范围[0x555db22f22f0, 0x555db22f265c), size=876 (StartAddr_pcrel=0xfffffffffffff0ac, virtStart=0x12f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[7] 范围[0x555db22f2660, 0x555db22f2661), size=1 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1660)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[8] 范围[0x555db22f2670, 0x555db22f26f0), size=128 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1670)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 候选主程序SFrame函数 @ 0x555db22f2670 (virtual=0x1670), PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[9] 范围[0x555db22f26f0, 0x555db22f271d), size=45 (StartAddr_pcrel=0xfffffffffffff47c, virtStart=0x16f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 找到主程序SFrame函数 #@8 @ 0x555db22f2670, PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: pcOffset=0x68, FuncInfo=0x0, FuncInfo2=0x0, StartFREOff=116, FuncSize=128, NumFREs=6, FREByteLen=23
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: freType=0, freAttrStart=304, freDataStart=309
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #0: StartOffset=0x0, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #1: StartOffset=0x4, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #2: StartOffset=0x1d, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #3: StartOffset=0x20, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #4: StartOffset=0x44, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #5: StartOffset=0x48, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: 找到匹配的FRE#5, CFA_BASE=SP, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 函数size=128, pcOffset=0x68, useFPBased=false (from FRE)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based CFA (来自FDE), CFA=0x7ffd8bf0d580 (SP=0x7ffd8bf0d550 + 48)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 读取返回地址，位置=0x7ffd8bf0d578 (CFA=0x7ffd8bf0d580, RAOffset=-8)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based 无FPOffset，保持BP=0x47
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: retAddr=0x555db22f26d8, newBP=0x47, newSP=0x7ffd8bf0d580
+2026/03/12 18:55:34 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x555db22f26d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 找到函数 deep_call+0x68
+2026/03/12 18:55:34 [DEBUG] UnwindStackWithSFrame: Frame 11: PC=0x555db22f26d8, SP=0x7ffd8bf0d580, BP=0x47
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 主程序地址 PC=0x555db22f26d8, baseAddr=0x555db22f2000, baseOffset=0x1000, sectionAddr=0x21c8, 函数数=10, PCREL=true
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[0] 范围[0x555db22f2020, 0x555db22f2030), size=16 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1020)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 跳过PCMASK FDE[1] (FuncInfo=0x10)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[2] 范围[0x555db22f2040, 0x555db22f2132), size=242 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1040)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[3] 范围[0x555db22f2240, 0x555db22f224b), size=11 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1240)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[4] 范围[0x555db22f2250, 0x555db22f22b5), size=101 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1250)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[5] 范围[0x555db22f22c0, 0x555db22f22ea), size=42 (StartAddr_pcrel=0xfffffffffffff08c, virtStart=0x12c0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[6] 范围[0x555db22f22f0, 0x555db22f265c), size=876 (StartAddr_pcrel=0xfffffffffffff0ac, virtStart=0x12f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[7] 范围[0x555db22f2660, 0x555db22f2661), size=1 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1660)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[8] 范围[0x555db22f2670, 0x555db22f26f0), size=128 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1670)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 候选主程序SFrame函数 @ 0x555db22f2670 (virtual=0x1670), PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[9] 范围[0x555db22f26f0, 0x555db22f271d), size=45 (StartAddr_pcrel=0xfffffffffffff47c, virtStart=0x16f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 找到主程序SFrame函数 #@8 @ 0x555db22f2670, PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: pcOffset=0x68, FuncInfo=0x0, FuncInfo2=0x0, StartFREOff=116, FuncSize=128, NumFREs=6, FREByteLen=23
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: freType=0, freAttrStart=304, freDataStart=309
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #0: StartOffset=0x0, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #1: StartOffset=0x4, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #2: StartOffset=0x1d, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #3: StartOffset=0x20, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #4: StartOffset=0x44, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #5: StartOffset=0x48, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: 找到匹配的FRE#5, CFA_BASE=SP, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 函数size=128, pcOffset=0x68, useFPBased=false (from FRE)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based CFA (来自FDE), CFA=0x7ffd8bf0d5b0 (SP=0x7ffd8bf0d580 + 48)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 读取返回地址，位置=0x7ffd8bf0d5a8 (CFA=0x7ffd8bf0d5b0, RAOffset=-8)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based 无FPOffset，保持BP=0x47
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: retAddr=0x555db22f26d8, newBP=0x47, newSP=0x7ffd8bf0d5b0
+2026/03/12 18:55:34 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x555db22f26d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 找到函数 deep_call+0x68
+2026/03/12 18:55:34 [DEBUG] UnwindStackWithSFrame: Frame 12: PC=0x555db22f26d8, SP=0x7ffd8bf0d5b0, BP=0x47
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 主程序地址 PC=0x555db22f26d8, baseAddr=0x555db22f2000, baseOffset=0x1000, sectionAddr=0x21c8, 函数数=10, PCREL=true
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[0] 范围[0x555db22f2020, 0x555db22f2030), size=16 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1020)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 跳过PCMASK FDE[1] (FuncInfo=0x10)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[2] 范围[0x555db22f2040, 0x555db22f2132), size=242 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1040)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[3] 范围[0x555db22f2240, 0x555db22f224b), size=11 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1240)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[4] 范围[0x555db22f2250, 0x555db22f22b5), size=101 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1250)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[5] 范围[0x555db22f22c0, 0x555db22f22ea), size=42 (StartAddr_pcrel=0xfffffffffffff08c, virtStart=0x12c0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[6] 范围[0x555db22f22f0, 0x555db22f265c), size=876 (StartAddr_pcrel=0xfffffffffffff0ac, virtStart=0x12f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[7] 范围[0x555db22f2660, 0x555db22f2661), size=1 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1660)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[8] 范围[0x555db22f2670, 0x555db22f26f0), size=128 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1670)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 候选主程序SFrame函数 @ 0x555db22f2670 (virtual=0x1670), PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[9] 范围[0x555db22f26f0, 0x555db22f271d), size=45 (StartAddr_pcrel=0xfffffffffffff47c, virtStart=0x16f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 找到主程序SFrame函数 #@8 @ 0x555db22f2670, PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: pcOffset=0x68, FuncInfo=0x0, FuncInfo2=0x0, StartFREOff=116, FuncSize=128, NumFREs=6, FREByteLen=23
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: freType=0, freAttrStart=304, freDataStart=309
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #0: StartOffset=0x0, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #1: StartOffset=0x4, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #2: StartOffset=0x1d, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #3: StartOffset=0x20, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #4: StartOffset=0x44, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #5: StartOffset=0x48, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: 找到匹配的FRE#5, CFA_BASE=SP, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 函数size=128, pcOffset=0x68, useFPBased=false (from FRE)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based CFA (来自FDE), CFA=0x7ffd8bf0d5e0 (SP=0x7ffd8bf0d5b0 + 48)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 读取返回地址，位置=0x7ffd8bf0d5d8 (CFA=0x7ffd8bf0d5e0, RAOffset=-8)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based 无FPOffset，保持BP=0x47
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: retAddr=0x555db22f26d8, newBP=0x47, newSP=0x7ffd8bf0d5e0
+2026/03/12 18:55:34 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x555db22f26d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 找到函数 deep_call+0x68
+2026/03/12 18:55:34 [DEBUG] UnwindStackWithSFrame: Frame 13: PC=0x555db22f26d8, SP=0x7ffd8bf0d5e0, BP=0x47
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 主程序地址 PC=0x555db22f26d8, baseAddr=0x555db22f2000, baseOffset=0x1000, sectionAddr=0x21c8, 函数数=10, PCREL=true
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[0] 范围[0x555db22f2020, 0x555db22f2030), size=16 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1020)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 跳过PCMASK FDE[1] (FuncInfo=0x10)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[2] 范围[0x555db22f2040, 0x555db22f2132), size=242 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1040)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[3] 范围[0x555db22f2240, 0x555db22f224b), size=11 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1240)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[4] 范围[0x555db22f2250, 0x555db22f22b5), size=101 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1250)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[5] 范围[0x555db22f22c0, 0x555db22f22ea), size=42 (StartAddr_pcrel=0xfffffffffffff08c, virtStart=0x12c0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[6] 范围[0x555db22f22f0, 0x555db22f265c), size=876 (StartAddr_pcrel=0xfffffffffffff0ac, virtStart=0x12f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[7] 范围[0x555db22f2660, 0x555db22f2661), size=1 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1660)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[8] 范围[0x555db22f2670, 0x555db22f26f0), size=128 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1670)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 候选主程序SFrame函数 @ 0x555db22f2670 (virtual=0x1670), PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[9] 范围[0x555db22f26f0, 0x555db22f271d), size=45 (StartAddr_pcrel=0xfffffffffffff47c, virtStart=0x16f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 找到主程序SFrame函数 #@8 @ 0x555db22f2670, PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: pcOffset=0x68, FuncInfo=0x0, FuncInfo2=0x0, StartFREOff=116, FuncSize=128, NumFREs=6, FREByteLen=23
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: freType=0, freAttrStart=304, freDataStart=309
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #0: StartOffset=0x0, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #1: StartOffset=0x4, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #2: StartOffset=0x1d, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #3: StartOffset=0x20, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #4: StartOffset=0x44, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #5: StartOffset=0x48, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: 找到匹配的FRE#5, CFA_BASE=SP, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 函数size=128, pcOffset=0x68, useFPBased=false (from FRE)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based CFA (来自FDE), CFA=0x7ffd8bf0d610 (SP=0x7ffd8bf0d5e0 + 48)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 读取返回地址，位置=0x7ffd8bf0d608 (CFA=0x7ffd8bf0d610, RAOffset=-8)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based 无FPOffset，保持BP=0x47
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: retAddr=0x555db22f26d8, newBP=0x47, newSP=0x7ffd8bf0d610
+2026/03/12 18:55:34 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x555db22f26d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 找到函数 deep_call+0x68
+2026/03/12 18:55:34 [DEBUG] UnwindStackWithSFrame: Frame 14: PC=0x555db22f26d8, SP=0x7ffd8bf0d610, BP=0x47
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 主程序地址 PC=0x555db22f26d8, baseAddr=0x555db22f2000, baseOffset=0x1000, sectionAddr=0x21c8, 函数数=10, PCREL=true
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[0] 范围[0x555db22f2020, 0x555db22f2030), size=16 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1020)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 跳过PCMASK FDE[1] (FuncInfo=0x10)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[2] 范围[0x555db22f2040, 0x555db22f2132), size=242 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1040)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[3] 范围[0x555db22f2240, 0x555db22f224b), size=11 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1240)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[4] 范围[0x555db22f2250, 0x555db22f22b5), size=101 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1250)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[5] 范围[0x555db22f22c0, 0x555db22f22ea), size=42 (StartAddr_pcrel=0xfffffffffffff08c, virtStart=0x12c0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[6] 范围[0x555db22f22f0, 0x555db22f265c), size=876 (StartAddr_pcrel=0xfffffffffffff0ac, virtStart=0x12f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[7] 范围[0x555db22f2660, 0x555db22f2661), size=1 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1660)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[8] 范围[0x555db22f2670, 0x555db22f26f0), size=128 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1670)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 候选主程序SFrame函数 @ 0x555db22f2670 (virtual=0x1670), PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[9] 范围[0x555db22f26f0, 0x555db22f271d), size=45 (StartAddr_pcrel=0xfffffffffffff47c, virtStart=0x16f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 找到主程序SFrame函数 #@8 @ 0x555db22f2670, PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: pcOffset=0x68, FuncInfo=0x0, FuncInfo2=0x0, StartFREOff=116, FuncSize=128, NumFREs=6, FREByteLen=23
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: freType=0, freAttrStart=304, freDataStart=309
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #0: StartOffset=0x0, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #1: StartOffset=0x4, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #2: StartOffset=0x1d, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #3: StartOffset=0x20, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #4: StartOffset=0x44, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #5: StartOffset=0x48, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: 找到匹配的FRE#5, CFA_BASE=SP, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 函数size=128, pcOffset=0x68, useFPBased=false (from FRE)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based CFA (来自FDE), CFA=0x7ffd8bf0d640 (SP=0x7ffd8bf0d610 + 48)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 读取返回地址，位置=0x7ffd8bf0d638 (CFA=0x7ffd8bf0d640, RAOffset=-8)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based 无FPOffset，保持BP=0x47
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: retAddr=0x555db22f26d8, newBP=0x47, newSP=0x7ffd8bf0d640
+2026/03/12 18:55:34 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x555db22f26d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 找到函数 deep_call+0x68
+2026/03/12 18:55:34 [DEBUG] UnwindStackWithSFrame: Frame 15: PC=0x555db22f26d8, SP=0x7ffd8bf0d640, BP=0x47
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 主程序地址 PC=0x555db22f26d8, baseAddr=0x555db22f2000, baseOffset=0x1000, sectionAddr=0x21c8, 函数数=10, PCREL=true
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[0] 范围[0x555db22f2020, 0x555db22f2030), size=16 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1020)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 跳过PCMASK FDE[1] (FuncInfo=0x10)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[2] 范围[0x555db22f2040, 0x555db22f2132), size=242 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1040)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[3] 范围[0x555db22f2240, 0x555db22f224b), size=11 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1240)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[4] 范围[0x555db22f2250, 0x555db22f22b5), size=101 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1250)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[5] 范围[0x555db22f22c0, 0x555db22f22ea), size=42 (StartAddr_pcrel=0xfffffffffffff08c, virtStart=0x12c0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[6] 范围[0x555db22f22f0, 0x555db22f265c), size=876 (StartAddr_pcrel=0xfffffffffffff0ac, virtStart=0x12f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[7] 范围[0x555db22f2660, 0x555db22f2661), size=1 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1660)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[8] 范围[0x555db22f2670, 0x555db22f26f0), size=128 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1670)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 候选主程序SFrame函数 @ 0x555db22f2670 (virtual=0x1670), PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[9] 范围[0x555db22f26f0, 0x555db22f271d), size=45 (StartAddr_pcrel=0xfffffffffffff47c, virtStart=0x16f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 找到主程序SFrame函数 #@8 @ 0x555db22f2670, PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: pcOffset=0x68, FuncInfo=0x0, FuncInfo2=0x0, StartFREOff=116, FuncSize=128, NumFREs=6, FREByteLen=23
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: freType=0, freAttrStart=304, freDataStart=309
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #0: StartOffset=0x0, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #1: StartOffset=0x4, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #2: StartOffset=0x1d, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #3: StartOffset=0x20, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #4: StartOffset=0x44, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #5: StartOffset=0x48, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: 找到匹配的FRE#5, CFA_BASE=SP, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 函数size=128, pcOffset=0x68, useFPBased=false (from FRE)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based CFA (来自FDE), CFA=0x7ffd8bf0d670 (SP=0x7ffd8bf0d640 + 48)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 读取返回地址，位置=0x7ffd8bf0d668 (CFA=0x7ffd8bf0d670, RAOffset=-8)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based 无FPOffset，保持BP=0x47
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: retAddr=0x555db22f26d8, newBP=0x47, newSP=0x7ffd8bf0d670
+2026/03/12 18:55:34 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x555db22f26d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 找到函数 deep_call+0x68
+2026/03/12 18:55:34 [DEBUG] UnwindStackWithSFrame: Frame 16: PC=0x555db22f26d8, SP=0x7ffd8bf0d670, BP=0x47
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 主程序地址 PC=0x555db22f26d8, baseAddr=0x555db22f2000, baseOffset=0x1000, sectionAddr=0x21c8, 函数数=10, PCREL=true
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[0] 范围[0x555db22f2020, 0x555db22f2030), size=16 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1020)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 跳过PCMASK FDE[1] (FuncInfo=0x10)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[2] 范围[0x555db22f2040, 0x555db22f2132), size=242 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1040)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[3] 范围[0x555db22f2240, 0x555db22f224b), size=11 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1240)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[4] 范围[0x555db22f2250, 0x555db22f22b5), size=101 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1250)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[5] 范围[0x555db22f22c0, 0x555db22f22ea), size=42 (StartAddr_pcrel=0xfffffffffffff08c, virtStart=0x12c0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[6] 范围[0x555db22f22f0, 0x555db22f265c), size=876 (StartAddr_pcrel=0xfffffffffffff0ac, virtStart=0x12f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[7] 范围[0x555db22f2660, 0x555db22f2661), size=1 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1660)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[8] 范围[0x555db22f2670, 0x555db22f26f0), size=128 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1670)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 候选主程序SFrame函数 @ 0x555db22f2670 (virtual=0x1670), PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[9] 范围[0x555db22f26f0, 0x555db22f271d), size=45 (StartAddr_pcrel=0xfffffffffffff47c, virtStart=0x16f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 找到主程序SFrame函数 #@8 @ 0x555db22f2670, PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: pcOffset=0x68, FuncInfo=0x0, FuncInfo2=0x0, StartFREOff=116, FuncSize=128, NumFREs=6, FREByteLen=23
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: freType=0, freAttrStart=304, freDataStart=309
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #0: StartOffset=0x0, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #1: StartOffset=0x4, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #2: StartOffset=0x1d, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #3: StartOffset=0x20, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #4: StartOffset=0x44, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #5: StartOffset=0x48, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: 找到匹配的FRE#5, CFA_BASE=SP, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 函数size=128, pcOffset=0x68, useFPBased=false (from FRE)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based CFA (来自FDE), CFA=0x7ffd8bf0d6a0 (SP=0x7ffd8bf0d670 + 48)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 读取返回地址，位置=0x7ffd8bf0d698 (CFA=0x7ffd8bf0d6a0, RAOffset=-8)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based 无FPOffset，保持BP=0x47
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: retAddr=0x555db22f26d8, newBP=0x47, newSP=0x7ffd8bf0d6a0
+2026/03/12 18:55:34 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x555db22f26d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 找到函数 deep_call+0x68
+2026/03/12 18:55:34 [DEBUG] UnwindStackWithSFrame: Frame 17: PC=0x555db22f26d8, SP=0x7ffd8bf0d6a0, BP=0x47
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 主程序地址 PC=0x555db22f26d8, baseAddr=0x555db22f2000, baseOffset=0x1000, sectionAddr=0x21c8, 函数数=10, PCREL=true
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[0] 范围[0x555db22f2020, 0x555db22f2030), size=16 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1020)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 跳过PCMASK FDE[1] (FuncInfo=0x10)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[2] 范围[0x555db22f2040, 0x555db22f2132), size=242 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1040)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[3] 范围[0x555db22f2240, 0x555db22f224b), size=11 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1240)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[4] 范围[0x555db22f2250, 0x555db22f22b5), size=101 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1250)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[5] 范围[0x555db22f22c0, 0x555db22f22ea), size=42 (StartAddr_pcrel=0xfffffffffffff08c, virtStart=0x12c0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[6] 范围[0x555db22f22f0, 0x555db22f265c), size=876 (StartAddr_pcrel=0xfffffffffffff0ac, virtStart=0x12f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[7] 范围[0x555db22f2660, 0x555db22f2661), size=1 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1660)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[8] 范围[0x555db22f2670, 0x555db22f26f0), size=128 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1670)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 候选主程序SFrame函数 @ 0x555db22f2670 (virtual=0x1670), PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[9] 范围[0x555db22f26f0, 0x555db22f271d), size=45 (StartAddr_pcrel=0xfffffffffffff47c, virtStart=0x16f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 找到主程序SFrame函数 #@8 @ 0x555db22f2670, PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: pcOffset=0x68, FuncInfo=0x0, FuncInfo2=0x0, StartFREOff=116, FuncSize=128, NumFREs=6, FREByteLen=23
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: freType=0, freAttrStart=304, freDataStart=309
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #0: StartOffset=0x0, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #1: StartOffset=0x4, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #2: StartOffset=0x1d, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #3: StartOffset=0x20, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #4: StartOffset=0x44, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #5: StartOffset=0x48, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: 找到匹配的FRE#5, CFA_BASE=SP, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 函数size=128, pcOffset=0x68, useFPBased=false (from FRE)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based CFA (来自FDE), CFA=0x7ffd8bf0d6d0 (SP=0x7ffd8bf0d6a0 + 48)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 读取返回地址，位置=0x7ffd8bf0d6c8 (CFA=0x7ffd8bf0d6d0, RAOffset=-8)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based 无FPOffset，保持BP=0x47
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: retAddr=0x555db22f26d8, newBP=0x47, newSP=0x7ffd8bf0d6d0
+2026/03/12 18:55:34 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x555db22f26d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 找到函数 deep_call+0x68
+2026/03/12 18:55:34 [DEBUG] UnwindStackWithSFrame: Frame 18: PC=0x555db22f26d8, SP=0x7ffd8bf0d6d0, BP=0x47
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 主程序地址 PC=0x555db22f26d8, baseAddr=0x555db22f2000, baseOffset=0x1000, sectionAddr=0x21c8, 函数数=10, PCREL=true
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[0] 范围[0x555db22f2020, 0x555db22f2030), size=16 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1020)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 跳过PCMASK FDE[1] (FuncInfo=0x10)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[2] 范围[0x555db22f2040, 0x555db22f2132), size=242 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1040)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[3] 范围[0x555db22f2240, 0x555db22f224b), size=11 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1240)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[4] 范围[0x555db22f2250, 0x555db22f22b5), size=101 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1250)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[5] 范围[0x555db22f22c0, 0x555db22f22ea), size=42 (StartAddr_pcrel=0xfffffffffffff08c, virtStart=0x12c0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[6] 范围[0x555db22f22f0, 0x555db22f265c), size=876 (StartAddr_pcrel=0xfffffffffffff0ac, virtStart=0x12f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[7] 范围[0x555db22f2660, 0x555db22f2661), size=1 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1660)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[8] 范围[0x555db22f2670, 0x555db22f26f0), size=128 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1670)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 候选主程序SFrame函数 @ 0x555db22f2670 (virtual=0x1670), PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[9] 范围[0x555db22f26f0, 0x555db22f271d), size=45 (StartAddr_pcrel=0xfffffffffffff47c, virtStart=0x16f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 找到主程序SFrame函数 #@8 @ 0x555db22f2670, PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: pcOffset=0x68, FuncInfo=0x0, FuncInfo2=0x0, StartFREOff=116, FuncSize=128, NumFREs=6, FREByteLen=23
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: freType=0, freAttrStart=304, freDataStart=309
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #0: StartOffset=0x0, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #1: StartOffset=0x4, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #2: StartOffset=0x1d, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #3: StartOffset=0x20, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #4: StartOffset=0x44, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #5: StartOffset=0x48, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: 找到匹配的FRE#5, CFA_BASE=SP, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 函数size=128, pcOffset=0x68, useFPBased=false (from FRE)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based CFA (来自FDE), CFA=0x7ffd8bf0d700 (SP=0x7ffd8bf0d6d0 + 48)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 读取返回地址，位置=0x7ffd8bf0d6f8 (CFA=0x7ffd8bf0d700, RAOffset=-8)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based 无FPOffset，保持BP=0x47
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: retAddr=0x555db22f26d8, newBP=0x47, newSP=0x7ffd8bf0d700
+2026/03/12 18:55:34 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x555db22f26d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 找到函数 deep_call+0x68
+2026/03/12 18:55:34 [DEBUG] UnwindStackWithSFrame: Frame 19: PC=0x555db22f26d8, SP=0x7ffd8bf0d700, BP=0x47
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 主程序地址 PC=0x555db22f26d8, baseAddr=0x555db22f2000, baseOffset=0x1000, sectionAddr=0x21c8, 函数数=10, PCREL=true
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[0] 范围[0x555db22f2020, 0x555db22f2030), size=16 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1020)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 跳过PCMASK FDE[1] (FuncInfo=0x10)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[2] 范围[0x555db22f2040, 0x555db22f2132), size=242 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1040)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[3] 范围[0x555db22f2240, 0x555db22f224b), size=11 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1240)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[4] 范围[0x555db22f2250, 0x555db22f22b5), size=101 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1250)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[5] 范围[0x555db22f22c0, 0x555db22f22ea), size=42 (StartAddr_pcrel=0xfffffffffffff08c, virtStart=0x12c0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[6] 范围[0x555db22f22f0, 0x555db22f265c), size=876 (StartAddr_pcrel=0xfffffffffffff0ac, virtStart=0x12f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[7] 范围[0x555db22f2660, 0x555db22f2661), size=1 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1660)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[8] 范围[0x555db22f2670, 0x555db22f26f0), size=128 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1670)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 候选主程序SFrame函数 @ 0x555db22f2670 (virtual=0x1670), PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[9] 范围[0x555db22f26f0, 0x555db22f271d), size=45 (StartAddr_pcrel=0xfffffffffffff47c, virtStart=0x16f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 找到主程序SFrame函数 #@8 @ 0x555db22f2670, PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: pcOffset=0x68, FuncInfo=0x0, FuncInfo2=0x0, StartFREOff=116, FuncSize=128, NumFREs=6, FREByteLen=23
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: freType=0, freAttrStart=304, freDataStart=309
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #0: StartOffset=0x0, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #1: StartOffset=0x4, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #2: StartOffset=0x1d, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #3: StartOffset=0x20, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #4: StartOffset=0x44, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #5: StartOffset=0x48, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: 找到匹配的FRE#5, CFA_BASE=SP, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 函数size=128, pcOffset=0x68, useFPBased=false (from FRE)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based CFA (来自FDE), CFA=0x7ffd8bf0d730 (SP=0x7ffd8bf0d700 + 48)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 读取返回地址，位置=0x7ffd8bf0d728 (CFA=0x7ffd8bf0d730, RAOffset=-8)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based 无FPOffset，保持BP=0x47
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: retAddr=0x555db22f26d8, newBP=0x47, newSP=0x7ffd8bf0d730
+2026/03/12 18:55:34 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x555db22f26d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16d8
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 找到函数 deep_call+0x68
+2026/03/12 18:55:34 [DEBUG] UnwindStackWithSFrame: Frame 20: PC=0x555db22f26d8, SP=0x7ffd8bf0d730, BP=0x47
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 主程序地址 PC=0x555db22f26d8, baseAddr=0x555db22f2000, baseOffset=0x1000, sectionAddr=0x21c8, 函数数=10, PCREL=true
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[0] 范围[0x555db22f2020, 0x555db22f2030), size=16 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1020)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 跳过PCMASK FDE[1] (FuncInfo=0x10)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[2] 范围[0x555db22f2040, 0x555db22f2132), size=242 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1040)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[3] 范围[0x555db22f2240, 0x555db22f224b), size=11 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1240)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[4] 范围[0x555db22f2250, 0x555db22f22b5), size=101 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1250)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[5] 范围[0x555db22f22c0, 0x555db22f22ea), size=42 (StartAddr_pcrel=0xfffffffffffff08c, virtStart=0x12c0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[6] 范围[0x555db22f22f0, 0x555db22f265c), size=876 (StartAddr_pcrel=0xfffffffffffff0ac, virtStart=0x12f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[7] 范围[0x555db22f2660, 0x555db22f2661), size=1 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1660)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[8] 范围[0x555db22f2670, 0x555db22f26f0), size=128 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1670)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 候选主程序SFrame函数 @ 0x555db22f2670 (virtual=0x1670), PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[9] 范围[0x555db22f26f0, 0x555db22f271d), size=45 (StartAddr_pcrel=0xfffffffffffff47c, virtStart=0x16f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 找到主程序SFrame函数 #@8 @ 0x555db22f2670, PC=0x555db22f26d8, size=128
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: pcOffset=0x68, FuncInfo=0x0, FuncInfo2=0x0, StartFREOff=116, FuncSize=128, NumFREs=6, FREByteLen=23
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: freType=0, freAttrStart=304, freDataStart=309
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #0: StartOffset=0x0, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #1: StartOffset=0x4, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #2: StartOffset=0x1d, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #3: StartOffset=0x20, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #4: StartOffset=0x44, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 48
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #5: StartOffset=0x48, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: 找到匹配的FRE#5, CFA_BASE=SP, CFAOffset=48, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 函数size=128, pcOffset=0x68, useFPBased=false (from FRE)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based CFA (来自FDE), CFA=0x7ffd8bf0d760 (SP=0x7ffd8bf0d730 + 48)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 读取返回地址，位置=0x7ffd8bf0d758 (CFA=0x7ffd8bf0d760, RAOffset=-8)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based 无FPOffset，保持BP=0x47
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: retAddr=0x555db22f20d3, newBP=0x47, newSP=0x7ffd8bf0d760
+2026/03/12 18:55:34 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x555db22f20d3
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x10d3
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 找到函数 main+0x93
+2026/03/12 18:55:34 [DEBUG] UnwindStackWithSFrame: Frame 21: PC=0x555db22f20d3, SP=0x7ffd8bf0d760, BP=0x47
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 主程序地址 PC=0x555db22f20d3, baseAddr=0x555db22f2000, baseOffset=0x1000, sectionAddr=0x21c8, 函数数=10, PCREL=true
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[0] 范围[0x555db22f2020, 0x555db22f2030), size=16 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1020)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 跳过PCMASK FDE[1] (FuncInfo=0x10)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[2] 范围[0x555db22f2040, 0x555db22f2132), size=242 (StartAddr_pcrel=0xffffffffffffee3c, virtStart=0x1040)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 候选主程序SFrame函数 @ 0x555db22f2040 (virtual=0x1040), PC=0x555db22f20d3, size=242
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[3] 范围[0x555db22f2240, 0x555db22f224b), size=11 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1240)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[4] 范围[0x555db22f2250, 0x555db22f22b5), size=101 (StartAddr_pcrel=0xfffffffffffff02c, virtStart=0x1250)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[5] 范围[0x555db22f22c0, 0x555db22f22ea), size=42 (StartAddr_pcrel=0xfffffffffffff08c, virtStart=0x12c0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[6] 范围[0x555db22f22f0, 0x555db22f265c), size=876 (StartAddr_pcrel=0xfffffffffffff0ac, virtStart=0x12f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[7] 范围[0x555db22f2660, 0x555db22f2661), size=1 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1660)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[8] 范围[0x555db22f2670, 0x555db22f26f0), size=128 (StartAddr_pcrel=0xfffffffffffff40c, virtStart=0x1670)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: PCINC FDE[9] 范围[0x555db22f26f0, 0x555db22f271d), size=45 (StartAddr_pcrel=0xfffffffffffff47c, virtStart=0x16f0)
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 找到主程序SFrame函数 #@2 @ 0x555db22f2040, PC=0x555db22f20d3, size=242
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: pcOffset=0x93, FuncInfo=0x0, FuncInfo2=0x0, StartFREOff=147, FuncSize=242, NumFREs=11, FREByteLen=46
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: freType=0, freAttrStart=335, freDataStart=340
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #0: StartOffset=0x0, CFAOffset=8, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 16
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #1: StartOffset=0x2, CFAOffset=16, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 24
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #2: StartOffset=0x10, CFAOffset=24, RAOffset=-8, FPOffset=0
+2026/03/12 18:55:34 offsets[0]: 32
+2026/03/12 18:55:34 offsets[1]: -32
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #3: StartOffset=0x11, CFAOffset=32, RAOffset=-8, FPOffset=-32
+2026/03/12 18:55:34 offsets[0]: 40
+2026/03/12 18:55:34 offsets[1]: -32
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #4: StartOffset=0x12, CFAOffset=40, RAOffset=-8, FPOffset=-32
+2026/03/12 18:55:34 offsets[0]: 80
+2026/03/12 18:55:34 offsets[1]: -32
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #5: StartOffset=0x16, CFAOffset=80, RAOffset=-8, FPOffset=-32
+2026/03/12 18:55:34 offsets[0]: 40
+2026/03/12 18:55:34 offsets[1]: -32
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #6: StartOffset=0xe9, CFAOffset=40, RAOffset=-8, FPOffset=-32
+2026/03/12 18:55:34 offsets[0]: 32
+2026/03/12 18:55:34 offsets[1]: -32
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #7: StartOffset=0xec, CFAOffset=32, RAOffset=-8, FPOffset=-32
+2026/03/12 18:55:34 offsets[0]: 24
+2026/03/12 18:55:34 offsets[1]: -32
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #8: StartOffset=0xed, CFAOffset=24, RAOffset=-8, FPOffset=-32
+2026/03/12 18:55:34 offsets[0]: 16
+2026/03/12 18:55:34 offsets[1]: -32
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #9: StartOffset=0xef, CFAOffset=16, RAOffset=-8, FPOffset=-32
+2026/03/12 18:55:34 offsets[0]: 8
+2026/03/12 18:55:34 offsets[1]: -32
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: FRE #10: StartOffset=0xf1, CFAOffset=8, RAOffset=-8, FPOffset=-32
+2026/03/12 18:55:34 [DEBUG] findFDEForFunction: 找到匹配的FRE#5, CFA_BASE=SP, CFAOffset=80, RAOffset=-8, FPOffset=-32
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 函数size=242, pcOffset=0x93, useFPBased=false (from FRE)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: SP-based CFA (来自FDE), CFA=0x7ffd8bf0d7b0 (SP=0x7ffd8bf0d760 + 80)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 读取返回地址，位置=0x7ffd8bf0d7a8 (CFA=0x7ffd8bf0d7b0, RAOffset=-8)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 计算 FP 位置 = CFA + FPOffset, CFA=0x7ffd8bf0d7b0, FPOffset=-32, FP_location=0x7ffd8bf0d790
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: 读取保存的BP=0x7ffd8bf0d850 (from CFA+-32=0x7ffd8bf0d790)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithSFrame: retAddr=0x7f1826de66c1, newBP=0x7ffd8bf0d850, newSP=0x7ffd8bf0d7b0
+2026/03/12 18:55:34 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f1826de66c1
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x276c1
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 找到共享库函数 __libc_init_first+0x91@libc.so.6
+2026/03/12 18:55:34 [DEBUG] UnwindStackWithSFrame: Frame 22: PC=0x7f1826de66c1, SP=0x7ffd8bf0d7b0, BP=0x7ffd8bf0d850
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 共享库无SFrame数据 lib=/usr/lib/libc.so.6
+2026/03/12 18:55:34 [DEBUG] UnwindStackWithSFrame: SFrame展开失败，尝试FP过渡: no SFrame info for PC 0x7f1826de66c1
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithFP: 读取 newBP=0x7ffd8bf0d8b0, retAddr=0x7f1826de67f9 (from BP=0x7ffd8bf0d850)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithFP: 更新后 PC=0x7f1826de67f9, BP=0x7ffd8bf0d8b0, SP=0x7ffd8bf0d8b0
+2026/03/12 18:55:34 [DEBUG] UnwindStackWithSFrame: FP过渡展开成功
+2026/03/12 18:55:34 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f1826de67f9
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x277f9
+2026/03/12 18:55:34 [DEBUG] SFrameResolver: 找到共享库函数 __libc_start_main+0x89@libc.so.6
+2026/03/12 18:55:34 [DEBUG] UnwindStackWithSFrame: Frame 23: PC=0x7f1826de67f9, SP=0x7ffd8bf0d8b0, BP=0x7ffd8bf0d8b0
+2026/03/12 18:55:34 [DEBUG] findSFrameFunction: 共享库无SFrame数据 lib=/usr/lib/libc.so.6
+2026/03/12 18:55:34 [DEBUG] UnwindStackWithSFrame: SFrame展开失败，尝试FP过渡: no SFrame info for PC 0x7f1826de67f9
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithFP: 读取 newBP=0x0, retAddr=0x555db22f2165 (from BP=0x7ffd8bf0d8b0)
+2026/03/12 18:55:34 [DEBUG] unwindFrameWithFP: 新BP为0，到达栈底
+2026/03/12 18:55:34 [DEBUG] UnwindStackWithSFrame: FP展开也失败: reached end of stack (null BP)
+2026/03/12 18:55:34 [DEBUG] UnwindStackWithSFrame: 总共展开了 24 帧
+
+=== 详细栈帧信息 ===
+
+帧 #0:
+  程序计数器 (PC): 0x0000555db22f26dc
+  栈指针     (SP): 0x00007ffd8bf0d370
+  基址指针   (BP): 0x0000000000000047
+  函数: deep_call+0x6c
+
+帧 #1:
+  程序计数器 (PC): 0x0000555db22f26d8
+  栈指针     (SP): 0x00007ffd8bf0d3a0
+  基址指针   (BP): 0x0000000000000047
+  函数: deep_call+0x68
+
+帧 #2:
+  程序计数器 (PC): 0x0000555db22f26d8
+  栈指针     (SP): 0x00007ffd8bf0d3d0
+  基址指针   (BP): 0x0000000000000047
+  函数: deep_call+0x68
+
+帧 #3:
+  程序计数器 (PC): 0x0000555db22f26d8
+  栈指针     (SP): 0x00007ffd8bf0d400
+  基址指针   (BP): 0x0000000000000047
+  函数: deep_call+0x68
+
+帧 #4:
+  程序计数器 (PC): 0x0000555db22f26d8
+  栈指针     (SP): 0x00007ffd8bf0d430
+  基址指针   (BP): 0x0000000000000047
+  函数: deep_call+0x68
+
+帧 #5:
+  程序计数器 (PC): 0x0000555db22f26d8
+  栈指针     (SP): 0x00007ffd8bf0d460
+  基址指针   (BP): 0x0000000000000047
+  函数: deep_call+0x68
+
+帧 #6:
+  程序计数器 (PC): 0x0000555db22f26d8
+  栈指针     (SP): 0x00007ffd8bf0d490
+  基址指针   (BP): 0x0000000000000047
+  函数: deep_call+0x68
+
+帧 #7:
+  程序计数器 (PC): 0x0000555db22f26d8
+  栈指针     (SP): 0x00007ffd8bf0d4c0
+  基址指针   (BP): 0x0000000000000047
+  函数: deep_call+0x68
+
+帧 #8:
+  程序计数器 (PC): 0x0000555db22f26d8
+  栈指针     (SP): 0x00007ffd8bf0d4f0
+  基址指针   (BP): 0x0000000000000047
+  函数: deep_call+0x68
+
+帧 #9:
+  程序计数器 (PC): 0x0000555db22f26d8
+  栈指针     (SP): 0x00007ffd8bf0d520
+  基址指针   (BP): 0x0000000000000047
+  函数: deep_call+0x68
+
+帧 #10:
+  程序计数器 (PC): 0x0000555db22f26d8
+  栈指针     (SP): 0x00007ffd8bf0d550
+  基址指针   (BP): 0x0000000000000047
+  函数: deep_call+0x68
+
+帧 #11:
+  程序计数器 (PC): 0x0000555db22f26d8
+  栈指针     (SP): 0x00007ffd8bf0d580
+  基址指针   (BP): 0x0000000000000047
+  函数: deep_call+0x68
+
+帧 #12:
+  程序计数器 (PC): 0x0000555db22f26d8
+  栈指针     (SP): 0x00007ffd8bf0d5b0
+  基址指针   (BP): 0x0000000000000047
+  函数: deep_call+0x68
+
+帧 #13:
+  程序计数器 (PC): 0x0000555db22f26d8
+  栈指针     (SP): 0x00007ffd8bf0d5e0
+  基址指针   (BP): 0x0000000000000047
+  函数: deep_call+0x68
+
+帧 #14:
+  程序计数器 (PC): 0x0000555db22f26d8
+  栈指针     (SP): 0x00007ffd8bf0d610
+  基址指针   (BP): 0x0000000000000047
+  函数: deep_call+0x68
+
+帧 #15:
+  程序计数器 (PC): 0x0000555db22f26d8
+  栈指针     (SP): 0x00007ffd8bf0d640
+  基址指针   (BP): 0x0000000000000047
+  函数: deep_call+0x68
+
+帧 #16:
+  程序计数器 (PC): 0x0000555db22f26d8
+  栈指针     (SP): 0x00007ffd8bf0d670
+  基址指针   (BP): 0x0000000000000047
+  函数: deep_call+0x68
+
+帧 #17:
+  程序计数器 (PC): 0x0000555db22f26d8
+  栈指针     (SP): 0x00007ffd8bf0d6a0
+  基址指针   (BP): 0x0000000000000047
+  函数: deep_call+0x68
+
+帧 #18:
+  程序计数器 (PC): 0x0000555db22f26d8
+  栈指针     (SP): 0x00007ffd8bf0d6d0
+  基址指针   (BP): 0x0000000000000047
+  函数: deep_call+0x68
+
+帧 #19:
+  程序计数器 (PC): 0x0000555db22f26d8
+  栈指针     (SP): 0x00007ffd8bf0d700
+  基址指针   (BP): 0x0000000000000047
+  函数: deep_call+0x68
+
+帧 #20:
+  程序计数器 (PC): 0x0000555db22f26d8
+  栈指针     (SP): 0x00007ffd8bf0d730
+  基址指针   (BP): 0x0000000000000047
+  函数: deep_call+0x68
+
+帧 #21:
+  程序计数器 (PC): 0x0000555db22f20d3
+  栈指针     (SP): 0x00007ffd8bf0d760
+  基址指针   (BP): 0x0000000000000047
+  函数: main+0x93
+
+帧 #22:
+  程序计数器 (PC): 0x00007f1826de66c1
+  栈指针     (SP): 0x00007ffd8bf0d7b0
+  基址指针   (BP): 0x00007ffd8bf0d850
+  函数: __libc_init_first+0x91
+  库: libc.so.6
+
+帧 #23:
+  程序计数器 (PC): 0x00007f1826de67f9
+  栈指针     (SP): 0x00007ffd8bf0d8b0
+  基址指针   (BP): 0x00007ffd8bf0d8b0
+  函数: __libc_start_main+0x89
+  库: libc.so.6
+
+=== 统计信息 ===
+总栈帧数: 24
+
+各库栈帧数:
+  <main>                        : 22
+  libc.so.6                     : 2

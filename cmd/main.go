@@ -172,10 +172,23 @@ func run() error {
 	}
 
 	// 设置 TARGET_PID
-	if err := spec.RewriteConstants(map[string]interface{}{
-		"TARGET_PID": uint32(*targetPID),
-	}); err != nil {
-		return fmt.Errorf("failed to rewrite constants: %w", err)
+	// if err := spec.RewriteConstants(map[string]interface{}{
+	// 	"TARGET_PID": uint32(*targetPID),
+	// }); err != nil {
+	// 	return fmt.Errorf("failed to rewrite constants: %w", err)
+	// }
+	// 设置 TARGET_PID（使用 VariableSpec.Set，替换已弃用的 RewriteConstants）
+	if spec.Variables != nil {
+		if vs, ok := spec.Variables["TARGET_PID"]; ok {
+			if err := vs.Set(uint32(*targetPID)); err != nil {
+				return fmt.Errorf("failed to set TARGET_PID variable: %w", err)
+			}
+		} else {
+			// 变量不存在时，记录警告并继续（一般由 bpf2go 生成的 spec 应包含该变量）
+			log.Printf("warning: TARGET_PID variable not found in collection spec; skipping setting it")
+		}
+	} else {
+		log.Printf("warning: collection spec has no Variables; skipping TARGET_PID setup")
 	}
 
 	numCPU, err := ebpf.PossibleCPU()
@@ -191,7 +204,6 @@ func run() error {
 	defer lbr.CloseBPFMaps(maps)
 
 	lbrs := maps["lbr_map"]
-	commMap := maps["comm_map"]
 	objs := &lbrObjects{}
 	if err := spec.LoadAndAssign(objs, &ebpf.CollectionOptions{
 		Maps: ebpf.MapOptions{
@@ -271,13 +283,13 @@ func run() error {
 			}
 		case <-ticker.C:
 			if !*twoPassMode || currentPhase == 1 {
-				processLbrData(lbrs, commMap, syms, *targetPID, sframeResolver)
+				processLbrData(lbrs, syms, *targetPID, sframeResolver)
 			}
 		}
 	}
 }
 
-func processLbrData(lbrMap *ebpf.Map, commMap *ebpf.Map, syms *lbr.Symbols, targetPID int, extResolver *lbr.SFrameResolver) {
+func processLbrData(lbrMap *ebpf.Map, syms *lbr.Symbols, targetPID int, extResolver *lbr.SFrameResolver) {
 	var (
 		key  uint64
 		data lbrLbrData
@@ -367,20 +379,20 @@ func processLbrData(lbrMap *ebpf.Map, commMap *ebpf.Map, syms *lbr.Symbols, targ
 			}
 		}
 
-		// 获取进程名称
-		var comm [16]byte
+		// 获取进程名称（直接从 lbr_data.comm 读取）
+		commBytes := make([]byte, len(data.Comm))
+		for i, c := range data.Comm {
+			commBytes[i] = byte(c)
+		}
 		commName := "<unknown>"
-		if err := commMap.Lookup(&key, &comm); err == nil {
-			// 找到第一个空字节作为字符串结尾
-			for i, b := range comm {
-				if b == 0 {
-					commName = string(comm[:i])
-					break
-				}
+		for i, b := range commBytes {
+			if b == 0 {
+				commName = string(commBytes[:i])
+				break
 			}
-			if commName == "<unknown>" {
-				commName = string(comm[:])
-			}
+		}
+		if commName == "<unknown>" {
+			commName = string(commBytes)
 		}
 
 		stack := lbr.NewStack()

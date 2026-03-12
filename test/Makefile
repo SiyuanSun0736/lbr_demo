@@ -32,6 +32,24 @@ test_stack_unwinding: test_stack_unwinding.c
 	@readelf -S test_stack_unwinding | grep "\.sframe" > /dev/null && echo "✓ 找到 .sframe section" || echo "✗ 未找到 .sframe section"
 	@echo "✓ 栈回溯测试程序编译完成: test_stack_unwinding"
 
+test_stack_unwinding1: test_lbr1.c
+	@echo "编译栈回溯测试程序（保留帧指针和SFrame）..."
+	@gcc -O0 -g -Wa,--gsframe -o test_stack_unwinding1 test_lbr1.c 2>/dev/null || \
+		(echo "警告: --gsframe 不支持（需要 Binutils 2.41+），使用 -g 编译..." && \
+		 gcc -O0 -g -fno-omit-frame-pointer -o test_stack_unwinding1 test_lbr1.c)
+	@echo "编译完成，检查 SFrame section："
+	@readelf -S test_stack_unwinding1 | grep "\.sframe" > /dev/null && echo "✓ 找到 .sframe section" || echo "✗ 未找到 .sframe section"
+	@echo "✓ 栈回溯测试程序编译完成: test_stack_unwinding1"
+
+test_stack_unwinding2: test_lbr1.c
+	@echo "编译栈回溯测试程序（保留帧指针和SFrame）..."
+	@gcc -O0 -g -fno-omit-frame-pointer -Wa,--gsframe -o test_stack_unwinding2 test_lbr1.c 2>/dev/null || \
+		(echo "警告: --gsframe 不支持（需要 Binutils 2.41+），使用 -g 编译..." && \
+		 gcc -O0 -g -fno-omit-frame-pointer -o test_stack_unwinding2 test_lbr1.c)
+	@echo "编译完成，检查 SFrame section："
+	@readelf -S test_stack_unwinding2 | grep "\.sframe" > /dev/null && echo "✓ 找到 .sframe section" || echo "✗ 未找到 .sframe section"
+	@echo "✓ 栈回溯测试程序编译完成: test_stack_unwinding2"
+
 clean:
 	rm -f test_lbr test_lbr_sframe test_lbr_dwarf test_stack_unwinding
 

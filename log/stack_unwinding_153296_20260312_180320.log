@@ -1,0 +1,220 @@
+正在对进程 153296 进行栈回溯...
+日志文件: ../log/stack_unwinding_153296_20260312_180320.log
+
+2026/03/12 18:03:20 [DEBUG] NewSFrameResolver: 为PID 153296 创建SFrame解析器
+2026/03/12 18:03:20 [DEBUG] NewSFrameResolver: 可执行文件: /home/ssy/lbr/test/test_stack_unwinding2
+2026/03/12 18:03:20 sframe.Header.Magic : 0xdee2
+2026/03/12 18:03:20 sframe.Header.Version : 3
+2026/03/12 18:03:20 sframe.Header.Flags : 0x5
+2026/03/12 18:03:20 sframe.Header.ABI : 3 (AMD64 little-endian)
+2026/03/12 18:03:20 sframe.Header.FixedFPOffset : 0
+2026/03/12 18:03:20 sframe.Header.FixedRAOffset : -8
+2026/03/12 18:03:20 sframe.Header.AuxHdrLen : 0
+2026/03/12 18:03:20 sframe.Header.NumFDEs : 63
+2026/03/12 18:03:20 sframe.Header.NumFREs : 248
+2026/03/12 18:03:20 sframe.Header.FRELen : 1246
+2026/03/12 18:03:20 sframe.Header.FDEOff : 0
+2026/03/12 18:03:20 sframe.Header.FREOff : 1008
+2026/03/12 18:03:20 StartAddr=0x1020(pcrel_raw=0xffffffffffffe5fc), Size=16, StartFREOff=1224
+2026/03/12 18:03:20 StartAddr=0x1030(pcrel_raw=0xffffffffffffe5fc), Size=32, StartFREOff=1235
+2026/03/12 18:03:20 StartAddr=0x1149(pcrel_raw=0xffffffffffffe705), Size=20, StartFREOff=0
+2026/03/12 18:03:20 StartAddr=0x115d(pcrel_raw=0xffffffffffffe709), Size=235, StartFREOff=20
+2026/03/12 18:03:20 StartAddr=0x1248(pcrel_raw=0xffffffffffffe7e4), Size=69, StartFREOff=40
+2026/03/12 18:03:20 StartAddr=0x128d(pcrel_raw=0xffffffffffffe819), Size=59, StartFREOff=60
+2026/03/12 18:03:20 StartAddr=0x12c8(pcrel_raw=0xffffffffffffe844), Size=12, StartFREOff=80
+2026/03/12 18:03:20 StartAddr=0x12d4(pcrel_raw=0xffffffffffffe840), Size=56, StartFREOff=100
+2026/03/12 18:03:20 StartAddr=0x130c(pcrel_raw=0xffffffffffffe868), Size=92, StartFREOff=120
+2026/03/12 18:03:20 StartAddr=0x1368(pcrel_raw=0xffffffffffffe8b4), Size=64, StartFREOff=140
+2026/03/12 18:03:20 StartAddr=0x13a8(pcrel_raw=0xffffffffffffe8e4), Size=26, StartFREOff=160
+2026/03/12 18:03:20 StartAddr=0x13c2(pcrel_raw=0xffffffffffffe8ee), Size=26, StartFREOff=180
+2026/03/12 18:03:20 StartAddr=0x13dc(pcrel_raw=0xffffffffffffe8f8), Size=69, StartFREOff=200
+2026/03/12 18:03:20 StartAddr=0x1421(pcrel_raw=0xffffffffffffe92d), Size=128, StartFREOff=220
+2026/03/12 18:03:20 StartAddr=0x14a1(pcrel_raw=0xffffffffffffe99d), Size=23, StartFREOff=240
+2026/03/12 18:03:20 StartAddr=0x14b8(pcrel_raw=0xffffffffffffe9a4), Size=26, StartFREOff=260
+2026/03/12 18:03:20 StartAddr=0x14d2(pcrel_raw=0xffffffffffffe9ae), Size=26, StartFREOff=280
+2026/03/12 18:03:20 StartAddr=0x14ec(pcrel_raw=0xffffffffffffe9b8), Size=26, StartFREOff=300
+2026/03/12 18:03:20 StartAddr=0x1506(pcrel_raw=0xffffffffffffe9c2), Size=61, StartFREOff=320
+2026/03/12 18:03:20 StartAddr=0x1543(pcrel_raw=0xffffffffffffe9ef), Size=100, StartFREOff=340
+2026/03/12 18:03:20 StartAddr=0x15a7(pcrel_raw=0xffffffffffffea43), Size=23, StartFREOff=360
+2026/03/12 18:03:20 StartAddr=0x15be(pcrel_raw=0xffffffffffffea4a), Size=23, StartFREOff=380
+2026/03/12 18:03:20 StartAddr=0x15d5(pcrel_raw=0xffffffffffffea51), Size=30, StartFREOff=400
+2026/03/12 18:03:20 StartAddr=0x15f3(pcrel_raw=0xffffffffffffea5f), Size=21, StartFREOff=420
+2026/03/12 18:03:20 StartAddr=0x1608(pcrel_raw=0xffffffffffffea64), Size=26, StartFREOff=440
+2026/03/12 18:03:20 StartAddr=0x1622(pcrel_raw=0xffffffffffffea6e), Size=26, StartFREOff=460
+2026/03/12 18:03:20 StartAddr=0x163c(pcrel_raw=0xffffffffffffea78), Size=26, StartFREOff=480
+2026/03/12 18:03:20 StartAddr=0x1656(pcrel_raw=0xffffffffffffea82), Size=26, StartFREOff=500
+2026/03/12 18:03:20 StartAddr=0x1670(pcrel_raw=0xffffffffffffea8c), Size=26, StartFREOff=520
+2026/03/12 18:03:20 StartAddr=0x168a(pcrel_raw=0xffffffffffffea96), Size=26, StartFREOff=540
+2026/03/12 18:03:20 StartAddr=0x16a4(pcrel_raw=0xffffffffffffeaa0), Size=26, StartFREOff=560
+2026/03/12 18:03:20 StartAddr=0x16be(pcrel_raw=0xffffffffffffeaaa), Size=61, StartFREOff=580
+2026/03/12 18:03:20 StartAddr=0x16fb(pcrel_raw=0xffffffffffffead7), Size=21, StartFREOff=600
+2026/03/12 18:03:20 StartAddr=0x1710(pcrel_raw=0xffffffffffffeadc), Size=26, StartFREOff=620
+2026/03/12 18:03:20 StartAddr=0x172a(pcrel_raw=0xffffffffffffeae6), Size=26, StartFREOff=640
+2026/03/12 18:03:20 StartAddr=0x1744(pcrel_raw=0xffffffffffffeaf0), Size=26, StartFREOff=660
+2026/03/12 18:03:20 StartAddr=0x175e(pcrel_raw=0xffffffffffffeafa), Size=26, StartFREOff=680
+2026/03/12 18:03:20 StartAddr=0x1778(pcrel_raw=0xffffffffffffeb04), Size=26, StartFREOff=700
+2026/03/12 18:03:20 StartAddr=0x1792(pcrel_raw=0xffffffffffffeb0e), Size=26, StartFREOff=720
+2026/03/12 18:03:20 StartAddr=0x17ac(pcrel_raw=0xffffffffffffeb18), Size=26, StartFREOff=740
+2026/03/12 18:03:20 StartAddr=0x17c6(pcrel_raw=0xffffffffffffeb22), Size=26, StartFREOff=760
+2026/03/12 18:03:20 StartAddr=0x17e0(pcrel_raw=0xffffffffffffeb2c), Size=26, StartFREOff=780
+2026/03/12 18:03:20 StartAddr=0x17fa(pcrel_raw=0xffffffffffffeb36), Size=26, StartFREOff=800
+2026/03/12 18:03:20 StartAddr=0x1814(pcrel_raw=0xffffffffffffeb40), Size=26, StartFREOff=820
+2026/03/12 18:03:20 StartAddr=0x182e(pcrel_raw=0xffffffffffffeb4a), Size=63, StartFREOff=840
+2026/03/12 18:03:20 StartAddr=0x186d(pcrel_raw=0xffffffffffffeb79), Size=21, StartFREOff=860
+2026/03/12 18:03:20 StartAddr=0x1882(pcrel_raw=0xffffffffffffeb7e), Size=26, StartFREOff=880
+2026/03/12 18:03:20 StartAddr=0x189c(pcrel_raw=0xffffffffffffeb88), Size=26, StartFREOff=900
+2026/03/12 18:03:20 StartAddr=0x18b6(pcrel_raw=0xffffffffffffeb92), Size=26, StartFREOff=920
+2026/03/12 18:03:20 StartAddr=0x18d0(pcrel_raw=0xffffffffffffeb9c), Size=26, StartFREOff=940
+2026/03/12 18:03:20 StartAddr=0x18ea(pcrel_raw=0xffffffffffffeba6), Size=26, StartFREOff=960
+2026/03/12 18:03:20 StartAddr=0x1904(pcrel_raw=0xffffffffffffebb0), Size=26, StartFREOff=980
+2026/03/12 18:03:20 StartAddr=0x191e(pcrel_raw=0xffffffffffffebba), Size=26, StartFREOff=1000
+2026/03/12 18:03:20 StartAddr=0x1938(pcrel_raw=0xffffffffffffebc4), Size=26, StartFREOff=1020
+2026/03/12 18:03:20 StartAddr=0x1952(pcrel_raw=0xffffffffffffebce), Size=26, StartFREOff=1040
+2026/03/12 18:03:20 StartAddr=0x196c(pcrel_raw=0xffffffffffffebd8), Size=26, StartFREOff=1060
+2026/03/12 18:03:20 StartAddr=0x1986(pcrel_raw=0xffffffffffffebe2), Size=26, StartFREOff=1080
+2026/03/12 18:03:20 StartAddr=0x19a0(pcrel_raw=0xffffffffffffebec), Size=26, StartFREOff=1100
+2026/03/12 18:03:20 StartAddr=0x19ba(pcrel_raw=0xffffffffffffebf6), Size=26, StartFREOff=1120
+2026/03/12 18:03:20 StartAddr=0x19d4(pcrel_raw=0xffffffffffffec00), Size=26, StartFREOff=1140
+2026/03/12 18:03:20 StartAddr=0x19ee(pcrel_raw=0xffffffffffffec0a), Size=26, StartFREOff=1160
+2026/03/12 18:03:20 StartAddr=0x1a08(pcrel_raw=0xffffffffffffec14), Size=70, StartFREOff=1180
+2026/03/12 18:03:20 StartAddr=0x1a4e(pcrel_raw=0xffffffffffffec4a), Size=858, StartFREOff=1200
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[0] 属性: NumFREs=2, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[1] 属性: NumFREs=2, FuncInfo=0x10(fre_type=0,pctype=1,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=16
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[2] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[3] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[4] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[5] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[6] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[7] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[8] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[9] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[10] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[11] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[12] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[13] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[14] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[15] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[16] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[17] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[18] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[19] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[20] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[21] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[22] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[23] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[24] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[25] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[26] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[27] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[28] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[29] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[30] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[31] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[32] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[33] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[34] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[35] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[36] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[37] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[38] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[39] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[40] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[41] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[42] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[43] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[44] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[45] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[46] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[47] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[48] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[49] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[50] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[51] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[52] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[53] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[54] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[55] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[56] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[57] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[58] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[59] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[60] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[61] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: V3 FDE[62] 属性: NumFREs=4, FuncInfo=0x1(fre_type=1,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: 成功解析 63 个SFrame FDE, Version=3
+2026/03/12 18:03:20 [DEBUG] parseSFrameDataFromELF: FRE数据位于偏移 1036, 总长度 1246
+2026/03/12 18:03:20 [DEBUG] loadSFrameData: SFrame Magic=0xdee2, Version=3, ABI=3 (AMD64 little-endian), NumFDEs=63
+2026/03/12 18:03:20 [DEBUG] NewSFrameResolver: 成功加载SFrame数据
+2026/03/12 18:03:20 [DEBUG] loadSymbols: 加载了 4 个PLT符号
+2026/03/12 18:03:20 [DEBUG] loadSymbols: 加载了 89 个符号（含PLT）
+2026/03/12 18:03:20 [DEBUG] GetProcessMaps: 读取进程 153296 的内存映射
+2026/03/12 18:03:20 [DEBUG] GetProcessMaps: 读取到 23 个内存映射
+2026/03/12 18:03:20 [DEBUG] loadBaseAddress: 基址=0x55d7e39da000, 结束=0x55d7e39db000, 偏移=0x1000
+2026/03/12 18:03:20 [DEBUG] GetProcessMaps: 读取进程 153296 的内存映射
+2026/03/12 18:03:20 [DEBUG] GetProcessMaps: 读取到 23 个内存映射
+2026/03/12 18:03:20 [DEBUG] loadLibraryMapping: 加载共享库SFrame数据失败 /usr/lib/libc.so.6: no .sframe section found
+2026/03/12 18:03:20 [DEBUG] loadLibraryMapping: 加载共享库 /usr/lib/libc.so.6, 符号数: 3121, SFrame: false
+2026/03/12 18:03:20 [DEBUG] loadLibraryMapping: 加载共享库SFrame数据失败 /usr/lib/ld-linux-x86-64.so.2: no .sframe section found
+2026/03/12 18:03:20 [DEBUG] loadLibraryMapping: 加载共享库 /usr/lib/ld-linux-x86-64.so.2, 符号数: 32, SFrame: false
+2026/03/12 18:03:20 [DEBUG] loadLibraryMappings: 加载了 2 个共享库映射
+2026/03/12 18:03:20 [DEBUG] NewSFrameResolver: SFrame解析器创建成功
+最大栈帧数: 32
+栈展开方法: fp
+
+使用帧指针 (FP) 栈展开...
+2026/03/12 18:03:20 [DEBUG] GetRegisters: PC=0x55d7e39da2b9, SP=0x7ffcefaf6960, BP=0x7ffcefaf6980 (via ptrace)
+2026/03/12 18:03:20 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55d7e39da2b9
+2026/03/12 18:03:20 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x12b9
+2026/03/12 18:03:20 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x2c
+2026/03/12 18:03:20 [DEBUG] UnwindStackWithFP: Frame 0: PC=0x55d7e39da2b9, SP=0x7ffcefaf6960, BP=0x7ffcefaf6980
+2026/03/12 18:03:20 [DEBUG] unwindFrameWithFP: 读取 newBP=0x7ffcefaf69b0, retAddr=0x55d7e39da2c0 (from BP=0x7ffcefaf6980)
+2026/03/12 18:03:20 [DEBUG] unwindFrameWithFP: 更新后 PC=0x55d7e39da2c0, BP=0x7ffcefaf69b0, SP=0x7ffcefaf69b0
+2026/03/12 18:03:20 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55d7e39da2c0
+2026/03/12 18:03:20 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x12c0
+2026/03/12 18:03:20 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x33
+2026/03/12 18:03:20 [DEBUG] UnwindStackWithFP: Frame 1: PC=0x55d7e39da2c0, SP=0x7ffcefaf69b0, BP=0x7ffcefaf69b0
+2026/03/12 18:03:20 [DEBUG] unwindFrameWithFP: 读取 newBP=0x7ffcefaf69e0, retAddr=0x55d7e39da2c0 (from BP=0x7ffcefaf69b0)
+2026/03/12 18:03:20 [DEBUG] unwindFrameWithFP: 更新后 PC=0x55d7e39da2c0, BP=0x7ffcefaf69e0, SP=0x7ffcefaf69e0
+2026/03/12 18:03:20 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55d7e39da2c0
+2026/03/12 18:03:20 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x12c0
+2026/03/12 18:03:20 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x33
+2026/03/12 18:03:20 [DEBUG] UnwindStackWithFP: Frame 2: PC=0x55d7e39da2c0, SP=0x7ffcefaf69e0, BP=0x7ffcefaf69e0
+2026/03/12 18:03:20 [DEBUG] unwindFrameWithFP: 读取 newBP=0x7ffcefaf6a10, retAddr=0x4be39da2c0 (from BP=0x7ffcefaf69e0)
+2026/03/12 18:03:20 [DEBUG] unwindFrameWithFP: 更新后 PC=0x4be39da2c0, BP=0x7ffcefaf6a10, SP=0x7ffcefaf6a10
+2026/03/12 18:03:20 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x4be39da2c0
+2026/03/12 18:03:20 [DEBUG] UnwindStackWithFP: Frame 3: PC=0x4be39da2c0, SP=0x7ffcefaf6a10, BP=0x7ffcefaf6a10
+2026/03/12 18:03:20 [DEBUG] unwindFrameWithFP: 读取 newBP=0x4aefaf6a40, retAddr=0x7ffcefaf6a30 (from BP=0x7ffcefaf6a10)
+2026/03/12 18:03:20 [DEBUG] UnwindStackWithFP: FP展开失败: invalid BP progression: newBP(0x4aefaf6a40) <= oldBP(0x7ffcefaf6a10)
+2026/03/12 18:03:20 [DEBUG] UnwindStackWithFP: 总共展开了 4 帧
+
+=== 详细栈帧信息 ===
+
+帧 #0:
+  程序计数器 (PC): 0x000055d7e39da2b9
+  栈指针     (SP): 0x00007ffcefaf6960
+  基址指针   (BP): 0x00007ffcefaf6980
+  函数: fibonacci+0x2c
+
+帧 #1:
+  程序计数器 (PC): 0x000055d7e39da2c0
+  栈指针     (SP): 0x00007ffcefaf69b0
+  基址指针   (BP): 0x00007ffcefaf69b0
+  函数: fibonacci+0x33
+
+帧 #2:
+  程序计数器 (PC): 0x000055d7e39da2c0
+  栈指针     (SP): 0x00007ffcefaf69e0
+  基址指针   (BP): 0x00007ffcefaf69e0
+  函数: fibonacci+0x33
+
+帧 #3:
+  程序计数器 (PC): 0x0000004be39da2c0
+  栈指针     (SP): 0x00007ffcefaf6a10
+  基址指针   (BP): 0x00007ffcefaf6a10
+  (未找到符号信息)
+
+=== 统计信息 ===
+总栈帧数: 4
+
+各库栈帧数:
+  <main>                        : 3

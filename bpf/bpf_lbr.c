@@ -9,6 +9,7 @@ volatile const __u32 CPU_MASK = 0xFFFF;
 struct lbr_data {
     __u64 pid_tgid;
     __s64 nr_bytes;
+    char comm[16];
     struct perf_branch_entry entries[MAX_LBR_ENTRIES];
 };
 
@@ -21,14 +22,6 @@ struct {
     __type(key, __u64);
     __type(value, struct lbr_data);
 } lbr_map SEC(".maps");
-
-// 用于存储 pid_tgid 到 comm 的映射
-struct {
-    __uint(type, BPF_MAP_TYPE_HASH);
-    __uint(max_entries, 1024);
-    __type(key, __u64);
-    __type(value, char[16]);
-} comm_map SEC(".maps");
 
 // perf_event 程序：周期性采样时捕获 LBR
 SEC("perf_event")
@@ -60,10 +53,8 @@ int capture_lbr(struct bpf_perf_event_data *ctx)
     lbr->nr_bytes = ret;
     
     // 获取并存储进程名称
-    char comm[16] = {};
-    bpf_get_current_comm(comm, sizeof(comm));
-    bpf_map_update_elem(&comm_map, &pid_tgid, comm, BPF_ANY);
-    
+    bpf_get_current_comm(lbr->comm, sizeof(lbr->comm));
+
     // 使用 pid_tgid 作为 key，确保每个线程有独立的记录
     bpf_map_update_elem(&lbr_map, &pid_tgid, lbr, BPF_ANY);
     
