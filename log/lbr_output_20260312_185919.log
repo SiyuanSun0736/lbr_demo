@@ -1,0 +1,1177 @@
+2026/03/12 18:59:19 日志文件: log/lbr_output_20260312_185919.log
+2026/03/12 18:59:19 Current nofile rlimit: curr=524287 max=524288
+2026/03/12 18:59:19 Monitoring PID: 179715
+2026/03/12 18:59:19 LBR demo is running. Press Ctrl-C to exit.
+2026/03/12 18:59:19 Attached to 8 CPUs, checking for LBR data every second...
+2026/03/12 18:59:20 No LBR data - map中无任何条目
+2026/03/12 18:59:21 [DEBUG] NewUserSymbolResolver: 为PID 179715 创建解析器
+2026/03/12 18:59:21 [DEBUG] NewUserSymbolResolver: 使用可执行文件: /home/ssy/lbr/test/test_lbr_sframe
+2026/03/12 18:59:21 [DEBUG] GetProcessMaps: 读取进程 179715 的内存映射
+2026/03/12 18:59:21 [DEBUG] GetProcessMaps: 读取到 23 个内存映射
+2026/03/12 18:59:21 [DEBUG] loadBaseAddress: 找到基地址 0x557403830000 (StartAddr=0x557403831000, Offset=0x1000)
+2026/03/12 18:59:21 [DEBUG] NewUserSymbolResolver: 基地址: 0x557403830000
+2026/03/12 18:59:21 [DEBUG] checkDebugSymbols: 检查文件 /home/ssy/lbr/test/test_lbr_sframe 的调试符号
+2026/03/12 18:59:27 [DEBUG] checkDebugSymbols: file 输出: /home/ssy/lbr/test/test_lbr_sframe: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=293a7431f508298dcfbcb0448c91763ca01da79f, for GNU/Linux 4.4.0, with debug_info, not stripped
+2026/03/12 18:59:27 [DEBUG] checkDebugSymbols: 结果: true
+2026/03/12 18:59:27 [DEBUG] NewUserSymbolResolver: 调试符号检查结果: true
+2026/03/12 18:59:27 [DEBUG] NewUserSymbolResolver: 解析器创建成功
+2026/03/12 18:59:27 已创建 UserSymbolResolver for PID 179715（用于 file_offset 计算）
+2026/03/12 18:59:27 [DEBUG] NewSFrameResolver: 为PID 179715 创建SFrame解析器
+2026/03/12 18:59:27 [DEBUG] NewSFrameResolver: 可执行文件: /home/ssy/lbr/test/test_lbr_sframe
+2026/03/12 18:59:27 sframe.Header.Magic : 0xdee2
+2026/03/12 18:59:27 sframe.Header.Version : 3
+2026/03/12 18:59:27 sframe.Header.Flags : 0x5
+2026/03/12 18:59:27 sframe.Header.ABI : 3 (AMD64 little-endian)
+2026/03/12 18:59:27 sframe.Header.FixedFPOffset : 0
+2026/03/12 18:59:27 sframe.Header.FixedRAOffset : -8
+2026/03/12 18:59:27 sframe.Header.AuxHdrLen : 0
+2026/03/12 18:59:27 sframe.Header.NumFDEs : 9
+2026/03/12 18:59:27 sframe.Header.NumFREs : 32
+2026/03/12 18:59:27 sframe.Header.FRELen : 166
+2026/03/12 18:59:27 sframe.Header.FDEOff : 0
+2026/03/12 18:59:27 sframe.Header.FREOff : 144
+2026/03/12 18:59:27 StartAddr=0x1020(pcrel_raw=0xffffffffffffee3c), Size=16, StartFREOff=144
+2026/03/12 18:59:27 StartAddr=0x1030(pcrel_raw=0xffffffffffffee3c), Size=144, StartFREOff=155
+2026/03/12 18:59:27 StartAddr=0x11b9(pcrel_raw=0xffffffffffffefb5), Size=20, StartFREOff=0
+2026/03/12 18:59:27 StartAddr=0x11cd(pcrel_raw=0xffffffffffffefb9), Size=235, StartFREOff=20
+2026/03/12 18:59:27 StartAddr=0x12b8(pcrel_raw=0xfffffffffffff094), Size=69, StartFREOff=40
+2026/03/12 18:59:27 StartAddr=0x12fd(pcrel_raw=0xfffffffffffff0c9), Size=59, StartFREOff=60
+2026/03/12 18:59:27 StartAddr=0x1338(pcrel_raw=0xfffffffffffff0f4), Size=12, StartFREOff=80
+2026/03/12 18:59:27 StartAddr=0x1344(pcrel_raw=0xfffffffffffff0f0), Size=56, StartFREOff=100
+2026/03/12 18:59:27 StartAddr=0x137c(pcrel_raw=0xfffffffffffff118), Size=1294, StartFREOff=120
+2026/03/12 18:59:27 [DEBUG] parseSFrameDataFromELF: V3 FDE[0] 属性: NumFREs=2, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:59:27 [DEBUG] parseSFrameDataFromELF: V3 FDE[1] 属性: NumFREs=2, FuncInfo=0x10(fre_type=0,pctype=1,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=16
+2026/03/12 18:59:27 [DEBUG] parseSFrameDataFromELF: V3 FDE[2] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:59:27 [DEBUG] parseSFrameDataFromELF: V3 FDE[3] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:59:27 [DEBUG] parseSFrameDataFromELF: V3 FDE[4] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:59:27 [DEBUG] parseSFrameDataFromELF: V3 FDE[5] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:59:27 [DEBUG] parseSFrameDataFromELF: V3 FDE[6] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:59:27 [DEBUG] parseSFrameDataFromELF: V3 FDE[7] 属性: NumFREs=4, FuncInfo=0x0(fre_type=0,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:59:27 [DEBUG] parseSFrameDataFromELF: V3 FDE[8] 属性: NumFREs=4, FuncInfo=0x1(fre_type=1,pctype=0,signal=false), FuncInfo2=0x0(fde_type=0), RepSize=0
+2026/03/12 18:59:27 [DEBUG] parseSFrameDataFromELF: 成功解析 9 个SFrame FDE, Version=3
+2026/03/12 18:59:27 [DEBUG] parseSFrameDataFromELF: FRE数据位于偏移 172, 总长度 166
+2026/03/12 18:59:27 [DEBUG] loadSFrameData: SFrame Magic=0xdee2, Version=3, ABI=3 (AMD64 little-endian), NumFDEs=9
+2026/03/12 18:59:27 [DEBUG] NewSFrameResolver: 成功加载SFrame数据
+2026/03/12 18:59:27 [DEBUG] loadSymbols: 加载了 11 个PLT符号
+2026/03/12 18:59:27 [DEBUG] loadSymbols: 加载了 44 个符号（含PLT）
+2026/03/12 18:59:27 [DEBUG] GetProcessMaps: 读取进程 179715 的内存映射
+2026/03/12 18:59:27 [DEBUG] GetProcessMaps: 读取到 23 个内存映射
+2026/03/12 18:59:27 [DEBUG] loadBaseAddress: 基址=0x557403831000, 结束=0x557403832000, 偏移=0x1000
+2026/03/12 18:59:27 [DEBUG] GetProcessMaps: 读取进程 179715 的内存映射
+2026/03/12 18:59:27 [DEBUG] GetProcessMaps: 读取到 23 个内存映射
+2026/03/12 18:59:27 [DEBUG] loadLibraryMapping: 加载共享库SFrame数据失败 /usr/lib/libc.so.6: no .sframe section found
+2026/03/12 18:59:27 [DEBUG] loadLibraryMapping: 加载共享库 /usr/lib/libc.so.6, 符号数: 3121, SFrame: false
+2026/03/12 18:59:27 [DEBUG] loadLibraryMapping: 加载共享库SFrame数据失败 /usr/lib/ld-linux-x86-64.so.2: no .sframe section found
+2026/03/12 18:59:27 [DEBUG] loadLibraryMapping: 加载共享库 /usr/lib/ld-linux-x86-64.so.2, 符号数: 32, SFrame: false
+2026/03/12 18:59:27 [DEBUG] loadLibraryMappings: 加载了 2 个共享库映射
+2026/03/12 18:59:27 [DEBUG] NewSFrameResolver: SFrame解析器创建成功
+2026/03/12 18:59:27 已启用 SFrame 符号解析 for PID 179715
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b474e
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x4374e
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 rand+0xe@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038315ea
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x15ea
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x26e
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b49b6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x439b6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random+0x66@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b474d
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x4374d
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 rand+0xd@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b49d4
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x439d4
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random+0x84@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b49a6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x439a6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random+0x56@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4b6c
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43b6c
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random_r+0x6c@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b49d0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x439d0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random+0x80@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4b17
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43b17
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random_r+0x17@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4b38
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43b38
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random_r+0x38@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b49cb
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x439cb
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random+0x7b@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4b00
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43b00
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random_r@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4972
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43972
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random+0x22@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b49c0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x439c0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random+0x70@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4748
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43748
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 rand+0x8@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4950
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43950
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038310b0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x10b0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 sleep@plt
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4740
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43740
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 rand@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038315e5
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x15e5
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x269
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038310b0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x10b0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 sleep@plt
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038316d9
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16d9
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x35d
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038315e5
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x15e5
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x269
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831653
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1653
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2d7
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038316c8
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16c8
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x34c
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831635
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1635
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2b9
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831643
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1643
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2c7
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831620
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1620
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2a4
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383162e
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x162e
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2b2
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b474e
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x4374e
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 rand+0xe@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038315ea
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x15ea
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x26e
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b49b6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x439b6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random+0x66@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b474d
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x4374d
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 rand+0xd@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b49d4
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x439d4
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random+0x84@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b49a6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x439a6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random+0x56@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4b6c
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43b6c
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random_r+0x6c@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b49d0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x439d0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random+0x80@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4b17
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43b17
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random_r+0x17@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4b38
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43b38
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random_r+0x38@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b49cb
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x439cb
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random+0x7b@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4b00
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43b00
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random_r@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4972
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43972
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random+0x22@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b49c0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x439c0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random+0x70@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4748
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43748
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 rand+0x8@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4950
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43950
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038310b0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x10b0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 sleep@plt
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4740
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43740
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 rand@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038315e5
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x15e5
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x269
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038310b0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x10b0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 sleep@plt
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038316d9
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16d9
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x35d
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038315e5
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x15e5
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x269
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383169b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x169b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x31f
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038316c8
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16c8
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x34c
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831680
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1680
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x304
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383168b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x168b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x30f
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383166e
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x166e
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2f2
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831679
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1679
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2fd
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383165c
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x165c
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2e0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831667
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1667
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2eb
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383164a
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x164a
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2ce
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831655
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1655
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2d9
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831635
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1635
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2b9
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831643
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1643
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2c7
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831620
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1620
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2a4
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383162e
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x162e
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2b2
+
+=== PID: 179715, TID: 179715, COMM: test_lbr_sframe, Entries: 32 ===
+
+[LBR Branch History]
+LBR Stack:
+[#00] [33mmain+0x2a4[0m                -> [33mmain+0x2b2[0m               
+[#01] [33mmain+0x2b9[0m                -> [33mmain+0x2c7[0m               
+[#02] [33mmain+0x2ce[0m                -> [33mmain+0x2d9[0m               
+[#03] [33mmain+0x2e0[0m                -> [33mmain+0x2eb[0m               
+[#04] [33mmain+0x2f2[0m                -> [33mmain+0x2fd[0m               
+[#05] [33mmain+0x304[0m                -> [33mmain+0x30f[0m               
+[#06] [33mmain+0x31f[0m                -> [33mmain+0x34c[0m               
+[#07] [33mmain+0x35d[0m                -> [33mmain+0x269[0m               
+[#08] [33mmain+0x269[0m                -> [33msleep@plt[0m                
+[#09] [33msleep@plt[0m                 -> [33mrand (libc.so.6)[0m         
+[#10] [33mrand+0x8 (libc.so.6)[0m      -> [33mrandom (libc.so.6)[0m       
+[#11] [33mrandom+0x22 (libc.so.6)[0m   -> [33mrandom+0x70 (libc.so.6)[0m  
+[#12] [33mrandom+0x7b (libc.so.6)[0m   -> [33mrandom_r (libc.so.6)[0m     
+[#13] [33mrandom_r+0x17 (libc.so.6)[0m -> [33mrandom_r+0x38 (libc.so.6)[0m
+[#14] [33mrandom_r+0x6c (libc.so.6)[0m -> [33mrandom+0x80 (libc.so.6)[0m  
+[#15] [33mrandom+0x84 (libc.so.6)[0m   -> [33mrandom+0x56 (libc.so.6)[0m  
+[#16] [33mrandom+0x66 (libc.so.6)[0m   -> [33mrand+0xd (libc.so.6)[0m     
+[#17] [33mrand+0xe (libc.so.6)[0m      -> [33mmain+0x26e[0m               
+[#18] [33mmain+0x2a4[0m                -> [33mmain+0x2b2[0m               
+[#19] [33mmain+0x2b9[0m                -> [33mmain+0x2c7[0m               
+[#20] [33mmain+0x2d7[0m                -> [33mmain+0x34c[0m               
+[#21] [33mmain+0x35d[0m                -> [33mmain+0x269[0m               
+[#22] [33mmain+0x269[0m                -> [33msleep@plt[0m                
+[#23] [33msleep@plt[0m                 -> [33mrand (libc.so.6)[0m         
+[#24] [33mrand+0x8 (libc.so.6)[0m      -> [33mrandom (libc.so.6)[0m       
+[#25] [33mrandom+0x22 (libc.so.6)[0m   -> [33mrandom+0x70 (libc.so.6)[0m  
+[#26] [33mrandom+0x7b (libc.so.6)[0m   -> [33mrandom_r (libc.so.6)[0m     
+[#27] [33mrandom_r+0x17 (libc.so.6)[0m -> [33mrandom_r+0x38 (libc.so.6)[0m
+[#28] [33mrandom_r+0x6c (libc.so.6)[0m -> [33mrandom+0x80 (libc.so.6)[0m  
+[#29] [33mrandom+0x84 (libc.so.6)[0m   -> [33mrandom+0x56 (libc.so.6)[0m  
+[#30] [33mrandom+0x66 (libc.so.6)[0m   -> [33mrand+0xd (libc.so.6)[0m     
+[#31] [33mrand+0xe (libc.so.6)[0m      -> [33mmain+0x26e[0m               
+2026/03/12 18:59:27 LBR数据统计: 总条目=1, 有效=1, 空数据=0, 全零数据=0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831222
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1222
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x55
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383128b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x128b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xbe
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xce
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038311f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x11f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x23
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831222
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1222
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x55
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383128b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x128b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xbe
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xce
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038311f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x11f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x23
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xce
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038311f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x11f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x23
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831222
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1222
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x55
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383128b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x128b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xbe
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xce
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038311f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x11f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x23
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831222
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1222
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x55
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383128b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x128b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xbe
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xce
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038311f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x11f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x23
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831222
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1222
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x55
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383128b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x128b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xbe
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xce
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038311f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x11f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x23
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xce
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038311f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x11f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x23
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831222
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1222
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x55
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383128b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x128b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xbe
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xce
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038311f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x11f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x23
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831222
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1222
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x55
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383128b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x128b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xbe
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xce
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038311f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x11f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x23
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831222
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1222
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x55
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383128b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x128b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xbe
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xce
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038311f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x11f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x23
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831222
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1222
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x55
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383128b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x128b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xbe
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xce
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038311f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x11f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x23
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831222
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1222
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x55
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383128b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x128b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xbe
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xce
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038311f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x11f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x23
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831222
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1222
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x55
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383128b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x128b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xbe
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xce
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038311f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x11f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x23
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xce
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038311f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x11f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x23
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831222
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1222
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x55
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383128b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x128b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xbe
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xce
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038311f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x11f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x23
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831222
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1222
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x55
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383128b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x128b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xbe
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xce
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038311f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x11f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x23
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831222
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1222
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x55
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383128b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x128b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xbe
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x129b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xce
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038311f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x11f0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x23
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831222
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1222
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x55
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383128b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x128b
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xbe
+
+=== PID: 179715, TID: 179715, COMM: test_lbr_sframe, Entries: 32 ===
+
+[LBR Branch History]
+LBR Stack:
+[#00] [33mbubble_sort+0x55[0m -> [33mbubble_sort+0xbe[0m
+[#01] [33mbubble_sort+0xce[0m -> [33mbubble_sort+0x23[0m
+[#02] [33mbubble_sort+0x55[0m -> [33mbubble_sort+0xbe[0m
+[#03] [33mbubble_sort+0xce[0m -> [33mbubble_sort+0x23[0m
+[#04] [33mbubble_sort+0x55[0m -> [33mbubble_sort+0xbe[0m
+[#05] [33mbubble_sort+0xce[0m -> [33mbubble_sort+0x23[0m
+[#06] [33mbubble_sort+0x55[0m -> [33mbubble_sort+0xbe[0m
+[#07] [33mbubble_sort+0xce[0m -> [33mbubble_sort+0x23[0m
+[#08] [33mbubble_sort+0xce[0m -> [33mbubble_sort+0x23[0m
+[#09] [33mbubble_sort+0x55[0m -> [33mbubble_sort+0xbe[0m
+[#10] [33mbubble_sort+0xce[0m -> [33mbubble_sort+0x23[0m
+[#11] [33mbubble_sort+0x55[0m -> [33mbubble_sort+0xbe[0m
+[#12] [33mbubble_sort+0xce[0m -> [33mbubble_sort+0x23[0m
+[#13] [33mbubble_sort+0x55[0m -> [33mbubble_sort+0xbe[0m
+[#14] [33mbubble_sort+0xce[0m -> [33mbubble_sort+0x23[0m
+[#15] [33mbubble_sort+0x55[0m -> [33mbubble_sort+0xbe[0m
+[#16] [33mbubble_sort+0xce[0m -> [33mbubble_sort+0x23[0m
+[#17] [33mbubble_sort+0x55[0m -> [33mbubble_sort+0xbe[0m
+[#18] [33mbubble_sort+0xce[0m -> [33mbubble_sort+0x23[0m
+[#19] [33mbubble_sort+0x55[0m -> [33mbubble_sort+0xbe[0m
+[#20] [33mbubble_sort+0xce[0m -> [33mbubble_sort+0x23[0m
+[#21] [33mbubble_sort+0xce[0m -> [33mbubble_sort+0x23[0m
+[#22] [33mbubble_sort+0x55[0m -> [33mbubble_sort+0xbe[0m
+[#23] [33mbubble_sort+0xce[0m -> [33mbubble_sort+0x23[0m
+[#24] [33mbubble_sort+0x55[0m -> [33mbubble_sort+0xbe[0m
+[#25] [33mbubble_sort+0xce[0m -> [33mbubble_sort+0x23[0m
+[#26] [33mbubble_sort+0x55[0m -> [33mbubble_sort+0xbe[0m
+[#27] [33mbubble_sort+0xce[0m -> [33mbubble_sort+0x23[0m
+[#28] [33mbubble_sort+0xce[0m -> [33mbubble_sort+0x23[0m
+[#29] [33mbubble_sort+0x55[0m -> [33mbubble_sort+0xbe[0m
+[#30] [33mbubble_sort+0xce[0m -> [33mbubble_sort+0x23[0m
+[#31] [33mbubble_sort+0x55[0m -> [33mbubble_sort+0xbe[0m
+2026/03/12 18:59:27 LBR数据统计: 总条目=1, 有效=1, 空数据=0, 全零数据=0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4b17
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43b17
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random_r+0x17@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4b38
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43b38
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random_r+0x38@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b49cb
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x439cb
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random+0x7b@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4b00
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43b00
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random_r@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4972
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43972
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random+0x22@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b49c0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x439c0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random+0x70@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4748
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43748
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 rand+0x8@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4950
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43950
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038310b0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x10b0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 sleep@plt
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4740
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43740
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 rand@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038315e5
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x15e5
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x269
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038310b0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x10b0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 sleep@plt
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038316d9
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16d9
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x35d
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038315e5
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x15e5
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x269
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831689
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1689
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x30d
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038316c8
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16c8
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x34c
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383166e
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x166e
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2f2
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831679
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1679
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2fd
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383165c
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x165c
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2e0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831667
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1667
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2eb
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383164a
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x164a
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2ce
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831655
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1655
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2d9
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831635
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1635
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2b9
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831643
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1643
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2c7
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831620
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1620
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2a4
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383162e
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x162e
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2b2
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b474e
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x4374e
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 rand+0xe@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038315ea
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x15ea
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x26e
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b49b6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x439b6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random+0x66@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b474d
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x4374d
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 rand+0xd@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b49d4
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x439d4
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random+0x84@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b49a6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x439a6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random+0x56@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4b6c
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43b6c
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random_r+0x6c@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b49d0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x439d0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random+0x80@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4b17
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43b17
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random_r+0x17@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4b38
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43b38
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random_r+0x38@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b49cb
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x439cb
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random+0x7b@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4b00
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43b00
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random_r@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4972
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43972
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random+0x22@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b49c0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x439c0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random+0x70@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4748
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43748
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 rand+0x8@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4950
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43950
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038310b0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x10b0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 sleep@plt
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4740
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43740
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 rand@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038315e5
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x15e5
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x269
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038310b0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x10b0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 sleep@plt
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038316d9
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16d9
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x35d
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038315e5
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x15e5
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x269
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831689
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1689
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x30d
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038316c8
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16c8
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x34c
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383166e
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x166e
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2f2
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831679
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1679
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2fd
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383165c
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x165c
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2e0
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831667
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1667
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2eb
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383164a
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x164a
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2ce
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831655
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1655
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2d9
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831635
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1635
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2b9
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831643
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1643
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2c7
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831620
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1620
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2a4
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383162e
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x162e
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x2b2
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b474e
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x4374e
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 rand+0xe@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038315ea
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x15ea
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到函数 main+0x26e
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b49b6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x439b6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 random+0x66@libc.so.6
+2026/03/12 18:59:27 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b474d
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x4374d
+2026/03/12 18:59:27 [DEBUG] SFrameResolver: 找到共享库函数 rand+0xd@libc.so.6
+
+=== PID: 179715, TID: 179715, COMM: test_lbr_sframe, Entries: 32 ===
+
+[LBR Branch History]
+LBR Stack:
+[#00] [33mrandom+0x66 (libc.so.6)[0m   -> [33mrand+0xd (libc.so.6)[0m     
+[#01] [33mrand+0xe (libc.so.6)[0m      -> [33mmain+0x26e[0m               
+[#02] [33mmain+0x2a4[0m                -> [33mmain+0x2b2[0m               
+[#03] [33mmain+0x2b9[0m                -> [33mmain+0x2c7[0m               
+[#04] [33mmain+0x2ce[0m                -> [33mmain+0x2d9[0m               
+[#05] [33mmain+0x2e0[0m                -> [33mmain+0x2eb[0m               
+[#06] [33mmain+0x2f2[0m                -> [33mmain+0x2fd[0m               
+[#07] [33mmain+0x30d[0m                -> [33mmain+0x34c[0m               
+[#08] [33mmain+0x35d[0m                -> [33mmain+0x269[0m               
+[#09] [33mmain+0x269[0m                -> [33msleep@plt[0m                
+[#10] [33msleep@plt[0m                 -> [33mrand (libc.so.6)[0m         
+[#11] [33mrand+0x8 (libc.so.6)[0m      -> [33mrandom (libc.so.6)[0m       
+[#12] [33mrandom+0x22 (libc.so.6)[0m   -> [33mrandom+0x70 (libc.so.6)[0m  
+[#13] [33mrandom+0x7b (libc.so.6)[0m   -> [33mrandom_r (libc.so.6)[0m     
+[#14] [33mrandom_r+0x17 (libc.so.6)[0m -> [33mrandom_r+0x38 (libc.so.6)[0m
+[#15] [33mrandom_r+0x6c (libc.so.6)[0m -> [33mrandom+0x80 (libc.so.6)[0m  
+[#16] [33mrandom+0x84 (libc.so.6)[0m   -> [33mrandom+0x56 (libc.so.6)[0m  
+[#17] [33mrandom+0x66 (libc.so.6)[0m   -> [33mrand+0xd (libc.so.6)[0m     
+[#18] [33mrand+0xe (libc.so.6)[0m      -> [33mmain+0x26e[0m               
+[#19] [33mmain+0x2a4[0m                -> [33mmain+0x2b2[0m               
+[#20] [33mmain+0x2b9[0m                -> [33mmain+0x2c7[0m               
+[#21] [33mmain+0x2ce[0m                -> [33mmain+0x2d9[0m               
+[#22] [33mmain+0x2e0[0m                -> [33mmain+0x2eb[0m               
+[#23] [33mmain+0x2f2[0m                -> [33mmain+0x2fd[0m               
+[#24] [33mmain+0x30d[0m                -> [33mmain+0x34c[0m               
+[#25] [33mmain+0x35d[0m                -> [33mmain+0x269[0m               
+[#26] [33mmain+0x269[0m                -> [33msleep@plt[0m                
+[#27] [33msleep@plt[0m                 -> [33mrand (libc.so.6)[0m         
+[#28] [33mrand+0x8 (libc.so.6)[0m      -> [33mrandom (libc.so.6)[0m       
+[#29] [33mrandom+0x22 (libc.so.6)[0m   -> [33mrandom+0x70 (libc.so.6)[0m  
+[#30] [33mrandom+0x7b (libc.so.6)[0m   -> [33mrandom_r (libc.so.6)[0m     
+[#31] [33mrandom_r+0x17 (libc.so.6)[0m -> [33mrandom_r+0x38 (libc.so.6)[0m
+2026/03/12 18:59:27 LBR数据统计: 总条目=1, 有效=1, 空数据=0, 全零数据=0
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383130d
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x130d
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x10
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831314
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1314
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x17
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383130d
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x130d
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x10
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831314
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1314
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x17
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383132b
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x132b
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x2e
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038312fd
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x12fd
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831337
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1337
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x3a
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831321
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1321
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x24
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831337
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1337
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x3a
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831330
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1330
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x33
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831337
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1337
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x3a
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831330
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1330
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x33
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831337
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1337
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x3a
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831330
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1330
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x33
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831312
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1312
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x15
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831332
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1332
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x35
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383132b
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x132b
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x2e
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038312fd
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x12fd
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831337
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1337
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x3a
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831321
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1321
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x24
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831337
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1337
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x3a
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831330
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1330
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x33
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831312
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1312
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x15
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831332
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1332
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x35
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383132b
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x132b
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x2e
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038312fd
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x12fd
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831337
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1337
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x3a
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831321
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1321
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x24
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831312
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1312
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x15
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831332
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1332
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x35
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383131c
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x131c
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x1f
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038312fd
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x12fd
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383130d
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x130d
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x10
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831314
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1314
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x17
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383131c
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x131c
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x1f
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038312fd
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x12fd
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383130d
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x130d
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x10
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831314
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1314
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x17
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383132b
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x132b
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x2e
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038312fd
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x12fd
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831337
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1337
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x3a
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831321
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1321
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x24
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831337
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1337
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x3a
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831330
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1330
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x33
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831337
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1337
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x3a
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831330
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1330
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x33
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831312
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1312
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x15
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831332
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1332
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x35
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383132b
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x132b
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x2e
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038312fd
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x12fd
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831337
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1337
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x3a
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831321
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1321
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x24
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831312
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1312
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x15
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831332
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1332
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x35
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383131c
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x131c
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x1f
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038312fd
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x12fd
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383130d
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x130d
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x10
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831314
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1314
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x17
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383132b
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x132b
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x2e
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038312fd
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x12fd
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831337
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1337
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x3a
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831321
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1321
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x24
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831337
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1337
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x3a
+2026/03/12 18:59:28 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831330
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1330
+2026/03/12 18:59:28 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x33
+
+=== PID: 179715, TID: 179715, COMM: test_lbr_sframe, Entries: 32 ===
+
+[LBR Branch History]
+LBR Stack:
+[#00] [33mfibonacci+0x3a[0m -> [33mfibonacci+0x33[0m
+[#01] [33mfibonacci+0x3a[0m -> [33mfibonacci+0x24[0m
+[#02] [33mfibonacci+0x2e[0m -> [33mfibonacci[0m     
+[#03] [33mfibonacci+0x10[0m -> [33mfibonacci+0x17[0m
+[#04] [33mfibonacci+0x1f[0m -> [33mfibonacci[0m     
+[#05] [33mfibonacci+0x15[0m -> [33mfibonacci+0x35[0m
+[#06] [33mfibonacci+0x3a[0m -> [33mfibonacci+0x24[0m
+[#07] [33mfibonacci+0x2e[0m -> [33mfibonacci[0m     
+[#08] [33mfibonacci+0x15[0m -> [33mfibonacci+0x35[0m
+[#09] [33mfibonacci+0x3a[0m -> [33mfibonacci+0x33[0m
+[#10] [33mfibonacci+0x3a[0m -> [33mfibonacci+0x33[0m
+[#11] [33mfibonacci+0x3a[0m -> [33mfibonacci+0x24[0m
+[#12] [33mfibonacci+0x2e[0m -> [33mfibonacci[0m     
+[#13] [33mfibonacci+0x10[0m -> [33mfibonacci+0x17[0m
+[#14] [33mfibonacci+0x1f[0m -> [33mfibonacci[0m     
+[#15] [33mfibonacci+0x10[0m -> [33mfibonacci+0x17[0m
+[#16] [33mfibonacci+0x1f[0m -> [33mfibonacci[0m     
+[#17] [33mfibonacci+0x15[0m -> [33mfibonacci+0x35[0m
+[#18] [33mfibonacci+0x3a[0m -> [33mfibonacci+0x24[0m
+[#19] [33mfibonacci+0x2e[0m -> [33mfibonacci[0m     
+[#20] [33mfibonacci+0x15[0m -> [33mfibonacci+0x35[0m
+[#21] [33mfibonacci+0x3a[0m -> [33mfibonacci+0x33[0m
+[#22] [33mfibonacci+0x3a[0m -> [33mfibonacci+0x24[0m
+[#23] [33mfibonacci+0x2e[0m -> [33mfibonacci[0m     
+[#24] [33mfibonacci+0x15[0m -> [33mfibonacci+0x35[0m
+[#25] [33mfibonacci+0x3a[0m -> [33mfibonacci+0x33[0m
+[#26] [33mfibonacci+0x3a[0m -> [33mfibonacci+0x33[0m
+[#27] [33mfibonacci+0x3a[0m -> [33mfibonacci+0x33[0m
+[#28] [33mfibonacci+0x3a[0m -> [33mfibonacci+0x24[0m
+[#29] [33mfibonacci+0x2e[0m -> [33mfibonacci[0m     
+[#30] [33mfibonacci+0x10[0m -> [33mfibonacci+0x17[0m
+[#31] [33mfibonacci+0x10[0m -> [33mfibonacci+0x17[0m
+2026/03/12 18:59:28 LBR数据统计: 总条目=1, 有效=1, 空数据=0, 全零数据=0
+2026/03/12 18:59:29 
+收到退出信号，正在分析热点地址统计...
+2026/03/12 18:59:29 
+========================================
+2026/03/12 18:59:29 访问频率最高的 5 个地址:
+2026/03/12 18:59:29 ========================================
+
+========================================
+访问频率最高的 5 个地址:
+========================================
+2026/03/12 18:59:29 
+#1 地址: 0x000055740383129b (访问次数: 17)
+
+#1 地址: 0x000055740383129b (访问次数: 17)
+2026/03/12 18:59:29 
+#2 地址: 0x00005574038311f0 (访问次数: 17)
+
+#2 地址: 0x00005574038311f0 (访问次数: 17)
+2026/03/12 18:59:29 
+#3 地址: 0x0000557403831222 (访问次数: 15)
+
+#3 地址: 0x0000557403831222 (访问次数: 15)
+2026/03/12 18:59:29 
+#4 地址: 0x000055740383128b (访问次数: 15)
+
+#4 地址: 0x000055740383128b (访问次数: 15)
+2026/03/12 18:59:29 
+#5 地址: 0x0000557403831337 (访问次数: 13)
+
+#5 地址: 0x0000557403831337 (访问次数: 13)
+2026/03/12 18:59:29 
+========================================
+总计统计了 50 个不同的地址
+========================================
+
+========================================
+总计统计了 50 个不同的地址
+========================================
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383129b
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x129b
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xce
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038311f0
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x11f0
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x23
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831222
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1222
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0x55
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383128b
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x128b
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 bubble_sort+0xbe
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831337
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1337
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x3a
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038312fd
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x12fd
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 fibonacci
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038310b0
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x10b0
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 sleep@plt
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038315e5
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x15e5
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 main+0x269
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831330
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1330
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x33
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383132b
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x132b
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x2e
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831321
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1321
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x24
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383130d
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x130d
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x10
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831314
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1314
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x17
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831312
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1312
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x15
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831332
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1332
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x35
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4740
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43740
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到共享库函数 rand@libc.so.6
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038315ea
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x15ea
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 main+0x26e
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4b17
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43b17
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到共享库函数 random_r+0x17@libc.so.6
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038316c8
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16c8
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 main+0x34c
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4b38
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43b38
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到共享库函数 random_r+0x38@libc.so.6
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b49c0
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x439c0
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到共享库函数 random+0x70@libc.so.6
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4b00
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43b00
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到共享库函数 random_r@libc.so.6
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831643
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1643
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 main+0x2c7
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b474e
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x4374e
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到共享库函数 rand+0xe@libc.so.6
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4748
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43748
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到共享库函数 rand+0x8@libc.so.6
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4950
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43950
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到共享库函数 random@libc.so.6
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x5574038316d9
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x16d9
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 main+0x35d
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831635
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1635
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 main+0x2b9
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831620
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1620
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 main+0x2a4
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b49cb
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x439cb
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到共享库函数 random+0x7b@libc.so.6
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383162e
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x162e
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 main+0x2b2
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b49b6
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x439b6
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到共享库函数 random+0x66@libc.so.6
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b474d
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x4374d
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到共享库函数 rand+0xd@libc.so.6
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4972
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43972
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到共享库函数 random+0x22@libc.so.6
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b49a6
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x439a6
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到共享库函数 random+0x56@libc.so.6
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383165c
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x165c
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 main+0x2e0
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831655
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1655
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 main+0x2d9
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383164a
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x164a
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 main+0x2ce
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383166e
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x166e
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 main+0x2f2
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831679
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1679
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 main+0x2fd
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383131c
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x131c
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 fibonacci+0x1f
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831667
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1667
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 main+0x2eb
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b4b6c
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x43b6c
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到共享库函数 random_r+0x6c@libc.so.6
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b49d4
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x439d4
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到共享库函数 random+0x84@libc.so.6
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x7f67f77b49d0
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 共享库地址, 路径: /usr/lib/libc.so.6, 偏移: 0x439d0
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到共享库函数 random+0x80@libc.so.6
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831689
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1689
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 main+0x30d
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831680
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1680
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 main+0x304
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383168b
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x168b
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 main+0x30f
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x557403831653
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x1653
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 main+0x2d7
+2026/03/12 18:59:29 [DEBUG] SFrameResolver.ResolveAddress: 解析地址 0x55740383169b
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 主程序地址，文件偏移 0x169b
+2026/03/12 18:59:29 [DEBUG] SFrameResolver: 找到函数 main+0x31f
+2026/03/12 18:59:29 统计已写入文件: log/phase1_addr_stats_20260312_185929.csv（共 50 条地址记录）

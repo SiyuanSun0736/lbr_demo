@@ -1,0 +1,32 @@
+
+=== [1] probe_addr=0x000055d69e6e229b  PID=180505 TID=180505  RIP=0x000055d69e6e229b  RSP=0x00007ffca83fd3f0  RBP=0x00007ffca83fd3f0 ===
+  #0  0x000055d69e6e229b  bubble_sort+0xce
+  #1  0x000055d69e6e246e  main+0xf2
+  #2  0x00007f0152ea76c1  __libc_init_first+0x91  (libc.so.6)
+  #3  0x00007f0152ea77f9  __libc_start_main+0x89  (libc.so.6)
+
+=== [2] probe_addr=0x000055d69e6e22fd  PID=180505 TID=180505  RIP=0x000055d69e6e22fd  RSP=0x00007ffca83fd3f8  RBP=0x00007ffca83fd610 ===
+  #0  0x000055d69e6e22fd  fibonacci
+  #1  0x000055d69e6e250d  main+0x191
+  #2  0x00007f0152ea76c1  __libc_init_first+0x91  (libc.so.6)
+  #3  0x00007f0152ea77f9  __libc_start_main+0x89  (libc.so.6)
+
+=== [3] probe_addr=0x000055d69e6e2337  PID=180505 TID=180505  RIP=0x000055d69e6e2337  RSP=0x00007ffca83fd158  RBP=0x00007ffca83fd180 ===
+  #0  0x000055d69e6e2337  fibonacci+0x3a
+  #1  0x000055d69e6e2321  fibonacci+0x24
+  #2  0x000055d69e6e2321  fibonacci+0x24
+  #3  0x000055d69e6e2321  fibonacci+0x24
+  #4  0x000055d69e6e2321  fibonacci+0x24
+  #5  0x000055d69e6e2321  fibonacci+0x24
+  #6  0x000055d69e6e2321  fibonacci+0x24
+  #7  0x000055d69e6e2321  fibonacci+0x24
+  #8  0x000055d69e6e2321  fibonacci+0x24
+  #9  0x000055d69e6e2321  fibonacci+0x24
+  #10 0x000055d69e6e2321  fibonacci+0x24
+  #11 0x000055d69e6e2321  fibonacci+0x24
+  #12 0x000055d69e6e2321  fibonacci+0x24
+  #13 0x000055d69e6e2321  fibonacci+0x24
+  #14 0x000055d69e6e2321  fibonacci+0x24
+  #15 0x000055d69e6e250d  main+0x191
+  #16 0x00007f0152ea76c1  __libc_init_first+0x91  (libc.so.6)
+  #17 0x00007f0152ea77f9  __libc_start_main+0x89  (libc.so.6)

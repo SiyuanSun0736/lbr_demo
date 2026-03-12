@@ -1,0 +1,16 @@
+==== diag for PID=180505 at 20260312_190023 ====
+LOG_LINE: 2026/03/12 19:00:22 [Phase 2] 尝试挂载 uprobe: file=/home/ssy/lbr/test/test_lbr_sframe offset=0x129b pid=180505
+
+ps -p 180505 -o pid,comm,etime,cmd:
+    PID COMMAND             ELAPSED CMD
+
+head /proc/180505/maps (first 200 lines):
+head: cannot open '/proc/180505/maps' for reading: No such file or directory
+(failed to read /proc/180505/maps)
+
+ls -l /proc/180505/ns:
+ls: cannot access '/proc/180505/ns': No such file or directory
+
+cat /proc/180505/status:
+cat: /proc/180505/status: No such file or directory
+==== end ====

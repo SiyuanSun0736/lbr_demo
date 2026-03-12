@@ -1,0 +1,38 @@
+==== diag for PID=180505 at 20260312_190022 ====
+LOG_LINE: 2026/03/12 19:00:22 [Phase 2] 尝试挂载 uprobe: file=/home/ssy/lbr/test/test_lbr_sframe offset=0x1337 pid=180505
+
+ps -p 180505 -o pid,comm,etime,cmd:
+    PID COMMAND             ELAPSED CMD
+ 180505 test_lbr_sframe       00:12 /home/ssy/lbr/test/test_lbr_sframe
+
+head /proc/180505/maps (first 200 lines):
+55d69e6e1000-55d69e6e2000 r--p 00000000 08:23 33555291                   /home/ssy/lbr/test/test_lbr_sframe
+55d69e6e2000-55d69e6e3000 r-xp 00001000 08:23 33555291                   /home/ssy/lbr/test/test_lbr_sframe
+55d69e6e3000-55d69e6e4000 r--p 00002000 08:23 33555291                   /home/ssy/lbr/test/test_lbr_sframe
+55d69e6e4000-55d69e6e5000 r--p 00002000 08:23 33555291                   /home/ssy/lbr/test/test_lbr_sframe
+55d69e6e5000-55d69e6e6000 rw-p 00003000 08:23 33555291                   /home/ssy/lbr/test/test_lbr_sframe
+7f0152e7d000-7f0152e80000 rw-p 00000000 00:00 0 
+7f0152e80000-7f0152ea4000 r--p 00000000 08:23 46665018                   /usr/lib/libc.so.6
+7f0152ea4000-7f0153015000 r-xp 00024000 08:23 46665018                   /usr/lib/libc.so.6
+7f0153015000-7f0153063000 r--p 00195000 08:23 46665018                   /usr/lib/libc.so.6
+7f0153063000-7f0153067000 r--p 001e2000 08:23 46665018                   /usr/lib/libc.so.6
+7f0153067000-7f0153069000 rw-p 001e6000 08:23 46665018                   /usr/lib/libc.so.6
+7f0153069000-7f0153073000 rw-p 00000000 00:00 0 
+7f01530ba000-7f01530be000 r--p 00000000 00:00 0                          [vvar]
+7f01530be000-7f01530c0000 r--p 00000000 00:00 0                          [vvar_vclock]
+7f01530c0000-7f01530c2000 r-xp 00000000 00:00 0                          [vdso]
+7f01530c2000-7f01530c3000 r--p 00000000 08:23 46664999                   /usr/lib/ld-linux-x86-64.so.2
+7f01530c3000-7f01530ed000 r-xp 00001000 08:23 46664999                   /usr/lib/ld-linux-x86-64.so.2
+7f01530ed000-7f01530f8000 r--p 0002b000 08:23 46664999                   /usr/lib/ld-linux-x86-64.so.2
+7f01530f8000-7f01530fa000 r--p 00036000 08:23 46664999                   /usr/lib/ld-linux-x86-64.so.2
+7f01530fa000-7f01530fb000 rw-p 00038000 08:23 46664999                   /usr/lib/ld-linux-x86-64.so.2
+7f01530fb000-7f01530fc000 rw-p 00000000 00:00 0 
+7ffca83de000-7ffca83ff000 rw-p 00000000 00:00 0                          [stack]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+
+ls -l /proc/180505/ns:
+ls: cannot access '/proc/180505/ns': No such file or directory
+
+cat /proc/180505/status:
+cat: /proc/180505/status: No such file or directory
+==== end ====

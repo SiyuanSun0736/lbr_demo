@@ -1,0 +1,10 @@
+rank,addr,count,pid,file_path,file_offset,symbol
+1,0x00005593430cc2e8,183,184667,/home/ssy/lbr/test/test_stack_unwinding1,0x12e8,deep_call+0x24
+2,0x00005593430cc2f5,181,184667,/home/ssy/lbr/test/test_stack_unwinding1,0x12f5,deep_call+0x31
+3,0x00005593430cc2c4,102,184667,/home/ssy/lbr/test/test_stack_unwinding1,0x12c4,deep_call
+4,0x00005593430cc2e3,101,184667,/home/ssy/lbr/test/test_stack_unwinding1,0x12e3,deep_call+0x1f
+5,0x00005593430cc2d9,4,184667,/home/ssy/lbr/test/test_stack_unwinding1,0x12d9,deep_call+0x15
+6,0x00005593430cc3af,2,184667,/home/ssy/lbr/test/test_stack_unwinding1,0x13af,main+0x81
+7,0x00005593430cc367,1,184667,/home/ssy/lbr/test/test_stack_unwinding1,0x1367,main+0x39
+8,0x00005593430cc3aa,1,184667,/home/ssy/lbr/test/test_stack_unwinding1,0x13aa,main+0x7c
+9,0x00005593430cc3bb,1,184667,/home/ssy/lbr/test/test_stack_unwinding1,0x13bb,main+0x8d

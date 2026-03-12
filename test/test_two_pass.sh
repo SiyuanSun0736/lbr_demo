@@ -22,7 +22,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 REPO_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 LBR_DEMO="$REPO_DIR/lbr-demo"
 LOG_DIR="$REPO_DIR/log"
-TEST_BIN="$SCRIPT_DIR/test_lbr_sframe"
+TEST_BIN="$SCRIPT_DIR/test_stack_unwinding1"
 
 # Phase 1 持续时间（秒），可通过环境变量覆盖
 PHASE1_DURATION="${PHASE1_DURATION:-10}"
@@ -41,7 +41,7 @@ echo -e "Phase 1 持续时间: ${PHASE1_DURATION}s  |  Top-N 热点地址: ${TOP
 # ── 步骤 1: 编译测试程序 ──────────────────────────────────────────────────────
 echo -e "${YELLOW}[1/4] 编译测试程序...${NC}"
 cd "$SCRIPT_DIR"
-make test_lbr_sframe
+make test_stack_unwinding1
 if [ ! -f "$TEST_BIN" ]; then
     echo -e "${RED}✗ 测试程序编译失败${NC}"
     exit 1
