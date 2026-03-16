@@ -7,3 +7,4 @@
 - 清理重复代码与日志: 统一 debugLog、错误格式与资源关闭（defer）。
 - 优化批量解析性能: 改善 ResolveBatchAddresses 的偏移计算与并发处理。
 - cmd/main.go也需要重构,把一部分移出去
+- 测试DWARF的.eh_frame和uprobe的ustack进行抓取调用栈
