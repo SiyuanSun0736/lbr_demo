@@ -57,9 +57,6 @@ static perf_counter_t counters[] = {
     /* L1-D */
     {-1, "L1-dcache-loads",          0, 0, 0, 0},
     {-1, "L1-dcache-load-misses",    0, 0, 0, 0},
-    {-1, "L1-dcache-stores",         0, 0, 0, 0},
-    /* L1-I */
-    {-1, "L1-icache-load-misses",    0, 0, 0, 0},
     /* L1D pending miss (raw) */
     {-1, "l1d.replacement",          0, 0, 0, 0},
     {-1, "l1d_pend_miss.fb_full",    0, 0, 0, 0},
@@ -69,16 +66,10 @@ static perf_counter_t counters[] = {
     {-1, "LLC-load-misses",          0, 0, 0, 0},
     {-1, "LLC-stores",               0, 0, 0, 0},
     {-1, "LLC-store-misses",         0, 0, 0, 0},
-    {-1, "cache-references",         0, 0, 0, 0},
-    {-1, "cache-misses",             0, 0, 0, 0},
-    /* Memory instructions */
-    {-1, "mem-loads",                0, 0, 0, 0},
-    {-1, "mem-stores",               0, 0, 0, 0},
     {-1, "mem_inst_retired.all_loads",  0, 0, 0, 0},
     {-1, "mem_inst_retired.all_stores", 0, 0, 0, 0},
     {-1, "mem_inst_retired.any",        0, 0, 0, 0},
     /* Retired instructions */
-    {-1, "instructions",               0, 0, 0, 0},
     {-1, "inst_retired.any",           0, 0, 0, 0},
 };
 #define NUM_COUNTERS (sizeof(counters) / sizeof(counters[0]))
@@ -246,13 +237,6 @@ int main(int argc, char **argv)
     pe.config = PERF_COUNT_HW_CACHE_L1D  | (PERF_COUNT_HW_CACHE_OP_READ  << 8) | (PERF_COUNT_HW_CACHE_RESULT_MISS   << 16);
     active_counters += init_counter(idx++, &pe, target_pid);
 
-    pe.config = PERF_COUNT_HW_CACHE_L1D  | (PERF_COUNT_HW_CACHE_OP_WRITE << 8) | (PERF_COUNT_HW_CACHE_RESULT_ACCESS << 16);
-    active_counters += init_counter(idx++, &pe, target_pid);
-
-    /* L1-I */
-    pe.config = PERF_COUNT_HW_CACHE_L1I  | (PERF_COUNT_HW_CACHE_OP_READ  << 8) | (PERF_COUNT_HW_CACHE_RESULT_MISS   << 16);
-    active_counters += init_counter(idx++, &pe, target_pid);
-
     /* L1D pending miss (raw) */
     RESET_PE(); pe.type = PERF_TYPE_RAW;
     pe.config = 0x0151;  /* l1d.replacement       */
@@ -278,22 +262,6 @@ int main(int argc, char **argv)
     pe.config = PERF_COUNT_HW_CACHE_LL | (PERF_COUNT_HW_CACHE_OP_WRITE << 8) | (PERF_COUNT_HW_CACHE_RESULT_MISS   << 16);
     active_counters += init_counter(idx++, &pe, target_pid);
 
-    /* generic cache */
-    RESET_PE(); pe.type = PERF_TYPE_HARDWARE;
-    pe.config = PERF_COUNT_HW_CACHE_REFERENCES;
-    active_counters += init_counter(idx++, &pe, target_pid);
-
-    pe.config = PERF_COUNT_HW_CACHE_MISSES;
-    active_counters += init_counter(idx++, &pe, target_pid);
-
-    /* memory instructions via NODE cache */
-    RESET_PE(); pe.type = PERF_TYPE_HW_CACHE;
-    pe.config = PERF_COUNT_HW_CACHE_NODE | (PERF_COUNT_HW_CACHE_OP_READ  << 8) | (PERF_COUNT_HW_CACHE_RESULT_ACCESS << 16);
-    active_counters += init_counter(idx++, &pe, target_pid);
-
-    pe.config = PERF_COUNT_HW_CACHE_NODE | (PERF_COUNT_HW_CACHE_OP_WRITE << 8) | (PERF_COUNT_HW_CACHE_RESULT_ACCESS << 16);
-    active_counters += init_counter(idx++, &pe, target_pid);
-
     /* raw memory instruction events */
     RESET_PE(); pe.type = PERF_TYPE_RAW;
     pe.config = 0x81D0;  /* mem_inst_retired.all_loads   */
@@ -306,10 +274,6 @@ int main(int argc, char **argv)
     active_counters += init_counter(idx++, &pe, target_pid);
 
     /* retired instructions */
-    RESET_PE(); pe.type = PERF_TYPE_HARDWARE;
-    pe.config = PERF_COUNT_HW_INSTRUCTIONS;
-    active_counters += init_counter(idx++, &pe, target_pid);
-
     RESET_PE(); pe.type = PERF_TYPE_RAW;
     pe.config = 0x00C0;  /* inst_retired.any             */
     active_counters += init_counter(idx++, &pe, target_pid);
@@ -436,19 +400,19 @@ int main(int argc, char **argv)
                        (unsigned long long)counters[i].count);
         fflush(stdout);
         printf("  Cache:\n");
-        for (size_t i = 6; i < 19; i++)
+        for (size_t i = 6; i < 15; i++)
             if (counters[i].enabled)
                 printf("    %-35s %12llu\n", counters[i].name,
                        (unsigned long long)counters[i].count);
         fflush(stdout);
         printf("  Memory instructions:\n");
-        for (size_t i = 19; i < 24; i++)
+        for (size_t i = 15; i < 18; i++)
             if (counters[i].enabled)
                 printf("    %-35s %12llu\n", counters[i].name,
                        (unsigned long long)counters[i].count);
         fflush(stdout);
         printf("  Retired instructions:\n");
-        for (size_t i = 24; i < NUM_COUNTERS; i++)
+        for (size_t i = 18; i < NUM_COUNTERS; i++)
             if (counters[i].enabled)
                 printf("    %-35s %12llu\n", counters[i].name,
                        (unsigned long long)counters[i].count);

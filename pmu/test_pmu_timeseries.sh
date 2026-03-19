@@ -14,10 +14,10 @@ set -euo pipefail
 
 # ── 配置（支持通过环境变量从外部脚本覆盖）────────────────────────────────
 INTERVAL_MS="${INTERVAL_MS:-500}"               # pmu_timeseries 采样间隔（毫秒）
-TEST_DURATION="${TEST_DURATION:-10}"            # 测试持续时间（秒）
+TEST_DURATION="${TEST_DURATION:-30}"            # 测试持续时间（秒）
 WORKLOAD_DURATION="${WORKLOAD_DURATION:-120}"   # 工作负载最长持续时间（秒）
 TIMESERIES_BIN="${TIMESERIES_BIN:-./pmu_timeseries}"
-WORKLOAD_BIN="${WORKLOAD_BIN:-./test/test_pmu_workload}"
+WORKLOAD_BIN="${WORKLOAD_BIN:-./test/test_workload2}"
 WORKLOAD_NAME="$(basename "$WORKLOAD_BIN")"
 # 唯一运行 ID，包含时间（时分秒）与 PID，确保整个脚本一致使用同一后缀
 RUN_ID="$(date +%H%M%S)_$$"
@@ -50,10 +50,12 @@ assert_true() {
 # ── 清理钩子 ────────────────────────────────────────────────────────────────
 TIMESERIES_PID=""
 WORKLOAD_PID=""
+WORKLOAD_KILLER_PID=""
 
 cleanup() {
     [[ -n "$TIMESERIES_PID" ]] && kill "$TIMESERIES_PID" 2>/dev/null || true
     [[ -n "$WORKLOAD_PID"   ]] && kill "$WORKLOAD_PID"   2>/dev/null || true
+    [[ -n "$WORKLOAD_KILLER_PID" ]] && kill "$WORKLOAD_KILLER_PID" 2>/dev/null || true
     wait 2>/dev/null || true
 }
 trap cleanup EXIT INT TERM
@@ -85,25 +87,32 @@ echo
 # ── 步骤 2：编译 ──────────────────────────────────────────────────────────────
 info "检查并编译所需程序..."
 
-if [[ ! -x "$TIMESERIES_BIN" ]]; then
-    info "编译 pmu_timeseries..."
-    make pmu_timeseries
-fi
+info "编译 pmu_timeseries..."
+make
+
 assert_true "pmu_timeseries 可执行文件存在" test -x "$TIMESERIES_BIN"
 
-if [[ ! -x "$WORKLOAD_BIN" ]]; then
-    info "编译 test/.."
-    make test   
-fi
+info "编译 test/.."
+make test   
 assert_true "test 可执行文件存在" test -x "$WORKLOAD_BIN"
 echo
 
 # ── 步骤 3：启动工作负载 ──────────────────────────────────────────────────────
 mkdir -p log
-info "启动 test_pmu_workload（持续 ${WORKLOAD_DURATION}s）..."
-"$WORKLOAD_BIN" "$WORKLOAD_DURATION" &
+info "启动 test_pmu_workload（运行直到收到停止信号）..."
+"$WORKLOAD_BIN" &
 WORKLOAD_PID=$!
 info "工作负载 PID: $WORKLOAD_PID"
+
+# 在后台定时器中，WORKLOAD_DURATION 秒后发送 SIGTERM 给工作负载
+(
+    sleep "$WORKLOAD_DURATION"
+    if kill -0 "$WORKLOAD_PID" 2>/dev/null; then
+        info "WORKLOAD_DURATION=${WORKLOAD_DURATION}s 到达，发送 SIGTERM 给工作负载 PID $WORKLOAD_PID"
+        kill "$WORKLOAD_PID" 2>/dev/null || true
+    fi
+) &
+WORKLOAD_KILLER_PID=$!
 
 # 等待工作负载完成内存初始化
 sleep 2

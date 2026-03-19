@@ -7,7 +7,7 @@
  *   ③ 每阶段打印 ISO 毫秒级时间戳，便于与 PMU 采样点对齐分析
  *   ④ 函数指针表驱动，方便增删阶段
  *
- * 阶段规划（每阶段 duration/8 秒，循环直到总超时）：
+ * 阶段规划（每阶段 duration/3 秒，循环直到总超时）：
  *
  *  P1 L1D-HOT    16KB 顺序读写（4路展开）   → L1-dcache-loads/stores, mem_inst_retired.*
  *  P2 L2-THRASH  256KB 随机读写             → L1-dcache-load-misses, l1d.replacement
@@ -364,19 +364,18 @@ static const phase_def_t PHASES[] = {
 /* ████ main ████ */
 int main(int argc, char **argv)
 {
-    int duration = NUM_PHASES * 8;   /* 默认每阶段 8 秒，共 64 秒 */
-    if (argc > 1) duration = atoi(argv[1]);
-    if (duration <= 0) duration = NUM_PHASES * 8;
-
-    int phase_sec = duration / NUM_PHASES;
-    if (phase_sec < 1) phase_sec = 1;
+     /* 运行直到收到停止信号（SIGINT/SIGTERM）。
+         可选参数：每阶段持续秒数，默认 3 秒。 */
+     int phase_sec = 3;
+     if (argc > 1) phase_sec = atoi(argv[1]);
+     if (phase_sec < 1) phase_sec = 1;
 
     signal(SIGINT,  handle_sig);
     signal(SIGTERM, handle_sig);
 
     printf("=== 多阶段综合 PMU 压力测试（第二版）===\n");
     printf("PID           : %d\n", getpid());
-    printf("总时长        : %d 秒\n", duration);
+    printf("总时长        : 直到收到停止信号（无限运行）\n");
     printf("每阶段时长    : %d 秒\n", phase_sec);
     printf("阶段数        : %d\n", NUM_PHASES);
     printf("内存需求      : ~%lu MB\n\n",
@@ -442,11 +441,9 @@ int main(int argc, char **argv)
     fflush(stdout);
 
     /* ── 主循环 ── */
-    double t_start = now_sec();
-    double t_total_end = t_start + (double)duration;
     int round = 0;
 
-    while (g_running && now_sec() < t_total_end) {
+    while (g_running) {
         round++;
         printf("── Round %d ──────────────────────────────────────────────\n", round);
 
