@@ -1,0 +1,325 @@
+  topdown-slots-retired OR cpu/topdown-slots-retired/[Kernel PMU event]
+
+cache:
+  mem_inst_retired.all_loads
+       [Retired load instructions Supports address when precise (Precise
+        event). Unit: cpu]
+  mem_inst_retired.all_stores
+       [Retired store instructions Supports address when precise (Precise
+        event). Unit: cpu]
+  mem_inst_retired.any
+       [All retired memory instructions Supports address when precise (Precise
+        event). Unit: cpu]
+  mem_inst_retired.lock_loads
+       [Retired load instructions with locked access Supports address when
+        precise (Precise event). Unit: cpu]
+  mem_inst_retired.split_loads
+       [Retired load instructions that split across a cacheline boundary
+        Supports address when precise (Precise event). Unit: cpu]
+  mem_inst_retired.split_stores
+       [Retired store instructions that split across a cacheline boundary
+        Supports address when precise (Precise event). Unit: cpu]
+  mem_inst_retired.stlb_miss_loads
+       [Retired load instructions that miss the STLB Supports address when
+        precise (Precise event). Unit: cpu]
+  mem_inst_retired.stlb_miss_stores
+       [Retired store instructions that miss the STLB Supports address when
+        precise (Precise event). Unit: cpu]
+  mem_load_l3_hit_retired.xsnp_hit
+       [Retired load instructions which data sources were L3 and cross-core
+        snoop hits in on-pkg core cache Supports address when precise (Precise
+        event). Unit: cpu]
+  mem_load_l3_hit_retired.xsnp_hitm
+       [Retired load instructions which data sources were HitM responses from
+        shared L3 Supports address when precise (Precise event). Unit: cpu]
+  mem_load_l3_hit_retired.xsnp_miss
+       [Retired load instructions which data sources were L3 hit and
+        cross-core snoop missed in on-pkg core cache Supports address when
+        precise (Precise event). Unit: cpu]
+  mem_load_l3_hit_retired.xsnp_none
+       [Retired load instructions which data sources were hits in L3 without
+        snoops required Supports address when precise (Precise event). Unit:
+        cpu]
+  mem_load_misc_retired.uc
+       [Retired instructions with at least 1 uncacheable load or lock Supports
+        address when precise (Precise event). Unit: cpu]
+  mem_load_retired.fb_hit
+       [Retired load instructions which data sources were load missed L1 but
+        hit FB due to preceding miss to the same cache line with data not
+        ready Supports address when precise (Precise event). Unit: cpu]
+  mem_load_retired.l1_hit
+       [Retired load instructions with L1 cache hits as data sources Supports
+        address when precise (Precise event). Unit: cpu]
+  mem_load_retired.l1_miss
+       [Retired load instructions missed L1 cache as data sources Supports
+        address when precise (Precise event). Unit: cpu]
+  mem_load_retired.l2_hit
+       [Retired load instructions with L2 cache hits as data sources Supports
+        address when precise (Precise event). Unit: cpu]
+  mem_load_retired.l2_miss
+       [Retired load instructions missed L2 cache as data sources Supports
+        address when precise (Precise event). Unit: cpu]
+  mem_load_retired.l3_hit
+       [Retired load instructions with L3 cache hits as data sources Supports
+        address when precise (Precise event). Unit: cpu]
+  mem_load_retired.l3_miss
+       [Retired load instructions missed L3 cache as data sources Supports
+        address when precise (Precise event). Unit: cpu]
+
+floating point:
+  fp_arith_inst_retired.128b_packed_double
+       [Counts once for most SIMD 128-bit packed computational double
+        precision floating-point instructions retired. Counts twice for DPP
+        and FM(N)ADD/SUB instructions retired. Unit: cpu]
+  fp_arith_inst_retired.128b_packed_single
+       [Counts once for most SIMD 128-bit packed computational single
+        precision floating-point instruction retired. Counts twice for DPP and
+        FM(N)ADD/SUB instructions retired. Unit: cpu]
+  fp_arith_inst_retired.256b_packed_double
+       [Counts once for most SIMD 256-bit packed double computational
+        precision floating-point instructions retired. Counts twice for DPP
+        and FM(N)ADD/SUB instructions retired. Unit: cpu]
+  fp_arith_inst_retired.256b_packed_single
+       [Counts once for most SIMD 256-bit packed single computational
+        precision floating-point instructions retired. Counts twice for DPP
+        and FM(N)ADD/SUB instructions retired. Unit: cpu]
+  fp_arith_inst_retired.4_flops
+       [Number of SSE/AVX computational 128-bit packed single and 256-bit
+        packed double precision FP instructions retired; some instructions
+        will count twice as noted below. Each count represents 2 or/and 4
+        computation operations,1 for each element. Applies to SSE* and AVX*
+        packed single precision and packed double precision FP instructions:
+        ADD SUB HADD HSUB SUBADD MUL DIV MIN MAX RCP14 RSQRT14 SQRT DPP
+        FM(N)ADD/SUB. DPP and FM(N)ADD/SUB count twice as they perform 2
+        calculations per element. Unit: cpu]
+  fp_arith_inst_retired.scalar
+       [Counts once for most SIMD scalar computational floating-point
+        instructions retired. Counts twice for DPP and FM(N)ADD/SUB
+        instructions retired. Unit: cpu]
+  fp_arith_inst_retired.scalar_double
+       [Counts once for most SIMD scalar computational double precision
+        floating-point instructions retired. Counts twice for DPP and
+        FM(N)ADD/SUB instructions retired. Unit: cpu]
+  fp_arith_inst_retired.scalar_single
+       [Counts once for most SIMD scalar computational single precision
+        floating-point instructions retired. Counts twice for DPP and
+        FM(N)ADD/SUB instructions retired. Unit: cpu]
+  fp_arith_inst_retired.vector
+       [Number of any Vector retired FP arithmetic instructions. Unit: cpu]
+
+frontend:
+  frontend_retired.any_dsb_miss
+       [Retired Instructions who experienced DSB miss (Precise event). Unit:
+        cpu]
+  frontend_retired.dsb_miss
+       [Retired Instructions who experienced a critical DSB miss (Precise
+        event). Unit: cpu]
+  frontend_retired.itlb_miss
+       [Retired Instructions who experienced iTLB true miss (Precise event).
+        Unit: cpu]
+  frontend_retired.l1i_miss
+       [Retired Instructions who experienced Instruction L1 Cache true miss
+        (Precise event). Unit: cpu]
+  frontend_retired.l2_miss
+       [Retired Instructions who experienced Instruction L2 Cache true miss
+        (Precise event). Unit: cpu]
+  frontend_retired.latency_ge_1
+       [Retired instructions after front-end starvation of at least 1 cycle
+        (Must be precise). Unit: cpu]
+  frontend_retired.latency_ge_128
+       [Retired instructions that are fetched after an interval where the
+        front-end delivered no uops for a period of 128 cycles which was not
+        interrupted by a back-end stall (Precise event). Unit: cpu]
+  frontend_retired.latency_ge_16
+       [Retired instructions that are fetched after an interval where the
+        front-end delivered no uops for a period of 16 cycles which was not
+        interrupted by a back-end stall (Precise event). Unit: cpu]
+  frontend_retired.latency_ge_2
+       [Retired instructions that are fetched after an interval where the
+        front-end delivered no uops for a period of 2 cycles which was not
+        interrupted by a back-end stall (Precise event). Unit: cpu]
+  frontend_retired.latency_ge_256
+       [Retired instructions that are fetched after an interval where the
+        front-end delivered no uops for a period of 256 cycles which was not
+        interrupted by a back-end stall (Precise event). Unit: cpu]
+  frontend_retired.latency_ge_2_bubbles_ge_1
+       [Retired instructions that are fetched after an interval where the
+        front-end had at least 1 bubble-slot for a period of 2 cycles which
+        was not interrupted by a back-end stall (Precise event). Unit: cpu]
+  frontend_retired.latency_ge_2_bubbles_ge_2
+       [Retired instructions that are fetched after an interval where the
+        front-end had at least 2 bubble-slots for a period of 2 cycles which
+        was not interrupted by a back-end stall (Precise event). Unit: cpu]
+  frontend_retired.latency_ge_2_bubbles_ge_3
+       [Retired instructions that are fetched after an interval where the
+        front-end had at least 3 bubble-slots for a period of 2 cycles which
+        was not interrupted by a back-end stall (Precise event). Unit: cpu]
+  frontend_retired.latency_ge_32
+       [Retired instructions that are fetched after an interval where the
+        front-end delivered no uops for a period of 32 cycles which was not
+        interrupted by a back-end stall (Precise event). Unit: cpu]
+  frontend_retired.latency_ge_4
+       [Retired instructions that are fetched after an interval where the
+        front-end delivered no uops for a period of 4 cycles which was not
+        interrupted by a back-end stall (Precise event). Unit: cpu]
+  frontend_retired.latency_ge_512
+       [Retired instructions that are fetched after an interval where the
+        front-end delivered no uops for a period of 512 cycles which was not
+        interrupted by a back-end stall (Precise event). Unit: cpu]
+  frontend_retired.latency_ge_64
+       [Retired instructions that are fetched after an interval where the
+        front-end delivered no uops for a period of 64 cycles which was not
+        interrupted by a back-end stall (Precise event). Unit: cpu]
+  frontend_retired.latency_ge_8
+       [Retired instructions that are fetched after an interval where the
+        front-end delivered no uops for a period of 8 cycles which was not
+        interrupted by a back-end stall (Precise event). Unit: cpu]
+  frontend_retired.stlb_miss
+       [Retired Instructions who experienced STLB (2nd level TLB) true miss
+        (Precise event). Unit: cpu]
+
+memory:
+  hle_retired.aborted
+       [Number of times an HLE execution aborted due to any reasons (multiple
+        categories may count as one) (Precise event). Unit: cpu]
+  hle_retired.aborted_events
+       [Number of times an HLE execution aborted due to unfriendly events
+        (such as interrupts). Unit: cpu]
+  hle_retired.aborted_mem
+       [Number of times an HLE execution aborted due to various memory events
+        (e.g.,read/write capacity and conflicts). Unit: cpu]
+  hle_retired.aborted_memtype
+       [Number of times an HLE execution aborted due to incompatible memory
+        type. Unit: cpu]
+  hle_retired.aborted_timer
+       [Number of times an HLE execution aborted due to hardware timer
+        expiration. Unit: cpu]
+  hle_retired.aborted_unfriendly
+       [Number of times an HLE execution aborted due to HLE-unfriendly
+        instructions and certain unfriendly events (such as AD assists etc.).
+        Unit: cpu]
+  hle_retired.commit
+       [Number of times an HLE execution successfully committed. Unit: cpu]
+  hle_retired.start
+       [Number of times an HLE execution started. Unit: cpu]
+  mem_trans_retired.load_latency_gt_128
+       [Counts randomly selected loads when the latency from first dispatch to
+        completion is greater than 128 cycles Supports address when precise
+        (Must be precise). Unit: cpu]
+  mem_trans_retired.load_latency_gt_16
+       [Counts randomly selected loads when the latency from first dispatch to
+        completion is greater than 16 cycles Supports address when precise
+        (Must be precise). Unit: cpu]
+  mem_trans_retired.load_latency_gt_256
+       [Counts randomly selected loads when the latency from first dispatch to
+        completion is greater than 256 cycles Supports address when precise
+        (Must be precise). Unit: cpu]
+  mem_trans_retired.load_latency_gt_32
+       [Counts randomly selected loads when the latency from first dispatch to
+        completion is greater than 32 cycles Supports address when precise
+        (Must be precise). Unit: cpu]
+  mem_trans_retired.load_latency_gt_4
+       [Counts randomly selected loads when the latency from first dispatch to
+        completion is greater than 4 cycles Supports address when precise
+        (Must be precise). Unit: cpu]
+  mem_trans_retired.load_latency_gt_512
+       [Counts randomly selected loads when the latency from first dispatch to
+        completion is greater than 512 cycles Supports address when precise
+        (Must be precise). Unit: cpu]
+  mem_trans_retired.load_latency_gt_64
+       [Counts randomly selected loads when the latency from first dispatch to
+        completion is greater than 64 cycles Supports address when precise
+        (Must be precise). Unit: cpu]
+  mem_trans_retired.load_latency_gt_8
+       [Counts randomly selected loads when the latency from first dispatch to
+        completion is greater than 8 cycles Supports address when precise
+        (Must be precise). Unit: cpu]
+  rtm_retired.aborted
+       [Number of times an RTM execution aborted due to any reasons (multiple
+        categories may count as one) (Must be precise). Unit: cpu]
+  rtm_retired.aborted_events
+       [Number of times an RTM execution aborted due to none of the previous 4
+        categories (e.g. interrupt). Unit: cpu]
+  rtm_retired.aborted_mem
+       [Number of times an RTM execution aborted due to various memory events
+        (e.g. read/write capacity and conflicts). Unit: cpu]
+  rtm_retired.aborted_memtype
+       [Number of times an RTM execution aborted due to incompatible memory
+        type. Unit: cpu]
+  rtm_retired.aborted_timer
+       [Number of times an RTM execution aborted due to uncommon conditions.
+        Unit: cpu]
+  rtm_retired.aborted_unfriendly
+       [Number of times an RTM execution aborted due to HLE-unfriendly
+        instructions. Unit: cpu]
+  rtm_retired.commit
+       [Number of times an RTM execution successfully committed. Unit: cpu]
+  rtm_retired.start
+       [Number of times an RTM execution started. Unit: cpu]
+
+pipeline:
+  br_inst_retired.all_branches
+       [All (macro) branch instructions retired Spec update: SKL091. Unit: cpu]
+  br_inst_retired.all_branches_pebs
+       [All (macro) branch instructions retired Spec update: SKL091 (Must be
+        precise). Unit: cpu]
+  br_inst_retired.cond
+       [Conditional branch instructions retired. [This event is alias to
+        BR_INST_RETIRED.CONDITIONAL] Spec update: SKL091. Unit: cpu]
+  br_inst_retired.cond_ntaken
+       [Not taken branch instructions retired Spec update: SKL091. Unit: cpu]
+  br_inst_retired.conditional
+       [Conditional branch instructions retired. [This event is alias to
+        BR_INST_RETIRED.COND] Spec update: SKL091 (Precise event). Unit: cpu]
+  br_inst_retired.far_branch
+       [Far branch instructions retired Spec update: SKL091 (Precise event).
+        Unit: cpu]
+  br_inst_retired.near_call
+       [Direct and indirect near call instructions retired Spec update: SKL091
+        (Precise event). Unit: cpu]
+  br_inst_retired.near_return
+       [Return instructions retired Spec update: SKL091 (Precise event). Unit:
+        cpu]
+  br_inst_retired.near_taken
+       [Taken branch instructions retired Spec update: SKL091 (Precise event).
+        Unit: cpu]
+  br_inst_retired.not_taken
+       [Not taken branch instructions retired Spec update: SKL091. Unit: cpu]
+  br_misp_retired.all_branches
+       [All mispredicted macro branch instructions retired. Unit: cpu]
+  br_misp_retired.all_branches_pebs
+       [Mispredicted macro branch instructions retired (Must be precise).
+        Unit: cpu]
+  br_misp_retired.conditional
+       [Mispredicted conditional branch instructions retired (Precise event).
+        Unit: cpu]
+  br_misp_retired.near_call
+       [Mispredicted direct and indirect near call instructions retired
+        (Precise event). Unit: cpu]
+  br_misp_retired.near_taken
+       [Number of near branch instructions retired that were mispredicted and
+        taken (Precise event). Unit: cpu]
+  inst_retired.any
+       [Instructions retired from execution. Unit: cpu]
+  inst_retired.any_p
+       [Number of instructions retired. General Counter - architectural event
+        Spec update: SKL091,SKL044. Unit: cpu]
+  inst_retired.nop
+       [Number of all retired NOP instructions Spec update: SKL091,SKL044
+        (Precise event). Unit: cpu]
+  inst_retired.prec_dist
+       [Precise instruction retired event with HW to reduce effect of PEBS
+        shadow in IP distribution Spec update: SKL091,SKL044 (Must be
+        precise). Unit: cpu]
+  inst_retired.total_cycles_ps
+       [Number of cycles using always true condition applied to PEBS
+        instructions retired event Spec update: SKL091,SKL044 (Must be
+        precise). Unit: cpu]
+  uops_retired.macro_fused
+       [Number of macro-fused uops retired. (non precise). Unit: cpu]
+  uops_retired.retire_slots
+       [Retirement slots used. Unit: cpu]
+  uops_retired.stall_cycles
+       [Cycles without actually retired uops. Unit: cpu]
+  uops_retired.total_cycles
+       [Cycles with less than 10 actually retired uops. Unit: cpu]

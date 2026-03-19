@@ -1,1 +1,0 @@
-timeseries_stdout_144039_113693.txt

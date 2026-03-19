@@ -1,0 +1,123 @@
+
+legacy hardware:
+  branch-instructions
+       [Retired branch instructions [This event is an alias of branches].
+        Unit: cpu]
+  instructions
+       [Retired instructions. Be careful,these can be affected by various
+        issues,most notably hardware interrupt counts. Unit: cpu]
+
+Metric Groups:
+
+Branches: [Grouping from Top-down Microarchitecture Analysis Metrics spreadsheet]
+  tma_fused_instructions
+       [This metric represents fraction of slots where the CPU was retiring
+        fused instructions -- where one uop can represent multiple contiguous
+        instructions]
+
+BvBO: [Grouping from Top-down Microarchitecture Analysis Metrics spreadsheet]
+  tma_fused_instructions
+       [This metric represents fraction of slots where the CPU was retiring
+        fused instructions -- where one uop can represent multiple contiguous
+        instructions]
+  tma_nop_instructions
+       [This metric represents fraction of slots where the CPU was retiring
+        NOP (no op) instructions]
+
+BvFB: [Grouping from Top-down Microarchitecture Analysis Metrics spreadsheet]
+  tma_bottleneck_instruction_fetch_bw
+       [Total pipeline cost of instruction fetch bandwidth related bottlenecks
+        (when the front-end could not sustain operations delivery to the
+        back-end)]
+
+Default:
+  stalled_cycles_per_instruction
+       [Max front or backend stalls per instruction]
+
+Fed: [Grouping from Top-down Microarchitecture Analysis Metrics spreadsheet]
+  tma_bottleneck_instruction_fetch_bw
+       [Total pipeline cost of instruction fetch bandwidth related bottlenecks
+        (when the front-end could not sustain operations delivery to the
+        back-end)]
+
+FetchBW: [Grouping from Top-down Microarchitecture Analysis Metrics spreadsheet]
+  tma_bottleneck_instruction_fetch_bw
+       [Total pipeline cost of instruction fetch bandwidth related bottlenecks
+        (when the front-end could not sustain operations delivery to the
+        back-end)]
+
+Frontend: [Grouping from Top-down Microarchitecture Analysis Metrics spreadsheet]
+  tma_bottleneck_instruction_fetch_bw
+       [Total pipeline cost of instruction fetch bandwidth related bottlenecks
+        (when the front-end could not sustain operations delivery to the
+        back-end)]
+
+Pipeline: [Grouping from Top-down Microarchitecture Analysis Metrics spreadsheet]
+  tma_fused_instructions
+       [This metric represents fraction of slots where the CPU was retiring
+        fused instructions -- where one uop can represent multiple contiguous
+        instructions]
+  tma_nop_instructions
+       [This metric represents fraction of slots where the CPU was retiring
+        NOP (no op) instructions]
+
+Summary: [Grouping from Top-down Microarchitecture Analysis Metrics spreadsheet]
+  tma_info_inst_mix_instructions
+       [Total number of retired Instructions]
+
+TmaL1: [Grouping from Top-down Microarchitecture Analysis Metrics spreadsheet]
+  tma_info_inst_mix_instructions
+       [Total number of retired Instructions]
+
+TopdownL3: [Metrics for top-down breakdown at level 3]
+  tma_few_uops_instructions
+       [This metric represents fraction of slots where the CPU was retiring
+        instructions that that are decoder into two or more uops]
+  tma_fused_instructions
+       [This metric represents fraction of slots where the CPU was retiring
+        fused instructions -- where one uop can represent multiple contiguous
+        instructions]
+
+TopdownL4: [Metrics for top-down breakdown at level 4]
+  tma_nop_instructions
+       [This metric represents fraction of slots where the CPU was retiring
+        NOP (no op) instructions]
+
+tma_L1_group: [Metrics for top-down breakdown at level 1]
+  tma_info_inst_mix_instructions
+       [Total number of retired Instructions]
+
+tma_L3_group: [Metrics for top-down breakdown at level 3]
+  tma_few_uops_instructions
+       [This metric represents fraction of slots where the CPU was retiring
+        instructions that that are decoder into two or more uops]
+  tma_fused_instructions
+       [This metric represents fraction of slots where the CPU was retiring
+        fused instructions -- where one uop can represent multiple contiguous
+        instructions]
+
+tma_L4_group: [Metrics for top-down breakdown at level 4]
+  tma_nop_instructions
+       [This metric represents fraction of slots where the CPU was retiring
+        NOP (no op) instructions]
+
+tma_heavy_operations_group: [Metrics contributing to tma_heavy_operations category]
+  tma_few_uops_instructions
+       [This metric represents fraction of slots where the CPU was retiring
+        instructions that that are decoder into two or more uops]
+
+tma_issueD0: [Metrics related by the issue $issueD0]
+  tma_few_uops_instructions
+       [This metric represents fraction of slots where the CPU was retiring
+        instructions that that are decoder into two or more uops]
+
+tma_light_operations_group: [Metrics contributing to tma_light_operations category]
+  tma_fused_instructions
+       [This metric represents fraction of slots where the CPU was retiring
+        fused instructions -- where one uop can represent multiple contiguous
+        instructions]
+
+tma_other_light_ops_group: [Metrics contributing to tma_other_light_ops category]
+  tma_nop_instructions
+       [This metric represents fraction of slots where the CPU was retiring
+        NOP (no op) instructions]

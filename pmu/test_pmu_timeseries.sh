@@ -14,7 +14,7 @@ set -euo pipefail
 
 # ── 配置（支持通过环境变量从外部脚本覆盖）────────────────────────────────
 INTERVAL_MS="${INTERVAL_MS:-500}"               # pmu_timeseries 采样间隔（毫秒）
-TEST_DURATION="${TEST_DURATION:-30}"            # 测试持续时间（秒）
+TEST_DURATION="${TEST_DURATION:-10}"            # 测试持续时间（秒）
 WORKLOAD_DURATION="${WORKLOAD_DURATION:-120}"   # 工作负载最长持续时间（秒）
 TIMESERIES_BIN="${TIMESERIES_BIN:-./pmu_timeseries}"
 WORKLOAD_BIN="${WORKLOAD_BIN:-./test/test_pmu_workload}"

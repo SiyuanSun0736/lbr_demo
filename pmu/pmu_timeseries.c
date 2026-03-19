@@ -77,6 +77,9 @@ static perf_counter_t counters[] = {
     {-1, "mem_inst_retired.all_loads",  0, 0, 0, 0},
     {-1, "mem_inst_retired.all_stores", 0, 0, 0, 0},
     {-1, "mem_inst_retired.any",        0, 0, 0, 0},
+    /* Retired instructions */
+    {-1, "instructions",               0, 0, 0, 0},
+    {-1, "inst_retired.any",           0, 0, 0, 0},
 };
 #define NUM_COUNTERS (sizeof(counters) / sizeof(counters[0]))
 
@@ -302,6 +305,15 @@ int main(int argc, char **argv)
     pe.config = 0x83D0;  /* mem_inst_retired.any         */
     active_counters += init_counter(idx++, &pe, target_pid);
 
+    /* retired instructions */
+    RESET_PE(); pe.type = PERF_TYPE_HARDWARE;
+    pe.config = PERF_COUNT_HW_INSTRUCTIONS;
+    active_counters += init_counter(idx++, &pe, target_pid);
+
+    RESET_PE(); pe.type = PERF_TYPE_RAW;
+    pe.config = 0x00C0;  /* inst_retired.any             */
+    active_counters += init_counter(idx++, &pe, target_pid);
+
     if (active_counters == 0) {
         fprintf(stderr, "Error: could not open any performance counters.\n");
         return 1;
@@ -430,7 +442,13 @@ int main(int argc, char **argv)
                        (unsigned long long)counters[i].count);
         fflush(stdout);
         printf("  Memory instructions:\n");
-        for (size_t i = 19; i < NUM_COUNTERS; i++)
+        for (size_t i = 19; i < 24; i++)
+            if (counters[i].enabled)
+                printf("    %-35s %12llu\n", counters[i].name,
+                       (unsigned long long)counters[i].count);
+        fflush(stdout);
+        printf("  Retired instructions:\n");
+        for (size_t i = 24; i < NUM_COUNTERS; i++)
             if (counters[i].enabled)
                 printf("    %-35s %12llu\n", counters[i].name,
                        (unsigned long long)counters[i].count);
